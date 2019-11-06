@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TileAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: Android
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 47
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 840f7a506d89c92419bde8aeb4fa1ba5, type: 3}
+    - {fileID: 2800000, guid: 726e70e76625d0b45afc39bd0d3cb89f, type: 3}
+    - {fileID: 2800000, guid: a5143433a06296344b821a449abd63aa, type: 3}
+    - {fileID: 2800000, guid: be67511efc07c6b448f14be4f18ea548, type: 3}
+    - {fileID: 2800000, guid: 598626abea85c8c408b872d369e25ff6, type: 3}
+    - {fileID: 2800000, guid: 7884633a0e08c3c4fa2da09d46716b83, type: 3}
+    totalSpriteSurfaceArea: 576
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 840f7a506d89c92419bde8aeb4fa1ba5, type: 3}
+  - {fileID: 21300000, guid: a5143433a06296344b821a449abd63aa, type: 3}
+  - {fileID: 21300000, guid: 726e70e76625d0b45afc39bd0d3cb89f, type: 3}
+  - {fileID: 21300000, guid: 7884633a0e08c3c4fa2da09d46716b83, type: 3}
+  - {fileID: 21300000, guid: 598626abea85c8c408b872d369e25ff6, type: 3}
+  - {fileID: 21300000, guid: be67511efc07c6b448f14be4f18ea548, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Default_Sprite
+  - Edge_Sprite
+  - Curve_Sprite
+  - Pac
+  - Pop_Sprite
+  - Line_Sprite
+  m_Tag: TileAtlas
+  m_IsVariant: 0
