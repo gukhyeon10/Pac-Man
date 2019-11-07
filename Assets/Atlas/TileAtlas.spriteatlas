@@ -46,24 +46,30 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 726e70e76625d0b45afc39bd0d3cb89f, type: 3}
     - {fileID: 2800000, guid: a5143433a06296344b821a449abd63aa, type: 3}
     - {fileID: 2800000, guid: be67511efc07c6b448f14be4f18ea548, type: 3}
-    - {fileID: 2800000, guid: 598626abea85c8c408b872d369e25ff6, type: 3}
-    - {fileID: 2800000, guid: 7884633a0e08c3c4fa2da09d46716b83, type: 3}
-    totalSpriteSurfaceArea: 576
+    - {fileID: 2800000, guid: 63e1a62243d1e494492869ae007ef490, type: 3}
+    - {fileID: 2800000, guid: ac196a3dd40e5ba418951951fcaa90ee, type: 3}
+    - {fileID: 2800000, guid: ff1f828eef462c646a5df38c6da090c2, type: 3}
+    - {fileID: 2800000, guid: e6233535a2741f143a16223903e1c782, type: 3}
+    totalSpriteSurfaceArea: 512
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: 840f7a506d89c92419bde8aeb4fa1ba5, type: 3}
+  - {fileID: 21300000, guid: 63e1a62243d1e494492869ae007ef490, type: 3}
   - {fileID: 21300000, guid: a5143433a06296344b821a449abd63aa, type: 3}
+  - {fileID: 21300000, guid: e6233535a2741f143a16223903e1c782, type: 3}
   - {fileID: 21300000, guid: 726e70e76625d0b45afc39bd0d3cb89f, type: 3}
-  - {fileID: 21300000, guid: 7884633a0e08c3c4fa2da09d46716b83, type: 3}
-  - {fileID: 21300000, guid: 598626abea85c8c408b872d369e25ff6, type: 3}
+  - {fileID: 21300000, guid: ac196a3dd40e5ba418951951fcaa90ee, type: 3}
   - {fileID: 21300000, guid: be67511efc07c6b448f14be4f18ea548, type: 3}
+  - {fileID: 21300000, guid: ff1f828eef462c646a5df38c6da090c2, type: 3}
   m_PackedSpriteNamesToIndex:
   - Default_Sprite
-  - Edge_Sprite
-  - Curve_Sprite
-  - Pac
   - Pop_Sprite
+  - Edge_Sprite
+  - RightDoor_Sprite
+  - Curve_Sprite
+  - CenterDoor_Sprite
   - Line_Sprite
+  - LeftDoor_Sprite
   m_Tag: TileAtlas
   m_IsVariant: 0
