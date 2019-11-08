@@ -5,12 +5,16 @@
     <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Line_Sprite</Name>
+    <Name>Edge_Sprite</Name>
+    <Rot>270</Rot>
+  </Tile>
+  <Tile>
+    <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>1.001791E-05</Rot>
+    <Name>Edge_Sprite</Name>
+    <Rot>90</Rot>
   </Tile>
   <Tile>
     <Name>Line_Sprite</Name>
@@ -61,20 +65,16 @@
     <Rot>1.001791E-05</Rot>
   </Tile>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>1.001791E-05</Rot>
+    <Name>Edge_Sprite</Name>
+    <Rot>270</Rot>
   </Tile>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>1.001791E-05</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>1.001791E-05</Rot>
-  </Tile>
-  <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>1.001791E-05</Rot>
+    <Name>Edge_Sprite</Name>
+    <Rot>90</Rot>
   </Tile>
   <Tile>
     <Name>Line_Sprite</Name>
@@ -421,8 +421,8 @@
     <Rot>270</Rot>
   </Tile>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>270</Rot>
+    <Name>Edge_Sprite</Name>
+    <Rot>180</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
@@ -501,96 +501,12 @@
     <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>270</Rot>
-  </Tile>
-  <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>270</Rot>
+    <Name>Edge_Sprite</Name>
+    <Rot>180</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
-  </Tile>
-  <Tile>
-    <Name>Default_Sprite</Name>
-    <Rot>0</Rot>
-  </Tile>
-  <Tile>
-    <Name>Default_Sprite</Name>
-    <Rot>0</Rot>
-  </Tile>
-  <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>270</Rot>
-  </Tile>
-  <Tile>
-    <Name>Default_Sprite</Name>
-    <Rot>0</Rot>
-  </Tile>
-  <Tile>
-    <Name>Default_Sprite</Name>
-    <Rot>0</Rot>
-  </Tile>
-  <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>270</Rot>
-  </Tile>
-  <Tile>
-    <Name>Default_Sprite</Name>
-    <Rot>0</Rot>
-  </Tile>
-  <Tile>
-    <Name>Default_Sprite</Name>
-    <Rot>0</Rot>
-  </Tile>
-  <Tile>
-    <Name>Default_Sprite</Name>
-    <Rot>0</Rot>
-  </Tile>
-  <Tile>
-    <Name>Default_Sprite</Name>
-    <Rot>0</Rot>
-  </Tile>
-  <Tile>
-    <Name>Default_Sprite</Name>
-    <Rot>0</Rot>
-  </Tile>
-  <Tile>
-    <Name>Default_Sprite</Name>
-    <Rot>0</Rot>
-  </Tile>
-  <Tile>
-    <Name>Default_Sprite</Name>
-    <Rot>0</Rot>
-  </Tile>
-  <Tile>
-    <Name>Default_Sprite</Name>
-    <Rot>0</Rot>
-  </Tile>
-  <Tile>
-    <Name>Default_Sprite</Name>
-    <Rot>0</Rot>
-  </Tile>
-  <Tile>
-    <Name>Default_Sprite</Name>
-    <Rot>0</Rot>
-  </Tile>
-  <Tile>
-    <Name>Default_Sprite</Name>
-    <Rot>0</Rot>
-  </Tile>
-  <Tile>
-    <Name>Default_Sprite</Name>
-    <Rot>0</Rot>
-  </Tile>
-  <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>270</Rot>
-  </Tile>
-  <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>270</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
@@ -669,8 +585,92 @@
     <Rot>0</Rot>
   </Tile>
   <Tile>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
+  </Tile>
+  <Tile>
+    <Name>Edge_Sprite</Name>
+    <Rot>1.001791E-05</Rot>
+  </Tile>
+  <Tile>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
+  </Tile>
+  <Tile>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
+  </Tile>
+  <Tile>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
+  </Tile>
+  <Tile>
     <Name>Line_Sprite</Name>
     <Rot>270</Rot>
+  </Tile>
+  <Tile>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
+  </Tile>
+  <Tile>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
+  </Tile>
+  <Tile>
+    <Name>Line_Sprite</Name>
+    <Rot>270</Rot>
+  </Tile>
+  <Tile>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
+  </Tile>
+  <Tile>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
+  </Tile>
+  <Tile>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
+  </Tile>
+  <Tile>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
+  </Tile>
+  <Tile>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
+  </Tile>
+  <Tile>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
+  </Tile>
+  <Tile>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
+  </Tile>
+  <Tile>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
+  </Tile>
+  <Tile>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
+  </Tile>
+  <Tile>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
+  </Tile>
+  <Tile>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
+  </Tile>
+  <Tile>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
+  </Tile>
+  <Tile>
+    <Name>Edge_Sprite</Name>
+    <Rot>1.001791E-05</Rot>
   </Tile>
   <Tile>
     <Name>Line_Sprite</Name>
@@ -1429,8 +1429,8 @@
     <Rot>270</Rot>
   </Tile>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>270</Rot>
+    <Name>Edge_Sprite</Name>
+    <Rot>180</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
@@ -1509,12 +1509,8 @@
     <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>270</Rot>
-  </Tile>
-  <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>270</Rot>
+    <Name>Edge_Sprite</Name>
+    <Rot>180</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
@@ -1593,12 +1589,16 @@
     <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>270</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>270</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
+  </Tile>
+  <Tile>
+    <Name>Edge_Sprite</Name>
+    <Rot>1.001791E-05</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
@@ -1677,8 +1677,8 @@
     <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>270</Rot>
+    <Name>Edge_Sprite</Name>
+    <Rot>1.001791E-05</Rot>
   </Tile>
   <Tile>
     <Name>Line_Sprite</Name>
@@ -2189,12 +2189,16 @@
     <Rot>90</Rot>
   </Tile>
   <Tile>
-    <Name>Line_Sprite</Name>
+    <Name>Edge_Sprite</Name>
+    <Rot>270</Rot>
+  </Tile>
+  <Tile>
+    <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>180</Rot>
+    <Name>Edge_Sprite</Name>
+    <Rot>90</Rot>
   </Tile>
   <Tile>
     <Name>Line_Sprite</Name>
@@ -2245,20 +2249,16 @@
     <Rot>180</Rot>
   </Tile>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>180</Rot>
+    <Name>Edge_Sprite</Name>
+    <Rot>270</Rot>
   </Tile>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>180</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>180</Rot>
-  </Tile>
-  <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>180</Rot>
+    <Name>Edge_Sprite</Name>
+    <Rot>90</Rot>
   </Tile>
   <Tile>
     <Name>Line_Sprite</Name>

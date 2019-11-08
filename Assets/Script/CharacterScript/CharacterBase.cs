@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class CharacterBase : MonoBehaviour
 {
-    protected List<Transform> tileList;
-    protected Dictionary<int, bool> dicMovable;
+    protected Transform[,] tileArray;
+    protected bool[,] movableCheckArray;
 
     protected Transform target;
     protected Transform character;
 
-    protected const int columnCount = 21;
+    protected const int column = 23;
+    protected const int line = 29;
 
-    protected int locationX;
-    protected int locationY;
+    protected int row;
+    protected int col;
 
     protected int moveDirect;
 
@@ -23,13 +24,13 @@ public class CharacterBase : MonoBehaviour
     {
 
         character = this.transform;
-        tileList = MapManager.Instance.tileList;
-        dicMovable = MapManager.Instance.dicMovable;
+        tileArray = MapManager.Instance.tileArray;
+        movableCheckArray = MapManager.Instance.movableCheckArray;
 
-        locationX = 1;
-        locationY = 1;
+        row = 2;
+        col = 2;
 
-        target = tileList[locationX * columnCount + locationY];
+        target = tileArray[row,col];
         character.position = target.position;
     }
 
@@ -37,13 +38,13 @@ public class CharacterBase : MonoBehaviour
     public void InitCharacter(int x, int y)
     {
         character = this.transform;
-        tileList = MapManager.Instance.tileList;
-        dicMovable = MapManager.Instance.dicMovable;
+        tileArray = MapManager.Instance.tileArray;
+        movableCheckArray = MapManager.Instance.movableCheckArray;
 
-        locationX = x;
-        locationY = y;
+        row = x;
+        col = y;
 
-        target = tileList[locationX * columnCount + locationY];
+        target = tileArray[row, col];
         character.position = target.position;
         
     }

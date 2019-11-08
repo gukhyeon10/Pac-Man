@@ -18,7 +18,7 @@ public class PacMan : CharacterBase
     IEnumerator InitCorutine()
     {
         yield return null;
-        InitCharacter(1, 1);
+        InitCharacter(2, 2);
     }
 
     void Update()
@@ -38,108 +38,131 @@ public class PacMan : CharacterBase
 
         if(character.position == target.position)
         {
-            isTurn = true;
-            switch (inputDirect)
+            if(row==0)
             {
-                case 0:
-                    {
-                        if (dicMovable[locationX * columnCount + locationY - 1])
-                        {
-                            target = tileList[locationX * columnCount + locationY - 1];
-                            locationY--;
-                            moveDirect = inputDirect;
-                        }
-                        else
-                        {
-                            isTurn = false;
-                        }
-                        break;
-                    }
-                case 1:
-                    {
-                        if (dicMovable[locationX * columnCount + locationY + 1])
-                        {
-                            target = tileList[locationX * columnCount + locationY + 1];
-                            locationY++;
-                            moveDirect = inputDirect;
-                        }
-                        else
-                        {
-                            isTurn = false;
-                        }
-                        break;
-                    }
-                case 2:
-                    {
-                        if (dicMovable[(locationX - 1) * columnCount + locationY])
-                        {
-                            target = tileList[(locationX - 1) * columnCount + locationY];
-                            locationX--;
-                            moveDirect = inputDirect;
-                        }
-                        else
-                        {
-                            isTurn = false;
-                        }
-                        break;
-                    }
-                case 3:
-                    {
-                        if (dicMovable[(locationX + 1) * columnCount + locationY])
-                        {
-                            target = tileList[(locationX + 1) * columnCount + locationY];
-                            locationX++;
-                            moveDirect = inputDirect;
-                        }
-                        else
-                        {
-                            isTurn = false;
-                        }
-                        break;
-                    }
+                character.position = tileArray[line - 1, col].position;
+                row = line - 2;
+                target = tileArray[row, col];
             }
-            if (isTurn == false)
+            else if(row == line-1)
             {
-                switch (moveDirect)
+                character.position = tileArray[0, col].position;
+                row = 1;
+                target = tileArray[row, col];
+            }
+            else if(col == 0)
+            {
+                character.position = tileArray[row, column-1].position;
+                col = column-2;
+                target = tileArray[row, col];
+            }
+            else if(col == column -1)
+            {
+                character.position = tileArray[row, 0].position;
+                col = 1;
+                target = tileArray[row, col];
+            }
+            else
+            {
+                isTurn = true;
+                switch (inputDirect)
                 {
                     case 0:
                         {
-                            if (dicMovable[locationX * columnCount + locationY - 1])
+                            if (movableCheckArray[row, col - 1])
                             {
-                                target = tileList[locationX * columnCount + locationY - 1];
-                                locationY--;
+                                col--;
+                            }
+                            else
+                            {
+                                isTurn = false;
                             }
                             break;
                         }
                     case 1:
                         {
-                            if (dicMovable[locationX * columnCount + locationY + 1])
+                            if (movableCheckArray[row, col + 1])
                             {
-                                target = tileList[locationX * columnCount + locationY + 1];
-                                locationY++;
+                                col++;
+                            }
+                            else
+                            {
+                                isTurn = false;
                             }
                             break;
                         }
                     case 2:
                         {
-                            if (dicMovable[(locationX - 1) * columnCount + locationY])
+                            if (movableCheckArray[row - 1, col])
                             {
-                                target = tileList[(locationX - 1) * columnCount + locationY];
-                                locationX--;
+                                row--;
+                            }
+                            else
+                            {
+                                isTurn = false;
                             }
                             break;
                         }
                     case 3:
                         {
-                            if (dicMovable[(locationX + 1) * columnCount + locationY])
+                            if (movableCheckArray[row + 1, col])
                             {
-                                target = tileList[(locationX + 1) * columnCount + locationY];
-                                locationX++;
+                                row++;
+                            }
+                            else
+                            {
+                                isTurn = false;
                             }
                             break;
                         }
                 }
+
+                if (isTurn)
+                {
+                    target = tileArray[row, col];
+                    moveDirect = inputDirect;
+                }
+                else
+                {
+                    switch (moveDirect)
+                    {
+                        case 0:
+                            {
+                                if (movableCheckArray[row, col - 1])
+                                {
+                                    col--;
+                                }
+                                break;
+                            }
+                        case 1:
+                            {
+                                if (movableCheckArray[row, col + 1])
+                                {
+                                    col++;
+                                }
+                                break;
+                            }
+                        case 2:
+                            {
+                                if (movableCheckArray[row - 1, col])
+                                {
+                                    row--;
+                                }
+                                break;
+                            }
+                        case 3:
+                            {
+                                if (movableCheckArray[row + 1, col])
+                                {
+                                    row++;
+                                }
+                                break;
+                            }
+                    }
+                    target = tileArray[row, col];
+                }
             }
+            
         }
     }
 

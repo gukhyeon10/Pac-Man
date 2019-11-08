@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Blinky : CharacterBase
 {
-
-    Random r = new Random();
+    
     bool isTurn = false;
     List<int> movableList = new List<int>();
     // Start is called before the first frame update
@@ -17,7 +16,7 @@ public class Blinky : CharacterBase
     IEnumerator InitCorutine()
     {
         yield return null;
-        InitCharacter(10, 10);
+        InitCharacter(1, 3);
     }
 
     // Update is called once per frame
@@ -39,56 +38,82 @@ public class Blinky : CharacterBase
 
         if (character.position == target.position)
         {
-
-            movableList.Clear();
-            if (dicMovable[locationX * columnCount + locationY - 1])
+            if (row == 0)
             {
-                movableList.Add(0);
+                character.position = tileArray[line - 1, col].position;
+                row = line - 2;
+                target = tileArray[row, col];
             }
-            if (dicMovable[locationX * columnCount + locationY + 1])
+            else if (row == line - 1)
             {
-                movableList.Add(1);
+                character.position = tileArray[0, col].position;
+                row = 1;
+                target = tileArray[row, col];
             }
-            if (dicMovable[(locationX - 1) * columnCount + locationY])
+            else if (col == 0)
             {
-                movableList.Add(2);
+                character.position = tileArray[row, column - 1].position;
+                col = column - 2;
+                target = tileArray[row, col];
             }
-            if (dicMovable[(locationX + 1) * columnCount + locationY])
+            else if (col == column - 1)
             {
-                movableList.Add(3);
+                character.position = tileArray[row, 0].position;
+                col = 1;
+                target = tileArray[row, col];
             }
-
-            if(movableList.Count > 0)
+            else
             {
-                int index = Random.Range(0, movableList.Count);
-                switch(movableList[index])
+                movableList.Clear();
+                if (movableCheckArray[row, col - 1])
                 {
-                    case 0:
-                        {
-                            target = tileList[locationX * columnCount + locationY - 1];
-                            locationY--;
-                            break;
-                        }
-                    case 1:
-                        {
-                            target = tileList[locationX * columnCount + locationY + 1];
-                            locationY++;
-                            break;
-                        }
-                    case 2:
-                        {
-                            target = tileList[(locationX - 1) * columnCount + locationY];
-                            locationX--;
-                            break;
-                        }
-                    case 3:
-                        {
-                            target = tileList[(locationX + 1) * columnCount + locationY];
-                            locationX++;
-                            break;
-                        }
+                    movableList.Add(0);
                 }
+                if (movableCheckArray[row, col + 1])
+                {
+                    movableList.Add(1);
+                }
+                if (movableCheckArray[row - 1, col])
+                {
+                    movableList.Add(2);
+                }
+                if (movableCheckArray[row + 1, col])
+                {
+                    movableList.Add(3);
+                }
+
+                if (movableList.Count > 0)
+                {
+                    int index = Random.Range(0, movableList.Count);
+                    switch (movableList[index])
+                    {
+                        case 0:
+                            {
+                                col--;
+                                break;
+                            }
+                        case 1:
+                            {
+                                col++;
+                                break;
+                            }
+                        case 2:
+                            {
+                                row--;
+                                break;
+                            }
+                        case 3:
+                            {
+                                row++;
+                                break;
+                            }
+                    }
+
+                    target = tileArray[row, col];
+                }
+
             }
+
 
         }
     }

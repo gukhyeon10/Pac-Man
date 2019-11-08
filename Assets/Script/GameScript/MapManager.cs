@@ -10,19 +10,11 @@ public class MapManager : MonoBehaviour
 
     const string dataPath = "MapData/";
 
-    public List<Transform> tileList;
-    public Dictionary<int, bool> dicMovable;
-
-    // 위치 좌표 (초기값)
-    int locationX = 1;  
-    int locationY = 1;
-
-    int moveDirect = 1;  // 0 left   1 right   2 up   3 down
-    int inputDirect = 1;
-
-    float speed = 2f;
-    bool isTurn = false;
-
+    const int column = 23;
+    const int line = 29;   
+    public Transform[ , ] tileArray = new Transform[line, column];
+    public bool[ , ] movableCheckArray = new bool[line, column];
+    
     private static MapManager _instance = null;
 
     public static MapManager Instance
@@ -53,14 +45,11 @@ public class MapManager : MonoBehaviour
 
     // 타일 리스트, 이동 가능 체크
     void InitTileList()
-    {
-        tileList = new List<Transform>();
-        dicMovable = new Dictionary<int, bool>();
-        for (int i=0; i<tileGrid.childCount; i++)
+    {  
+        for (int i=0; i<tileGrid.childCount - column; i++)   // 마지막 행 타일들은 유령을 가리기위한 타일이기에 게임에 영향X
         {
-            tileList.Add(tileGrid.GetChild(i));
-            dicMovable.Add(i, false);
-            
+            tileArray[(i / column), (i % column)] = tileGrid.GetChild(i);
+            movableCheckArray[(i / column), (i % column)] = false;
         }
         
     }
@@ -78,26 +67,55 @@ public class MapManager : MonoBehaviour
 
         XmlNodeList nodeList = xmlDoc.SelectNodes("Map/Tile");
 
-        int i = 0;
         string tileName = string.Empty;
-        foreach(XmlNode node in nodeList)
+        
+
+        int row = 1, col = 1;
+        foreach (XmlNode node in nodeList)
         {
             tileName = node.SelectSingleNode("Name").InnerText;
 
-            tileList[i].GetComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("TileSprite/" + tileName, typeof(Sprite));
+            tileArray[row, col].GetComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("TileSprite/" + tileName, typeof(Sprite));
 
-            tileList[i].eulerAngles = new Vector3(0, 0, float.Parse(node.SelectSingleNode("Rot").InnerText));
+            tileArray[row, col].eulerAngles = new Vector3(0, 0, float.Parse(node.SelectSingleNode("Rot").InnerText));
 
-            if(tileName.Equals("Default_Sprite"))
+            if (tileName.Equals("Default_Sprite") == false)   // 빈 타일이 아니면 이동 불가
             {
-                dicMovable[i] = true;
+                movableCheckArray[row, col] = false;
             }
             else
             {
-                dicMovable[i] = false;
+                movableCheckArray[row, col] = true;      // 빈 타일이면 이동 가능
+
+                //화면상 테두리부분이 뚫려있다면 테두리 한칸 밖 타일 이동가능
+                if(row == 1)                             
+                {
+                    movableCheckArray[row - 1, col] = true;
+                }
+                if(row == line-2)                        
+                {
+                    movableCheckArray[row + 1, col] = true;
+                }
+                if(col == 1)                             
+                {
+                    movableCheckArray[row, col - 1] = true;
+                }
+                if(col == column -2)                     
+                {
+                    movableCheckArray[row, col + 1] = true;
+                }
             }
-            i++;
+
+
+            col++;
+            if(col > column-2)
+            {
+                row++;
+                col = 1;
+            }
+
         }
+
         Debug.Log("Stage Load Success");
     }
 
