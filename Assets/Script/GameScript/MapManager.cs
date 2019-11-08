@@ -9,83 +9,47 @@ public class MapManager : MonoBehaviour
     Transform tileGrid;
 
     const string dataPath = "MapData/";
-    const int columnCount = 21;    // 한 행에 21개 타일
 
-    List<Transform> tileList;
-    Dictionary<int, bool> dicMovable;
-
-    [SerializeField]
-    Transform pac;
-
-    Transform target;
+    public List<Transform> tileList;
+    public Dictionary<int, bool> dicMovable;
 
     // 위치 좌표 (초기값)
     int locationX = 1;  
     int locationY = 1;
 
-    int moveDirect = 0;  // 0 left   1 right   2 up   3 down
+    int moveDirect = 1;  // 0 left   1 right   2 up   3 down
     int inputDirect = 1;
 
     float speed = 2f;
+    bool isTurn = false;
 
-    // Start is called before the first frame update
-    void Start()
+    private static MapManager _instance = null;
+
+    public static MapManager Instance
     {
+        get
+        {
+            return _instance;
+        }
+    }
+
+    void Awake()
+    {
+        if(_instance == null)
+        {
+            _instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         InitTileList();
 
         InitStage();
     }
-
-    void Update()
-    {
-        // 팩맨 이동
-        pac.position = Vector3.MoveTowards(pac.position, target.position, speed * Time.deltaTime);
-        
-        if (pac.position == target.position)
-        {
-            switch(inputDirect)
-            {
-                case 0:
-                    {
-                        if(dicMovable[locationX * columnCount + locationY - 1])
-                        {
-                            target = tileList[locationX * columnCount + locationY - 1];
-                            locationY--;
-                        }
-                        break;
-                    }
-                case 1:
-                    {
-                        if (dicMovable[locationX * columnCount + locationY +1])
-                        {
-                            target = tileList[locationX * columnCount + locationY + 1];
-                            locationY++;
-                        }
-                        break;
-                    }
-                case 2:
-                    {
-                        if (dicMovable[(locationX-1) * columnCount + locationY])
-                        {
-                            target = tileList[(locationX-1) * columnCount + locationY];
-                            locationX--;
-                        }
-                        break;
-                    }
-                case 3:
-                    {
-                        if (dicMovable[(locationX+1) * columnCount + locationY])
-                        {
-                            target = tileList[(locationX+1) * columnCount + locationY];
-                            locationX++;
-                        }
-                        break;
-                    }
-            }
-
-        }
-        
-    }
+    
 
     // 타일 리스트, 이동 가능 체크
     void InitTileList()
@@ -96,6 +60,7 @@ public class MapManager : MonoBehaviour
         {
             tileList.Add(tileGrid.GetChild(i));
             dicMovable.Add(i, false);
+            
         }
         
     }
@@ -103,7 +68,6 @@ public class MapManager : MonoBehaviour
     // 스테이지 로드
     void InitStage()
     {
-        target = tileList[locationX * columnCount + locationY];
 
         string stageFileName = "STAGE_TEST_2";
 
@@ -136,28 +100,6 @@ public class MapManager : MonoBehaviour
         }
         Debug.Log("Stage Load Success");
     }
-
-    // 방향키 입력
-    public void PacLeft()
-    {
-        inputDirect = 0;
-    }
-
-    public void PacRight()
-    {
-        inputDirect = 1;
-    }
-
-    public void PacUp()
-    {
-        inputDirect = 2;
-    }
-
-    public void PacDown()
-    {
-        inputDirect = 3;
-    }
- 
 
 
 
