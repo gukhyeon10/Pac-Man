@@ -7,17 +7,39 @@ public class UIEvent : MonoBehaviour
     [SerializeField]
     SpriteRenderer spriteRenderer;
 
+    public bool isWall;
+    public bool isItem;
+    public bool isCharacter;
+
     // 맵툴 화면 아래 타일 클릭
     public void OnMouseDown()
     {
         if(spriteRenderer != null)
         {
-            MapToolCursor.Instance.cursorTileSprite = spriteRenderer.sprite;
-            Debug.Log("Cursor Change : " + MapToolCursor.Instance.cursorTileSprite.name);
+            if(isWall)
+            {
+                MapToolCursor.Instance.cursorSprite = spriteRenderer.sprite;
+                MapToolCursor.Instance.cursorType = (int)EObjectType.WALL;
+                Debug.Log("Cursor Change : " + MapToolCursor.Instance.cursorSprite.name);
+            }
+            else if(isItem)
+            {
+                MapToolCursor.Instance.cursorSprite = spriteRenderer.sprite;
+                MapToolCursor.Instance.cursorType = (int)EObjectType.ITEM;
+                Debug.Log("Cursor Change : " + MapToolCursor.Instance.cursorSprite.name);
+            }
+            else if(isCharacter)
+            {
+                MapToolCursor.Instance.cursorSprite = spriteRenderer.sprite;
+                MapToolCursor.Instance.cursorType = (int)EObjectType.CHARACTER;
+                Debug.Log("Cursor Change : " + MapToolCursor.Instance.cursorSprite.name);
+            }
+            
+        
         }
         else
         {
-            Debug.Log("Select Tile is null");
+            Debug.Log("Select Sprite is null");
         }
     }
 

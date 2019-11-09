@@ -9,17 +9,20 @@ public class MapToolManager : MonoBehaviour
 {
     [SerializeField]
     Transform tileGrid;
+    
+    Transform[,] tileArray;
 
-    List<Transform> tileList;
+    const int line = 27;
+    const int column = 21;
     
     // Start is called before the first frame update
     void Start()
     {
-        //그리드 자식 타일 List
-        tileList = new List<Transform>();
+
+        tileArray = new Transform[line, column];
         for(int i=0; i<tileGrid.childCount; i++)
         {
-            tileList.Add(tileGrid.GetChild(i));
+            tileArray[i / column, i % column] = tileGrid.GetChild(i);
         }
     }
     
@@ -40,21 +43,67 @@ public class MapToolManager : MonoBehaviour
             XmlNode root = xmlDoc.CreateNode(XmlNodeType.Element, "Map", string.Empty);
             xmlDoc.AppendChild(root);
 
-            for (int i = 0; i < tileList.Count; i++)
+            for (int row = 0; row < line; row++)
             {
-                XmlNode childNode = xmlDoc.CreateNode(XmlNodeType.Element, "Tile", string.Empty);
-                root.AppendChild(childNode);
+                for (int col = 0; col < column; col++)
+                {
+                    TileEvent tileInfo = tileArray[row, col].GetComponent<TileEvent>();
+                    switch (tileInfo.objectType)
+                    {
+                        case (int)EObjectType.WALL:
+                            {
+                                //지형 정보
+                                XmlNode tileNode = xmlDoc.CreateNode(XmlNodeType.Element, "Tile", string.Empty);
+                                root.AppendChild(tileNode);
+                                
+                                XmlElement name = xmlDoc.CreateElement("Name");
+                                name.InnerText = tileArray[row,col].GetComponent<SpriteRenderer>().sprite.name;
+                                tileNode.AppendChild(name);
 
-                XmlElement name = xmlDoc.CreateElement("Name");
-                name.InnerText = tileList[i].GetComponent<SpriteRenderer>().sprite.name;
-                childNode.AppendChild(name);
+                                XmlElement rot = xmlDoc.CreateElement("Rot");
+                                rot.InnerText = tileArray[row,col].eulerAngles.z.ToString();
+                                tileNode.AppendChild(rot);
+                                break;
+                            }
+                        case (int)EObjectType.ITEM:
+                            {
+                                //기본 지형
+                                XmlNode tileNode = xmlDoc.CreateNode(XmlNodeType.Element, "Tile", string.Empty);
+                                root.AppendChild(tileNode);
 
-                XmlElement rot = xmlDoc.CreateElement("Rot");
-                rot.InnerText = tileList[i].eulerAngles.z.ToString();
-                childNode.AppendChild(rot);
+                                XmlElement tileName = xmlDoc.CreateElement("Name");
+                                tileName.InnerText = "Default_Sprite";
+                                tileNode.AppendChild(tileName);
 
+                                XmlElement rot = xmlDoc.CreateElement("Rot");
+                                rot.InnerText = "0";
+                                tileNode.AppendChild(rot);
+
+                                //아이템 정보
+                                XmlNode itemNode = xmlDoc.CreateNode(XmlNodeType.Element, "Item", string.Empty);
+                                root.AppendChild(itemNode);
+
+                                XmlElement itemName = xmlDoc.CreateElement("Name");
+                                itemName.InnerText = tileArray[row,col].GetComponent<SpriteRenderer>().sprite.name;
+                                itemNode.AppendChild(itemName);
+
+                                XmlElement itemLine = xmlDoc.CreateElement("Line");
+                                itemLine.InnerText = (row + 1).ToString();
+                                itemNode.AppendChild(itemLine);
+
+                                XmlElement itemColumn = xmlDoc.CreateElement("Column");
+                                itemColumn.InnerText = (col + 1).ToString();
+                                itemNode.AppendChild(itemColumn);
+
+                                break;
+                            }
+                        case (int)EObjectType.CHARACTER:
+                            {
+                                break;
+                            }
+                    }
+                }
             }
-
             // 저장
             xmlDoc.Save(filePath);
             Debug.Log("Data Save Success!");
@@ -77,14 +126,27 @@ public class MapToolManager : MonoBehaviour
 
             XmlNodeList nodeList = xmlDoc.SelectNodes("Map/Tile");
 
+            //타일 로드
             int i = 0;
             foreach(XmlNode node in nodeList)
-            {
-                tileList[i].GetComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("TileSprite/" + node.SelectSingleNode("Name").InnerText, typeof(Sprite));
-                
-                tileList[i].eulerAngles = new Vector3(0, 0, float.Parse(node.SelectSingleNode("Rot").InnerText));
+            {   
+                tileArray[i/column, i%column].GetComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("TileSprite/" + node.SelectSingleNode("Name").InnerText, typeof(Sprite));
 
-                tileList[i++].GetComponent<TileEvent>().InitTile();
+                tileArray[i/column, i%column].eulerAngles = new Vector3(0, 0, float.Parse(node.SelectSingleNode("Rot").InnerText));
+
+                tileArray[i/column, i%column].GetComponent<TileEvent>().InitTile((int)EObjectType.WALL);
+                i++;
+            }
+            
+            //아이템 로드
+            int row, col;
+            nodeList = xmlDoc.SelectNodes("Map/Item");
+            foreach(XmlNode node in nodeList)
+            {
+                row = int.Parse(node.SelectSingleNode("Line").InnerText) - 1;
+                col = int.Parse(node.SelectSingleNode("Column").InnerText) - 1;
+                tileArray[row, col].GetComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("ItemSprite/" + node.SelectSingleNode("Name").InnerText, typeof(Sprite));
+                tileArray[row, col].GetComponent<TileEvent>().InitTile((int)EObjectType.ITEM);
             }
 
             Debug.Log("Data Load Success!");

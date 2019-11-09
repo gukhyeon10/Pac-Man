@@ -7,12 +7,15 @@ public class CharacterBase : MonoBehaviour
     protected Transform[,] tileArray;
     protected bool[,] movableCheckArray;
 
+    //이동 목표 Transform
     protected Transform target;
     protected Transform character;
 
+    //타일 29행 23열
     protected const int column = 23;
     protected const int line = 29;
 
+    //목표 위치 좌표
     protected int row;
     protected int col;
 
@@ -24,8 +27,8 @@ public class CharacterBase : MonoBehaviour
     {
 
         character = this.transform;
-        tileArray = MapManager.Instance.tileArray;
-        movableCheckArray = MapManager.Instance.movableCheckArray;
+        tileArray = StageManager.Instance.tileArray;
+        movableCheckArray = StageManager.Instance.movableCheckArray;
 
         row = 2;
         col = 2;
@@ -38,22 +41,20 @@ public class CharacterBase : MonoBehaviour
     public void InitCharacter(int x, int y)
     {
         character = this.transform;
-        tileArray = MapManager.Instance.tileArray;
-        movableCheckArray = MapManager.Instance.movableCheckArray;
+        tileArray = StageManager.Instance.tileArray;
+        movableCheckArray = StageManager.Instance.movableCheckArray;
 
         row = x;
         col = y;
 
         target = tileArray[row, col];
         character.position = target.position;
-        
     }
 
 
     // 각 캐릭터 별 재정의 함수
     protected virtual void CharacterMove()
     {
-
     }
 
 }

@@ -7,17 +7,7 @@ public class Blinky : CharacterBase
     
     bool isTurn = false;
     List<int> movableList = new List<int>();
-    // Start is called before the first frame update
-    void Start()
-    {
-        StartCoroutine(InitCorutine());
-    }
-
-    IEnumerator InitCorutine()
-    {
-        yield return null;
-        InitCharacter(1, 3);
-    }
+    
 
     // Update is called once per frame
     void Update()

@@ -6,20 +6,7 @@ public class PacMan : CharacterBase
 {
     int inputDirect = 1;
     bool isTurn = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        StartCoroutine(InitCorutine());
-    }
 
-    // 초기화 코루틴     --> Start에서 초기화안하고 구지 코루틴 사용해서 한 프레임 넘기고 나서 초기화 하는 이유는 다음과 같다.
-                           // tile이 grid layout에 의해서 아직 정렬되지 않을때 특정 타일의 포지션을 참조하여 초기화하는 듯하다(초기화 위치가 계속해서 버그가 남)
-                           // 그러기때문에 한 프레임 텀을 주고 위치 초기화
-    IEnumerator InitCorutine()
-    {
-        yield return null;
-        InitCharacter(2, 2);
-    }
 
     void Update()
     {

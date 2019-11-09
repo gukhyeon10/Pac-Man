@@ -3,21 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Xml;
 
-public class MapManager : MonoBehaviour
+public class StageManager : MonoBehaviour
 {
+    private static StageManager _instance = null;
+
+    [SerializeField]
+    GameObject StartPagePanel;
+
     [SerializeField]
     Transform tileGrid;
 
+    [SerializeField]
+    CharacterBase[] CharacterArray = new CharacterBase[5]; // 각 캐릭터 (PAC = 0,  BLINKY = 1,  PINKY = 2,  INKY = 3,  CLYDE = 4,)
+
     const string dataPath = "MapData/";
 
-    const int column = 23;
-    const int line = 29;   
+    // 타일 29행 23열 (30행 타일은 가리기 용도)
+    const int column = 23;  
+    const int line = 29;    
+    
     public Transform[ , ] tileArray = new Transform[line, column];
     public bool[ , ] movableCheckArray = new bool[line, column];
-    
-    private static MapManager _instance = null;
 
-    public static MapManager Instance
+    public static StageManager Instance
     {
         get
         {
@@ -36,12 +44,39 @@ public class MapManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
-        InitTileList();
-
-        InitStage();
+        
     }
-    
+
+    void Start()
+    {
+        TapStartStage();
+    }
+
+    //시작 화면
+    void TapStartStage()
+    {
+        StartPagePanel.SetActive(true);
+        StartCoroutine(TapWaitCorutine());
+    }
+
+    //시작 화면 클릭 or 터치시 시작
+    IEnumerator TapWaitCorutine()
+    {
+        while(true)
+        {
+            yield return null;
+            if (Input.GetKeyDown(KeyCode.Mouse0) || Input.touchCount > 0)
+            {
+                StartPagePanel.SetActive(false);
+
+                InitTileList();
+
+                InitStage(2);
+                break;
+            }
+        }
+    }
+
 
     // 타일 리스트, 이동 가능 체크
     void InitTileList()
@@ -55,10 +90,11 @@ public class MapManager : MonoBehaviour
     }
 
     // 스테이지 로드
-    void InitStage()
+    void InitStage(int stageNumber)
     {
-
-        string stageFileName = "STAGE_TEST_2";
+       
+        string stageFileName = "STAGE_TEST_";
+        stageFileName += stageNumber.ToString();
 
         TextAsset textAsset = (TextAsset)Resources.Load(dataPath + stageFileName);
 
@@ -117,8 +153,19 @@ public class MapManager : MonoBehaviour
         }
 
         Debug.Log("Stage Load Success");
+
+        InitCharacter(stageNumber);
     }
 
+    // 각 캐릭터 초기화
+    void InitCharacter(int stageNumber)
+    {
+        CharacterArray[(int)ECharacter.PAC].gameObject.SetActive(true);
+        CharacterArray[(int)ECharacter.PAC].InitCharacter(2, 2);
+
+        CharacterArray[(int)ECharacter.BLINKY].gameObject.SetActive(true);
+        CharacterArray[(int)ECharacter.BLINKY].InitCharacter(2, 3);
+    }
 
 
 }

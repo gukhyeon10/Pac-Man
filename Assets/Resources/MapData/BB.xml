@@ -12,6 +12,11 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>1</Line>
+    <Column>3</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -116,6 +121,11 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>2</Line>
+    <Column>8</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -188,6 +198,11 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Berry</Name>
+    <Line>3</Line>
+    <Column>5</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -208,6 +223,11 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>3</Line>
+    <Column>10</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -216,22 +236,47 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>3</Line>
+    <Column>12</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>3</Line>
+    <Column>13</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>3</Line>
+    <Column>14</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>3</Line>
+    <Column>15</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>3</Line>
+    <Column>16</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -264,6 +309,11 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Berry</Name>
+    <Line>4</Line>
+    <Column>3</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -280,6 +330,11 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>4</Line>
+    <Column>7</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -290,40 +345,80 @@
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>4</Line>
+    <Column>11</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>4</Line>
+    <Column>12</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>4</Line>
+    <Column>13</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>4</Line>
+    <Column>14</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>4</Line>
+    <Column>15</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>4</Line>
+    <Column>16</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>4</Line>
+    <Column>17</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>4</Line>
+    <Column>18</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -368,54 +463,114 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>5</Line>
+    <Column>8</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>5</Line>
+    <Column>9</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>5</Line>
+    <Column>10</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>5</Line>
+    <Column>11</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>5</Line>
+    <Column>13</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>5</Line>
+    <Column>14</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>5</Line>
+    <Column>15</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>5</Line>
+    <Column>16</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>5</Line>
+    <Column>17</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>5</Line>
+    <Column>18</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>5</Line>
+    <Column>19</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>5</Line>
+    <Column>20</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -444,6 +599,11 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>6</Line>
+    <Column>6</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -452,33 +612,48 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>6</Line>
+    <Column>8</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>6</Line>
+    <Column>10</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>6</Line>
+    <Column>13</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
@@ -488,6 +663,11 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Cherry</Name>
+    <Line>6</Line>
+    <Column>17</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -496,14 +676,29 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>6</Line>
+    <Column>19</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>6</Line>
+    <Column>20</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>6</Line>
+    <Column>21</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -532,25 +727,40 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>7</Line>
+    <Column>7</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>7</Line>
+    <Column>8</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>7</Line>
+    <Column>9</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
@@ -562,7 +772,7 @@
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
@@ -601,7 +811,7 @@
     <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Edge_Sprite</Name>
+    <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
   <Tile>
@@ -612,46 +822,66 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>8</Line>
+    <Column>6</Column>
+  </Item>
   <Tile>
-    <Name>Edge_Sprite</Name>
-    <Rot>1.001791E-05</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>8</Line>
+    <Column>7</Column>
+  </Item>
   <Tile>
-    <Name>Edge_Sprite</Name>
-    <Rot>1.001791E-05</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Name>RightDoor_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Default_Sprite</Name>
+    <Name>RightDoor_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Berry</Name>
+    <Line>8</Line>
+    <Column>14</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Berry</Name>
+    <Line>8</Line>
+    <Column>16</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -664,6 +894,11 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Berry</Name>
+    <Line>8</Line>
+    <Column>19</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -685,24 +920,39 @@
     <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>270</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>9</Line>
+    <Column>5</Column>
+  </Item>
   <Tile>
-    <Name>Edge_Sprite</Name>
-    <Rot>90</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>9</Line>
+    <Column>6</Column>
+  </Item>
   <Tile>
-    <Name>Pop_Sprite</Name>
-    <Rot>270</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>9</Line>
+    <Column>7</Column>
+  </Item>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>270</Rot>
+    <Name>RightDoor_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
@@ -712,13 +962,18 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Berry</Name>
+    <Line>9</Line>
+    <Column>10</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
@@ -730,10 +985,10 @@
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Default_Sprite</Name>
+    <Name>RightDoor_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
   <Tile>
@@ -756,6 +1011,11 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Cherry</Name>
+    <Line>9</Line>
+    <Column>21</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -769,28 +1029,34 @@
     <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Curve_Sprite</Name>
-    <Rot>90</Rot>
-  </Tile>
-  <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>1.001791E-05</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Edge_Sprite</Name>
-    <Rot>270</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>10</Line>
+    <Column>5</Column>
+  </Item>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>90</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>10</Line>
+    <Column>6</Column>
+  </Item>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>270</Rot>
+    <Name>RightDoor_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
@@ -814,7 +1080,7 @@
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
@@ -824,10 +1090,20 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Berry</Name>
+    <Line>10</Line>
+    <Column>16</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Berry</Name>
+    <Line>10</Line>
+    <Column>17</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -864,14 +1140,29 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>11</Line>
+    <Column>5</Column>
+  </Item>
   <Tile>
-    <Name>Edge_Sprite</Name>
-    <Rot>180</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>11</Line>
+    <Column>6</Column>
+  </Item>
   <Tile>
-    <Name>Edge_Sprite</Name>
-    <Rot>180</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Berry</Name>
+    <Line>11</Line>
+    <Column>7</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -886,19 +1177,19 @@
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
@@ -916,18 +1207,33 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Berry</Name>
+    <Line>11</Line>
+    <Column>18</Column>
+  </Item>
   <Tile>
-    <Name>Default_Sprite</Name>
+    <Name>RightDoor_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Berry</Name>
+    <Line>11</Line>
+    <Column>20</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Cherry</Name>
+    <Line>11</Line>
+    <Column>21</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -936,10 +1242,20 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>12</Line>
+    <Column>2</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>12</Line>
+    <Column>3</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -952,6 +1268,11 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>12</Line>
+    <Column>6</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -968,38 +1289,68 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Berry</Name>
+    <Line>12</Line>
+    <Column>10</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Berry</Name>
+    <Line>12</Line>
+    <Column>11</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Berry</Name>
+    <Line>12</Line>
+    <Column>12</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Berry</Name>
+    <Line>12</Line>
+    <Column>14</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Berry</Name>
+    <Line>12</Line>
+    <Column>15</Column>
+  </Item>
   <Tile>
-    <Name>Default_Sprite</Name>
+    <Name>RightDoor_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Default_Sprite</Name>
+    <Name>RightDoor_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Berry</Name>
+    <Line>12</Line>
+    <Column>18</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -1016,6 +1367,11 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>13</Line>
+    <Column>1</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -1032,10 +1388,20 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>13</Line>
+    <Column>5</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>13</Line>
+    <Column>6</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -1049,35 +1415,45 @@
     <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Curve_Sprite</Name>
-    <Rot>1.001791E-05</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>1.001791E-05</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Berry</Name>
+    <Line>13</Line>
+    <Column>11</Column>
+  </Item>
   <Tile>
-    <Name>Curve_Sprite</Name>
-    <Rot>270</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Berry</Name>
+    <Line>13</Line>
+    <Column>13</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Default_Sprite</Name>
+    <Name>RightDoor_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
   <Tile>
@@ -1093,13 +1469,18 @@
     <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Default_Sprite</Name>
+    <Name>RightDoor_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>14</Line>
+    <Column>1</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -1116,14 +1497,29 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Cherry</Name>
+    <Line>14</Line>
+    <Column>5</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>14</Line>
+    <Column>6</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>14</Line>
+    <Column>7</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -1132,17 +1528,27 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Cherry</Name>
+    <Line>14</Line>
+    <Column>9</Column>
+  </Item>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>270</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Cherry</Name>
+    <Line>14</Line>
+    <Column>10</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>270</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
@@ -1150,18 +1556,23 @@
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Berry</Name>
+    <Line>14</Line>
+    <Column>16</Column>
+  </Item>
   <Tile>
-    <Name>Default_Sprite</Name>
+    <Name>RightDoor_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
   <Tile>
@@ -1176,6 +1587,11 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Berry</Name>
+    <Line>14</Line>
+    <Column>20</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -1196,17 +1612,32 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Berry</Name>
+    <Line>15</Line>
+    <Column>4</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>15</Line>
+    <Column>5</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>15</Line>
+    <Column>6</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
@@ -1217,24 +1648,34 @@
     <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Curve_Sprite</Name>
-    <Rot>90</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>180</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>15</Line>
+    <Column>11</Column>
+  </Item>
   <Tile>
-    <Name>Curve_Sprite</Name>
-    <Rot>180</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>15</Line>
+    <Column>12</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
@@ -1242,11 +1683,11 @@
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
@@ -1256,10 +1697,20 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>15</Line>
+    <Column>19</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Cherry</Name>
+    <Line>15</Line>
+    <Column>20</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -1278,44 +1729,79 @@
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>16</Line>
+    <Column>6</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>16</Line>
+    <Column>7</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>16</Line>
+    <Column>8</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>16</Line>
+    <Column>9</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>16</Line>
+    <Column>10</Column>
+  </Item>
   <Tile>
-    <Name>Edge_Sprite</Name>
-    <Rot>1.001791E-05</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>16</Line>
+    <Column>12</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>16</Line>
+    <Column>13</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -1328,22 +1814,47 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>16</Line>
+    <Column>16</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>16</Line>
+    <Column>17</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Berry</Name>
+    <Line>16</Line>
+    <Column>18</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Cherry</Name>
+    <Line>16</Line>
+    <Column>19</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>16</Line>
+    <Column>20</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -1360,46 +1871,91 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Berry</Name>
+    <Line>17</Line>
+    <Column>3</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>17</Line>
+    <Column>4</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>17</Line>
+    <Column>5</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>17</Line>
+    <Column>6</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>17</Line>
+    <Column>7</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>17</Line>
+    <Column>8</Column>
+  </Item>
   <Tile>
-    <Name>Edge_Sprite</Name>
-    <Rot>90</Rot>
+    <Name>RightDoor_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>180</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Pop_Sprite</Name>
-    <Rot>180</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>17</Line>
+    <Column>11</Column>
+  </Item>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>180</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>17</Line>
+    <Column>12</Column>
+  </Item>
   <Tile>
-    <Name>Edge_Sprite</Name>
-    <Rot>270</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>17</Line>
+    <Column>13</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -1408,34 +1964,64 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>17</Line>
+    <Column>15</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Default_Sprite</Name>
+    <Name>RightDoor_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>17</Line>
+    <Column>18</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>17</Line>
+    <Column>19</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>17</Line>
+    <Column>20</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>17</Line>
+    <Column>21</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>18</Line>
+    <Column>1</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -1444,22 +2030,47 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>18</Line>
+    <Column>3</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>18</Line>
+    <Column>4</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>18</Line>
+    <Column>5</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>18</Line>
+    <Column>6</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>18</Line>
+    <Column>7</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -1468,50 +2079,110 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>18</Line>
+    <Column>9</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>18</Line>
+    <Column>10</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>18</Line>
+    <Column>11</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>18</Line>
+    <Column>12</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>18</Line>
+    <Column>13</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>18</Line>
+    <Column>14</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>18</Line>
+    <Column>15</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>18</Line>
+    <Column>16</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>18</Line>
+    <Column>17</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>18</Line>
+    <Column>18</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>18</Line>
+    <Column>19</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>18</Line>
+    <Column>20</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -1530,12 +2201,22 @@
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Berry</Name>
+    <Line>19</Line>
+    <Column>4</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>19</Line>
+    <Column>5</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -1548,53 +2229,98 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>19</Line>
+    <Column>8</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>19</Line>
+    <Column>9</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>19</Line>
+    <Column>10</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>19</Line>
+    <Column>11</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>19</Line>
+    <Column>12</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>19</Line>
+    <Column>13</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>19</Line>
+    <Column>14</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>19</Line>
+    <Column>15</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>19</Line>
+    <Column>16</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
@@ -1606,71 +2332,106 @@
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>20</Line>
+    <Column>5</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>20</Line>
+    <Column>6</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>20</Line>
+    <Column>7</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>20</Line>
+    <Column>8</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>20</Line>
+    <Column>9</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>20</Line>
+    <Column>10</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>20</Line>
+    <Column>11</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Edge_Sprite</Name>
-    <Rot>90</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Pop_Sprite</Name>
-    <Rot>1.001791E-05</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>1.001791E-05</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Pop_Sprite</Name>
-    <Rot>1.001791E-05</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Edge_Sprite</Name>
-    <Rot>270</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
@@ -1686,71 +2447,121 @@
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>21</Line>
+    <Column>2</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>21</Line>
+    <Column>3</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>21</Line>
+    <Column>4</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>21</Line>
+    <Column>5</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>21</Line>
+    <Column>6</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>21</Line>
+    <Column>7</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>21</Line>
+    <Column>8</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>21</Line>
+    <Column>10</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>21</Line>
+    <Column>14</Column>
+  </Item>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>90</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>21</Line>
+    <Column>16</Column>
+  </Item>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>90</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
@@ -1761,7 +2572,7 @@
     <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Default_Sprite</Name>
+    <Name>RightDoor_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
   <Tile>
@@ -1770,76 +2581,126 @@
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>22</Line>
+    <Column>2</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>22</Line>
+    <Column>4</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>22</Line>
+    <Column>5</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>22</Line>
+    <Column>6</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>22</Line>
+    <Column>8</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Berry</Name>
+    <Line>22</Line>
+    <Column>10</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Edge_Sprite</Name>
-    <Rot>90</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Pop_Sprite</Name>
-    <Rot>180</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>22</Line>
+    <Column>15</Column>
+  </Item>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>180</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Berry</Name>
+    <Line>22</Line>
+    <Column>16</Column>
+  </Item>
   <Tile>
-    <Name>Pop_Sprite</Name>
-    <Rot>180</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Berry</Name>
+    <Line>22</Line>
+    <Column>17</Column>
+  </Item>
   <Tile>
-    <Name>Edge_Sprite</Name>
-    <Rot>270</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Berry</Name>
+    <Line>22</Line>
+    <Column>18</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -1856,21 +2717,31 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>23</Line>
+    <Column>1</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>23</Line>
+    <Column>3</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
@@ -1880,54 +2751,108 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>23</Line>
+    <Column>7</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Name>RightDoor_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>23</Line>
+    <Column>10</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>23</Line>
+    <Column>12</Column>
+  </Item>
   <Tile>
+    <Name>RightDoor_Sprite</Name>
+    <Rot>0</Rot>
+  </Tile>
+  <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>23</Line>
+    <Column>14</Column>
+  </Item>
   <Tile>
-    <Name>Edge_Sprite</Name>
-    <Rot>90</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>23</Line>
+    <Column>15</Column>
+  </Item>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>1.001791E-05</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>23</Line>
+    <Column>16</Column>
+  </Item>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>1.001791E-05</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>23</Line>
+    <Column>17</Column>
+  </Item>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>1.001791E-05</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>23</Line>
+    <Column>18</Column>
+  </Item>
   <Tile>
-    <Name>Edge_Sprite</Name>
-    <Rot>270</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>23</Line>
+    <Column>19</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>23</Line>
+    <Column>20</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -1942,71 +2867,106 @@
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>24</Line>
+    <Column>6</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>24</Line>
+    <Column>9</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>24</Line>
+    <Column>10</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>24</Line>
+    <Column>11</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>24</Line>
+    <Column>12</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>24</Line>
+    <Column>13</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>24</Line>
+    <Column>14</Column>
+  </Item>
   <Tile>
-    <Name>Edge_Sprite</Name>
-    <Rot>90</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>180</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>180</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>180</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Curve_Sprite</Name>
-    <Rot>270</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
@@ -2026,16 +2986,26 @@
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>25</Line>
+    <Column>3</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>25</Line>
+    <Column>5</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -2044,6 +3014,11 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>25</Line>
+    <Column>7</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -2056,41 +3031,51 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Nomal</Name>
+    <Line>25</Line>
+    <Column>10</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
-    <Rot>270</Rot>
+    <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>25</Line>
+    <Column>13</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Curve_Sprite</Name>
-    <Rot>1.001791E-05</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>180</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>180</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>180</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Curve_Sprite</Name>
-    <Rot>180</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>
@@ -2152,29 +3137,34 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Apple</Name>
+    <Line>26</Line>
+    <Column>13</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Curve_Sprite</Name>
-    <Rot>90</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>180</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>180</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Line_Sprite</Name>
-    <Rot>180</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
-    <Name>Edge_Sprite</Name>
-    <Rot>270</Rot>
+    <Name>Default_Sprite</Name>
+    <Rot>0</Rot>
   </Tile>
   <Tile>
     <Name>Default_Sprite</Name>

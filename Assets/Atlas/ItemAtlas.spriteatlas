@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ItemAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 8c28d29f7e43ad24bb714e64d5e80ad8, type: 3}
+    - {fileID: 2800000, guid: c4d784c1901328c4898c058eccc9f268, type: 3}
+    - {fileID: 2800000, guid: 3ce85133684db064e9f52aaf1836ee87, type: 3}
+    - {fileID: 2800000, guid: 42b687de602e4b14693b91ef89538f55, type: 3}
+    - {fileID: 2800000, guid: e757b71d7ee05ba4e86c2a57e612b264, type: 3}
+    - {fileID: 2800000, guid: 39538bd641b429148aadfc67daf5da14, type: 3}
+    - {fileID: 2800000, guid: c66048f3e83978e438e22bdfe0f5ff28, type: 3}
+    totalSpriteSurfaceArea: 1408
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: c4d784c1901328c4898c058eccc9f268, type: 3}
+  - {fileID: 21300000, guid: 3ce85133684db064e9f52aaf1836ee87, type: 3}
+  - {fileID: 21300000, guid: c66048f3e83978e438e22bdfe0f5ff28, type: 3}
+  - {fileID: 21300000, guid: 39538bd641b429148aadfc67daf5da14, type: 3}
+  - {fileID: 21300000, guid: e757b71d7ee05ba4e86c2a57e612b264, type: 3}
+  - {fileID: 21300000, guid: 42b687de602e4b14693b91ef89538f55, type: 3}
+  - {fileID: 21300000, guid: 8c28d29f7e43ad24bb714e64d5e80ad8, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Item_Berry
+  - Item_Cherry
+  - Item_Super
+  - Item_Nomal
+  - Item_Pear
+  - Item_Melon
+  - Item_Apple
+  m_Tag: ItemAtlas
+  m_IsVariant: 0

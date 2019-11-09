@@ -9,33 +9,51 @@ public class TileEvent : MonoBehaviour
 
     SpriteRenderer spriteRenderer; //SpriteRenderer 컴포넌트
     Sprite currentTileSprite;      //현재 타일 스프라이트
+
+    public int objectType = (int)EObjectType.WALL;
+
     float rot;
 
     void Start()
     {
         spriteRenderer = this.GetComponent<SpriteRenderer>();
         this.transform.eulerAngles = Vector3.zero;
-        InitTile();
+        InitTile((int)EObjectType.WALL);
         cursor = MapToolCursor.Instance;
     }
 
-    public void InitTile()
+
+    public void InitTile(int objectType)
     {
         //타일 정보 초기화
         currentTileSprite = spriteRenderer.sprite;
         rot = this.transform.eulerAngles.z;
+        this.objectType = objectType;
     }
 
     //커서에 의해 미리보기
     public void OnMouseOver()
     {
-        spriteRenderer.sprite = cursor.cursorTileSprite;
+        spriteRenderer.sprite = cursor.cursorSprite;
+
         this.transform.eulerAngles = new Vector3(0, 0, cursor.rot);
-        //마우스 왼쪽 버튼 누르고 있는 상태 (드래그) 타일 정보 변환
-        if(Input.GetKey(KeyCode.Mouse0))
+
+        if (cursor.cursorType != (int)EObjectType.WALL)
         {
-            currentTileSprite = cursor.cursorTileSprite;
+            this.transform.eulerAngles = Vector3.zero;
+        }
+
+        //마우스 왼쪽 버튼 누르고 있는 상태 (드래그) 타일 정보 변환
+        if (Input.GetKey(KeyCode.Mouse0))
+        {
+            currentTileSprite = cursor.cursorSprite;
             rot = cursor.rot;
+            objectType = cursor.cursorType;
+
+            if (cursor.cursorType != (int)EObjectType.WALL)
+            {
+                rot = 0f;
+            }
         }
     }
 
@@ -50,8 +68,16 @@ public class TileEvent : MonoBehaviour
     //클릭시 타일 정보 변환
     public void OnMouseDown()
     {
-        currentTileSprite = cursor.cursorTileSprite;
+        currentTileSprite = cursor.cursorSprite;
         rot = cursor.rot;
+        objectType = cursor.cursorType;
+
+        if (objectType != (int)EObjectType.WALL)
+        {
+            rot = 0f;
+        }
+
+
     }
 
 
