@@ -88,7 +88,7 @@ public class MapToolManager : MonoBehaviour
                                 itemNode.AppendChild(itemName);
 
                                 XmlElement itemLine = xmlDoc.CreateElement("Line");
-                                itemLine.InnerText = (row + 1).ToString();
+                                itemLine.InnerText = (row + 1).ToString();     //메인 게임에선 행과 열이 1,1에서 시작하기 때문에 1씩 더한다.
                                 itemNode.AppendChild(itemLine);
 
                                 XmlElement itemColumn = xmlDoc.CreateElement("Column");

@@ -520,6 +520,11 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Cherry</Name>
+    <Line>7</Line>
+    <Column>4</Column>
+  </Item>
   <Tile>
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
@@ -1140,6 +1145,11 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Super</Name>
+    <Line>14</Line>
+    <Column>12</Column>
+  </Item>
   <Tile>
     <Name>Line_Sprite</Name>
     <Rot>270</Rot>
@@ -1748,6 +1758,11 @@
     <Name>Default_Sprite</Name>
     <Rot>0</Rot>
   </Tile>
+  <Item>
+    <Name>Item_Pear</Name>
+    <Line>21</Line>
+    <Column>17</Column>
+  </Item>
   <Tile>
     <Name>Line_Sprite</Name>
     <Rot>90</Rot>

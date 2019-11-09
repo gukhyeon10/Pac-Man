@@ -19,10 +19,12 @@ enum ECharacter
 
 enum EItem
 {
-    CHERRY = 0,
-    BERRY = 1,
-    PEAR = 2,
-    APPLE = 3,
-    MELON = 4,
+    NORMAL = 0,
+    SUPER = 1,
+    CHERRY = 2,
+    BERRY = 3,
+    PEAR = 4,
+    APPLE = 5,
+    MELON = 6,
 }
 

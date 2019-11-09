@@ -69,7 +69,7 @@ public class StageManager : MonoBehaviour
             {
                 StartPagePanel.SetActive(false);
 
-                InitTileList();
+                InitTileArray();
 
                 InitStage(2);
                 break;
@@ -79,7 +79,7 @@ public class StageManager : MonoBehaviour
 
 
     // 타일 리스트, 이동 가능 체크
-    void InitTileList()
+    void InitTileArray()
     {  
         for (int i=0; i<tileGrid.childCount - column; i++)   // 마지막 행 타일들은 유령을 가리기위한 타일이기에 게임에 영향X
         {
@@ -105,7 +105,7 @@ public class StageManager : MonoBehaviour
 
         string tileName = string.Empty;
         
-
+        //행과 열은 1,1부터 시작
         int row = 1, col = 1;
         foreach (XmlNode node in nodeList)
         {
@@ -144,8 +144,9 @@ public class StageManager : MonoBehaviour
 
 
             col++;
-            if(col > column-2)
-            {
+            if(col > column-2)   
+            { 
+                //타일 한 행 로드시 다음 행 시작
                 row++;
                 col = 1;
             }
