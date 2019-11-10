@@ -220,6 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1874136
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -246,6 +247,136 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
+--- !u!1 &2434331
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2434332}
+  - component: {fileID: 2434335}
+  - component: {fileID: 2434334}
+  - component: {fileID: 2434333}
+  m_Layer: 0
+  m_Name: Pinky
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2434332
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2434331}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 922.2644}
+  m_LocalScale: {x: 102.47382, y: 102.47382, z: 102.47382}
+  m_Children: []
+  m_Father: {fileID: 291683735}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2434333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2434331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b96a2a68cc70f534ab8bc88574b579e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 2434335}
+  isWall: 0
+  isItem: 0
+  isCharacter: 1
+  objectNumber: 2
+--- !u!61 &2434334
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2434331}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 0.64, y: 0.64}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.64, y: 0.64}
+  m_EdgeRadius: 0
+--- !u!212 &2434335
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2434331}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: 139d75e572407c34197443e422aa08eb, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.64, y: 0.64}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &6782107
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,6 +477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &6782111
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -472,6 +604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &9687302
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -598,6 +731,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &14226347
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -724,6 +858,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &16532156
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -850,6 +985,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &25429982
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -976,6 +1112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &27664400
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1102,6 +1239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &30098231
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1228,6 +1366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &30645867
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1354,6 +1493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &34315456
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1480,6 +1620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &34408589
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1606,6 +1747,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &37427314
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1732,6 +1874,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &37824684
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1858,6 +2001,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &39030052
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1984,6 +2128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &43581834
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2110,6 +2255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &44734558
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2236,6 +2382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &47809708
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2362,6 +2509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &48541474
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2488,6 +2636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &64351668
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2614,6 +2763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &64499446
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2740,6 +2890,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &66262196
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2866,6 +3017,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &69245114
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2992,6 +3144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &72030755
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3118,6 +3271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &73497978
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3244,6 +3398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &73581830
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3370,6 +3525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &78876043
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3496,6 +3652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &91302304
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3622,6 +3779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &92884017
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3748,6 +3906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &92920632
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3874,6 +4033,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &106365518
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4000,6 +4160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &107497869
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4126,6 +4287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &109313444
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4252,6 +4414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &115830456
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4378,6 +4541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &116900692
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4504,6 +4668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &127832095
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4630,6 +4795,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &141763933
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4756,6 +4922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &146354722
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4882,6 +5049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &151626816
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5008,6 +5176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &152994777
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5134,6 +5303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &154358253
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5260,6 +5430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &156441728
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5386,6 +5557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &159806819
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5512,6 +5684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &160783550
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5638,6 +5811,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &164676769
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5764,6 +5938,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &168037857
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5890,6 +6065,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &177627217
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6016,6 +6192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &184323310
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6142,6 +6319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &184632692
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6268,6 +6446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &189269308
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6394,6 +6573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &191058698
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6520,6 +6700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &193559374
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6649,6 +6830,7 @@ MonoBehaviour:
   isWall: 1
   isItem: 0
   isCharacter: 0
+  objectNumber: 5
 --- !u!61 &197721829
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6775,6 +6957,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &208976422
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6901,6 +7084,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &213943584
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7027,6 +7211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &217562645
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7153,6 +7338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &227171980
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7279,6 +7465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &230468076
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7538,6 +7725,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &246576997
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7664,6 +7852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &246664614
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7790,6 +7979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &250483570
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7916,6 +8106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &253471695
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8042,6 +8233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &262085098
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8168,6 +8360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &262640373
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8294,6 +8487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &266564086
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8420,6 +8614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &270560152
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8546,6 +8741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &274047564
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8672,6 +8868,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &279381058
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8801,6 +8998,7 @@ MonoBehaviour:
   isWall: 1
   isItem: 0
   isCharacter: 0
+  objectNumber: 1
 --- !u!61 &279442391
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8927,6 +9125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &282503707
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9053,6 +9252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &284778391
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9179,6 +9379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &288947037
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9305,6 +9506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &289734088
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9431,6 +9633,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &291629048
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9488,6 +9691,9 @@ RectTransform:
   m_Children:
   - {fileID: 516487620}
   - {fileID: 2058145001}
+  - {fileID: 2434332}
+  - {fileID: 884447832}
+  - {fileID: 1398051325}
   m_Father: {fileID: 1352085946}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9628,6 +9834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &297569237
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9754,6 +9961,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &299309012
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9880,6 +10088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &300106853
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10006,6 +10215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &300395475
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10132,6 +10342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &300956480
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10258,6 +10469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &306667284
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10384,6 +10596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &309384435
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10510,6 +10723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &311417027
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10636,6 +10850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &315971385
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10762,6 +10977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &316099543
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10888,6 +11104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &320226971
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11014,6 +11231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &320472378
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11140,6 +11358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &323187796
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11266,6 +11485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &325177322
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11392,6 +11612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &340504661
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11518,6 +11739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &342451288
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11644,6 +11866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &346329274
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11770,6 +11993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &347279500
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11896,6 +12120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &356253332
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12022,6 +12247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &358490392
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12148,6 +12374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &358494539
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12274,6 +12501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &360508753
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12400,6 +12628,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &371547309
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12526,6 +12755,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &372211531
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12652,6 +12882,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &372943508
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12781,6 +13012,7 @@ MonoBehaviour:
   isWall: 1
   isItem: 0
   isCharacter: 0
+  objectNumber: 0
 --- !u!61 &375799297
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12907,6 +13139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &381069198
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13033,6 +13266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &383480815
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13159,6 +13393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &384151370
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13285,6 +13520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &400983163
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13411,6 +13647,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &402689870
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13537,6 +13774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &408612569
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13663,6 +13901,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &410049807
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13789,6 +14028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &410088503
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13915,6 +14155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &413560245
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14041,6 +14282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &417724726
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14167,6 +14409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &419122520
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14293,6 +14536,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &419603353
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14419,6 +14663,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &423045155
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14545,6 +14790,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &426600258
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14671,6 +14917,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &427307890
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14797,6 +15044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &428880339
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14923,6 +15171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &437445111
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15049,6 +15298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &451300133
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15175,6 +15425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &453132689
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15301,6 +15552,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &453431757
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15427,6 +15679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &460126830
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15553,6 +15806,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &469174000
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15679,6 +15933,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &473090134
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15805,6 +16060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &481566784
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15931,6 +16187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &485279878
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16057,6 +16314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &490596784
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16183,6 +16441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &492285177
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16309,6 +16568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &495096792
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16435,6 +16695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &499043638
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16561,6 +16822,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &499282579
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16687,6 +16949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &499836384
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16813,6 +17076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &500612865
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16939,6 +17203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &502558218
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17065,6 +17330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &502692100
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17191,6 +17457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &506595919
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17317,6 +17584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &509092316
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17443,6 +17711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &516214771
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17569,6 +17838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &516299896
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17647,8 +17917,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 516487622}
   isWall: 0
-  isItem: 1
-  isCharacter: 0
+  isItem: 0
+  isCharacter: 1
+  objectNumber: 0
 --- !u!212 &516487622
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17907,6 +18178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &523337638
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18033,6 +18305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &523482938
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18159,6 +18432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &525854481
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18285,6 +18559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &526915405
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18411,6 +18686,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &532112896
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18603,6 +18879,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &533022555
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18729,6 +19006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &537122729
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18855,6 +19133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &538443740
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18981,6 +19260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &543506285
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19107,6 +19387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &544064341
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19233,6 +19514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &546246246
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19359,6 +19641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &547227486
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19485,6 +19768,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &567074197
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19611,6 +19895,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &576190600
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19737,6 +20022,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &576575561
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19863,6 +20149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &587192147
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19989,6 +20276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &589921420
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20115,6 +20403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &591972898
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20241,6 +20530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &594940320
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20367,6 +20657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &598127025
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20493,6 +20784,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &599302286
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20619,6 +20911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &599565501
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20745,6 +21038,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &600151627
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20871,6 +21165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &600666907
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20997,6 +21292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &604741046
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -21123,6 +21419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &613635830
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -21180,7 +21477,7 @@ RectTransform:
   m_LocalScale: {x: 102.47382, y: 102.47382, z: 102.47382}
   m_Children: []
   m_Father: {fileID: 1483888194}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -21278,6 +21575,7 @@ MonoBehaviour:
   isWall: 0
   isItem: 1
   isCharacter: 0
+  objectNumber: 4
 --- !u!1 &616803524
 GameObject:
   m_ObjectHideFlags: 0
@@ -21378,6 +21676,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &616803528
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -21504,6 +21803,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &627198829
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -21630,6 +21930,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &629285668
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -21756,6 +22057,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &630907059
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -21882,6 +22184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &638816163
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22008,6 +22311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &642347117
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22134,6 +22438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &649839872
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22260,6 +22565,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &654740962
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22386,6 +22692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &656359878
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22512,6 +22819,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &660796532
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22638,6 +22946,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &661213275
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22764,6 +23073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &663431801
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22890,6 +23200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &667691660
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -23016,6 +23327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &668279138
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -23142,6 +23454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &679471784
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -23268,6 +23581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &682187734
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -23394,6 +23708,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &688885942
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -23520,6 +23835,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &691958853
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -23646,6 +23962,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &694827625
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -23772,6 +24089,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &697192165
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -23898,6 +24216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &702722791
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -24024,6 +24343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &704898276
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -24150,6 +24470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &710390243
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -24276,6 +24597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &713076164
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -24402,6 +24724,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &713419465
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -24661,6 +24984,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &714379354
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -24787,6 +25111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &725946215
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -24913,6 +25238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &737963929
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25039,6 +25365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &738062603
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25165,6 +25492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &738205924
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25291,6 +25619,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &741394225
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25417,6 +25746,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &746328597
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25543,6 +25873,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &752560445
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25669,6 +26000,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &766973254
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25795,6 +26127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &769654612
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25921,6 +26254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &772718776
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -26047,6 +26381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &773064355
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -26173,6 +26508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &774632458
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -26299,6 +26635,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &775993793
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -26425,6 +26762,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &779821672
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -26551,6 +26889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &781234044
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -26706,6 +27045,7 @@ MonoBehaviour:
   isWall: 0
   isItem: 1
   isCharacter: 0
+  objectNumber: 0
 --- !u!1 &786777989
 GameObject:
   m_ObjectHideFlags: 0
@@ -26806,6 +27146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &786777993
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -26932,6 +27273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &786815131
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -27058,6 +27400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &788198422
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -27184,6 +27527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &789729643
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -27310,6 +27654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &790430767
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -27436,6 +27781,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &799881221
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -27562,6 +27908,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &818397420
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -27688,6 +28035,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &821736862
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -27817,6 +28165,7 @@ MonoBehaviour:
   isWall: 1
   isItem: 0
   isCharacter: 0
+  objectNumber: 3
 --- !u!61 &827277876
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -27943,6 +28292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &830406399
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -28069,6 +28419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &831840917
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -28195,6 +28546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &833797683
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -28321,6 +28673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &836572980
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -28447,6 +28800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &841190912
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -28573,6 +28927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &848735597
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -28699,6 +29054,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &849737598
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -28825,6 +29181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &850088142
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -28951,6 +29308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &851837619
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -29077,6 +29435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &858522883
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -29203,6 +29562,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &860703182
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -29329,6 +29689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &862165419
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -29455,6 +29816,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &866317340
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -29581,6 +29943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &867512797
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -29707,6 +30070,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &871939899
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -29833,6 +30197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &872976136
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -29959,6 +30324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &878720096
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -29985,6 +30351,136 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
+--- !u!1 &884447831
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 884447832}
+  - component: {fileID: 884447835}
+  - component: {fileID: 884447834}
+  - component: {fileID: 884447833}
+  m_Layer: 0
+  m_Name: Inky
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &884447832
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884447831}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 922.2644}
+  m_LocalScale: {x: 102.47382, y: 102.47382, z: 102.47382}
+  m_Children: []
+  m_Father: {fileID: 291683735}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &884447833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884447831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b96a2a68cc70f534ab8bc88574b579e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 884447835}
+  isWall: 0
+  isItem: 0
+  isCharacter: 1
+  objectNumber: 3
+--- !u!61 &884447834
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884447831}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 0.64, y: 0.64}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.64, y: 0.64}
+  m_EdgeRadius: 0
+--- !u!212 &884447835
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884447831}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: f73b23034d30e7740801aa2e430719df, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.64, y: 0.64}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &885535578
 GameObject:
   m_ObjectHideFlags: 0
@@ -30016,7 +30512,7 @@ RectTransform:
   m_LocalScale: {x: 102.47382, y: 102.47382, z: 102.47382}
   m_Children: []
   m_Father: {fileID: 1483888194}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -30114,6 +30610,7 @@ MonoBehaviour:
   isWall: 0
   isItem: 1
   isCharacter: 0
+  objectNumber: 3
 --- !u!1 &888848992
 GameObject:
   m_ObjectHideFlags: 0
@@ -30214,6 +30711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &888848996
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -30340,6 +30838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &896023706
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -30466,6 +30965,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &896901484
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -30592,6 +31092,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &900198609
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -30718,6 +31219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &902993189
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -30844,6 +31346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &904429128
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -30970,6 +31473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &904466413
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -31096,6 +31600,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &906292980
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -31222,6 +31727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &908183992
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -31433,6 +31939,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &917347769
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -31559,6 +32066,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &918973043
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -31685,6 +32193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &931662680
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -31811,6 +32320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &936480645
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -31937,6 +32447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &937192310
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -32063,6 +32574,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &944464977
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -32189,6 +32701,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &956976153
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -32315,6 +32828,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &959226997
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -32441,6 +32955,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &962543553
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -32567,6 +33082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &964081777
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -32693,6 +33209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &965414417
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -32819,6 +33336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &965669797
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -32945,6 +33463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &966575979
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -33071,6 +33590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &971384772
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -33197,6 +33717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &971538588
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -33323,6 +33844,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &976512270
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -33449,6 +33971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &988176093
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -33575,6 +34098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &993340254
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -33701,6 +34225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &994336273
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -33827,6 +34352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1003020945
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -33953,6 +34479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1007872443
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -34079,6 +34606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1012401717
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -34205,6 +34733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1015622383
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -34331,6 +34860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1015848166
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -34457,6 +34987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1017317729
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -34583,6 +35114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1027228955
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -34709,6 +35241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1033807168
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -34912,6 +35445,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1042745722
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -35038,6 +35572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1044343236
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -35164,6 +35699,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1047400003
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -35290,6 +35826,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1049040360
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -35416,6 +35953,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1055316116
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -35542,6 +36080,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1056548180
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -35668,6 +36207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1059963706
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -35794,6 +36334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1060477040
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -35920,6 +36461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1060758912
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -36046,6 +36588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1061893041
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -36172,6 +36715,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1069657100
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -36298,6 +36842,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1070080540
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -36424,6 +36969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1071983087
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -36550,6 +37096,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1072743815
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -36676,6 +37223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1077005069
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -36802,6 +37350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1084936281
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -36928,6 +37477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1092780647
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -37054,6 +37604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1094065643
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -37180,6 +37731,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1097382795
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -37306,6 +37858,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1099427141
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -37432,6 +37985,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1105635295
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -37558,6 +38112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1106566841
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -37684,6 +38239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1117068726
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -37810,6 +38366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1117447177
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -37936,6 +38493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1118965957
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -38065,6 +38623,7 @@ MonoBehaviour:
   isWall: 1
   isItem: 0
   isCharacter: 0
+  objectNumber: 2
 --- !u!61 &1119051913
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -38191,6 +38750,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1121875105
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -38317,6 +38877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1122986671
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -38443,6 +39004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1126515773
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -38569,6 +39131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1133071565
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -38695,6 +39258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1135443445
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -38821,6 +39385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1137698649
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -38947,6 +39512,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1142677763
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -39073,6 +39639,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1147674848
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -39199,6 +39766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1150972553
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -39325,6 +39893,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1158810676
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -39451,6 +40020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1162265347
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -39577,6 +40147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1167941842
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -39703,6 +40274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1171052398
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -39829,6 +40401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1175775877
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -39955,6 +40528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1177045249
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -40160,6 +40734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1193186623
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -40286,6 +40861,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1193371118
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -40412,6 +40988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1198456716
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -40538,6 +41115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1201808008
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -40664,6 +41242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1201908201
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -40790,6 +41369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1205545470
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -40916,6 +41496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1211883911
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -41042,6 +41623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1217809062
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -41168,6 +41750,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1218120004
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -41294,6 +41877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1223493019
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -41420,6 +42004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1224442692
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -41546,6 +42131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1227967670
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -41672,6 +42258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1232134894
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -41798,6 +42385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1233195755
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -41924,6 +42512,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1237182732
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -42050,6 +42639,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1237987854
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -42176,6 +42766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1245927188
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -42302,6 +42893,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1248141547
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -42428,6 +43020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1249322187
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -42554,6 +43147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1261123982
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -42680,6 +43274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1262885360
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -42806,6 +43401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1264024416
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -42932,6 +43528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1278373779
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -43058,6 +43655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1279294110
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -43184,6 +43782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1285234985
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -43310,6 +43909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1289782201
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -43436,6 +44036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1290705957
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -43562,6 +44163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1290706530
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -43688,6 +44290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1292918657
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -43814,6 +44417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1294175463
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -43940,6 +44544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1294387148
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -44066,6 +44671,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1295208348
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -44192,6 +44798,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1301007791
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -44318,6 +44925,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1307122829
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -44444,6 +45052,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1311630671
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -44570,6 +45179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1320255859
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -44696,6 +45306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1324536404
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -44822,6 +45433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1327421692
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -44948,6 +45560,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1330143089
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -45074,6 +45687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1330310899
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -45200,6 +45814,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1334613476
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -45326,6 +45941,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1335492174
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -45452,6 +46068,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1340818123
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -45578,6 +46195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1341634363
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -45704,6 +46322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1345175773
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -45830,6 +46449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1347425458
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -45956,6 +46576,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1350249177
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -46082,6 +46703,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1350881708
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -46311,6 +46933,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1353897946
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -46437,6 +47060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1358065959
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -46563,6 +47187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1358337336
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -46689,6 +47314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1359564196
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -46815,6 +47441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1360125234
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -46941,6 +47568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1370808158
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -47067,6 +47695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1374556931
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -47193,6 +47822,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1375409919
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -47404,6 +48034,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1383833487
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -47530,6 +48161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1387369332
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -47656,6 +48288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1390064455
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -47782,6 +48415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1391354758
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -47887,6 +48521,136 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1393680426}
   m_CullTransparentMesh: 0
+--- !u!1 &1398051324
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1398051325}
+  - component: {fileID: 1398051328}
+  - component: {fileID: 1398051327}
+  - component: {fileID: 1398051326}
+  m_Layer: 0
+  m_Name: Clyde
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1398051325
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398051324}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 922.2644}
+  m_LocalScale: {x: 102.47382, y: 102.47382, z: 102.47382}
+  m_Children: []
+  m_Father: {fileID: 291683735}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1398051326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398051324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b96a2a68cc70f534ab8bc88574b579e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 1398051328}
+  isWall: 0
+  isItem: 0
+  isCharacter: 1
+  objectNumber: 4
+--- !u!61 &1398051327
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398051324}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 0.64, y: 0.64}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.64, y: 0.64}
+  m_EdgeRadius: 0
+--- !u!212 &1398051328
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398051324}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: 4a9ba553e75df864e9b1286e8867a73a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.64, y: 0.64}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1401687566
 GameObject:
   m_ObjectHideFlags: 0
@@ -47987,6 +48751,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1401687570
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -48113,6 +48878,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1404103252
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -48239,6 +49005,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1404201972
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -48365,6 +49132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1407308814
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -48491,6 +49259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1407803604
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -48617,6 +49386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1424370646
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -48743,6 +49513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1425021245
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -48869,6 +49640,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1425160817
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -48995,6 +49767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1427088964
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -49121,6 +49894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1427211937
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -49247,6 +50021,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1432033367
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -49373,6 +50148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1433899191
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -49499,6 +50275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1437752748
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -49625,6 +50402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1444926127
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -49751,6 +50529,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1447741742
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -49877,6 +50656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1449853921
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -50003,6 +50783,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1459899597
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -50129,6 +50910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1460899686
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -50255,6 +51037,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1464970865
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -50381,6 +51164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1465053839
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -50507,6 +51291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1466887993
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -50633,6 +51418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1469315343
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -50759,6 +51545,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1472977506
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -50885,6 +51672,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1478224456
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -51011,6 +51799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1483584248
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -51069,9 +51858,9 @@ RectTransform:
   - {fileID: 783477358}
   - {fileID: 1717145869}
   - {fileID: 2090741785}
-  - {fileID: 2016053178}
   - {fileID: 885535579}
   - {fileID: 615199583}
+  - {fileID: 2016053178}
   - {fileID: 1957877122}
   m_Father: {fileID: 1352085946}
   m_RootOrder: 3
@@ -51213,6 +52002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1484808876
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -51339,6 +52129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1488120195
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -51465,6 +52256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1489816986
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -51591,6 +52383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1495760936
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -51717,6 +52510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1496083646
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -51843,6 +52637,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1497934463
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -51969,6 +52764,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1505668641
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -52095,6 +52891,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1511585359
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -52221,6 +53018,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1514843143
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -52347,6 +53145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1525335037
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -52473,6 +53272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1528846767
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -52599,6 +53399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1531570595
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -52725,6 +53526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1532549879
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -52851,6 +53653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1533609686
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -52977,6 +53780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1534766589
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -53103,6 +53907,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1539698080
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -53229,6 +54034,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1547821880
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -53355,6 +54161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1556492642
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -53481,6 +54288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1559450406
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -53607,6 +54415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1560987079
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -53733,6 +54542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1571253366
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -53859,6 +54669,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1574153603
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -53985,6 +54796,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1578106798
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -54111,6 +54923,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1582061953
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -54237,6 +55050,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1583128626
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -54363,6 +55177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1591013166
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -54489,6 +55304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1593157511
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -54615,6 +55431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1601052657
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -54790,6 +55607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1603936321
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -54916,6 +55734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1606878482
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -55042,6 +55861,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1608962032
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -55168,6 +55988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1611748420
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -55294,6 +56115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1612779931
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -55420,6 +56242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1612798171
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -55546,6 +56369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1617306520
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -55672,6 +56496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1617623129
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -55798,6 +56623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1617830232
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -55924,6 +56750,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1618968460
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -56050,6 +56877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1621844347
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -56176,6 +57004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1632452373
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -56302,6 +57131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1642948406
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -56428,6 +57258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1648389803
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -56554,6 +57385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1648700080
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -56680,6 +57512,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1656321332
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -56806,6 +57639,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1660717547
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -56932,6 +57766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1665542504
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -57058,6 +57893,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1667204537
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -57184,6 +58020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1668484904
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -57310,6 +58147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1671453953
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -57436,6 +58274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1672249107
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -57562,6 +58401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1676196894
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -57688,6 +58528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1681154180
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -57814,6 +58655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1681728151
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -57940,6 +58782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1684150404
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -58066,6 +58909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1708876272
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -58192,6 +59036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1716591415
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -58347,6 +59192,7 @@ MonoBehaviour:
   isWall: 0
   isItem: 1
   isCharacter: 0
+  objectNumber: 1
 --- !u!1 &1720131319
 GameObject:
   m_ObjectHideFlags: 0
@@ -58447,6 +59293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1720131323
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -58573,6 +59420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1721204795
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -58699,6 +59547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1726982001
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -58825,6 +59674,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1728986432
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -58951,6 +59801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1729932175
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -59077,6 +59928,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1732579963
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -59203,6 +60055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1736957510
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -59329,6 +60182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1738157250
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -59455,6 +60309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1738429469
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -59581,6 +60436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1741222359
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -59707,6 +60563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1746294236
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -59833,6 +60690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1747166403
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -59959,6 +60817,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1748638151
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -60085,6 +60944,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1751268050
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -60211,6 +61071,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1754161324
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -60337,6 +61198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1755933654
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -60463,6 +61325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1757304615
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -60589,6 +61452,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1768255874
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -60715,6 +61579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1776041530
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -60841,6 +61706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1776334901
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -60967,6 +61833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1781954380
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -61093,6 +61960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1789265929
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -61219,6 +62087,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1792529848
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -61345,6 +62214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1796506962
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -61471,6 +62341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1800331037
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -61600,6 +62471,7 @@ MonoBehaviour:
   isWall: 1
   isItem: 0
   isCharacter: 0
+  objectNumber: 7
 --- !u!61 &1809218442
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -61726,6 +62598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1811498021
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -61852,6 +62725,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1811898871
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -61978,6 +62852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1812964782
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -62104,6 +62979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1816183065
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -62230,6 +63106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1821965199
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -62356,6 +63233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1830454171
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -62482,6 +63360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1833177001
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -62608,6 +63487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1834246627
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -62737,6 +63617,7 @@ MonoBehaviour:
   isWall: 1
   isItem: 0
   isCharacter: 0
+  objectNumber: 6
 --- !u!61 &1839175266
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -62863,6 +63744,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1842637997
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -62989,6 +63871,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1844175601
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -63115,6 +63998,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1845519554
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -63241,6 +64125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1847501987
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -63367,6 +64252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1854536608
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -63493,6 +64379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1859566831
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -63619,6 +64506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1860200011
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -63745,6 +64633,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1862942545
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -63871,6 +64760,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1868062173
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -63997,6 +64887,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1876190784
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -64123,6 +65014,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1876234389
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -64249,6 +65141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1876937755
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -64375,6 +65268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1892618876
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -64501,6 +65395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1893695174
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -64627,6 +65522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1899761561
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -64753,6 +65649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1899842111
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -64879,6 +65776,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1900470018
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -65005,6 +65903,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1902302989
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -65131,6 +66030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1903994843
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -65257,6 +66157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1907337905
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -65383,6 +66284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1913228972
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -65509,6 +66411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1914937531
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -65580,6 +66483,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileGrid: {fileID: 2116237316}
+  wallSpriteArray:
+  - {fileID: 21300000, guid: 840f7a506d89c92419bde8aeb4fa1ba5, type: 3}
+  - {fileID: 21300000, guid: 726e70e76625d0b45afc39bd0d3cb89f, type: 3}
+  - {fileID: 21300000, guid: be67511efc07c6b448f14be4f18ea548, type: 3}
+  - {fileID: 21300000, guid: 63e1a62243d1e494492869ae007ef490, type: 3}
+  - {fileID: 21300000, guid: a5143433a06296344b821a449abd63aa, type: 3}
+  - {fileID: 21300000, guid: e6233535a2741f143a16223903e1c782, type: 3}
+  - {fileID: 21300000, guid: ff1f828eef462c646a5df38c6da090c2, type: 3}
+  - {fileID: 21300000, guid: ac196a3dd40e5ba418951951fcaa90ee, type: 3}
+  itemSpriteArray:
+  - {fileID: 21300000, guid: 39538bd641b429148aadfc67daf5da14, type: 3}
+  - {fileID: 21300000, guid: c66048f3e83978e438e22bdfe0f5ff28, type: 3}
+  - {fileID: 21300000, guid: 3ce85133684db064e9f52aaf1836ee87, type: 3}
+  - {fileID: 21300000, guid: c4d784c1901328c4898c058eccc9f268, type: 3}
+  - {fileID: 21300000, guid: e757b71d7ee05ba4e86c2a57e612b264, type: 3}
+  - {fileID: 21300000, guid: 8c28d29f7e43ad24bb714e64d5e80ad8, type: 3}
+  - {fileID: 21300000, guid: 42b687de602e4b14693b91ef89538f55, type: 3}
+  characterSpriteArray:
+  - {fileID: 21300000, guid: 8fad596d3811a0b4f8ee2d0671afd1e3, type: 3}
+  - {fileID: 21300000, guid: db5114502dc2c6545a26dc089b11087f, type: 3}
+  - {fileID: 21300000, guid: 139d75e572407c34197443e422aa08eb, type: 3}
+  - {fileID: 21300000, guid: f73b23034d30e7740801aa2e430719df, type: 3}
+  - {fileID: 21300000, guid: 4a9ba553e75df864e9b1286e8867a73a, type: 3}
 --- !u!114 &1915138387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65594,6 +66520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursorSprite: {fileID: 21300000, guid: 840f7a506d89c92419bde8aeb4fa1ba5, type: 3}
   cursorType: 0
+  objectNumber: 0
   rot: 0
 --- !u!1 &1915293853
 GameObject:
@@ -65695,6 +66622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1915293857
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -65821,6 +66749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1927040760
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -65947,6 +66876,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1930004582
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -66073,6 +67003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1930510111
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -66199,6 +67130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1931910261
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -66325,6 +67257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1933765919
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -66451,6 +67384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1934517192
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -66577,6 +67511,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1936067585
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -66703,6 +67638,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1936239031
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -66829,6 +67765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1939698392
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -66955,6 +67892,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1946392291
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -67081,6 +68019,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1948871935
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -67207,6 +68146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1955425602
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -67333,6 +68273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1955580960
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -67459,6 +68400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1956242211
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -67614,6 +68556,7 @@ MonoBehaviour:
   isWall: 0
   isItem: 1
   isCharacter: 0
+  objectNumber: 6
 --- !u!1 &1959873877
 GameObject:
   m_ObjectHideFlags: 0
@@ -67714,6 +68657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1959873881
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -67840,6 +68784,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1960180608
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -67966,6 +68911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1967985136
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -68092,6 +69038,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1971222919
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -68218,6 +69165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1974412732
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -68344,6 +69292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1975831233
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -68470,6 +69419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1986700465
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -68596,6 +69546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1988819962
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -68722,6 +69673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1989278524
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -68848,6 +69800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1989292215
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -68974,6 +69927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1995166330
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -69100,6 +70054,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1996768155
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -69226,6 +70181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1997699887
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -69352,6 +70308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1998271830
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -69478,6 +70435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1999779764
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -69604,6 +70562,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &1999968675
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -69730,6 +70689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2005283272
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -69856,6 +70816,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2011574466
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -69982,6 +70943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2011784617
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -70039,7 +71001,7 @@ RectTransform:
   m_LocalScale: {x: 102.47382, y: 102.47382, z: 102.47382}
   m_Children: []
   m_Father: {fileID: 1483888194}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -70137,6 +71099,7 @@ MonoBehaviour:
   isWall: 0
   isItem: 1
   isCharacter: 0
+  objectNumber: 5
 --- !u!1 &2019912340
 GameObject:
   m_ObjectHideFlags: 0
@@ -70237,6 +71200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2019912344
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -70363,6 +71327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2025172177
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -70489,6 +71454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2033200292
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -70615,6 +71581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2037831175
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -70741,6 +71708,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2039295993
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -70867,6 +71835,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2040518643
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -70993,6 +71962,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2044502958
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -71119,6 +72089,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2044980287
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -71245,6 +72216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2045781483
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -71371,6 +72343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2047447470
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -71497,6 +72470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2048742704
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -71623,6 +72597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2050902657
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -71749,6 +72724,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2051702476
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -71788,7 +72764,7 @@ GameObject:
   - component: {fileID: 2058145004}
   - component: {fileID: 2058145003}
   m_Layer: 0
-  m_Name: Blinky_down
+  m_Name: Blinky
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71851,7 +72827,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 328035ef2b91e994abeacf1787a47e43, type: 3}
+  m_Sprite: {fileID: 21300000, guid: db5114502dc2c6545a26dc089b11087f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -71876,8 +72852,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 2058145002}
   isWall: 0
-  isItem: 1
-  isCharacter: 0
+  isItem: 0
+  isCharacter: 1
+  objectNumber: 1
 --- !u!61 &2058145004
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -72004,6 +72981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2059156419
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -72130,6 +73108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2063192659
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -72256,6 +73235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2070665594
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -72385,6 +73365,7 @@ MonoBehaviour:
   isWall: 1
   isItem: 0
   isCharacter: 0
+  objectNumber: 4
 --- !u!61 &2072700519
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -72511,6 +73492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2076348260
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -72637,6 +73619,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2077060895
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -72763,6 +73746,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2082998724
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -72889,6 +73873,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2083987035
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -73094,6 +74079,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2086461103
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -73220,6 +74206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2086723280
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -73375,6 +74362,7 @@ MonoBehaviour:
   isWall: 0
   isItem: 1
   isCharacter: 0
+  objectNumber: 2
 --- !u!1 &2104556619
 GameObject:
   m_ObjectHideFlags: 0
@@ -73475,6 +74463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2104556623
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -73601,6 +74590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2107482298
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -73727,6 +74717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2108993407
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -74489,6 +75480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2118310979
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -74615,6 +75607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2124128730
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -74741,6 +75734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2127580164
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -74867,6 +75861,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2130155758
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -74993,6 +75988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2135237399
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -75119,6 +76115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2135332361
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -75245,6 +76242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2139981995
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -75371,6 +76369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2142716328
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -75497,6 +76496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2146240793
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -75623,6 +76623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+  objectNumber: 0
 --- !u!61 &2146938597
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -18,6 +18,7 @@ public class MapToolCursor : MonoBehaviour
     // 커서 활성화 타일 Sprite
     public Sprite cursorSprite;
     public int cursorType = (int)EObjectType.WALL;
+    public int objectNumber = (int)EWall.DEFAULT;
     public float rot = 0;
 
 

@@ -44666,6 +44666,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartPagePanel: {fileID: 16821691}
   tileGrid: {fileID: 2116237316}
+  wallSpriteArray:
+  - {fileID: 21300000, guid: 840f7a506d89c92419bde8aeb4fa1ba5, type: 3}
+  - {fileID: 21300000, guid: 726e70e76625d0b45afc39bd0d3cb89f, type: 3}
+  - {fileID: 21300000, guid: be67511efc07c6b448f14be4f18ea548, type: 3}
+  - {fileID: 21300000, guid: 63e1a62243d1e494492869ae007ef490, type: 3}
+  - {fileID: 21300000, guid: a5143433a06296344b821a449abd63aa, type: 3}
+  - {fileID: 21300000, guid: e6233535a2741f143a16223903e1c782, type: 3}
+  - {fileID: 21300000, guid: ff1f828eef462c646a5df38c6da090c2, type: 3}
+  - {fileID: 21300000, guid: ac196a3dd40e5ba418951951fcaa90ee, type: 3}
+  itemSpriteArray:
+  - {fileID: 21300000, guid: 39538bd641b429148aadfc67daf5da14, type: 3}
+  - {fileID: 21300000, guid: c66048f3e83978e438e22bdfe0f5ff28, type: 3}
+  - {fileID: 21300000, guid: 3ce85133684db064e9f52aaf1836ee87, type: 3}
+  - {fileID: 21300000, guid: c4d784c1901328c4898c058eccc9f268, type: 3}
+  - {fileID: 21300000, guid: e757b71d7ee05ba4e86c2a57e612b264, type: 3}
+  - {fileID: 21300000, guid: 8c28d29f7e43ad24bb714e64d5e80ad8, type: 3}
+  - {fileID: 21300000, guid: 42b687de602e4b14693b91ef89538f55, type: 3}
+  characterSpriteArray:
+  - {fileID: 21300000, guid: 8fad596d3811a0b4f8ee2d0671afd1e3, type: 3}
+  - {fileID: 21300000, guid: db5114502dc2c6545a26dc089b11087f, type: 3}
+  - {fileID: 21300000, guid: 139d75e572407c34197443e422aa08eb, type: 3}
+  - {fileID: 21300000, guid: f73b23034d30e7740801aa2e430719df, type: 3}
+  - {fileID: 21300000, guid: 4a9ba553e75df864e9b1286e8867a73a, type: 3}
   CharacterArray:
   - {fileID: 1431457108}
   - {fileID: 1255253875}

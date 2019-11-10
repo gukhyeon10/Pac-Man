@@ -44,13 +44,25 @@ SpriteAtlas:
     packables:
     - {fileID: 2800000, guid: 328035ef2b91e994abeacf1787a47e43, type: 3}
     - {fileID: 2800000, guid: 8fad596d3811a0b4f8ee2d0671afd1e3, type: 3}
-    totalSpriteSurfaceArea: 512
+    - {fileID: 2800000, guid: db5114502dc2c6545a26dc089b11087f, type: 3}
+    - {fileID: 2800000, guid: 4a9ba553e75df864e9b1286e8867a73a, type: 3}
+    - {fileID: 2800000, guid: f73b23034d30e7740801aa2e430719df, type: 3}
+    - {fileID: 2800000, guid: 139d75e572407c34197443e422aa08eb, type: 3}
+    totalSpriteSurfaceArea: 1536
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: db5114502dc2c6545a26dc089b11087f, type: 3}
+  - {fileID: 21300000, guid: f73b23034d30e7740801aa2e430719df, type: 3}
+  - {fileID: 21300000, guid: 4a9ba553e75df864e9b1286e8867a73a, type: 3}
+  - {fileID: 21300000, guid: 139d75e572407c34197443e422aa08eb, type: 3}
   - {fileID: 21300000, guid: 8fad596d3811a0b4f8ee2d0671afd1e3, type: 3}
   - {fileID: 21300000, guid: 328035ef2b91e994abeacf1787a47e43, type: 3}
   m_PackedSpriteNamesToIndex:
+  - Blinky
+  - Inky
+  - Clyde
+  - Pinky
   - Pac
   - Blinky_down
   m_Tag: CharacterAtlas

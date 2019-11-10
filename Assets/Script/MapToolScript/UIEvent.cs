@@ -11,6 +11,8 @@ public class UIEvent : MonoBehaviour
     public bool isItem;
     public bool isCharacter;
 
+    public int objectNumber;
+
     // 맵툴 화면 아래 타일 클릭
     public void OnMouseDown()
     {
@@ -34,7 +36,8 @@ public class UIEvent : MonoBehaviour
                 MapToolCursor.Instance.cursorType = (int)EObjectType.CHARACTER;
                 Debug.Log("Cursor Change : " + MapToolCursor.Instance.cursorSprite.name);
             }
-            
+
+            MapToolCursor.Instance.objectNumber = this.objectNumber;
         
         }
         else

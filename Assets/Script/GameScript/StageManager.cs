@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Xml;
+using System;
 
 public class StageManager : MonoBehaviour
 {
@@ -12,6 +13,13 @@ public class StageManager : MonoBehaviour
 
     [SerializeField]
     Transform tileGrid;
+
+    [SerializeField]
+    Sprite[] wallSpriteArray = new Sprite[Enum.GetNames(typeof(EWall)).Length];
+    [SerializeField]
+    Sprite[] itemSpriteArray = new Sprite[Enum.GetNames(typeof(EItem)).Length];
+    [SerializeField]
+    Sprite[] characterSpriteArray = new Sprite[Enum.GetNames(typeof(ECharacter)).Length];
 
     [SerializeField]
     CharacterBase[] CharacterArray = new CharacterBase[5]; // 각 캐릭터 (PAC = 0,  BLINKY = 1,  PINKY = 2,  INKY = 3,  CLYDE = 4,)
@@ -71,7 +79,7 @@ public class StageManager : MonoBehaviour
 
                 InitTileArray();
 
-                InitStage(2);
+                InitStage(1);
                 break;
             }
         }
@@ -84,7 +92,15 @@ public class StageManager : MonoBehaviour
         for (int i=0; i<tileGrid.childCount - column; i++)   // 마지막 행 타일들은 유령을 가리기위한 타일이기에 게임에 영향X
         {
             tileArray[(i / column), (i % column)] = tileGrid.GetChild(i);
-            movableCheckArray[(i / column), (i % column)] = false;
+            if(i/column > 0 && i/column < line -1 && i%column > 0 && i%column <column-1)   // 화면상 타일들은 이동가능이 디폴트
+            {
+                movableCheckArray[(i / column), (i % column)] = true;      
+            }
+            else                                                                         // 화면밖 테두리 타일들은 이동불가능이 디폴트
+            {
+                movableCheckArray[(i / column), (i % column)] = false;
+            }
+            
         }
         
     }
@@ -100,57 +116,46 @@ public class StageManager : MonoBehaviour
 
         XmlDocument xmlDoc = new XmlDocument();
         xmlDoc.LoadXml(textAsset.text);
-
-        XmlNodeList nodeList = xmlDoc.SelectNodes("Map/Tile");
-
-        string tileName = string.Empty;
         
-        //행과 열은 1,1부터 시작
-        int row = 1, col = 1;
+        int row, col, objectNumber;
+        XmlNodeList nodeList = xmlDoc.SelectNodes("Map/Wall");
+
         foreach (XmlNode node in nodeList)
         {
-            tileName = node.SelectSingleNode("Name").InnerText;
+            row = int.Parse(node.SelectSingleNode("Row").InnerText);
+            col = int.Parse(node.SelectSingleNode("Column").InnerText);
+            objectNumber = int.Parse(node.SelectSingleNode("Number").InnerText);
 
-            tileArray[row, col].GetComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("TileSprite/" + tileName, typeof(Sprite));
+            tileArray[row, col].GetComponent<SpriteRenderer>().sprite = wallSpriteArray[objectNumber];
+            tileArray[row, col].eulerAngles = new Vector3(0f, 0f, float.Parse(node.SelectSingleNode("Rot").InnerText));
 
-            tileArray[row, col].eulerAngles = new Vector3(0, 0, float.Parse(node.SelectSingleNode("Rot").InnerText));
+            movableCheckArray[row, col] = false;
+        }
 
-            if (tileName.Equals("Default_Sprite") == false)   // 빈 타일이 아니면 이동 불가
+
+        //화면상 테두리부분이 뚫려있다면 테두리 한칸 밖 타일 이동가능
+        
+        for (int x=1; x<column -1; x++)
+        {
+            if(tileArray[1,x].GetComponent<SpriteRenderer>().sprite.name.Equals("Default_Sprite"))
             {
-                movableCheckArray[row, col] = false;
+                movableCheckArray[0, x] = true;
             }
-            else
+            if (tileArray[line - 2, x].GetComponent<SpriteRenderer>().sprite.name.Equals("Default_Sprite"))
             {
-                movableCheckArray[row, col] = true;      // 빈 타일이면 이동 가능
-
-                //화면상 테두리부분이 뚫려있다면 테두리 한칸 밖 타일 이동가능
-                if(row == 1)                             
-                {
-                    movableCheckArray[row - 1, col] = true;
-                }
-                if(row == line-2)                        
-                {
-                    movableCheckArray[row + 1, col] = true;
-                }
-                if(col == 1)                             
-                {
-                    movableCheckArray[row, col - 1] = true;
-                }
-                if(col == column -2)                     
-                {
-                    movableCheckArray[row, col + 1] = true;
-                }
+                movableCheckArray[line - 1, x] = true;
             }
-
-
-            col++;
-            if(col > column-2)   
-            { 
-                //타일 한 행 로드시 다음 행 시작
-                row++;
-                col = 1;
+        }
+        for (int y = 1; y < line - 1; y++)
+        {
+            if (tileArray[y, 1].GetComponent<SpriteRenderer>().sprite.name.Equals("Default_Sprite"))
+            {
+                movableCheckArray[y, 0] = true;
             }
-
+            if (tileArray[y, column - 2].GetComponent<SpriteRenderer>().sprite.name.Equals("Default_Sprite"))
+            {
+                movableCheckArray[y, column - 1] = true;
+            }
         }
 
         Debug.Log("Stage Load Success");

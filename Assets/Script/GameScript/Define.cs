@@ -8,6 +8,18 @@ enum EObjectType
     CHARACTER = 2,
 }
 
+enum EWall
+{
+    DEFAULT = 0,
+    CURVE = 1,
+    LINE = 2,
+    POP = 3,
+    EDGE = 4,
+    RIGHTDOOR = 5,
+    LEFTDOOR = 6,
+    CENTERDOOR = 7,
+}
+
 enum ECharacter
 {
     PAC = 0,

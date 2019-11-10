@@ -9,26 +9,37 @@ public class TileEvent : MonoBehaviour
 
     SpriteRenderer spriteRenderer; //SpriteRenderer 컴포넌트
     Sprite currentTileSprite;      //현재 타일 스프라이트
+    Sprite defaultSprite;          //디폴트 스프라이트
 
     public int objectType = (int)EObjectType.WALL;
-
+    public int objectNumber = (int)EWall.DEFAULT;
     float rot;
 
     void Start()
     {
         spriteRenderer = this.GetComponent<SpriteRenderer>();
+        defaultSprite = spriteRenderer.sprite;
+
         this.transform.eulerAngles = Vector3.zero;
-        InitTile((int)EObjectType.WALL);
+        InitTile((int)EObjectType.WALL, (int)EWall.DEFAULT, defaultSprite);
         cursor = MapToolCursor.Instance;
     }
 
-
-    public void InitTile(int objectType)
+    public void InitTile()
     {
-        //타일 정보 초기화
-        currentTileSprite = spriteRenderer.sprite;
+        //기본타일로 초기화
+        this.transform.eulerAngles = Vector3.zero ;
+        InitTile((int)EObjectType.WALL, (int)EWall.DEFAULT, defaultSprite);
+    }
+
+    public void InitTile(int objectType, int objectNumber, Sprite sprite)
+    {
+        // 특정타일로 초기화 
+        spriteRenderer.sprite = sprite;
+        currentTileSprite = sprite;
         rot = this.transform.eulerAngles.z;
         this.objectType = objectType;
+        this.objectNumber = objectNumber;
     }
 
     //커서에 의해 미리보기
@@ -49,6 +60,7 @@ public class TileEvent : MonoBehaviour
             currentTileSprite = cursor.cursorSprite;
             rot = cursor.rot;
             objectType = cursor.cursorType;
+            objectNumber = cursor.objectNumber;
 
             if (cursor.cursorType != (int)EObjectType.WALL)
             {
@@ -71,12 +83,12 @@ public class TileEvent : MonoBehaviour
         currentTileSprite = cursor.cursorSprite;
         rot = cursor.rot;
         objectType = cursor.cursorType;
+        objectNumber = cursor.objectNumber;
 
         if (objectType != (int)EObjectType.WALL)
         {
             rot = 0f;
         }
-
 
     }
 
