@@ -40,3 +40,19 @@ enum EItem
     MELON = 6,
 }
 
+enum EPanel
+{
+    START = 0,
+    KEY = 1,
+    UI = 2,
+    STAGE_FAIL = 3,
+    STAGE_CLEAR = 4,
+}
+
+enum EResult
+{
+    GAME_OVER = 0,
+    TIME_OVER = 1,
+    STAGE_CLEAR = 2,
+    GAME_CLEAR = 3,
+}

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class UIManager : MonoBehaviour
 {
@@ -14,6 +15,13 @@ public class UIManager : MonoBehaviour
             return _instance;
         }
     }
+
+    [SerializeField]
+    GameObject[] panelArray = new GameObject[Enum.GetNames(typeof(EPanel)).Length];
+    [SerializeField]
+    Text stageClearText;
+    [SerializeField]
+    Text gameScoreText;
 
     [SerializeField]
     Transform scoreTitle;
@@ -43,12 +51,26 @@ public class UIManager : MonoBehaviour
         }
     }
 
-
     // UI 위치 초기화
     public void InitUI()
     {
         scoreTitle.position = new Vector2(scoreTitle.position.x, pivot.position.y);
         timerTitle.position = new Vector2(timerTitle.position.x, pivot.position.y);
+    }
+
+    //시작 화면
+    public void StartPanelSetActive(bool active)
+    {
+        panelArray[(int)EPanel.START].SetActive(active);
+    }
+    
+
+    public void UIPanelActive()
+    {
+        panelArray[(int)EPanel.STAGE_CLEAR].SetActive(false);
+        panelArray[(int)EPanel.STAGE_FAIL].SetActive(false);
+        panelArray[(int)EPanel.KEY].SetActive(true);
+        panelArray[(int)EPanel.UI].SetActive(true);
     }
 
     //스코어 갱신
@@ -67,14 +89,15 @@ public class UIManager : MonoBehaviour
     //타이머 시작
     public void StartTimer(int time)
     {
-        StartCoroutine(timeCheck(time));
+        StartCoroutine(TimeCheck(time));
     }
 
     //타이머 코루틴
-    IEnumerator timeCheck(int time)
+    IEnumerator TimeCheck(int time)
     {
         remainTime = time;
-        UIManager.Instance.UpdateTimer(remainTime);
+        UpdateTimer(remainTime);
+
         while (remainTime > 0)
         {
             yield return new WaitForSeconds(1f);
@@ -83,6 +106,46 @@ public class UIManager : MonoBehaviour
         }
 
         Debug.Log("Time Over");
+        StageManager.Instance.StageResult((int)EResult.TIME_OVER);
+    }
+
+    //결과 화면
+    public void ResultPanelActive(int result)
+    {
+        StopAllCoroutines();
+        panelArray[(int)EPanel.KEY].SetActive(false);
+        panelArray[(int)EPanel.UI].SetActive(false);
+
+        switch (result)
+        {
+            case (int)EResult.GAME_OVER:
+                {
+                    panelArray[(int)EPanel.STAGE_FAIL].SetActive(true);
+                    break;
+                }
+            case (int)EResult.TIME_OVER:
+                {
+                    panelArray[(int)EPanel.STAGE_FAIL].SetActive(true);
+                    break;
+                }
+            case (int)EResult.STAGE_CLEAR:
+                {
+                    panelArray[(int)EPanel.STAGE_CLEAR].SetActive(true);
+                    stageClearText.text = "STAGE CLEAR!";
+                    if(StageManager.Instance.GetCurrentStage < 3)
+                    {
+                        gameScoreText.text = "TAP TO NEXT STAGE";
+                    }
+                    break;
+                }
+            case (int)EResult.GAME_CLEAR:
+                {
+                    panelArray[(int)EPanel.STAGE_CLEAR].SetActive(true);
+                    stageClearText.text = "GAME CLEAR!";
+                    gameScoreText.text = score.ToString();
+                    break;
+                }
+        }
     }
 
 }

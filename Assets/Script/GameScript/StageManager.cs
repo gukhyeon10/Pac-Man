@@ -18,7 +18,8 @@ public class StageManager : MonoBehaviour
     }
 
     [SerializeField]
-    GameObject StartPagePanel;
+    Canvas gameCanvas;
+
     [SerializeField]
     Transform tileGrid;
 
@@ -43,8 +44,10 @@ public class StageManager : MonoBehaviour
     public Transform[,] tileArray = new Transform[line, column];
     public bool[,] movableCheckArray = new bool[line, column];
 
+    int currentStage = 1;  // 현재 스테이지
     int normalCount;  // 노말 아이템 총 개수
 
+    bool isFirstTry = true;  // 1스테이지 첫 시도인지
     void Awake()
     {
         if (_instance == null)
@@ -61,13 +64,8 @@ public class StageManager : MonoBehaviour
 
     void Start()
     {
-        TapStartStage();
-    }
-
-    //시작 화면
-    void TapStartStage()
-    {
-        StartPagePanel.SetActive(true);
+        //시작 화면
+        UIManager.Instance.StartPanelSetActive(true);
         StartCoroutine(TapWaitCorutine());
     }
 
@@ -79,18 +77,45 @@ public class StageManager : MonoBehaviour
             yield return null;
             if (Input.GetKeyDown(KeyCode.Mouse0) || Input.touchCount > 0)
             {
-                InitTileArray();
+                if(isFirstTry)  // 최초 스테이지 시작시에만
+                {
+                    InitTileArray();
+                    UIManager.Instance.InitUI();
+                    UIManager.Instance.StartPanelSetActive(false);
+                    isFirstTry = false;
+                }
+                else
+                {
+                    UIManager.Instance.UIPanelActive();
+                    gameCanvas.gameObject.SetActive(true);
+                    InitStage();
+                    
+                }
 
-                LoadStage(1);
-
-                UIManager.Instance.InitUI();
-                UIManager.Instance.StartTimer(100);
-
-                StartPagePanel.SetActive(false);
+                LoadStage(currentStage);
+                UIManager.Instance.StartTimer(50);
 
                 break;
             }
         }
+    }
+
+    //스테이지 초기화
+    void InitStage()
+    {
+
+        InitTileArray();
+
+        Sprite defaultSprite = tileArray[0, 0].GetComponent<SpriteRenderer>().sprite;
+        for(int row = 0; row < line; row++)
+        {
+            for(int col = 0; col < column; col++)
+            {
+                tileArray[row, col].GetComponent<SpriteRenderer>().sprite = defaultSprite;
+            }
+        }
+
+        itemManager.InitItem();
     }
 
 
@@ -113,7 +138,7 @@ public class StageManager : MonoBehaviour
         itemManager.tileArray = this.tileArray;
 
     }
-
+    
     // 스테이지 로드
     void LoadStage(int stageNumber)
     {
@@ -194,6 +219,74 @@ public class StageManager : MonoBehaviour
         }
     }
 
+    // 노말 아이템 획득 체크
+    public void EatNormal()
+    {
+        normalCount--;
+        if (normalCount <= 0)
+        {
+            Debug.Log("Game Clear!");
+            StageResult((int)EResult.STAGE_CLEAR);
+
+        }
+    }
+
+    //스테이지 초기화 및 비활성화 후 결과 화면 출력
+    public void StageResult(int result)
+    {
+        switch(result)
+        {
+            case (int)EResult.GAME_OVER:
+                {
+                    StartCoroutine(StageFailEffect(result));
+                    break;
+                }
+            case (int)EResult.TIME_OVER:
+                {
+                    StartCoroutine(StageFailEffect(result));
+                    break;
+                }
+            case (int)EResult.STAGE_CLEAR:
+                {
+                    StartCoroutine(StageClearEffect());
+                    break;
+                }
+            case (int)EResult.GAME_CLEAR:
+                {
+                    StartCoroutine(StageClearEffect());
+                    break;
+                }
+        }
+    }
+
+    //Stage Clear 연출
+    IEnumerator StageClearEffect()
+    {
+        //여기에 클리어 연출
+        gameCanvas.gameObject.SetActive(false);
+        UIManager.Instance.ResultPanelActive((int)EResult.STAGE_CLEAR);
+
+        if (currentStage < 3)
+        {
+            yield return new WaitForSeconds(1f);
+            currentStage++;
+            StartCoroutine(TapWaitCorutine());
+        }
+    }
+
+    //Stage Fail 연출
+    IEnumerator StageFailEffect(int result)
+    {
+        //여기에 게임오버 연출
+        yield return null;
+        gameCanvas.gameObject.SetActive(false);
+        UIManager.Instance.ResultPanelActive(result);
+
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(TapWaitCorutine());
+    }
+
+
     public int GetLine
     {
         get
@@ -210,12 +303,11 @@ public class StageManager : MonoBehaviour
         }
     }
 
-    public void EatNormal()
+    public int GetCurrentStage
     {
-        normalCount--;
-        if(normalCount<= 0)
+        get
         {
-            Debug.Log("Game Clear!");
+            return this.currentStage;
         }
     }
 
