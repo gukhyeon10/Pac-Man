@@ -12,6 +12,9 @@ public class StageManager : MonoBehaviour
     GameObject StartPagePanel;
 
     [SerializeField]
+    ItemManager itemManager;
+
+    [SerializeField]
     Transform tileGrid;
 
     [SerializeField]
@@ -22,16 +25,18 @@ public class StageManager : MonoBehaviour
     Sprite[] characterSpriteArray = new Sprite[Enum.GetNames(typeof(ECharacter)).Length];
 
     [SerializeField]
-    CharacterBase[] CharacterArray = new CharacterBase[5]; // 각 캐릭터 (PAC = 0,  BLINKY = 1,  PINKY = 2,  INKY = 3,  CLYDE = 4,)
+    CharacterBase[] CharacterArray = new CharacterBase[Enum.GetNames(typeof(ECharacter)).Length]; // 각 캐릭터 (PAC = 0,  BLINKY = 1,  PINKY = 2,  INKY = 3,  CLYDE = 4,)
 
     const string dataPath = "MapData/";
 
     // 타일 29행 23열 (30행 타일은 가리기 용도)
-    const int column = 23;  
-    const int line = 29;    
-    
-    public Transform[ , ] tileArray = new Transform[line, column];
-    public bool[ , ] movableCheckArray = new bool[line, column];
+    const int column = 23;
+    const int line = 29;
+
+    public Transform[,] tileArray = new Transform[line, column];
+    public bool[,] movableCheckArray = new bool[line, column];
+
+    int normalCount;  // 노말 아이템 총 개수
 
     public static StageManager Instance
     {
@@ -43,7 +48,7 @@ public class StageManager : MonoBehaviour
 
     void Awake()
     {
-        if(_instance == null)
+        if (_instance == null)
         {
             _instance = this;
         }
@@ -52,7 +57,7 @@ public class StageManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        
+
     }
 
     void Start()
@@ -70,7 +75,7 @@ public class StageManager : MonoBehaviour
     //시작 화면 클릭 or 터치시 시작
     IEnumerator TapWaitCorutine()
     {
-        while(true)
+        while (true)
         {
             yield return null;
             if (Input.GetKeyDown(KeyCode.Mouse0) || Input.touchCount > 0)
@@ -79,7 +84,7 @@ public class StageManager : MonoBehaviour
 
                 InitTileArray();
 
-                InitStage(1);
+                LoadStage(1);
                 break;
             }
         }
@@ -88,27 +93,29 @@ public class StageManager : MonoBehaviour
 
     // 타일 리스트, 이동 가능 체크
     void InitTileArray()
-    {  
-        for (int i=0; i<tileGrid.childCount - column; i++)   // 마지막 행 타일들은 유령을 가리기위한 타일이기에 게임에 영향X
+    {
+        for (int i = 0; i < tileGrid.childCount - column; i++)   // 마지막 행 타일들은 유령을 가리기위한 타일이기에 게임에 영향X
         {
             tileArray[(i / column), (i % column)] = tileGrid.GetChild(i);
-            if(i/column > 0 && i/column < line -1 && i%column > 0 && i%column <column-1)   // 화면상 타일들은 이동가능이 디폴트
+            if (i / column > 0 && i / column < line - 1 && i % column > 0 && i % column < column - 1)   // 화면상 타일들은 이동가능이 디폴트
             {
-                movableCheckArray[(i / column), (i % column)] = true;      
+                movableCheckArray[(i / column), (i % column)] = true;
             }
             else                                                                         // 화면밖 테두리 타일들은 이동불가능이 디폴트
             {
                 movableCheckArray[(i / column), (i % column)] = false;
             }
-            
+
         }
-        
+
+        itemManager.tileArray = this.tileArray;
+
     }
 
     // 스테이지 로드
-    void InitStage(int stageNumber)
+    void LoadStage(int stageNumber)
     {
-       
+
         string stageFileName = "STAGE_TEST_";
         stageFileName += stageNumber.ToString();
 
@@ -116,7 +123,7 @@ public class StageManager : MonoBehaviour
 
         XmlDocument xmlDoc = new XmlDocument();
         xmlDoc.LoadXml(textAsset.text);
-        
+
         int row, col, objectNumber;
         XmlNodeList nodeList = xmlDoc.SelectNodes("Map/Wall");
 
@@ -134,10 +141,10 @@ public class StageManager : MonoBehaviour
 
 
         //화면상 테두리부분이 뚫려있다면 테두리 한칸 밖 타일 이동가능
-        
-        for (int x=1; x<column -1; x++)
+
+        for (int x = 1; x < column - 1; x++)
         {
-            if(tileArray[1,x].GetComponent<SpriteRenderer>().sprite.name.Equals("Default_Sprite"))
+            if (tileArray[1, x].GetComponent<SpriteRenderer>().sprite.name.Equals("Default_Sprite"))
             {
                 movableCheckArray[0, x] = true;
             }
@@ -158,6 +165,11 @@ public class StageManager : MonoBehaviour
             }
         }
 
+        //아이템 로드
+        nodeList = xmlDoc.SelectNodes("Map/Item");
+        normalCount = itemManager.LoadItem(nodeList);
+
+
         Debug.Log("Stage Load Success");
 
         InitCharacter(stageNumber);
@@ -173,5 +185,29 @@ public class StageManager : MonoBehaviour
         CharacterArray[(int)ECharacter.BLINKY].InitCharacter(2, 3);
     }
 
+    public int GetLine
+    {
+        get
+        {
+            return line;
+        }
+    }
+
+    public int GetColumn
+    {
+        get
+        {
+            return column;
+        }
+    }
+
+    public void EatNormal()
+    {
+        normalCount--;
+        if(normalCount<= 0)
+        {
+            Debug.Log("Game Clear!");
+        }
+    }
 
 }

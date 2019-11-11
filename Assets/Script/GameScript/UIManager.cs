@@ -4,6 +4,29 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    private static UIManager _instance = null;
+
+    public static UIManager Instance
+    {
+        get
+        {
+            return _instance;
+        }
+    }
+
+    void Awake()
+    {
+        if(_instance == null)
+        {
+            _instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
+
     [SerializeField]
     GameObject scoreObject;
     [SerializeField]
@@ -15,7 +38,6 @@ public class UIManager : MonoBehaviour
     Sprite[] numberSpriteArray = new Sprite[10]; // 숫자 스프라이트
 
     int playerScore = 0;
-    int updateScore = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -29,13 +51,10 @@ public class UIManager : MonoBehaviour
         scoreObject.transform.position = scorePivotObject.transform.position;
     }
 
-    void LateUpdate()
+    public void UpdateScore(int plusScore)
     {
-        if(playerScore != updateScore)
-        {
-           
-            
-        }
+        playerScore += plusScore;
+       // Debug.Log(playerScore);
     }
 
 
