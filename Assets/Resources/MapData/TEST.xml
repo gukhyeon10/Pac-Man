@@ -1,34 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Map>
   <Wall>
+    <Rot>1.001791E-05</Rot>
     <Number>4</Number>
     <Row>8</Row>
     <Column>5</Column>
-    <Rot>1.001791E-05</Rot>
   </Wall>
   <Wall>
+    <Rot>1.001791E-05</Rot>
     <Number>4</Number>
     <Row>8</Row>
     <Column>19</Column>
-    <Rot>1.001791E-05</Rot>
   </Wall>
   <Wall>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>9</Row>
     <Column>5</Column>
-    <Rot>90</Rot>
   </Wall>
   <Wall>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>9</Row>
     <Column>19</Column>
-    <Rot>90</Rot>
   </Wall>
   <Wall>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>10</Row>
     <Column>5</Column>
-    <Rot>90</Rot>
   </Wall>
   <Item>
     <Number>2</Number>
@@ -81,40 +81,40 @@
     <Column>18</Column>
   </Item>
   <Wall>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>10</Row>
     <Column>19</Column>
-    <Rot>90</Rot>
   </Wall>
   <Wall>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>11</Row>
     <Column>5</Column>
-    <Rot>90</Rot>
   </Wall>
   <Wall>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>11</Row>
     <Column>19</Column>
-    <Rot>90</Rot>
   </Wall>
   <Wall>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>12</Row>
     <Column>5</Column>
-    <Rot>90</Rot>
   </Wall>
   <Wall>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>12</Row>
     <Column>19</Column>
-    <Rot>90</Rot>
   </Wall>
   <Wall>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>13</Row>
     <Column>5</Column>
-    <Rot>90</Rot>
   </Wall>
   <Item>
     <Number>4</Number>
@@ -167,40 +167,40 @@
     <Column>18</Column>
   </Item>
   <Wall>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>13</Row>
     <Column>19</Column>
-    <Rot>90</Rot>
   </Wall>
   <Wall>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>14</Row>
     <Column>5</Column>
-    <Rot>90</Rot>
   </Wall>
   <Wall>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>14</Row>
     <Column>19</Column>
-    <Rot>90</Rot>
   </Wall>
   <Wall>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>15</Row>
     <Column>5</Column>
-    <Rot>90</Rot>
   </Wall>
   <Wall>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>15</Row>
     <Column>19</Column>
-    <Rot>90</Rot>
   </Wall>
   <Wall>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>16</Row>
     <Column>5</Column>
-    <Rot>90</Rot>
   </Wall>
   <Item>
     <Number>6</Number>
@@ -253,40 +253,40 @@
     <Column>18</Column>
   </Item>
   <Wall>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>16</Row>
     <Column>19</Column>
-    <Rot>90</Rot>
   </Wall>
   <Wall>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>17</Row>
     <Column>5</Column>
-    <Rot>90</Rot>
   </Wall>
   <Wall>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>17</Row>
     <Column>19</Column>
-    <Rot>90</Rot>
   </Wall>
   <Wall>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>18</Row>
     <Column>5</Column>
-    <Rot>90</Rot>
   </Wall>
   <Wall>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>18</Row>
     <Column>19</Column>
-    <Rot>90</Rot>
   </Wall>
   <Wall>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>19</Row>
     <Column>5</Column>
-    <Rot>90</Rot>
   </Wall>
   <Item>
     <Number>3</Number>
@@ -339,57 +339,57 @@
     <Column>18</Column>
   </Item>
   <Wall>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>19</Row>
     <Column>19</Column>
-    <Rot>90</Rot>
   </Wall>
   <Wall>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>20</Row>
     <Column>5</Column>
-    <Rot>90</Rot>
   </Wall>
   <Wall>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>20</Row>
     <Column>19</Column>
-    <Rot>90</Rot>
   </Wall>
   <Wall>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>21</Row>
     <Column>5</Column>
-    <Rot>90</Rot>
   </Wall>
   <Wall>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>21</Row>
     <Column>19</Column>
-    <Rot>90</Rot>
   </Wall>
   <Wall>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>22</Row>
     <Column>5</Column>
-    <Rot>90</Rot>
   </Wall>
   <Wall>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>22</Row>
     <Column>19</Column>
-    <Rot>90</Rot>
   </Wall>
   <Wall>
+    <Rot>180</Rot>
     <Number>4</Number>
     <Row>23</Row>
     <Column>5</Column>
-    <Rot>180</Rot>
   </Wall>
   <Wall>
+    <Rot>180</Rot>
     <Number>4</Number>
     <Row>23</Row>
     <Column>19</Column>
-    <Rot>180</Rot>
   </Wall>
 </Map>

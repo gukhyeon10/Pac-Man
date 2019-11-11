@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -14,9 +15,24 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    [SerializeField]
+    Transform scoreTitle;
+    [SerializeField]
+    Transform timerTitle;
+    [SerializeField]
+    Transform pivot; // 화면 아래 특정 타일을 기준으로 위치 대응
+
+    [SerializeField]
+    Text scoreText;
+    [SerializeField]
+    Text timeText;
+
+    int score;
+    int remainTime;
+
     void Awake()
     {
-        if(_instance == null)
+        if (_instance == null)
         {
             _instance = this;
         }
@@ -27,35 +43,46 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    [SerializeField]
-    GameObject scoreObject;
-    [SerializeField]
-    GameObject scorePivotObject; // 화면 아래 특정 타일을 기준으로 위치 대응
 
-    [SerializeField]
-    SpriteRenderer[] scoreSpriteRendererArray = new SpriteRenderer[5]; // UI 스프라이트
-    [SerializeField]
-    Sprite[] numberSpriteArray = new Sprite[10]; // 숫자 스프라이트
-
-    int playerScore = 0;
-
-    // Start is called before the first frame update
-    void Start()
+    // UI 위치 초기화
+    public void InitUI()
     {
-        StartCoroutine(InitCorutine());  // 타일이 정렬되기 전이라 위치가 올바르게 안잡히는거라 추측. 따라서 한 프레임 텀을 준다.
+        scoreTitle.position = new Vector2(scoreTitle.position.x, pivot.position.y);
+        timerTitle.position = new Vector2(timerTitle.position.x, pivot.position.y);
     }
 
-    IEnumerator InitCorutine()
+    //스코어 갱신
+    public void UpdateScore(int score)
     {
-        yield return null;
-        scoreObject.transform.position = scorePivotObject.transform.position;
+        this.score += score;
+        scoreText.text = this.score.ToString();
     }
 
-    public void UpdateScore(int plusScore)
+    //타이머 갱신
+    public void UpdateTimer(int time)
     {
-        playerScore += plusScore;
-       // Debug.Log(playerScore);
+        timeText.text = time.ToString();
     }
 
+    //타이머 시작
+    public void StartTimer(int time)
+    {
+        StartCoroutine(timeCheck(time));
+    }
+
+    //타이머 코루틴
+    IEnumerator timeCheck(int time)
+    {
+        remainTime = time;
+        UIManager.Instance.UpdateTimer(remainTime);
+        while (remainTime > 0)
+        {
+            yield return new WaitForSeconds(1f);
+            remainTime--;
+            UpdateTimer(remainTime);
+        }
+
+        Debug.Log("Time Over");
+    }
 
 }

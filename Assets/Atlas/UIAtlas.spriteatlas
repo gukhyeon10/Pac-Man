@@ -30,64 +30,16 @@ SpriteAtlas:
       enableTightPacking: 1
     variantMultiplier: 1
     packables:
-    - {fileID: 2800000, guid: 6448dce6666f11848bb64fb3eea3fc34, type: 3}
-    - {fileID: 2800000, guid: 2c23d91c36c25fa4784cd12f051e2e06, type: 3}
-    - {fileID: 2800000, guid: 208e78e4a517cd74da37243a552a830e, type: 3}
-    - {fileID: 2800000, guid: 82f737c2f6fc8f14fab5a73b3f0fcc52, type: 3}
-    - {fileID: 2800000, guid: 5f400b5929e5f234aa38675029c59930, type: 3}
-    - {fileID: 2800000, guid: f30570c3cab55114dbc913b504592aea, type: 3}
-    - {fileID: 2800000, guid: 2b0ed2f4ef6c92146a6f36fa11e17f46, type: 3}
-    - {fileID: 2800000, guid: eb659540c9ccb1241ae7ff393b83604a, type: 3}
-    - {fileID: 2800000, guid: 83fb555a60fd2e840a36e56dade2b177, type: 3}
-    - {fileID: 2800000, guid: 3eb39962e165bf64b9f2c2895c21174b, type: 3}
-    - {fileID: 2800000, guid: 35136c362132f1b4a9fd128d8ac9388e, type: 3}
-    - {fileID: 2800000, guid: b1c69a9992083e2468c1913aa2614df7, type: 3}
     - {fileID: 2800000, guid: eadaaaf7ed743384ab4eac8cb831f3a5, type: 3}
-    - {fileID: 2800000, guid: 03e58dd9af0d7cd40a40373949622b85, type: 3}
-    - {fileID: 2800000, guid: 1a0598e136ab7a04eab194eab5fdbd5e, type: 3}
-    - {fileID: 2800000, guid: 9c69698a40960ec438845dc149921a5a, type: 3}
-    - {fileID: 2800000, guid: e47896505fca39d4d8ac4ce77055b684, type: 3}
-    - {fileID: 2800000, guid: 388f6f70078a9604daada8a1432d76e7, type: 3}
-    totalSpriteSurfaceArea: 63514
+    - {fileID: 2800000, guid: b1c69a9992083e2468c1913aa2614df7, type: 3}
+    totalSpriteSurfaceArea: 59920
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: 21300000, guid: eb659540c9ccb1241ae7ff393b83604a, type: 3}
-  - {fileID: 21300000, guid: e47896505fca39d4d8ac4ce77055b684, type: 3}
-  - {fileID: 21300000, guid: 388f6f70078a9604daada8a1432d76e7, type: 3}
-  - {fileID: 21300000, guid: 1a0598e136ab7a04eab194eab5fdbd5e, type: 3}
-  - {fileID: 21300000, guid: 3eb39962e165bf64b9f2c2895c21174b, type: 3}
-  - {fileID: 21300000, guid: 82f737c2f6fc8f14fab5a73b3f0fcc52, type: 3}
-  - {fileID: 21300000, guid: f30570c3cab55114dbc913b504592aea, type: 3}
-  - {fileID: 21300000, guid: 208e78e4a517cd74da37243a552a830e, type: 3}
-  - {fileID: 21300000, guid: 2b0ed2f4ef6c92146a6f36fa11e17f46, type: 3}
-  - {fileID: 21300000, guid: 35136c362132f1b4a9fd128d8ac9388e, type: 3}
-  - {fileID: 21300000, guid: 6448dce6666f11848bb64fb3eea3fc34, type: 3}
   - {fileID: 21300000, guid: eadaaaf7ed743384ab4eac8cb831f3a5, type: 3}
-  - {fileID: 21300000, guid: 5f400b5929e5f234aa38675029c59930, type: 3}
   - {fileID: 21300000, guid: b1c69a9992083e2468c1913aa2614df7, type: 3}
-  - {fileID: 21300000, guid: 03e58dd9af0d7cd40a40373949622b85, type: 3}
-  - {fileID: 21300000, guid: 83fb555a60fd2e840a36e56dade2b177, type: 3}
-  - {fileID: 21300000, guid: 9c69698a40960ec438845dc149921a5a, type: 3}
-  - {fileID: 21300000, guid: 2c23d91c36c25fa4784cd12f051e2e06, type: 3}
   m_PackedSpriteNamesToIndex:
-  - Number_6
-  - StageFail
-  - TimeOver
-  - Ready
-  - Number_8
-  - Number_2
-  - Number_4
-  - Number_1
-  - Number_5
-  - Number_9
-  - Score
   - StartPage_Pac
-  - Number_3
   - StartPage
-  - StartPage_Text
-  - Number_7
-  - StageClear
-  - Number_0
   m_Tag: UIAtlas
   m_IsVariant: 0

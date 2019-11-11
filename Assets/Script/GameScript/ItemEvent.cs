@@ -7,6 +7,7 @@ public class ItemEvent : MonoBehaviour
 {
     public int itemNumber;
 
+    //아이템 충돌 처리
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.tag.ToUpper().Equals(Enum.GetName(typeof(ECharacter), (int)ECharacter.PAC)))
@@ -18,6 +19,7 @@ public class ItemEvent : MonoBehaviour
         }
     }
 
+    //아이템 점수 및 효과
     void ItemBuff()
     {
         int score;
