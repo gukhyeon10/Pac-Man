@@ -13,6 +13,6 @@ public class Clyde : CharacterBase
     // Update is called once per frame
     void Update()
     {
-        
+        base.CharacterMove();
     }
 }

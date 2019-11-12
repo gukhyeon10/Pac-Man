@@ -34,7 +34,8 @@ public class StageManager : MonoBehaviour
     CharacterBase[] CharacterArray = new CharacterBase[Enum.GetNames(typeof(ECharacter)).Length]; // 각 캐릭터 (PAC = 0,  BLINKY = 1,  PINKY = 2,  INKY = 3,  CLYDE = 4,)
 
     [SerializeField]
-    ItemManager itemManager;
+    ItemManager itemManager; 
+    UIManager _UIManager;
 
     const string dataPath = "MapData/";
     // 타일 29행 23열 (30행 타일은 가리기 용도)
@@ -64,8 +65,9 @@ public class StageManager : MonoBehaviour
 
     void Start()
     {
+        _UIManager = UIManager.Instance;
         //시작 화면
-        UIManager.Instance.StartPanelSetActive(true);
+        _UIManager.StartPanelSetActive(true);
         StartCoroutine(TapWaitCorutine());
     }
 
@@ -80,20 +82,20 @@ public class StageManager : MonoBehaviour
                 if(isFirstTry)  // 최초 스테이지 시작시에만
                 {
                     InitTileArray();
-                    UIManager.Instance.InitUI();
-                    UIManager.Instance.StartPanelSetActive(false);
+                    _UIManager.InitUI();
+                    _UIManager.StartPanelSetActive(false);
                     isFirstTry = false;
                 }
                 else
                 {
-                    UIManager.Instance.UIPanelActive();
+                    _UIManager.UIPanelActive();
                     gameCanvas.gameObject.SetActive(true);
                     InitStage();
                     
                 }
 
                 LoadStage(currentStage);
-                UIManager.Instance.StartTimer(50);
+                _UIManager.StartTimer(40);
 
                 break;
             }
@@ -264,7 +266,7 @@ public class StageManager : MonoBehaviour
     {
         //여기에 클리어 연출
         gameCanvas.gameObject.SetActive(false);
-        UIManager.Instance.ResultPanelActive((int)EResult.STAGE_CLEAR);
+        _UIManager.ResultPanelActive((int)EResult.STAGE_CLEAR);
 
         if (currentStage < 3)
         {
@@ -280,7 +282,7 @@ public class StageManager : MonoBehaviour
         //여기에 게임오버 연출
         yield return null;
         gameCanvas.gameObject.SetActive(false);
-        UIManager.Instance.ResultPanelActive(result);
+        _UIManager.ResultPanelActive(result);
 
         yield return new WaitForSeconds(1f);
         StartCoroutine(TapWaitCorutine());

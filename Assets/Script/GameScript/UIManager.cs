@@ -35,7 +35,8 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     Text timeText;
 
-    int score;
+    int basicScore = 0;  // 이전 스테이지까지의 획득 스코어
+    int score;       // 진행 중인 스테이지의 획득 스코어
     int remainTime;
 
     void Awake()
@@ -62,9 +63,11 @@ public class UIManager : MonoBehaviour
     public void StartPanelSetActive(bool active)
     {
         panelArray[(int)EPanel.START].SetActive(active);
+        panelArray[(int)EPanel.KEY].SetActive(!active);
+        panelArray[(int)EPanel.UI].SetActive(!active);
     }
     
-
+    //UI 패널
     public void UIPanelActive()
     {
         panelArray[(int)EPanel.STAGE_CLEAR].SetActive(false);
@@ -77,7 +80,7 @@ public class UIManager : MonoBehaviour
     public void UpdateScore(int score)
     {
         this.score += score;
-        scoreText.text = this.score.ToString();
+        scoreText.text = (basicScore + this.score).ToString();
     }
 
     //타이머 갱신
@@ -121,11 +124,15 @@ public class UIManager : MonoBehaviour
             case (int)EResult.GAME_OVER:
                 {
                     panelArray[(int)EPanel.STAGE_FAIL].SetActive(true);
+                    score = 0;
+                    UpdateScore(score);
                     break;
                 }
             case (int)EResult.TIME_OVER:
                 {
                     panelArray[(int)EPanel.STAGE_FAIL].SetActive(true);
+                    score = 0;
+                    UpdateScore(score);
                     break;
                 }
             case (int)EResult.STAGE_CLEAR:
@@ -134,6 +141,8 @@ public class UIManager : MonoBehaviour
                     stageClearText.text = "STAGE CLEAR!";
                     if(StageManager.Instance.GetCurrentStage < 3)
                     {
+                        basicScore += score;
+                        score = 0;
                         gameScoreText.text = "TAP TO NEXT STAGE";
                     }
                     break;
@@ -142,7 +151,7 @@ public class UIManager : MonoBehaviour
                 {
                     panelArray[(int)EPanel.STAGE_CLEAR].SetActive(true);
                     stageClearText.text = "GAME CLEAR!";
-                    gameScoreText.text = score.ToString();
+                    gameScoreText.text = (basicScore + score).ToString();
                     break;
                 }
         }
