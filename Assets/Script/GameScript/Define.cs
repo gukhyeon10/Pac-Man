@@ -8,6 +8,14 @@ enum EObjectType
     CHARACTER = 2,
 }
 
+enum EDirect
+{
+    EAST = 0,
+    WEST = 1,
+    SOUTH = 2,
+    NORTH = 3,
+}
+
 enum EWall
 {
     DEFAULT = 0,

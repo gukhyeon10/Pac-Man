@@ -34,10 +34,12 @@ public class StageManager : MonoBehaviour
     CharacterBase[] CharacterArray = new CharacterBase[Enum.GetNames(typeof(ECharacter)).Length]; // 각 캐릭터 (PAC = 0,  BLINKY = 1,  PINKY = 2,  INKY = 3,  CLYDE = 4,)
 
     [SerializeField]
-    ItemManager itemManager; 
+    ItemManager itemManager;
     UIManager _UIManager;
 
     const string dataPath = "MapData/";
+    const string stageFileName = "STAGE_TEST_";
+
     // 타일 29행 23열 (30행 타일은 가리기 용도)
     const int column = 23;
     const int line = 29;
@@ -79,7 +81,7 @@ public class StageManager : MonoBehaviour
             yield return null;
             if (Input.GetKeyDown(KeyCode.Mouse0) || Input.touchCount > 0)
             {
-                if(isFirstTry)  // 최초 스테이지 시작시에만
+                if (isFirstTry)  // 최초 스테이지 시작시에만
                 {
                     InitTileArray();
                     _UIManager.InitUI();
@@ -91,7 +93,7 @@ public class StageManager : MonoBehaviour
                     _UIManager.UIPanelActive();
                     gameCanvas.gameObject.SetActive(true);
                     InitStage();
-                    
+
                 }
 
                 LoadStage(currentStage);
@@ -109,9 +111,9 @@ public class StageManager : MonoBehaviour
         InitTileArray();
 
         Sprite defaultSprite = tileArray[0, 0].GetComponent<SpriteRenderer>().sprite;
-        for(int row = 0; row < line; row++)
+        for (int row = 0; row < line; row++)
         {
-            for(int col = 0; col < column; col++)
+            for (int col = 0; col < column; col++)
             {
                 tileArray[row, col].GetComponent<SpriteRenderer>().sprite = defaultSprite;
             }
@@ -140,14 +142,14 @@ public class StageManager : MonoBehaviour
         itemManager.tileArray = this.tileArray;
 
     }
-    
+
     // 스테이지 로드
     void LoadStage(int stageNumber)
     {
-        string stageFileName = "STAGE_TEST_";
-        stageFileName += stageNumber.ToString();
+        string stage = stageFileName;
+        stage += stageNumber.ToString();
 
-        TextAsset textAsset = (TextAsset)Resources.Load(dataPath + stageFileName);
+        TextAsset textAsset = (TextAsset)Resources.Load(dataPath + stage);
 
         XmlDocument xmlDoc = new XmlDocument();
         xmlDoc.LoadXml(textAsset.text);
@@ -212,8 +214,8 @@ public class StageManager : MonoBehaviour
             row = int.Parse(node.SelectSingleNode("Row").InnerText);
             col = int.Parse(node.SelectSingleNode("Column").InnerText);
             characterNumber = int.Parse(node.SelectSingleNode("Number").InnerText);
-            
-            if(CharacterArray[characterNumber] != null)
+
+            if (CharacterArray[characterNumber] != null)
             {
                 CharacterArray[characterNumber].gameObject.SetActive(true);
                 CharacterArray[characterNumber].InitCharacter(row, col);
@@ -236,7 +238,7 @@ public class StageManager : MonoBehaviour
     //스테이지 초기화 및 비활성화 후 결과 화면 출력
     public void StageResult(int result)
     {
-        switch(result)
+        switch (result)
         {
             case (int)EResult.GAME_OVER:
                 {

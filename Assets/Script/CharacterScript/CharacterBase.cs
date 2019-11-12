@@ -20,8 +20,6 @@ public class CharacterBase : MonoBehaviour
     protected int row;
     protected int col;
 
-    protected int moveDirect;
-
     protected float speed = 2f;
 
     public void InitCharacter()
@@ -34,7 +32,7 @@ public class CharacterBase : MonoBehaviour
         row = 2;
         col = 2;
 
-        target = tileArray[row,col];
+        target = tileArray[row, col];
         character.position = target.position;
     }
 
@@ -95,19 +93,19 @@ public class CharacterBase : MonoBehaviour
                 movableList.Clear();
                 if (movableCheckArray[row, col - 1])
                 {
-                    movableList.Add(0);
+                    movableList.Add((int)EDirect.WEST);
                 }
                 if (movableCheckArray[row, col + 1])
                 {
-                    movableList.Add(1);
+                    movableList.Add((int)EDirect.EAST);
                 }
                 if (movableCheckArray[row - 1, col])
                 {
-                    movableList.Add(2);
+                    movableList.Add((int)EDirect.NORTH);
                 }
                 if (movableCheckArray[row + 1, col])
                 {
-                    movableList.Add(3);
+                    movableList.Add((int)EDirect.SOUTH);
                 }
 
                 if (movableList.Count > 0)
@@ -115,22 +113,22 @@ public class CharacterBase : MonoBehaviour
                     int index = Random.Range(0, movableList.Count);
                     switch (movableList[index])
                     {
-                        case 0:
+                        case (int)EDirect.WEST:
                             {
                                 col--;
                                 break;
                             }
-                        case 1:
+                        case (int)EDirect.EAST:
                             {
                                 col++;
                                 break;
                             }
-                        case 2:
+                        case (int)EDirect.NORTH:
                             {
                                 row--;
                                 break;
                             }
-                        case 3:
+                        case (int)EDirect.SOUTH:
                             {
                                 row++;
                                 break;
@@ -141,8 +139,6 @@ public class CharacterBase : MonoBehaviour
                 }
 
             }
-
-
         }
     }
 

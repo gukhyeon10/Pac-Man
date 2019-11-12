@@ -4,174 +4,224 @@ using UnityEngine;
 
 public class PacMan : CharacterBase
 {
-    int inputDirect = 1;
-    bool isTurn = false;
-
+    int inputDirect = (int)EDirect.EAST;
+    int moveDirect = (int)EDirect.EAST;
+    bool isInput = false;
 
     void Update()
     {
-        CharacterMove();    
+        KeyboardInput();
+        CharacterMove();
+    }
+
+    void KeyboardInput()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            isInput = true;
+            inputDirect = (int)EDirect.WEST;
+        }
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            inputDirect = (int)EDirect.EAST;
+            isInput = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            inputDirect = (int)EDirect.NORTH;
+            isInput = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            inputDirect = (int)EDirect.SOUTH;
+            isInput = true;
+        }
     }
 
     // 팩맨 이동 로직
     protected override void CharacterMove()
     {
-        if (target == null) // 타겟 null 처리
+        character.position = Vector3.MoveTowards(character.position, tileArray[row, col].position, speed * Time.deltaTime);
+        if (character.position == tileArray[row, col].position)
         {
-            return;
-        }
-
-        character.position = Vector3.MoveTowards(character.position, target.position, speed * Time.deltaTime);
-
-        if(character.position == target.position)
-        {
-            if(row==0)
+            if (!Warp()) // 반대편으로 전환하는게 아니라면
             {
-                character.position = tileArray[line - 1, col].position;
-                row = line - 2;
-                target = tileArray[row, col];
-            }
-            else if(row == line-1)
-            {
-                character.position = tileArray[0, col].position;
-                row = 1;
-                target = tileArray[row, col];
-            }
-            else if(col == 0)
-            {
-                character.position = tileArray[row, column-1].position;
-                col = column-2;
-                target = tileArray[row, col];
-            }
-            else if(col == column -1)
-            {
-                character.position = tileArray[row, 0].position;
-                col = 1;
-                target = tileArray[row, col];
-            }
-            else
-            {
-                isTurn = true;
+                // 입력값에 의해 해당 방향 이동가능하면 방향전환
                 switch (inputDirect)
                 {
-                    case 0:
+                    case (int)EDirect.EAST:
                         {
-                            if (movableCheckArray[row, col - 1])
+                            if (movableCheckArray[row, col + 1])
                             {
-                                col--;
-                            }
-                            else
-                            {
-                                isTurn = false;
+                                moveDirect = inputDirect;
                             }
                             break;
                         }
-                    case 1:
+                    case (int)EDirect.WEST:
+                        {
+                            if (movableCheckArray[row, col - 1])
+                            {
+                                moveDirect = inputDirect;
+                            }
+                            break;
+                        }
+                    case (int)EDirect.SOUTH:
+                        {
+                            if (movableCheckArray[row + 1, col])
+                            {
+                                moveDirect = inputDirect;
+                            }
+                            break;
+                        }
+                    case (int)EDirect.NORTH:
+                        {
+                            if (movableCheckArray[row - 1, col])
+                            {
+                                moveDirect = inputDirect;
+                            }
+                            break;
+                        }
+                }
+
+                //방향에 따라 목표 좌표 설정
+                switch (moveDirect)
+                {
+                    case (int)EDirect.EAST:
                         {
                             if (movableCheckArray[row, col + 1])
                             {
                                 col++;
                             }
-                            else
-                            {
-                                isTurn = false;
-                            }
                             break;
                         }
-                    case 2:
+                    case (int)EDirect.WEST:
                         {
-                            if (movableCheckArray[row - 1, col])
+                            if (movableCheckArray[row, col - 1])
                             {
-                                row--;
-                            }
-                            else
-                            {
-                                isTurn = false;
+                                col--;
                             }
                             break;
                         }
-                    case 3:
+                    case (int)EDirect.SOUTH:
                         {
                             if (movableCheckArray[row + 1, col])
                             {
                                 row++;
                             }
-                            else
+                            break;
+                        }
+                    case (int)EDirect.NORTH:
+                        {
+                            if (movableCheckArray[row - 1, col])
                             {
-                                isTurn = false;
+                                row--;
                             }
                             break;
                         }
                 }
 
-                if (isTurn)
-                {
-                    target = tileArray[row, col];
-                    moveDirect = inputDirect;
-                }
-                else
-                {
-                    switch (moveDirect)
-                    {
-                        case 0:
-                            {
-                                if (movableCheckArray[row, col - 1])
-                                {
-                                    col--;
-                                }
-                                break;
-                            }
-                        case 1:
-                            {
-                                if (movableCheckArray[row, col + 1])
-                                {
-                                    col++;
-                                }
-                                break;
-                            }
-                        case 2:
-                            {
-                                if (movableCheckArray[row - 1, col])
-                                {
-                                    row--;
-                                }
-                                break;
-                            }
-                        case 3:
-                            {
-                                if (movableCheckArray[row + 1, col])
-                                {
-                                    row++;
-                                }
-                                break;
-                            }
-                    }
-                    target = tileArray[row, col];
-                }
             }
-            
+        }
+        else
+        {
+            ReverseMove();  // 타일에서 타일 넘어가는 중에 반대 방향으로 전환 가능
+        }
+        isInput = false;
+    }
+
+    // 테두리 밖 이동시 반대편 워프
+    bool Warp()
+    {
+        if (row == 0)
+        {
+            character.position = tileArray[line - 1, col].position;
+            row = line - 2;
+            return true;
+        }
+        else if (row == line - 1)
+        {
+            character.position = tileArray[0, col].position;
+            row = 1;
+            return true;
+        }
+        else if (col == 0)
+        {
+            character.position = tileArray[row, column - 1].position;
+            col = column - 2;
+            return true;
+        }
+        else if (col == column - 1)
+        {
+            character.position = tileArray[row, 0].position;
+            col = 1;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    // 역방향 이동
+    void ReverseMove()
+    {
+        if (isInput)
+        {
+            if (inputDirect == (int)EDirect.EAST && moveDirect == (int)EDirect.WEST)
+            {
+                col++;
+                moveDirect = inputDirect;
+            }
+            else if (inputDirect == (int)EDirect.WEST && moveDirect == (int)EDirect.EAST)
+            {
+                col--;
+                moveDirect = inputDirect;
+            }
+            else if (inputDirect == (int)EDirect.SOUTH && moveDirect == (int)EDirect.NORTH)
+            {
+                row++;
+                moveDirect = inputDirect;
+            }
+            else if (inputDirect == (int)EDirect.NORTH && moveDirect == (int)EDirect.SOUTH)
+            {
+                row--;
+                moveDirect = inputDirect;
+            }
+        }
+    }
+
+    //이동 중에 유령이랑 부딪히면 게임오버
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag.Equals("Ghost"))
+        {
+            StageManager.Instance.StageResult((int)EResult.GAME_OVER);
         }
     }
 
     // 방향키 입력
     public void PacLeft()
     {
-        inputDirect = 0;
+        inputDirect = (int)EDirect.WEST;
+        isInput = true;
     }
 
     public void PacRight()
     {
-        inputDirect = 1;
+        inputDirect = (int)EDirect.EAST;
+        isInput = true;
     }
 
     public void PacUp()
     {
-        inputDirect = 2;
+        inputDirect = (int)EDirect.NORTH;
+        isInput = true;
     }
 
     public void PacDown()
     {
-        inputDirect = 3;
+        inputDirect = (int)EDirect.SOUTH;
+        isInput = true;
     }
 
 }
