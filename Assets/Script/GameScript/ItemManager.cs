@@ -6,7 +6,7 @@ using System.Xml;
 
 public class ItemManager : MonoBehaviour
 {
-    public Transform[,] tileArray;
+    public GameTile[,] tileArray;
     public Transform[,] itemArray;
 
     [SerializeField]
@@ -52,7 +52,7 @@ public class ItemManager : MonoBehaviour
             objectNumber = int.Parse(node.SelectSingleNode("Number").InnerText);
 
             //아이템 생성
-            GameObject item = Instantiate(itemPrefabArray[objectNumber], tileArray[row,col].position, Quaternion.identity, itemPanel);
+            GameObject item = Instantiate(itemPrefabArray[objectNumber], tileArray[row,col].transform.position, Quaternion.identity, itemPanel);
             item.GetComponent<ItemEvent>().itemNumber = objectNumber;
             itemList.Add(item);
 

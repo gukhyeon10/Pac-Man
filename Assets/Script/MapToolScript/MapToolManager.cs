@@ -15,14 +15,9 @@ public class MapToolManager : MonoBehaviour
     Transform tileGrid;
 
     [SerializeField]
-    Sprite[] wallSpriteArray = new Sprite[Enum.GetNames(typeof(EWall)).Length];
-    [SerializeField]
-    Sprite[] itemSpriteArray = new Sprite[Enum.GetNames(typeof(EItem)).Length];
-    [SerializeField]
-    Sprite[] characterSpriteArray = new Sprite[Enum.GetNames(typeof(ECharacter)).Length];
+    SpriteManager spriteManager;
 
     Transform[,] tileArray;
-
 
     const int line = 27;
     const int column = 21;
@@ -160,7 +155,7 @@ public class MapToolManager : MonoBehaviour
                 rot = float.Parse(node.SelectSingleNode("Rot").InnerText);
                 
                 tileArray[row - 1, col - 1].eulerAngles = new Vector3(0f, 0f, rot);
-                tileArray[row - 1, col - 1].GetComponent<TileEvent>().InitTile((int)EObjectType.WALL, objectNumber, wallSpriteArray[objectNumber]);
+                tileArray[row - 1, col - 1].GetComponent<TileEvent>().InitTile((int)EObjectType.WALL, objectNumber, spriteManager.wallSpriteArray[objectNumber]);
 
             }
 
@@ -172,7 +167,7 @@ public class MapToolManager : MonoBehaviour
                 row = int.Parse(node.SelectSingleNode("Row").InnerText);
                 col = int.Parse(node.SelectSingleNode("Column").InnerText);
                 
-                tileArray[row - 1, col - 1].GetComponent<TileEvent>().InitTile((int)EObjectType.ITEM, objectNumber, itemSpriteArray[objectNumber]);
+                tileArray[row - 1, col - 1].GetComponent<TileEvent>().InitTile((int)EObjectType.ITEM, objectNumber, spriteManager.itemSpriteArray[objectNumber]);
             }
 
             // 캐릭터 오브젝트 로드
@@ -183,7 +178,7 @@ public class MapToolManager : MonoBehaviour
                 row = int.Parse(node.SelectSingleNode("Row").InnerText);
                 col = int.Parse(node.SelectSingleNode("Column").InnerText);
                 
-                tileArray[row - 1, col - 1].GetComponent<TileEvent>().InitTile((int)EObjectType.CHARACTER, objectNumber, characterSpriteArray[objectNumber]);
+                tileArray[row - 1, col - 1].GetComponent<TileEvent>().InitTile((int)EObjectType.CHARACTER, objectNumber, spriteManager.characterSpriteArray[objectNumber]);
             }
             
             Debug.Log("Data Load Success!");

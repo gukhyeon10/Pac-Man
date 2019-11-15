@@ -64,3 +64,6 @@ enum EResult
     STAGE_CLEAR = 2,
     GAME_CLEAR = 3,
 }
+
+
+

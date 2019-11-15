@@ -41,8 +41,8 @@ public class PacMan : CharacterBase
     // 팩맨 이동 로직
     protected override void CharacterMove()
     {
-        character.position = Vector3.MoveTowards(character.position, tileArray[row, col].position, speed * Time.deltaTime);
-        if (character.position == tileArray[row, col].position)
+        character.position = Vector3.MoveTowards(character.position, tileArray[row, col].transform.position, speed * Time.deltaTime);
+        if (character.position == tileArray[row, col].transform.position)
         {
             if (!Warp()) // 반대편으로 전환하는게 아니라면
             {
@@ -134,25 +134,25 @@ public class PacMan : CharacterBase
     {
         if (row == 0)
         {
-            character.position = tileArray[line - 1, col].position;
+            character.position = tileArray[line - 1, col].transform.position;
             row = line - 2;
             return true;
         }
         else if (row == line - 1)
         {
-            character.position = tileArray[0, col].position;
+            character.position = tileArray[0, col].transform.position;
             row = 1;
             return true;
         }
         else if (col == 0)
         {
-            character.position = tileArray[row, column - 1].position;
+            character.position = tileArray[row, column - 1].transform.position;
             col = column - 2;
             return true;
         }
         else if (col == column - 1)
         {
-            character.position = tileArray[row, 0].position;
+            character.position = tileArray[row, 0].transform.position;
             col = 1;
             return true;
         }

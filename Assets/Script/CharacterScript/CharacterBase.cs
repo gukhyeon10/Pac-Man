@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterBase : MonoBehaviour
 {
-    protected Transform[,] tileArray;
+    protected GameTile[,] tileArray;
     protected bool[,] movableCheckArray;
     protected List<int> movableList = new List<int>();   // 갈 수 있는 방향 리스트
 
@@ -32,7 +32,7 @@ public class CharacterBase : MonoBehaviour
         row = 2;
         col = 2;
 
-        target = tileArray[row, col];
+        target = tileArray[row, col].transform;
         character.position = target.position;
     }
 
@@ -46,7 +46,7 @@ public class CharacterBase : MonoBehaviour
         row = x;
         col = y;
 
-        target = tileArray[row, col];
+        target = tileArray[row, col].transform;
         character.position = target.position;
     }
 
@@ -66,27 +66,27 @@ public class CharacterBase : MonoBehaviour
         {
             if (row == 0)
             {
-                character.position = tileArray[line - 1, col].position;
+                character.position = tileArray[line - 1, col].transform.position;
                 row = line - 2;
-                target = tileArray[row, col];
+                target = tileArray[row, col].transform;
             }
             else if (row == line - 1)
             {
-                character.position = tileArray[0, col].position;
+                character.position = tileArray[0, col].transform.position;
                 row = 1;
-                target = tileArray[row, col];
+                target = tileArray[row, col].transform;
             }
             else if (col == 0)
             {
-                character.position = tileArray[row, column - 1].position;
+                character.position = tileArray[row, column - 1].transform.position;
                 col = column - 2;
-                target = tileArray[row, col];
+                target = tileArray[row, col].transform;
             }
             else if (col == column - 1)
             {
-                character.position = tileArray[row, 0].position;
+                character.position = tileArray[row, 0].transform.position;
                 col = 1;
-                target = tileArray[row, col];
+                target = tileArray[row, col].transform;
             }
             else
             {
@@ -135,7 +135,15 @@ public class CharacterBase : MonoBehaviour
                             }
                     }
 
-                    target = tileArray[row, col];
+                    if(StageManager.SafeArray<GameTile>(tileArray, row, col))
+                    {
+                        target = tileArray[row, col].transform;
+                    }
+                    else
+                    {
+                        target = null;
+                    }
+
                 }
 
             }

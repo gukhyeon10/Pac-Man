@@ -48,6 +48,11 @@
     <Row>8</Row>
     <Column>4</Column>
   </Wall>
+  <Item>
+    <Number>3</Number>
+    <Row>8</Row>
+    <Column>7</Column>
+  </Item>
   <Wall>
     <Rot>90</Rot>
     <Number>2</Number>
@@ -96,6 +101,11 @@
     <Row>10</Row>
     <Column>4</Column>
   </Wall>
+  <Item>
+    <Number>4</Number>
+    <Row>10</Row>
+    <Column>7</Column>
+  </Item>
   <Wall>
     <Rot>90</Rot>
     <Number>2</Number>
@@ -251,6 +261,11 @@
     <Row>19</Row>
     <Column>14</Column>
   </Wall>
+  <Item>
+    <Number>5</Number>
+    <Row>19</Row>
+    <Column>15</Column>
+  </Item>
   <Wall>
     <Rot>90</Rot>
     <Number>4</Number>

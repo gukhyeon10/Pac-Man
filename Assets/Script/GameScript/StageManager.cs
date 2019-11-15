@@ -8,7 +8,6 @@ public class StageManager : MonoBehaviour
 {
     private static StageManager _instance = null;
 
-
     public static StageManager Instance
     {
         get
@@ -24,11 +23,7 @@ public class StageManager : MonoBehaviour
     Transform tileGrid;
 
     [SerializeField]
-    Sprite[] wallSpriteArray = new Sprite[Enum.GetNames(typeof(EWall)).Length];
-    [SerializeField]
-    Sprite[] itemSpriteArray = new Sprite[Enum.GetNames(typeof(EItem)).Length];
-    [SerializeField]
-    Sprite[] characterSpriteArray = new Sprite[Enum.GetNames(typeof(ECharacter)).Length];
+    SpriteManager spriteManager;
 
     [SerializeField]
     CharacterBase[] CharacterArray = new CharacterBase[Enum.GetNames(typeof(ECharacter)).Length]; // 각 캐릭터 (PAC = 0,  BLINKY = 1,  PINKY = 2,  INKY = 3,  CLYDE = 4,)
@@ -44,7 +39,7 @@ public class StageManager : MonoBehaviour
     const int column = 23;
     const int line = 29;
 
-    public Transform[,] tileArray = new Transform[line, column];
+    public GameTile[,] tileArray = new GameTile[line, column];
     public bool[,] movableCheckArray = new bool[line, column];
 
     int currentStage = 1;  // 현재 스테이지
@@ -70,6 +65,9 @@ public class StageManager : MonoBehaviour
         _UIManager = UIManager.Instance;
         //시작 화면
         _UIManager.StartPanelSetActive(true);
+
+        InitTileArray();
+        InitMovableArray();
         StartCoroutine(TapWaitCorutine());
     }
 
@@ -83,7 +81,6 @@ public class StageManager : MonoBehaviour
             {
                 if (isFirstTry)  // 최초 스테이지 시작시에만
                 {
-                    InitTileArray();
                     _UIManager.InitUI();
                     _UIManager.StartPanelSetActive(false);
                     isFirstTry = false;
@@ -107,18 +104,15 @@ public class StageManager : MonoBehaviour
     //스테이지 초기화
     void InitStage()
     {
-
-        InitTileArray();
-
-        Sprite defaultSprite = tileArray[0, 0].GetComponent<SpriteRenderer>().sprite;
+        Sprite defaultSprite = tileArray[0, 0].spriteRenderer.sprite;
         for (int row = 0; row < line; row++)
         {
             for (int col = 0; col < column; col++)
             {
-                tileArray[row, col].GetComponent<SpriteRenderer>().sprite = defaultSprite;
+                tileArray[row, col].spriteRenderer.sprite = defaultSprite;
             }
         }
-
+        InitMovableArray();
         itemManager.InitItem();
     }
 
@@ -128,19 +122,34 @@ public class StageManager : MonoBehaviour
     {
         for (int i = 0; i < tileGrid.childCount - column; i++)   // 마지막 행 타일들은 유령을 가리기위한 타일이기에 게임에 영향X
         {
-            tileArray[(i / column), (i % column)] = tileGrid.GetChild(i);
-            if (i / column > 0 && i / column < line - 1 && i % column > 0 && i % column < column - 1)   // 화면상 타일들은 이동가능이 디폴트
-            {
-                movableCheckArray[(i / column), (i % column)] = true;
-            }
-            else                                                                         // 화면밖 테두리 타일들은 이동불가능이 디폴트
-            {
-                movableCheckArray[(i / column), (i % column)] = false;
-            }
+            tileArray[(i / column), (i % column)] = tileGrid.GetChild(i).GetComponent<GameTile>();
         }
 
         itemManager.tileArray = this.tileArray;
+    }
 
+    // 이동가능 체크 초기화
+    void InitMovableArray()
+    {
+        for (int i = 0; i < tileGrid.childCount - column; i++)   // 마지막 행 타일들은 유령을 가리기위한 타일이기에 게임에 영향X
+        {
+            if (i / column > 0 && i / column < line - 1 && i % column > 0 && i % column < column - 1)   // 화면상 타일들은 이동가능이 디폴트
+            {
+                if (SafeArray<bool>(movableCheckArray, i / column, i % column))
+                {
+                    movableCheckArray[(i / column), (i % column)] = true;
+                }
+
+            }
+            else                                                                         // 화면밖 테두리 타일들은 이동불가능이 디폴트
+            {
+                if (SafeArray<bool>(movableCheckArray, i / column, i % column))
+                {
+                    movableCheckArray[(i / column), (i % column)] = false;
+                }
+
+            }
+        }
     }
 
     // 스테이지 로드
@@ -163,8 +172,8 @@ public class StageManager : MonoBehaviour
             col = int.Parse(node.SelectSingleNode("Column").InnerText);
             objectNumber = int.Parse(node.SelectSingleNode("Number").InnerText);
 
-            tileArray[row, col].GetComponent<SpriteRenderer>().sprite = wallSpriteArray[objectNumber];
-            tileArray[row, col].eulerAngles = new Vector3(0f, 0f, float.Parse(node.SelectSingleNode("Rot").InnerText));
+            tileArray[row, col].spriteRenderer.sprite = spriteManager.wallSpriteArray[objectNumber];
+            tileArray[row, col].transform.eulerAngles = new Vector3(0f, 0f, float.Parse(node.SelectSingleNode("Rot").InnerText));
 
             movableCheckArray[row, col] = false;
         }
@@ -173,22 +182,22 @@ public class StageManager : MonoBehaviour
         //화면상 테두리부분이 뚫려있다면 테두리 한칸 밖 타일 이동가능
         for (int x = 1; x < column - 1; x++)
         {
-            if (tileArray[1, x].GetComponent<SpriteRenderer>().sprite.name.Equals("Default_Sprite"))
+            if (SafeArray<GameTile>(tileArray, 1, x) && tileArray[1, x].spriteRenderer.sprite.name.Equals("Default_Sprite"))
             {
                 movableCheckArray[0, x] = true;
             }
-            if (tileArray[line - 2, x].GetComponent<SpriteRenderer>().sprite.name.Equals("Default_Sprite"))
+            if (SafeArray<GameTile>(tileArray, line -2, x) && tileArray[line - 2, x].spriteRenderer.sprite.name.Equals("Default_Sprite"))
             {
                 movableCheckArray[line - 1, x] = true;
             }
         }
         for (int y = 1; y < line - 1; y++)
         {
-            if (tileArray[y, 1].GetComponent<SpriteRenderer>().sprite.name.Equals("Default_Sprite"))
+            if (SafeArray<GameTile>(tileArray, y, 1) && tileArray[y, 1].spriteRenderer.sprite.name.Equals("Default_Sprite"))
             {
                 movableCheckArray[y, 0] = true;
             }
-            if (tileArray[y, column - 2].GetComponent<SpriteRenderer>().sprite.name.Equals("Default_Sprite"))
+            if (SafeArray<GameTile>(tileArray, y, column-2) && tileArray[y, column - 2].spriteRenderer.sprite.name.Equals("Default_Sprite"))
             {
                 movableCheckArray[y, column - 1] = true;
             }
@@ -315,4 +324,18 @@ public class StageManager : MonoBehaviour
         }
     }
 
+
+    // 2차원 배열 방어 코드
+    public static bool SafeArray<T>(T[,] array, int row, int col)
+    {
+        if(array != null && array[row, col] != null)
+        {
+            return true;
+        }
+        else
+        {
+            Debug.Log(array.ToString() + " " + row.ToString() + "," + col.ToString() + "  is Array null");
+            return false;
+        }
+    }
 }
