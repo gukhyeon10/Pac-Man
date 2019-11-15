@@ -11,14 +11,18 @@ public class CharacterBase : MonoBehaviour
     //이동 목표 Transform
     protected Transform target;
     protected Transform character;
+    protected static CharacterBase pac;
 
     //타일 29행 23열
     protected const int column = 23;
     protected const int line = 29;
 
+    protected AStarNode[,] AStarCheckArray = new AStarNode[line, column];
+    protected Queue<AStarNode> openQueue = new Queue<AStarNode>();
+
     //목표 위치 좌표
-    protected int row;
-    protected int col;
+    public int row;
+    public int col;
 
     protected float speed = 2f;
 
@@ -50,12 +54,23 @@ public class CharacterBase : MonoBehaviour
         character.position = target.position;
     }
 
+    void InitBfsCheckArray()
+    {
+        for(int i=0; i<line; i++)
+        {
+            for(int j = 0; j< column; j++)
+            {
+                AStarCheckArray[i, j] = new AStarNode(i, j, i, j, 99999);
+            }
+        }
+    }
+
 
     // 각 캐릭터 별 재정의 함수
     protected virtual void CharacterMove()
     {
         // 기본 움직임 (랜덤 방향)
-        if (target == null) // 타겟 null 처리
+        if (!SafeTarget(target)) // 타겟 null 처리
         {
             return;
         }
@@ -150,4 +165,96 @@ public class CharacterBase : MonoBehaviour
         }
     }
 
+    // 팩맨 추적 경로
+    protected void PathTracking()
+    {
+        if (SafeTarget(pac.transform))
+        {
+            if (character.position == target.position)
+            {
+                InitBfsCheckArray();
+                PathFinding(this.row, this.col);
+                target = tileArray[row, col].transform;
+            }
+
+            character.position = Vector3.MoveTowards(character.position, target.position, speed * Time.deltaTime);
+        }
+    }
+
+    // 최단 경로 찾기
+    void PathFinding(int row, int col)
+    {
+        AStarNode startNode = new AStarNode(row, col, row, col, 0);
+        openQueue.Clear();
+        openQueue.Enqueue(startNode);
+
+        while(openQueue.Count>0)
+        {
+            AStarNode node = openQueue.Dequeue();
+
+            if(node.row == pac.row && node.col == pac.col)
+            {
+                int count = node.count;
+                AStarNode reverse = node;
+                for(int i=0; i< count; i++)
+                {
+                    int preRow = AStarCheckArray[reverse.row, reverse.col].preRow;
+                    int preCol = AStarCheckArray[reverse.row, reverse.col].preCol;
+
+                    if (preRow == this.row && preCol == this.col)
+                    {
+                        this.row = reverse.row;
+                        this.col = reverse.col;
+                        return;
+                    }
+                    else
+                    {
+                        reverse.row = preRow;
+                        reverse.col = preCol;
+                    }
+                    
+                }
+                break;
+            }
+
+            if(node.row -1 > 0 && movableCheckArray[node.row - 1, node.col] && AStarCheckArray[node.row - 1, node.col].count > node.count + 1)
+            {
+                AStarCheckArray[node.row - 1, node.col] = new AStarNode(node.row - 1, node.col, node.row, node.col, node.count + 1);
+                openQueue.Enqueue(AStarCheckArray[node.row - 1, node.col]);
+            }
+
+            if (node.row + 1< line && movableCheckArray[node.row + 1, node.col] && AStarCheckArray[node.row + 1, node.col].count > node.count + 1)
+            {
+                AStarCheckArray[node.row + 1, node.col] = new AStarNode(node.row + 1, node.col, node.row, node.col, node.count + 1);
+                openQueue.Enqueue(AStarCheckArray[node.row + 1, node.col]);
+            }
+
+            if (node.col - 1 > 0 && movableCheckArray[node.row, node.col - 1] && AStarCheckArray[node.row, node.col - 1].count > node.count + 1)
+            {
+                AStarCheckArray[node.row, node.col - 1] = new AStarNode(node.row, node.col - 1, node.row, node.col, node.count + 1);
+                openQueue.Enqueue(AStarCheckArray[node.row, node.col-1]);
+            }
+
+            if (node.col + 1< column && movableCheckArray[node.row, node.col + 1] && AStarCheckArray[node.row, node.col + 1].count > node.count + 1)
+            {
+                AStarCheckArray[node.row, node.col + 1] = new AStarNode(node.row, node.col + 1, node.row, node.col, node.count + 1);
+                openQueue.Enqueue(AStarCheckArray[node.row, node.col + 1]);
+            }
+        }
+
+    }
+
+    // 타겟 방어 코드
+    protected bool SafeTarget<T>(T target)
+    {
+        if(target != null)
+        {
+            return true;
+        }
+        else
+        {
+            Debug.Log("Pac is null");
+            return false;
+        }
+    }
 }

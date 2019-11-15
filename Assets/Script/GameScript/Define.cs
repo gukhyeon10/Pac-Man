@@ -66,4 +66,18 @@ enum EResult
 }
 
 
+public struct AStarNode
+{
+    public int count;
+    public int preRow, preCol;
+    public int row, col;
 
+    public AStarNode(int row, int col, int preRow, int preCol, int count)
+    {
+        this.row = row;
+        this.col = col;
+        this.preRow = preRow;
+        this.preCol = preCol;
+        this.count = count;
+    }
+}

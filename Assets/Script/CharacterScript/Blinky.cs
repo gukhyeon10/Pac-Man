@@ -11,7 +11,8 @@ public class Blinky : CharacterBase
     // Update is called once per frame
     void Update()
     {
-        base.CharacterMove();
+        // base.CharacterMove();
+        base.PathTracking();
     }
 
 

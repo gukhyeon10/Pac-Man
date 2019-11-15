@@ -8,6 +8,11 @@ public class PacMan : CharacterBase
     int moveDirect = (int)EDirect.EAST;
     bool isInput = false;
 
+    void Start()
+    {
+        pac = this;    
+    }
+
     void Update()
     {
         KeyboardInput();

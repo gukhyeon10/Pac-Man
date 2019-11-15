@@ -912,6 +912,11 @@
     <Row>12</Row>
     <Column>15</Column>
   </Wall>
+  <Character>
+    <Number>1</Number>
+    <Row>12</Row>
+    <Column>16</Column>
+  </Character>
   <Wall>
     <Rot>270</Rot>
     <Number>2</Number>
@@ -1008,11 +1013,6 @@
     <Row>14</Row>
     <Column>6</Column>
   </Wall>
-  <Character>
-    <Number>1</Number>
-    <Row>14</Row>
-    <Column>7</Column>
-  </Character>
   <Character>
     <Number>3</Number>
     <Row>14</Row>
