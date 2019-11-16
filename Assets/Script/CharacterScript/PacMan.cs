@@ -5,7 +5,6 @@ using UnityEngine;
 public class PacMan : CharacterBase
 {
     int inputDirect = (int)EDirect.EAST;
-    int moveDirect = (int)EDirect.EAST;
     bool isInput = false;
 
     void Start()

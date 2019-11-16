@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Pinky : CharacterBase
 {
+    bool isLookPac = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,17 +30,33 @@ public class Pinky : CharacterBase
         }
         else
         {
-            base.CharacterMove();
+            if (isLookPac == false && GhostLookPac())
+            {
+                isLookPac = true;
+                StartCoroutine(TrackingTime());
+            }
+
+            if (isLookPac)
+            {
+                base.PathTracking();
+            }
+            else
+            {
+                base.CharacterMove();
+
+            }
         }
-        //base.PathTracking();
     }
 
     IEnumerator GhostRespawnCoolTime()
     {
-        yield return new WaitForSeconds(3f);
-        isRespawn = true;
-
         yield return new WaitForSeconds(5f);
-        isReturn = true;
+        isRespawn = true;
+    }
+
+    IEnumerator TrackingTime()
+    {
+        yield return new WaitForSeconds(5f);
+        isLookPac = false;
     }
 }

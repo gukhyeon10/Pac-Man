@@ -5,20 +5,32 @@ using UnityEngine;
 public class Blinky : CharacterBase
 {
     
-    bool isTurn = false;
-    
+    bool isLookPac = false;
 
     // Update is called once per frame
     void Update()
     {
-        // base.CharacterMove();
-        base.PathTracking();
+        if(isLookPac == false && GhostLookPac())
+        {
+            isLookPac = true;
+            StartCoroutine(TrackingTime());
+        }
+
+        if(isLookPac)
+        {
+            base.PathTracking();
+        }
+        else
+        {
+            base.CharacterMove();
+
+        }
     }
 
-
-    // 블링키 AI
-    protected override void CharacterMove()
+    IEnumerator TrackingTime()
     {
-        
+
+        yield return new WaitForSeconds(5f);
+        isLookPac = false;
     }
 }

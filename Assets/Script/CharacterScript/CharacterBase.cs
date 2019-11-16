@@ -26,6 +26,7 @@ public class CharacterBase : MonoBehaviour
     public int col;
     protected bool isRespawn = false, isReturn = false;
 
+    protected int moveDirect = (int)EDirect.EAST;
     protected float speed = 2f;
 
     public void InitCharacter()
@@ -109,60 +110,134 @@ public class CharacterBase : MonoBehaviour
             }
             else
             {
-                movableList.Clear();
-                if (movableCheckArray[row, col - 1])
+                bool isTurn = true;
+                switch(moveDirect)
                 {
-                    movableList.Add((int)EDirect.WEST);
-                }
-                if (movableCheckArray[row, col + 1])
-                {
-                    movableList.Add((int)EDirect.EAST);
-                }
-                if (movableCheckArray[row - 1, col])
-                {
-                    movableList.Add((int)EDirect.NORTH);
-                }
-                if (movableCheckArray[row + 1, col])
-                {
-                    movableList.Add((int)EDirect.SOUTH);
+                    case (int)EDirect.EAST:
+                        {
+                            if (movableCheckArray[row, col + 1])
+                            {
+                                isTurn = false;
+                            }
+                            break;
+                        }
+                    case (int)EDirect.WEST:
+                        {
+                            if (movableCheckArray[row, col - 1])
+                            {
+                                isTurn = false;
+                            }
+                            break;
+                        }
+                    case (int)EDirect.SOUTH:
+                        {
+                            if (movableCheckArray[row + 1, col])
+                            {
+                                isTurn = false;
+                            }
+                            break;
+                        }
+                    case (int)EDirect.NORTH:
+                        {
+                            if (movableCheckArray[row - 1, col])
+                            {
+                                isTurn = false;
+                            }
+                            break;
+                        }
                 }
 
-                if (movableList.Count > 0)
+                if(isTurn)
                 {
-                    int index = Random.Range(0, movableList.Count);
-                    switch (movableList[index])
+                    movableList.Clear();
+                    if (movableCheckArray[row, col - 1])
                     {
-                        case (int)EDirect.WEST:
-                            {
-                                col--;
-                                break;
-                            }
+                        movableList.Add((int)EDirect.WEST);
+                    }
+                    if (movableCheckArray[row, col + 1])
+                    {
+                        movableList.Add((int)EDirect.EAST);
+                    }
+                    if (movableCheckArray[row - 1, col])
+                    {
+                        movableList.Add((int)EDirect.NORTH);
+                    }
+                    if (movableCheckArray[row + 1, col])
+                    {
+                        movableList.Add((int)EDirect.SOUTH);
+                    }
+
+                    if (movableList.Count > 0)
+                    {
+                        int index = Random.Range(0, movableList.Count);
+                        switch (movableList[index])
+                        {
+                            case (int)EDirect.WEST:
+                                {
+                                    col--;
+                                    moveDirect = (int)EDirect.WEST;
+                                    break;
+                                }
+                            case (int)EDirect.EAST:
+                                {
+                                    col++;
+                                    moveDirect = (int)EDirect.EAST;
+                                    break;
+                                }
+                            case (int)EDirect.NORTH:
+                                {
+                                    row--;
+                                    moveDirect = (int)EDirect.NORTH;
+                                    break;
+                                }
+                            case (int)EDirect.SOUTH:
+                                {
+                                    row++;
+                                    moveDirect = (int)EDirect.SOUTH;
+                                    break;
+                                }
+                        }
+
+                    }
+                }
+                else
+                {
+                    switch (moveDirect)
+                    {
                         case (int)EDirect.EAST:
                             {
                                 col++;
+                                moveDirect = (int)EDirect.EAST;
                                 break;
                             }
-                        case (int)EDirect.NORTH:
+                        case (int)EDirect.WEST:
                             {
-                                row--;
+                                col--;
+                                moveDirect = (int)EDirect.WEST;
                                 break;
                             }
                         case (int)EDirect.SOUTH:
                             {
                                 row++;
+                                moveDirect = (int)EDirect.SOUTH;
+                                break;
+                            }
+                        case (int)EDirect.NORTH:
+                            {
+                                row--;
+                                moveDirect = (int)EDirect.NORTH;
                                 break;
                             }
                     }
+                }
 
-                    if(StageManager.SafeArray<GameTile>(tileArray, row, col))
-                    {
-                        target = tileArray[row, col].transform;
-                    }
-                    else
-                    {
-                        target = null;
-                    }
-
+                if (StageManager.SafeArray<GameTile>(tileArray, row, col))
+                {
+                    target = tileArray[row, col].transform;
+                }
+                else
+                {
+                    target = null;
                 }
 
             }
@@ -205,6 +280,54 @@ public class CharacterBase : MonoBehaviour
             target = tileArray[row, col].transform;
         }
         character.position = Vector3.MoveTowards(character.position, target.position, speed * Time.deltaTime);
+    }
+
+    protected bool GhostLookPac()
+    {
+        int lookRow, lookCol;
+        lookRow = this.row;
+        lookCol = this.col;
+
+        for(int i=0; i<5; i++)
+        {
+            switch (moveDirect)
+            {
+                case (int)EDirect.EAST:
+                    {
+                        lookCol++;
+                        break;
+                    }
+                case (int)EDirect.WEST:
+                    {
+                        lookCol--;
+                        break;
+                    }
+                case (int)EDirect.SOUTH:
+                    {
+                        lookRow++;
+                        break;
+                    }
+                case (int)EDirect.NORTH:
+                    {
+                        lookRow--;
+                        break;
+                    }
+            }
+
+            if(lookRow >= 0 && lookRow < line && lookCol >= 0 && lookCol < column && movableCheckArray[lookRow, lookCol])
+            {
+                if (lookRow == pac.row && lookCol == pac.col)
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+        return false;
     }
 
     // 팩맨 추적 경로
