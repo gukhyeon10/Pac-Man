@@ -14,5 +14,6 @@ public class Inky : CharacterBase
     void Update()
     {
         base.CharacterMove();
+        //base.PathTracking();
     }
 }

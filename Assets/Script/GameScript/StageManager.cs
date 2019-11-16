@@ -41,6 +41,8 @@ public class StageManager : MonoBehaviour
 
     public GameTile[,] tileArray = new GameTile[line, column];
     public bool[,] movableCheckArray = new bool[line, column];
+    public bool[,] ghostRespawnMovableCheckArray = new bool[line, column];
+    public int ghostRespawnRow, ghostRespawnCol;
 
     int currentStage = 1;  // 현재 스테이지
     int normalCount;  // 노말 아이템 총 개수
@@ -138,6 +140,7 @@ public class StageManager : MonoBehaviour
                 if (SafeArray<bool>(movableCheckArray, i / column, i % column))
                 {
                     movableCheckArray[(i / column), (i % column)] = true;
+                    ghostRespawnMovableCheckArray[(i / column), (i % column)] = true;
                 }
 
             }
@@ -146,6 +149,7 @@ public class StageManager : MonoBehaviour
                 if (SafeArray<bool>(movableCheckArray, i / column, i % column))
                 {
                     movableCheckArray[(i / column), (i % column)] = false;
+                    ghostRespawnMovableCheckArray[(i / column), (i % column)] = true;
                 }
 
             }
@@ -172,10 +176,18 @@ public class StageManager : MonoBehaviour
             col = int.Parse(node.SelectSingleNode("Column").InnerText);
             objectNumber = int.Parse(node.SelectSingleNode("Number").InnerText);
 
+
             tileArray[row, col].spriteRenderer.sprite = spriteManager.wallSpriteArray[objectNumber];
             tileArray[row, col].transform.eulerAngles = new Vector3(0f, 0f, float.Parse(node.SelectSingleNode("Rot").InnerText));
 
             movableCheckArray[row, col] = false;
+            ghostRespawnMovableCheckArray[row, col] = false;
+            if (objectNumber == (int)EWall.CENTERDOOR)
+            {
+                ghostRespawnMovableCheckArray[row, col] = true;
+                ghostRespawnRow = row;
+                ghostRespawnCol = col;
+            }
         }
 
 

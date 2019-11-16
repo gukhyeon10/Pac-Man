@@ -6,6 +6,7 @@ public class CharacterBase : MonoBehaviour
 {
     protected GameTile[,] tileArray;
     protected bool[,] movableCheckArray;
+    protected bool[,] ghostRespawnMovableCheckArray;
     protected List<int> movableList = new List<int>();   // 갈 수 있는 방향 리스트
 
     //이동 목표 Transform
@@ -23,6 +24,7 @@ public class CharacterBase : MonoBehaviour
     //목표 위치 좌표
     public int row;
     public int col;
+    protected bool isRespawn = false, isReturn = false;
 
     protected float speed = 2f;
 
@@ -32,6 +34,7 @@ public class CharacterBase : MonoBehaviour
         character = this.transform;
         tileArray = StageManager.Instance.tileArray;
         movableCheckArray = StageManager.Instance.movableCheckArray;
+        ghostRespawnMovableCheckArray = StageManager.Instance.ghostRespawnMovableCheckArray;
 
         row = 2;
         col = 2;
@@ -46,6 +49,7 @@ public class CharacterBase : MonoBehaviour
         character = this.transform;
         tileArray = StageManager.Instance.tileArray;
         movableCheckArray = StageManager.Instance.movableCheckArray;
+        ghostRespawnMovableCheckArray = StageManager.Instance.ghostRespawnMovableCheckArray;
 
         row = x;
         col = y;
@@ -165,6 +169,44 @@ public class CharacterBase : MonoBehaviour
         }
     }
 
+    // 유령 리스폰
+    protected void GhostRespawn()
+    {
+        if(character.position == target.position)
+        {
+
+            if (row == StageManager.Instance.ghostRespawnRow-1 && col == StageManager.Instance.ghostRespawnCol)
+            {
+                isRespawn = false;
+                return;
+            }
+
+            InitBfsCheckArray();
+            PathFinding(this.row, this.col, StageManager.Instance.ghostRespawnRow - 1, StageManager.Instance.ghostRespawnCol, ghostRespawnMovableCheckArray);
+            target = tileArray[row, col].transform;
+        }
+
+        character.position = Vector3.MoveTowards(character.position, target.position, speed * Time.deltaTime);
+    }
+
+    // 유령 리턴
+    protected void GhostReturn()
+    {
+        if(character.position == target.position)
+        {
+            if(row == StageManager.Instance.ghostRespawnRow + 1 && col == StageManager.Instance.ghostRespawnCol)
+            {
+                isReturn = false;
+                return;
+            }
+
+            InitBfsCheckArray();
+            PathFinding(this.row, this.col, StageManager.Instance.ghostRespawnRow + 1, StageManager.Instance.ghostRespawnCol, ghostRespawnMovableCheckArray);
+            target = tileArray[row, col].transform;
+        }
+        character.position = Vector3.MoveTowards(character.position, target.position, speed * Time.deltaTime);
+    }
+
     // 팩맨 추적 경로
     protected void PathTracking()
     {
@@ -173,7 +215,7 @@ public class CharacterBase : MonoBehaviour
             if (character.position == target.position)
             {
                 InitBfsCheckArray();
-                PathFinding(this.row, this.col);
+                PathFinding(this.row, this.col, pac.row, pac.col, movableCheckArray);
                 target = tileArray[row, col].transform;
             }
 
@@ -182,7 +224,7 @@ public class CharacterBase : MonoBehaviour
     }
 
     // 최단 경로 찾기
-    void PathFinding(int row, int col)
+    void PathFinding(int row, int col, int targetRow, int targetCol, bool[,] movableCheckArray)
     {
         AStarNode startNode = new AStarNode(row, col, row, col, 0);
         openQueue.Clear();
@@ -192,7 +234,7 @@ public class CharacterBase : MonoBehaviour
         {
             AStarNode node = openQueue.Dequeue();
 
-            if(node.row == pac.row && node.col == pac.col)
+            if(node.row == targetRow && node.col == targetCol)
             {
                 int count = node.count;
                 AStarNode reverse = node;
@@ -205,6 +247,7 @@ public class CharacterBase : MonoBehaviour
                     {
                         this.row = reverse.row;
                         this.col = reverse.col;
+                        
                         return;
                     }
                     else
