@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Inky : CharacterBase
 {
+    bool isLookPac = false;
     // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
-        
+        isLookPac = false;
     }
 
     // Update is called once per frame

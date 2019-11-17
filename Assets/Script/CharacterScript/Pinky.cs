@@ -14,12 +14,18 @@ public class Pinky : CharacterBase
 
     void OnEnable()
     {
+        isLookPac = false;
         StartCoroutine(GhostRespawnCoolTime());
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(!isContinue)
+        {
+            return;
+        }
+
         if(isRespawn)
         {
             GhostRespawn();
@@ -38,13 +44,11 @@ public class Pinky : CharacterBase
 
             if (isLookPac)
             {
-                //base.PathTracking();
-                ForwardPathTracking();
+                PathTracking();
             }
             else
             {
                 CharacterMove();
-
             }
         }
     }

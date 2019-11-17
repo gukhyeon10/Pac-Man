@@ -38,6 +38,7 @@ public class UIManager : MonoBehaviour
     int basicScore = 0;  // 이전 스테이지까지의 획득 스코어
     int score;       // 진행 중인 스테이지의 획득 스코어
     int remainTime;
+    public bool isContinue = true;
 
     void Awake()
     {
@@ -92,6 +93,7 @@ public class UIManager : MonoBehaviour
     //타이머 시작
     public void StartTimer(int time)
     {
+        isContinue = true;
         StartCoroutine(TimeCheck(time));
     }
 
@@ -103,13 +105,23 @@ public class UIManager : MonoBehaviour
 
         while (remainTime > 0)
         {
+            if(!isContinue)
+            {
+                break;
+            }
             yield return new WaitForSeconds(1f);
+
             remainTime--;
             UpdateTimer(remainTime);
         }
 
-        Debug.Log("Time Over");
-        StageManager.Instance.StageResult((int)EResult.TIME_OVER);
+        if (isContinue)
+        {
+            Debug.Log("Time Over");
+            StageManager.Instance.StageResult((int)EResult.TIME_OVER);
+
+        }
+
     }
 
     //결과 화면

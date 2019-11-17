@@ -7,9 +7,19 @@ public class Blinky : CharacterBase
     
     bool isLookPac = false;
 
+    void OnEnable()
+    {
+        isLookPac = false;    
+    }
+
     // Update is called once per frame
     void Update()
     {
+        if(!isContinue)
+        {
+            return;
+        }
+
         if(isLookPac == false && GhostLookPac())
         {
             isLookPac = true;

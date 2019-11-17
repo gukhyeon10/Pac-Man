@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Xml;
 using System;
+using UnityEngine.UI;
 
 public class StageManager : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class StageManager : MonoBehaviour
 
     [SerializeField]
     Canvas gameCanvas;
+    [SerializeField]
+    Text resultText;
 
     [SerializeField]
     Transform tileGrid;
@@ -89,6 +92,7 @@ public class StageManager : MonoBehaviour
                 }
                 else
                 {
+
                     _UIManager.UIPanelActive();
                     gameCanvas.gameObject.SetActive(true);
                     InitStage();
@@ -114,6 +118,12 @@ public class StageManager : MonoBehaviour
                 tileArray[row, col].spriteRenderer.sprite = defaultSprite;
             }
         }
+
+        for(int i=0; i<CharacterArray.Length; i++)
+        {
+            CharacterArray[i].isContinue = true;
+        }
+        
         InitMovableArray();
         itemManager.InitItem();
     }
@@ -302,13 +312,44 @@ public class StageManager : MonoBehaviour
     //Stage Fail 연출
     IEnumerator StageFailEffect(int result)
     {
+        for(int i=0; i<CharacterArray.Length; i++)
+        {
+            CharacterArray[i].isContinue = false;
+        }
+        UIManager.Instance.isContinue = false;
+
         //여기에 게임오버 연출
-        yield return null;
+        yield return new WaitForSeconds(2f);
+        StageFail(result);
+        yield return new WaitForSeconds(2f);
+        resultText.gameObject.SetActive(false);
         gameCanvas.gameObject.SetActive(false);
         _UIManager.ResultPanelActive(result);
 
         yield return new WaitForSeconds(1f);
         StartCoroutine(TapWaitCorutine());
+    }
+
+    public void StageFail(int result)
+    {
+        for(int i = 0; i<CharacterArray.Length; i++)
+        {
+            CharacterArray[i].gameObject.SetActive(false);
+        }
+        
+        if(result == (int)EResult.GAME_OVER)
+        {
+            resultText.text = "GAME OVER";
+        }
+        else if(result == (int)EResult.TIME_OVER)
+        {
+            resultText.text = "TIME OVER";
+        }
+
+        itemManager.ItemPanelDisable();
+        resultText.gameObject.SetActive(true);
+        resultText.transform.position = tileArray[ghostRespawnRow + 4, ghostRespawnCol].transform.position;
+
     }
 
 

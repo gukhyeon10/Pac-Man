@@ -14,6 +14,10 @@ public class PacMan : CharacterBase
 
     void Update()
     {
+        if(!isContinue)
+        {
+            return;
+        }
         KeyboardInput();
         CharacterMove();
     }
@@ -200,6 +204,7 @@ public class PacMan : CharacterBase
         if (collision.tag.Equals("Ghost"))
         {
             StageManager.Instance.StageResult((int)EResult.GAME_OVER);
+            
         }
     }
 

@@ -33,7 +33,9 @@ public class ItemManager : MonoBehaviour
     //아이템 초기화
     public void InitItem()
     {
-        for(int i=0; i<itemList.Count; i++)
+        itemPanel.gameObject.SetActive(true);
+
+        for (int i=0; i<itemList.Count; i++)
         {
             Destroy(itemList[i]);
         }
@@ -63,5 +65,10 @@ public class ItemManager : MonoBehaviour
         }
 
         return normalCount;
+    }
+
+    public void ItemPanelDisable()
+    {
+        itemPanel.gameObject.SetActive(false);
     }
 }
