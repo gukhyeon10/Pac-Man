@@ -28,6 +28,8 @@ public class CharacterBase : MonoBehaviour
 
     protected int moveDirect = (int)EDirect.EAST;
     protected float speed = 2f;
+    protected int targetRow, targetCol;
+    protected bool isTarget = false;
 
     public void InitCharacter()
     {
@@ -282,6 +284,7 @@ public class CharacterBase : MonoBehaviour
         character.position = Vector3.MoveTowards(character.position, target.position, speed * Time.deltaTime);
     }
 
+    // 가는 뱡향 일정 거리 이내에 팩맨이 있는지 확인
     protected bool GhostLookPac()
     {
         int lookRow, lookCol;
@@ -344,6 +347,99 @@ public class CharacterBase : MonoBehaviour
 
             character.position = Vector3.MoveTowards(character.position, target.position, speed * Time.deltaTime);
         }
+    }
+    
+    //팩맨 일정 거리 앞 추적 경로
+    protected void ForwardPathTracking()
+    {
+        if(SafeTarget(pac.transform))
+        {
+            if(character.position == target.position)
+            {
+                if (isTarget)
+                {
+                    if (this.row == targetRow && this.col == targetCol)
+                    {
+                        isTarget = false;
+                        PathFinding(this.row, this.col, pac.row, pac.col, movableCheckArray);
+                        target = tileArray[row, col].transform;
+                    }
+                    else
+                    {
+                        PathFinding(this.row, this.col, targetRow, targetCol, movableCheckArray);
+                        target = tileArray[row, col].transform;
+                    }
+                }
+                else
+                {
+                    InitBfsCheckArray();
+                    for (int i = 3; i > 0; i--)
+                    {
+                        switch (pac.moveDirect)
+                        {
+                            case (int)EDirect.EAST:
+                                {
+                                    if (pac.row > 0 && pac.row < line && pac.col + i > 0 && pac.col + i < column && movableCheckArray[pac.row, pac.col + i])
+                                    {
+                                        isTarget = true;
+                                        targetRow = pac.row;
+                                        targetCol = pac.col + i;
+                                    }
+                                    break;
+                                }
+                            case (int)EDirect.WEST:
+                                {
+                                    if (pac.row > 0 && pac.row < line && pac.col - i > 0 && pac.col - i < column && movableCheckArray[pac.row, pac.col - i])
+                                    {
+                                        isTarget = true;
+                                        targetRow = pac.row;
+                                        targetCol = pac.col - i;
+                                    }
+                                    break;
+                                }
+                            case (int)EDirect.NORTH:
+                                {
+                                    if (pac.row - i > 0 && pac.row - i < line && pac.col> 0 && pac.col < column && movableCheckArray[pac.row - i, pac.col])
+                                    {
+                                        isTarget = true;
+                                        targetCol = pac.col;
+                                        targetRow = pac.row - i;
+                                    }
+                                    break;
+                                }
+                            case (int)EDirect.SOUTH:
+                                {
+                                    if (pac.row + i > 0 && pac.row + i < line && pac.col> 0 && pac.col< column && movableCheckArray[pac.row + i, pac.col])
+                                    {
+                                        isTarget = true;
+                                        targetCol = pac.col;
+                                        targetRow = pac.row + i;
+                                    }
+                                    break;
+                                }
+                        }
+                        if(isTarget)
+                        {
+                            break;
+                        }
+                    }
+                    if(!isTarget)
+                    {
+                        targetRow = pac.row;
+                        targetCol = pac.col;
+                    }
+                    PathFinding(this.row, this.col, targetRow, targetCol, movableCheckArray);
+                    target = tileArray[row, col].transform;
+                }       
+            }
+
+            character.position = Vector3.MoveTowards(character.position, target.position, speed * Time.deltaTime);
+        }
+    }
+
+    protected void FindDirect()
+    {
+
     }
 
     // 최단 경로 찾기

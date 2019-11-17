@@ -22,11 +22,11 @@ public class Pinky : CharacterBase
     {
         if(isRespawn)
         {
-            base.GhostRespawn();
+            GhostRespawn();
         }
         else if(isReturn)
         {
-            base.GhostReturn();
+            GhostReturn();
         }
         else
         {
@@ -38,11 +38,12 @@ public class Pinky : CharacterBase
 
             if (isLookPac)
             {
-                base.PathTracking();
+                //base.PathTracking();
+                ForwardPathTracking();
             }
             else
             {
-                base.CharacterMove();
+                CharacterMove();
 
             }
         }
