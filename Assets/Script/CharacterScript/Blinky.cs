@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Blinky : CharacterBase
 {
-    
+    [SerializeField]
+    Animator animator;
+
     bool isLookPac = false;
 
     void OnEnable()
@@ -19,6 +21,8 @@ public class Blinky : CharacterBase
         {
             return;
         }
+
+        animator.SetInteger("DIRECT", moveDirect);
 
         if(isLookPac == false && GhostLookPac())
         {

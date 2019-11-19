@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Pinky : CharacterBase
 {
+    [SerializeField]
+    Animator animator;
+
     bool isLookPac = false;
 
     // Start is called before the first frame update
@@ -26,7 +29,9 @@ public class Pinky : CharacterBase
             return;
         }
 
-        if(isRespawn)
+        animator.SetInteger("DIRECT", moveDirect);
+
+        if (isRespawn)
         {
             GhostRespawn();
         }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CharacterBase : MonoBehaviour
 {
+    
     protected GameTile[,] tileArray;
     protected bool[,] movableCheckArray;
     protected bool[,] ghostRespawnMovableCheckArray;

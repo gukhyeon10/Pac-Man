@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class PacMan : CharacterBase
 {
-    int inputDirect = (int)EDirect.EAST;
-    bool isInput = false;
 
     [SerializeField]
     Animator animator;
+
+    int inputDirect = (int)EDirect.EAST;
+    bool isInput = false;
 
     void Start()
     {
@@ -19,8 +20,11 @@ public class PacMan : CharacterBase
     {
         if(!isContinue)
         {
+            animator.SetBool("GAMEOVER", true);
             return;
         }
+
+        animator.SetInteger("DIRECT", moveDirect);
         KeyboardInput();
         CharacterMove();
     }
@@ -31,6 +35,7 @@ public class PacMan : CharacterBase
         {
             isInput = true;
             inputDirect = (int)EDirect.WEST;
+
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
@@ -130,7 +135,6 @@ public class PacMan : CharacterBase
                             break;
                         }
                 }
-                animator.SetInteger("DIRECT", moveDirect);
             }
         }
         else
