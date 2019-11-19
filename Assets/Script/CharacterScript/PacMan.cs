@@ -7,6 +7,9 @@ public class PacMan : CharacterBase
     int inputDirect = (int)EDirect.EAST;
     bool isInput = false;
 
+    [SerializeField]
+    Animator animator;
+
     void Start()
     {
         pac = this;    
@@ -127,7 +130,7 @@ public class PacMan : CharacterBase
                             break;
                         }
                 }
-
+                animator.SetInteger("DIRECT", moveDirect);
             }
         }
         else

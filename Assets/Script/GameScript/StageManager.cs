@@ -45,7 +45,7 @@ public class StageManager : MonoBehaviour
     public GameTile[,] tileArray = new GameTile[line, column];
     public bool[,] movableCheckArray = new bool[line, column];
     public bool[,] ghostRespawnMovableCheckArray = new bool[line, column];
-    public int ghostRespawnRow, ghostRespawnCol;
+    public int ghostRespawnRow = line/2, ghostRespawnCol = column/2;
 
     int currentStage = 1;  // 현재 스테이지
     int normalCount;  // 노말 아이템 총 개수
