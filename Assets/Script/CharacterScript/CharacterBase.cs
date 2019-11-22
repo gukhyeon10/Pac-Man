@@ -13,7 +13,8 @@ public class CharacterBase : MonoBehaviour
     //이동 목표 Transform
     protected Transform target;
     protected Transform character;
-    protected static CharacterBase pac;
+    //팩맨 캐릭터
+    public static PacMan pac;
 
     //타일 29행 23열
     protected const int column = 23;

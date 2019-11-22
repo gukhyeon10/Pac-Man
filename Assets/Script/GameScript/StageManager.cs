@@ -316,6 +316,8 @@ public class StageManager : MonoBehaviour
         {
             CharacterArray[i].isContinue = false;
         }
+        CharacterBase.pac.InitPac();
+
         UIManager.Instance.isContinue = false;
 
         //여기에 게임오버 연출

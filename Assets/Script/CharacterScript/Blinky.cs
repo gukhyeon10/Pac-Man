@@ -24,6 +24,12 @@ public class Blinky : CharacterBase
 
         animator.SetInteger("DIRECT", moveDirect);
 
+        //팩맨 슈퍼모드일 경우 유령 모습 변화
+        if (pac.GetIsSuperMode)
+        {
+
+        }
+
         if(isLookPac == false && GhostLookPac())
         {
             isLookPac = true;
@@ -46,5 +52,16 @@ public class Blinky : CharacterBase
 
         yield return new WaitForSeconds(5f);
         isLookPac = false;
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag.Equals("Pac"))
+        {
+            if(pac.GetIsSuperMode)
+            {
+                
+            }
+        }
     }
 }

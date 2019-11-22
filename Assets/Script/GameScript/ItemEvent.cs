@@ -12,7 +12,6 @@ public class ItemEvent : MonoBehaviour
     {
         if (collision.transform.tag.ToUpper().Equals(Enum.GetName(typeof(ECharacter), (int)ECharacter.PAC)))
         {
-
             ItemBuff(); 
             gameObject.SetActive(false);
 
@@ -33,6 +32,7 @@ public class ItemEvent : MonoBehaviour
                 }
             case (int)EItem.SUPER:
                 {
+                    CharacterBase.pac.SuperMode();
                     score = 50;
                     break;
                 }

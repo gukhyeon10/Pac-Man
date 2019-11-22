@@ -9,11 +9,19 @@ public class PacMan : CharacterBase
     Animator animator;
 
     int inputDirect = (int)EDirect.EAST;
+    bool isSuperMode = false;
     bool isInput = false;
 
     void Start()
     {
         pac = this;    
+    }
+
+    // 팩맨 슈퍼모드 초기화
+    public void InitPac()
+    {
+        StopAllCoroutines();
+        isSuperMode = false;
     }
 
     void Update()
@@ -205,13 +213,30 @@ public class PacMan : CharacterBase
         }
     }
 
+    // 무적 모드
+    public void SuperMode()
+    {
+        Debug.Log("Super Mode!");
+        isSuperMode = true;
+        StartCoroutine(SuperModeCorutine());
+    }
+
+    // 무적 버프
+    IEnumerator SuperModeCorutine()
+    {
+        yield return new WaitForSeconds(10f);
+        isSuperMode = false;
+    }
+
     //이동 중에 유령이랑 부딪히면 게임오버
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag.Equals("Ghost"))
         {
-            StageManager.Instance.StageResult((int)EResult.GAME_OVER);
-            
+            if(!isSuperMode)
+            {
+                StageManager.Instance.StageResult((int)EResult.GAME_OVER);
+            }
         }
     }
 
@@ -238,6 +263,14 @@ public class PacMan : CharacterBase
     {
         inputDirect = (int)EDirect.SOUTH;
         isInput = true;
+    }
+
+    public bool GetIsSuperMode
+    {
+        get
+        {
+            return this.isSuperMode;
+        }
     }
 
 }
