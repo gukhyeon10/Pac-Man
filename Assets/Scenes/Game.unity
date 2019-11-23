@@ -11867,6 +11867,7 @@ MonoBehaviour:
   row: 0
   col: 0
   isContinue: 1
+  boxCollider: {fileID: 286862927}
   animator: {fileID: 286862928}
 --- !u!50 &286862926
 Rigidbody2D:
@@ -24039,6 +24040,7 @@ MonoBehaviour:
   row: 0
   col: 0
   isContinue: 1
+  boxCollider: {fileID: 585298909}
   animator: {fileID: 585298910}
 --- !u!50 &585298908
 Rigidbody2D:
@@ -26604,6 +26606,7 @@ MonoBehaviour:
   row: 0
   col: 0
   isContinue: 1
+  boxCollider: {fileID: 655340406}
   animator: {fileID: 655340407}
 --- !u!50 &655340405
 Rigidbody2D:
@@ -51209,6 +51212,7 @@ MonoBehaviour:
   row: 0
   col: 0
   isContinue: 1
+  boxCollider: {fileID: 1255253878}
   animator: {fileID: 1255253879}
 --- !u!212 &1255253876
 SpriteRenderer:
@@ -57155,6 +57159,7 @@ MonoBehaviour:
   row: 0
   col: 0
   isContinue: 1
+  boxCollider: {fileID: 1431457109}
   animator: {fileID: 1431457110}
 --- !u!61 &1431457109
 BoxCollider2D:

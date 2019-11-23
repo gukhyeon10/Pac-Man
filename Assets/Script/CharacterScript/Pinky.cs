@@ -4,27 +4,21 @@ using UnityEngine;
 
 public class Pinky : CharacterBase
 {
-    [SerializeField]
-    Animator animator;
 
     bool isLookPac = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-      //  StartCoroutine(GhostRespawnCoolTime());
-    }
 
     void OnEnable()
     {
         isLookPac = false;
+        respawnCoolTime = 5f;
         StartCoroutine(GhostRespawnCoolTime());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!isContinue)
+        if (!isContinue)
         {
             return;
         }
@@ -33,14 +27,24 @@ public class Pinky : CharacterBase
 
         if (isRespawn)
         {
-            GhostRespawn();
+            base.GhostRespawn();
         }
-        else if(isReturn)
+        else if (isReturn)
         {
-            GhostReturn();
+            base.GhostReturn();
         }
         else
         {
+            //팩맨 슈퍼모드일 경우 유령 모습 변화
+            if (pac.GetIsSuperMode)
+            {
+                animator.SetBool("SCARE", true);
+            }
+            else
+            {
+                animator.SetBool("SCARE", false);
+            }
+
             if (isLookPac == false && GhostLookPac())
             {
                 isLookPac = true;
@@ -49,18 +53,18 @@ public class Pinky : CharacterBase
 
             if (isLookPac)
             {
-                PathTracking();
+                base.PathTracking();
             }
             else
             {
-                CharacterMove();
+                base.CharacterMove();
             }
         }
     }
 
     IEnumerator GhostRespawnCoolTime()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(respawnCoolTime);
         isRespawn = true;
     }
 
@@ -68,5 +72,18 @@ public class Pinky : CharacterBase
     {
         yield return new WaitForSeconds(5f);
         isLookPac = false;
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag.Equals("Pac"))
+        {
+            if (pac.GetIsSuperMode)
+            {
+                boxCollider.enabled = false;
+                isReturn = true;
+                animator.SetBool("RETURN", true);
+            }
+        }
     }
 }

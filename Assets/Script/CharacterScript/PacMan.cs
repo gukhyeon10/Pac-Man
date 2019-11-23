@@ -5,9 +5,6 @@ using UnityEngine;
 public class PacMan : CharacterBase
 {
 
-    [SerializeField]
-    Animator animator;
-
     int inputDirect = (int)EDirect.EAST;
     bool isSuperMode = false;
     bool isInput = false;
@@ -233,6 +230,7 @@ public class PacMan : CharacterBase
     {
         if (collision.tag.Equals("Ghost"))
         {
+
             if(!isSuperMode)
             {
                 StageManager.Instance.StageResult((int)EResult.GAME_OVER);

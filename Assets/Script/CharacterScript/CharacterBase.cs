@@ -27,10 +27,14 @@ public class CharacterBase : MonoBehaviour
     public int row;
     public int col;
     protected bool isRespawn = false, isReturn = false;
-
+    protected float respawnCoolTime = 10f;
+    
     protected int moveDirect = (int)EDirect.EAST;
     protected float speed = 2f;
     public bool isContinue = true;
+
+    public Animator animator;
+    public BoxCollider2D boxCollider;
 
     public void InitCharacter()
     {
@@ -247,6 +251,26 @@ public class CharacterBase : MonoBehaviour
         character.position = Vector3.MoveTowards(character.position, target.position, speed * Time.deltaTime);
     }
 
+    protected void GhostTurnCheck(int targetRow, int targetCol, int pivotRow, int pivotCol)
+    {
+        if(targetRow == pivotRow - 1)
+        {
+            moveDirect = (int)EDirect.NORTH;
+        }
+        else if(targetRow == pivotRow + 1)
+        {
+            moveDirect = (int)EDirect.SOUTH;
+        }
+        else if(targetCol == pivotCol - 1)
+        {
+            moveDirect = (int)EDirect.WEST;
+        }
+        else if(targetCol == pivotCol + 1)
+        {
+            moveDirect = (int)EDirect.EAST;
+        }
+    }
+
     // 유령 리스폰
     protected void GhostRespawn()
     {
@@ -254,7 +278,7 @@ public class CharacterBase : MonoBehaviour
         {
 
             if (row == StageManager.Instance.ghostRespawnRow-1 && col == StageManager.Instance.ghostRespawnCol)
-            {
+            { 
                 isRespawn = false;
                 return;
             }
@@ -275,6 +299,10 @@ public class CharacterBase : MonoBehaviour
             if(row == StageManager.Instance.ghostRespawnRow + 1 && col == StageManager.Instance.ghostRespawnCol)
             {
                 isReturn = false;
+                animator.SetBool("RETURN", false);
+                boxCollider.enabled = true;
+
+                respawnCoolTime = 10f;
                 return;
             }
 
@@ -282,7 +310,7 @@ public class CharacterBase : MonoBehaviour
             PathFinding(this.row, this.col, StageManager.Instance.ghostRespawnRow + 1, StageManager.Instance.ghostRespawnCol, ghostRespawnMovableCheckArray);
             target = tileArray[row, col].transform;
         }
-        character.position = Vector3.MoveTowards(character.position, target.position, speed * Time.deltaTime);
+        character.position = Vector3.MoveTowards(character.position, target.position, speed * Time.deltaTime * 1.5f);
     }
 
     // 가는 뱡향 일정 거리 이내에 팩맨이 있는지 확인
@@ -374,9 +402,11 @@ public class CharacterBase : MonoBehaviour
 
                     if (preRow == this.row && preCol == this.col)
                     {
+                        GhostTurnCheck(reverse.row, reverse.col, this.row, this.col);
+
                         this.row = reverse.row;
                         this.col = reverse.col;
-                        
+
                         return;
                     }
                     else
@@ -415,6 +445,8 @@ public class CharacterBase : MonoBehaviour
         }
 
     }
+    
+
 
     // 타겟 방어 코드
     protected bool SafeTarget<T>(T target)

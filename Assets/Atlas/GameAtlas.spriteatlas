@@ -108,12 +108,19 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 18c4687bbf83fbe439da1ac62beac1d3, type: 3}
     - {fileID: 2800000, guid: 2e2f462f7fddd684bbfd1529fa34f7a7, type: 3}
     - {fileID: 2800000, guid: b03cbfc850e3f674aba2dbc1eaf4028c, type: 3}
-    totalSpriteSurfaceArea: 74384
+    - {fileID: 2800000, guid: b301c3d628ffec64a8205b8e1a396bae, type: 3}
+    - {fileID: 2800000, guid: 10fb2d1190fc5d9428f6f54b36e0b543, type: 3}
+    - {fileID: 2800000, guid: 433149e2416da3e43a024bcca7d25de4, type: 3}
+    - {fileID: 2800000, guid: 7fc6f444eefb8f44cbc0a30c1d3f9a4a, type: 3}
+    - {fileID: 2800000, guid: 0efa21b333df4244b8374ef998704703, type: 3}
+    - {fileID: 2800000, guid: 56b5774527cc9fc4998b059a8d191acc, type: 3}
+    totalSpriteSurfaceArea: 75920
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: 840f7a506d89c92419bde8aeb4fa1ba5, type: 3}
   - {fileID: 21300000, guid: 77a71fb063642be49a542cc37a0c16cc, type: 3}
+  - {fileID: 21300000, guid: 10fb2d1190fc5d9428f6f54b36e0b543, type: 3}
   - {fileID: 21300000, guid: e932d621f2ed9da4b989e920397d4b76, type: 3}
   - {fileID: 21300000, guid: 7357a0c164f05ea4ebb2a14c95bb37f7, type: 3}
   - {fileID: 21300000, guid: c4d784c1901328c4898c058eccc9f268, type: 3}
@@ -122,21 +129,26 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 63e1a62243d1e494492869ae007ef490, type: 3}
   - {fileID: 21300000, guid: 29c33f82e60f08e41b48b6b6794dff3f, type: 3}
   - {fileID: 21300000, guid: adac1d9217616204894dd185f62e9a10, type: 3}
+  - {fileID: 21300000, guid: 433149e2416da3e43a024bcca7d25de4, type: 3}
   - {fileID: 21300000, guid: 8fcf0e0342808b6468175a86a9892ca0, type: 3}
   - {fileID: 21300000, guid: 3ce85133684db064e9f52aaf1836ee87, type: 3}
   - {fileID: 21300000, guid: a5143433a06296344b821a449abd63aa, type: 3}
   - {fileID: 21300000, guid: e8b201432acf1b340876990a5865b5ad, type: 3}
+  - {fileID: 21300000, guid: 0efa21b333df4244b8374ef998704703, type: 3}
   - {fileID: 21300000, guid: c66048f3e83978e438e22bdfe0f5ff28, type: 3}
   - {fileID: 21300000, guid: c44079f30ea5a304b939b797d9f08f84, type: 3}
   - {fileID: 21300000, guid: c6973d144d4ed8e43be196d01b6b3e34, type: 3}
+  - {fileID: 21300000, guid: 7fc6f444eefb8f44cbc0a30c1d3f9a4a, type: 3}
   - {fileID: 21300000, guid: ff3ac3f42b12a5d4593ad4e17fd23de0, type: 3}
   - {fileID: 21300000, guid: 32ed0a054d580824ab78618351188b52, type: 3}
   - {fileID: 21300000, guid: e6233535a2741f143a16223903e1c782, type: 3}
   - {fileID: 21300000, guid: 96a32445e282e804db93e54591a55a97, type: 3}
+  - {fileID: 21300000, guid: 56b5774527cc9fc4998b059a8d191acc, type: 3}
   - {fileID: 21300000, guid: 1d92df45612307f4cbc480c52ef692ee, type: 3}
   - {fileID: 21300000, guid: 71d032b5d3c9fb94083ce920ad78148a, type: 3}
   - {fileID: 21300000, guid: 106e4de5d17f96744b88deca84e91127, type: 3}
   - {fileID: 21300000, guid: c52bce2684ebd684ea2e2b5130eea8a2, type: 3}
+  - {fileID: 21300000, guid: b301c3d628ffec64a8205b8e1a396bae, type: 3}
   - {fileID: 21300000, guid: 39538bd641b429148aadfc67daf5da14, type: 3}
   - {fileID: 21300000, guid: 7f53e2e6649bbed4aa4dccde6bf7dbc6, type: 3}
   - {fileID: 21300000, guid: e998a93762cad574685e0dde21079970, type: 3}
@@ -181,6 +193,7 @@ SpriteAtlas:
   m_PackedSpriteNamesToIndex:
   - Default_Sprite
   - Pinky_DOWN_0
+  - Ghost_Scare_1
   - Inky_RIGHT_1
   - Inky_DOWN_1
   - Item_Berry
@@ -189,21 +202,26 @@ SpriteAtlas:
   - Pop_Sprite
   - Clyde_LEFT_0
   - Pac_EAST_1
+  - Ghost_Return_DOWN
   - Pac_SOUTH_1
   - Item_Cherry
   - Edge_Sprite
   - Clyde_DOWN_0
+  - Ghost_Return_RIGHT
   - Item_Super
   - Pinky_DOWN_1
   - Pac_WEST_1
+  - Ghost_Return_LEFT
   - Blinky_DOWN_1
   - Pac_GAME_OVER_1
   - RightDoor_Sprite
   - Pac_GAME_OVER_3
+  - Ghost_Return_UP
   - Clyde_LEFT_1
   - Pac_GAME_OVER_5
   - Pinky_LEFT_1
   - Pinky_LEFT_0
+  - Ghost_Scare_0
   - Item_Nomal
   - Inky_UP_0
   - Blinky_UP_0

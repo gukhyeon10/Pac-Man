@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Clyde : CharacterBase
 {
-    [SerializeField]
-    Animator animator;
 
-    // Start is called before the first frame update
-    void Start()
+    bool isLookPac = false;
+
+    void OnEnable()
     {
-        
+        isLookPac = false;
+        respawnCoolTime = 25f;
+        StartCoroutine(GhostRespawnCoolTime());
     }
 
     // Update is called once per frame
@@ -23,8 +24,66 @@ public class Clyde : CharacterBase
         }
 
         animator.SetInteger("DIRECT", moveDirect);
-        //base.GhostRespawn();
-        base.CharacterMove();
-        //base.PathTracking();
+
+        if (isRespawn)
+        {
+            base.GhostRespawn();
+        }
+        else if (isReturn)
+        {
+            base.GhostReturn();
+        }
+        else
+        {
+            //팩맨 슈퍼모드일 경우 유령 모습 변화
+            if (pac.GetIsSuperMode)
+            {
+                animator.SetBool("SCARE", true);
+            }
+            else
+            {
+                animator.SetBool("SCARE", false);
+            }
+
+            if (isLookPac == false && GhostLookPac())
+            {
+                isLookPac = true;
+                StartCoroutine(TrackingTime());
+            }
+
+            if (isLookPac)
+            {
+                base.PathTracking();
+            }
+            else
+            {
+                base.CharacterMove();
+            }
+        }
+    }
+
+    IEnumerator GhostRespawnCoolTime()
+    {
+        yield return new WaitForSeconds(respawnCoolTime);
+        isRespawn = true;
+    }
+
+    IEnumerator TrackingTime()
+    {
+        yield return new WaitForSeconds(5f);
+        isLookPac = false;
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag.Equals("Pac"))
+        {
+            if (pac.GetIsSuperMode)
+            {
+                boxCollider.enabled = false;
+                isReturn = true;
+                animator.SetBool("RETURN", true);
+            }
+        }
     }
 }

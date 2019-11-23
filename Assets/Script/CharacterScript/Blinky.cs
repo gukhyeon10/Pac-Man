@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Blinky : CharacterBase
 {
-    [SerializeField]
-    Animator animator;
+    
 
     bool isLookPac = false;
 
     void OnEnable()
     {
-        isLookPac = false;    
+        isLookPac = false;
+        respawnCoolTime = 5f;
+        //StartCoroutine(GhostRespawnCoolTime());
     }
 
     // Update is called once per frame
@@ -24,32 +25,53 @@ public class Blinky : CharacterBase
 
         animator.SetInteger("DIRECT", moveDirect);
 
-        //팩맨 슈퍼모드일 경우 유령 모습 변화
-        if (pac.GetIsSuperMode)
+        if(isRespawn)
         {
-
+            base.GhostRespawn();
         }
-
-        if(isLookPac == false && GhostLookPac())
+        else if(isReturn)
         {
-            isLookPac = true;
-            StartCoroutine(TrackingTime());
-        }
-
-        if(isLookPac)
-        {
-            base.PathTracking();
+            base.GhostReturn();
         }
         else
         {
-            base.CharacterMove();
+            //팩맨 슈퍼모드일 경우 유령 모습 변화
+            if (pac.GetIsSuperMode)
+            {
+                animator.SetBool("SCARE", true);
+            }
+            else
+            {
+                animator.SetBool("SCARE", false);
+            }
 
+            if (isLookPac == false && GhostLookPac())
+            {
+                isLookPac = true;
+                StartCoroutine(TrackingTime());
+            }
+
+            if (isLookPac)
+            {
+                base.PathTracking();
+            }
+            else
+            {
+                base.CharacterMove();
+            }
         }
+
+
+    }
+
+    IEnumerator GhostRespawnCoolTime()
+    {
+        yield return new WaitForSeconds(respawnCoolTime);
+        isRespawn = true;
     }
 
     IEnumerator TrackingTime()
     {
-
         yield return new WaitForSeconds(5f);
         isLookPac = false;
     }
@@ -60,7 +82,9 @@ public class Blinky : CharacterBase
         {
             if(pac.GetIsSuperMode)
             {
-                
+                boxCollider.enabled = false;
+                isReturn = true;
+                animator.SetBool("RETURN", true);
             }
         }
     }
