@@ -45,7 +45,7 @@ public class StageManager : MonoBehaviour
     public GameTile[,] tileArray = new GameTile[line, column];
     public bool[,] movableCheckArray = new bool[line, column];
     public bool[,] ghostRespawnMovableCheckArray = new bool[line, column];
-    public int ghostRespawnRow = line/2, ghostRespawnCol = column/2;
+    public int ghostRespawnRow = line/2, ghostRespawnCol = column/2;  //유령 디폴트 초기 위치
 
     int currentStage = 1;  // 현재 스테이지
     int normalCount;  // 노말 아이템 총 개수
@@ -115,7 +115,10 @@ public class StageManager : MonoBehaviour
         {
             for (int col = 0; col < column; col++)
             {
-                tileArray[row, col].spriteRenderer.sprite = defaultSprite;
+                if(SafeArray(tileArray, row, col))
+                {
+                    tileArray[row, col].spriteRenderer.sprite = defaultSprite;
+                }
             }
         }
 
@@ -383,7 +386,7 @@ public class StageManager : MonoBehaviour
     // 2차원 배열 방어 코드
     public static bool SafeArray<T>(T[,] array, int row, int col)
     {
-        if(array != null && array[row, col] != null)
+        if(array != null && row>=0 && row <=line && col>=0 && col<=column && array[row, col] != null)
         {
             return true;
         }

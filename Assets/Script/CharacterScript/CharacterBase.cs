@@ -251,6 +251,7 @@ public class CharacterBase : MonoBehaviour
         character.position = Vector3.MoveTowards(character.position, target.position, speed * Time.deltaTime);
     }
 
+    //방향 전환 시 어느 방향인지 인지 함수
     protected void GhostTurnCheck(int targetRow, int targetCol, int pivotRow, int pivotCol)
     {
         if(targetRow == pivotRow - 1)
@@ -301,6 +302,7 @@ public class CharacterBase : MonoBehaviour
                 isReturn = false;
                 animator.SetBool("RETURN", false);
                 boxCollider.enabled = true;
+                
 
                 respawnCoolTime = 10f;
                 return;
