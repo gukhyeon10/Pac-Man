@@ -346,6 +346,11 @@
     <Row>4</Row>
     <Column>14</Column>
   </Wall>
+  <Item>
+    <Number>1</Number>
+    <Row>4</Row>
+    <Column>15</Column>
+  </Item>
   <Wall>
     <Rot>270</Rot>
     <Number>2</Number>

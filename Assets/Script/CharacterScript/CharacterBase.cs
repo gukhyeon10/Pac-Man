@@ -348,7 +348,7 @@ public class CharacterBase : MonoBehaviour
                     }
             }
 
-            if(lookRow >= 0 && lookRow < line && lookCol >= 0 && lookCol < column && movableCheckArray[lookRow, lookCol])
+            if(StageManager.SafeArray(movableCheckArray, lookRow, lookCol) && movableCheckArray[lookRow, lookCol])
             {
                 if (lookRow == pac.row && lookCol == pac.col)
                 {

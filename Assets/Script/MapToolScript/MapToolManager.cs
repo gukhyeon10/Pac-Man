@@ -17,7 +17,7 @@ public class MapToolManager : MonoBehaviour
     [SerializeField]
     SpriteManager spriteManager;
 
-    Transform[,] tileArray;
+    TileEvent[,] tileArray;
 
     const int line = 27;
     const int column = 21;
@@ -25,10 +25,10 @@ public class MapToolManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        tileArray = new Transform[line, column];
+        tileArray = new TileEvent[line, column];
         for(int i=0; i<tileGrid.childCount; i++)
         {
-            tileArray[i / column, i % column] = tileGrid.GetChild(i);
+            tileArray[i / column, i % column] = tileGrid.GetChild(i).GetComponent<TileEvent>();
         }
     }
     
@@ -39,7 +39,7 @@ public class MapToolManager : MonoBehaviour
         {
             for(int col = 0; col<column; col++)
             {
-                tileArray[row, col].GetComponent<TileEvent>().InitTile();
+                tileArray[row, col].InitTile();
             }
         }
     }
@@ -65,7 +65,7 @@ public class MapToolManager : MonoBehaviour
             {
                 for (int col = 0; col < column; col++)
                 {
-                    TileEvent tileInfo = tileArray[row, col].GetComponent<TileEvent>();
+                    TileEvent tileInfo = tileArray[row, col];
 
                     //오브젝트 종류 분기
                     XmlNode node = xmlDoc.CreateNode(XmlNodeType.Element, "Default", string.Empty);
@@ -80,7 +80,7 @@ public class MapToolManager : MonoBehaviour
                                     root.AppendChild(node);
 
                                     XmlElement rot = xmlDoc.CreateElement("Rot");
-                                    rot.InnerText = tileArray[row, col].eulerAngles.z.ToString();
+                                    rot.InnerText = tileArray[row, col].transform.eulerAngles.z.ToString();
                                     node.AppendChild(rot);   
                                 }
                                 break;
@@ -154,8 +154,8 @@ public class MapToolManager : MonoBehaviour
                 col = int.Parse(node.SelectSingleNode("Column").InnerText);
                 rot = float.Parse(node.SelectSingleNode("Rot").InnerText);
                 
-                tileArray[row - 1, col - 1].eulerAngles = new Vector3(0f, 0f, rot);
-                tileArray[row - 1, col - 1].GetComponent<TileEvent>().InitTile((int)EObjectType.WALL, objectNumber, spriteManager.wallSpriteArray[objectNumber]);
+                tileArray[row - 1, col - 1].transform.eulerAngles = new Vector3(0f, 0f, rot);
+                tileArray[row - 1, col - 1].InitTile((int)EObjectType.WALL, objectNumber, spriteManager.wallSpriteArray[objectNumber]);
 
             }
 
@@ -167,7 +167,7 @@ public class MapToolManager : MonoBehaviour
                 row = int.Parse(node.SelectSingleNode("Row").InnerText);
                 col = int.Parse(node.SelectSingleNode("Column").InnerText);
                 
-                tileArray[row - 1, col - 1].GetComponent<TileEvent>().InitTile((int)EObjectType.ITEM, objectNumber, spriteManager.itemSpriteArray[objectNumber]);
+                tileArray[row - 1, col - 1].InitTile((int)EObjectType.ITEM, objectNumber, spriteManager.itemSpriteArray[objectNumber]);
             }
 
             // 캐릭터 오브젝트 로드
@@ -178,7 +178,7 @@ public class MapToolManager : MonoBehaviour
                 row = int.Parse(node.SelectSingleNode("Row").InnerText);
                 col = int.Parse(node.SelectSingleNode("Column").InnerText);
                 
-                tileArray[row - 1, col - 1].GetComponent<TileEvent>().InitTile((int)EObjectType.CHARACTER, objectNumber, spriteManager.characterSpriteArray[objectNumber]);
+                tileArray[row - 1, col - 1].InitTile((int)EObjectType.CHARACTER, objectNumber, spriteManager.characterSpriteArray[objectNumber]);
             }
             
             Debug.Log("Data Load Success!");
