@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 181801320616665786}
   - component: {fileID: 181801320616665785}
   - component: {fileID: 181801320616665784}
-  - component: {fileID: 2733003102983261391}
   - component: {fileID: -3268267718868800663}
+  - component: {fileID: -4866851586227036246}
   m_Layer: 0
   m_Name: Item_Berry
   m_TagString: Untagged
@@ -109,19 +109,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.27976304, y: 0.2884726}
   m_EdgeRadius: 0
---- !u!114 &2733003102983261391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 181801320616665787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44d9bb49da7ec5748a974dfdd778cb0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemNumber: 0
 --- !u!50 &-3268267718868800663
 Rigidbody2D:
   serializedVersion: 4
@@ -143,3 +130,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-4866851586227036246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181801320616665787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54c794ecc7af3494696a7922a329a159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemScore: 200
+  pacTag: Pac
+  isNormal: 0
+  isSuper: 0

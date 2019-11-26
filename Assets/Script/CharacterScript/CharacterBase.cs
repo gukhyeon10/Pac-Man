@@ -49,6 +49,9 @@ public class CharacterBase : MonoBehaviour
 
         target = tileArray[row, col].transform;
         character.position = target.position;
+
+        isRespawn = false;
+        isReturn = false;
     }
 
     // 캐릭터 초기화 오버로딩
@@ -64,6 +67,9 @@ public class CharacterBase : MonoBehaviour
 
         target = tileArray[row, col].transform;
         character.position = target.position;
+
+        isRespawn = false;
+        isReturn = false;
     }
 
     void InitBfsCheckArray()

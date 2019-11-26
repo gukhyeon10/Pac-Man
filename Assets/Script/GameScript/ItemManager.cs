@@ -14,7 +14,7 @@ public class ItemManager : MonoBehaviour
 
     //아이템 생성할 프리팹
     [SerializeField]
-    GameObject[] itemPrefabArray = new GameObject[Enum.GetNames(typeof(EItem)).Length];
+    GameObject[] itemPrefabArray;
 
     //인게임 아이템 POOL
     List<GameObject> itemList = new List<GameObject>();
@@ -55,9 +55,9 @@ public class ItemManager : MonoBehaviour
 
             //아이템 생성
             GameObject item = Instantiate(itemPrefabArray[objectNumber], tileArray[row,col].transform.position, Quaternion.identity, itemPanel);
-            item.GetComponent<ItemEvent>().itemNumber = objectNumber;
             itemList.Add(item);
 
+            //노말 아이템 개수 누적
             if(objectNumber == (int)EItem.NORMAL)
             {
                 normalCount++;

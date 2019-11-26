@@ -11,6 +11,7 @@ public class Inky : CharacterBase
     {
         isLookPac = false;
         respawnCoolTime = 15f;
+        StopAllCoroutines();
         StartCoroutine(GhostRespawnCoolTime());
     }
 

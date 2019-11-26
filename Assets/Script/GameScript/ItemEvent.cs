@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+// 이 스크립트는 사용하지 않음 -> ItemScript로 대체
+
 public class ItemEvent : MonoBehaviour
 {
     public int itemNumber;
@@ -21,52 +23,5 @@ public class ItemEvent : MonoBehaviour
     //아이템 점수 및 효과
     void ItemBuff()
     {
-        int score;
-        switch(itemNumber)
-        {
-            case (int)EItem.NORMAL:
-                {
-                    StageManager.Instance.EatNormal();
-                    score = 10;
-                    break;
-                }
-            case (int)EItem.SUPER:
-                {
-                    CharacterBase.pac.SuperMode();
-                    score = 50;
-                    break;
-                }
-            case (int)EItem.CHERRY:
-                {
-                    score = 100;
-                    break;
-                }
-            case (int)EItem.BERRY:
-                {
-                    score = 200;
-                    break;
-                }
-            case (int)EItem.PEAR:
-                {
-                    score = 300;
-                    break;
-                }
-            case (int)EItem.APPLE:
-                {
-                    score = 400;
-                    break;
-                }
-            case (int)EItem.MELON:
-                {
-                    score = 500;
-                    break;
-                }
-            default:
-                {
-                    score = 0;
-                    break;
-                }
-        }
-        UIManager.Instance.UpdateScore(score);
     }
 }

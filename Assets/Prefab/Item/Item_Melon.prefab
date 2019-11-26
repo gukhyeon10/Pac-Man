@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 5074726756238597397}
   - component: {fileID: 5074726756238597396}
   - component: {fileID: 5074726756238597387}
-  - component: {fileID: 5729669562537871774}
   - component: {fileID: -4275412786096664058}
+  - component: {fileID: 8795578744945904731}
   m_Layer: 0
   m_Name: Item_Melon
   m_TagString: Untagged
@@ -109,19 +109,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.29006666, y: 0.31086904}
   m_EdgeRadius: 0
---- !u!114 &5729669562537871774
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5074726756238597398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44d9bb49da7ec5748a974dfdd778cb0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemNumber: 0
 --- !u!50 &-4275412786096664058
 Rigidbody2D:
   serializedVersion: 4
@@ -143,3 +130,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &8795578744945904731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5074726756238597398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54c794ecc7af3494696a7922a329a159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemScore: 500
+  pacTag: Pac
+  isNormal: 0
+  isSuper: 0

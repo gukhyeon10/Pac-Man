@@ -11867,8 +11867,8 @@ MonoBehaviour:
   row: 0
   col: 0
   isContinue: 1
-  boxCollider: {fileID: 286862927}
   animator: {fileID: 286862928}
+  boxCollider: {fileID: 286862927}
 --- !u!50 &286862926
 Rigidbody2D:
   serializedVersion: 4
@@ -11914,7 +11914,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.57583594, y: 0.50454295}
+  m_Size: {x: 0.28791794, y: 0.25227144}
   m_EdgeRadius: 0
 --- !u!95 &286862928
 Animator:
@@ -24040,8 +24040,8 @@ MonoBehaviour:
   row: 0
   col: 0
   isContinue: 1
-  boxCollider: {fileID: 585298909}
   animator: {fileID: 585298910}
+  boxCollider: {fileID: 585298909}
 --- !u!50 &585298908
 Rigidbody2D:
   serializedVersion: 4
@@ -24087,7 +24087,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.57496524, y: 0.49515015}
+  m_Size: {x: 0.2874826, y: 0.24757504}
   m_EdgeRadius: 0
 --- !u!95 &585298910
 Animator:
@@ -26606,8 +26606,8 @@ MonoBehaviour:
   row: 0
   col: 0
   isContinue: 1
-  boxCollider: {fileID: 655340406}
   animator: {fileID: 655340407}
+  boxCollider: {fileID: 655340406}
 --- !u!50 &655340405
 Rigidbody2D:
   serializedVersion: 4
@@ -26653,7 +26653,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.57583594, y: 0.5045429}
+  m_Size: {x: 0.28791794, y: 0.25227144}
   m_EdgeRadius: 0
 --- !u!95 &655340407
 Animator:
@@ -51212,8 +51212,8 @@ MonoBehaviour:
   row: 0
   col: 0
   isContinue: 1
-  boxCollider: {fileID: 1255253878}
   animator: {fileID: 1255253879}
+  boxCollider: {fileID: 1255253878}
 --- !u!212 &1255253876
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -51308,7 +51308,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5724362, y: 0.4942044}
+  m_Size: {x: 0.2862181, y: 0.2471022}
   m_EdgeRadius: 0
 --- !u!95 &1255253879
 Animator:
@@ -57159,8 +57159,8 @@ MonoBehaviour:
   row: 0
   col: 0
   isContinue: 1
-  boxCollider: {fileID: 1431457109}
   animator: {fileID: 1431457110}
+  boxCollider: {fileID: 1431457109}
 --- !u!61 &1431457109
 BoxCollider2D:
   m_ObjectHideFlags: 0

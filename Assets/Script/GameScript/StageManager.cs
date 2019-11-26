@@ -189,17 +189,21 @@ public class StageManager : MonoBehaviour
             col = int.Parse(node.SelectSingleNode("Column").InnerText);
             objectNumber = int.Parse(node.SelectSingleNode("Number").InnerText);
 
-
-            tileArray[row, col].spriteRenderer.sprite = spriteManager.wallSpriteArray[objectNumber];
-            tileArray[row, col].transform.eulerAngles = new Vector3(0f, 0f, float.Parse(node.SelectSingleNode("Rot").InnerText));
-
-            movableCheckArray[row, col] = false;
-            ghostRespawnMovableCheckArray[row, col] = false;
-            if (objectNumber == (int)EWall.CENTERDOOR)
+            if(SafeArray(tileArray, row, col))
             {
-                ghostRespawnMovableCheckArray[row, col] = true;
-                ghostRespawnRow = row;
-                ghostRespawnCol = col;
+                tileArray[row, col].spriteRenderer.sprite = spriteManager.wallSpriteArray[objectNumber];
+                tileArray[row, col].transform.eulerAngles = new Vector3(0f, 0f, float.Parse(node.SelectSingleNode("Rot").InnerText));
+
+                movableCheckArray[row, col] = false;
+                ghostRespawnMovableCheckArray[row, col] = false;
+
+                if (objectNumber == (int)EWall.CENTERDOOR)
+                {
+                    ghostRespawnMovableCheckArray[row, col] = true;
+                    ghostRespawnRow = row;
+                    ghostRespawnCol = col;
+                }
+
             }
         }
 
@@ -308,6 +312,7 @@ public class StageManager : MonoBehaviour
         {
             yield return new WaitForSeconds(1f);
             currentStage++;
+            CharacterBase.pac.InitPac();
             StartCoroutine(TapWaitCorutine());
         }
     }
@@ -386,13 +391,13 @@ public class StageManager : MonoBehaviour
     // 2차원 배열 방어 코드
     public static bool SafeArray<T>(T[,] array, int row, int col)
     {
-        if(array != null && row>=0 && row <=line && col>=0 && col<=column && array[row, col] != null)
+        if(array != null && row>=0 && row <line && col>=0 && col<column && array[row, col] != null)
         {
             return true;
         }
         else
         {
-            Debug.Log(array.ToString() + " " + row.ToString() + "," + col.ToString() + "  is Array null");
+            //Debug.Log(array.ToString() + " " + row.ToString() + "," + col.ToString() + "  is Array null");
             return false;
         }
     }

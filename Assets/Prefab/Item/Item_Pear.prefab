@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 316819712954360982}
   - component: {fileID: 316819712954360977}
   - component: {fileID: 316819712954360976}
-  - component: {fileID: -6141978606737114738}
   - component: {fileID: 1157033927951718346}
+  - component: {fileID: 4195076240684880948}
   m_Layer: 0
   m_Name: Item_Pear
   m_TagString: Untagged
@@ -109,19 +109,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.31681278, y: 0.30214918}
   m_EdgeRadius: 0
---- !u!114 &-6141978606737114738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 316819712954360983}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44d9bb49da7ec5748a974dfdd778cb0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemNumber: 0
 --- !u!50 &1157033927951718346
 Rigidbody2D:
   serializedVersion: 4
@@ -143,3 +130,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4195076240684880948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316819712954360983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54c794ecc7af3494696a7922a329a159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemScore: 300
+  pacTag: Pac
+  isNormal: 0
+  isSuper: 0

@@ -8,10 +8,11 @@ public class PacMan : CharacterBase
     int inputDirect = (int)EDirect.EAST;
     bool isSuperMode = false;
     bool isInput = false;
+    Coroutine superModeCoroutine;
 
-    void Start()
+    void Awake()
     {
-        pac = this;    
+        pac = this;
     }
 
     // 팩맨 슈퍼모드 초기화
@@ -214,8 +215,13 @@ public class PacMan : CharacterBase
     public void SuperMode()
     {
         Debug.Log("Super Mode!");
+        // 슈퍼모드일 경우 버프 코루틴 중지시키고 새로 코루틴 실행
+        if (isSuperMode)     
+        {
+            StopCoroutine(superModeCoroutine);
+        }
         isSuperMode = true;
-        StartCoroutine(SuperModeCorutine());
+        superModeCoroutine = StartCoroutine(SuperModeCorutine());
     }
 
     // 무적 버프

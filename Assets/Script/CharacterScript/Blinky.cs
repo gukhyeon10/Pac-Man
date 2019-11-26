@@ -12,6 +12,7 @@ public class Blinky : CharacterBase
     {
         isLookPac = false;
         respawnCoolTime = 5f;
+        StopAllCoroutines();
         //StartCoroutine(GhostRespawnCoolTime());
     }
 

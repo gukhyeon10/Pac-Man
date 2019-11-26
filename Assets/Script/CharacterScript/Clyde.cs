@@ -11,6 +11,7 @@ public class Clyde : CharacterBase
     {
         isLookPac = false;
         respawnCoolTime = 25f;
+        StopAllCoroutines();
         StartCoroutine(GhostRespawnCoolTime());
     }
 
