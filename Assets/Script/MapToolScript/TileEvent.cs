@@ -8,12 +8,14 @@ public class TileEvent : MonoBehaviour
     MapToolCursor cursor;   // 커서 인스턴스
 
     SpriteRenderer spriteRenderer; //SpriteRenderer 컴포넌트
-    Sprite currentTileSprite;      //현재 타일 스프라이트
+    public Sprite currentTileSprite;      //현재 타일 스프라이트
     Sprite defaultSprite;          //디폴트 스프라이트
 
     public int objectType = (int)EObjectType.WALL;
     public int objectNumber = (int)EWall.DEFAULT;
-    float rot;
+    public float rot;
+
+    public int row, col;
 
     void Start()
     {
@@ -42,6 +44,18 @@ public class TileEvent : MonoBehaviour
         this.objectNumber = objectNumber;
     }
 
+    public void AutoTile(int objectType, int objectNumber, Sprite sprite, float rot)
+    {
+        // 상황에 맞는 타일로 자동완성 
+        spriteRenderer.sprite = sprite;
+        currentTileSprite = sprite;
+        this.rot = rot;
+        this.transform.eulerAngles = new Vector3(0f, 0f, rot);
+        this.objectType = objectType;
+        this.objectNumber = objectNumber;
+
+    }
+
     //커서에 의해 미리보기
     public void OnMouseOver()
     {
@@ -53,7 +67,7 @@ public class TileEvent : MonoBehaviour
         {
             this.transform.eulerAngles = Vector3.zero;
         }
-
+        
         //마우스 왼쪽 버튼 누르고 있는 상태 (드래그) 타일 정보 변환
         if (Input.GetKey(KeyCode.Mouse0))
         {
@@ -65,6 +79,11 @@ public class TileEvent : MonoBehaviour
             if (cursor.cursorType != (int)EObjectType.WALL)
             {
                 rot = 0f;
+            }
+
+            if (cursor.cursorType == (int)EObjectType.WALL && objectNumber == (int)EWall.LINE)
+            {
+                MapToolManager.Instance.TileAutoComplete(this.row, this.col, true);
             }
         }
     }
@@ -79,7 +98,7 @@ public class TileEvent : MonoBehaviour
 
     //클릭시 타일 정보 변환
     public void OnMouseDown()
-    {
+    {/*
         currentTileSprite = cursor.cursorSprite;
         rot = cursor.rot;
         objectType = cursor.cursorType;
@@ -89,8 +108,12 @@ public class TileEvent : MonoBehaviour
         {
             rot = 0f;
         }
-
+        
+        if(objectType == (int)EObjectType.WALL && objectNumber == (int)EWall.LINE)
+        {
+            MapToolManager.Instance.TileAutoComplete(this.row, this.col);
+        }
+        */
     }
-
 
 }
