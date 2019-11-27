@@ -31,8 +31,8 @@ public class TileEvent : MonoBehaviour
     {
         //기본타일로 초기화
         this.transform.eulerAngles = Vector3.zero ;
-        InitTile((int)EObjectType.WALL, (int)EWall.DEFAULT, defaultSprite);
         this.rot = 0f;
+        InitTile((int)EObjectType.WALL, (int)EWall.DEFAULT, defaultSprite);
     }
 
     public void InitTile(int objectType, int objectNumber, Sprite sprite)

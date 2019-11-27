@@ -452,6 +452,7 @@ public class MapToolManager : MonoBehaviour
         tileArray[row, col].AutoTile((int)EObjectType.WALL, (int)EWall.POP, spriteManager.wallSpriteArray[(int)EWall.POP], rot);
     }
 
+    // 랜덤 맵생성 BFS -> 맵이라 하기엔 매우 난해한 형태 
     public void RandomMap()
     {
         int pivotRow = Random.Range(0, line);
@@ -463,7 +464,7 @@ public class MapToolManager : MonoBehaviour
         mapCheckArray[pivotRow, pivotCol] = true;
 
         PrimAlgorithm();
-        
+        /*
         BfsMap(mapCheckArray, bfsQueue);
 
         for(int row = 0; row < line; row++)
@@ -491,7 +492,7 @@ public class MapToolManager : MonoBehaviour
                 }
             }
         }
-        
+        */
         /*
         for(int i = 0; i< line; i++)
         {
@@ -564,12 +565,186 @@ public class MapToolManager : MonoBehaviour
         
     }
 
+    // 프림 알고리즘으로 미로 데이터를 만든 뒤 맵에 적용
     void PrimAlgorithm()
     {
         int primLine = (line / 2) - 1;
         int primColumn = (column / 2) - 1;
-        Queue<PrimNode> primNodeQueue = new Queue<PrimNode>();
+        List<PrimNode> primNodeList = new List<PrimNode>();
+        PrimNode[,] primArray = new PrimNode[primLine, primColumn]; 
         
+        for(int i = 0; i<primLine; i++)
+        {
+            for(int j = 0; j<primColumn; j++)
+            {
+                primArray[i, j].row = i;
+                primArray[i, j].col = j;
+            }
+        }
+
+        // 기준 위치(유령 초기 위치)
+        int pivotRow = Random.Range(2, primLine-2);
+        int pivotCol = Random.Range(2, primColumn-2);
+
+        primArray[pivotRow, pivotCol].isUp = true;
+        primArray[pivotRow, pivotCol + 1].isUp = true;
+        primArray[pivotRow, pivotCol].isCheck = true;
+        primArray[pivotRow, pivotCol].isCheck = true;
+
+        int row, col;
+
+        row = pivotRow - 1;
+        col = pivotCol;
+        NearNodeCheck(row, col, (int)EDirect.NORTH, primNodeList, primArray);
+
+        row = pivotRow + 1;
+        col = pivotCol;
+        NearNodeCheck(row, col, (int)EDirect.SOUTH, primNodeList, primArray);
+
+        row = pivotRow;
+        col = pivotCol - 1;
+        NearNodeCheck(row, col, (int)EDirect.WEST, primNodeList, primArray);
+
+        row = pivotRow;
+        col = pivotCol + 1;
+        NearNodeCheck(row, col, (int)EDirect.EAST, primNodeList, primArray);
+
+
+
+        row = pivotRow - 1;
+        col = pivotCol + 1;
+        NearNodeCheck(row, col, (int)EDirect.NORTH, primNodeList, primArray);
+
+        row = pivotRow + 1;
+        col = pivotCol + 1;
+        NearNodeCheck(row, col, (int)EDirect.SOUTH, primNodeList, primArray);
+
+        row = pivotRow;
+        col = pivotCol;
+        NearNodeCheck(row, col, (int)EDirect.WEST, primNodeList, primArray);
+
+        row = pivotRow;
+        col = pivotCol + 2;
+        NearNodeCheck(row, col, (int)EDirect.EAST, primNodeList, primArray);
+
+        while(primNodeList.Count > 0)
+        {
+            int randomIndex = Random.Range(0, primNodeList.Count);
+            PrimNode node = primNodeList[randomIndex];
+
+            switch(node.parentNodeDirect)
+            {
+                case (int)EDirect.EAST:
+                    {
+                        primArray[node.row, node.col].isRight = true;
+                        break;
+                    }
+                case (int)EDirect.WEST:
+                    {
+                        primArray[node.row, node.col].isLeft = true;
+                        break;
+                    }
+                case (int)EDirect.SOUTH:
+                    {
+                        primArray[node.row, node.col].isDown = true;
+                        break;
+                    }
+                case (int)EDirect.NORTH:
+                    {
+                        primArray[node.row, node.col].isUp = true;
+                        break;
+                    }
+            }
+
+            if(node.col + 1 < primColumn)
+            {
+                NearNodeCheck(node.row, node.col + 1, (int)EDirect.EAST, primNodeList, primArray);
+            }
+            if(node.col - 1 >= 0)
+            {
+                NearNodeCheck(node.row, node.col - 1, (int)EDirect.WEST, primNodeList, primArray);
+            }
+            if(node.row + 1 < primLine)
+            {
+                NearNodeCheck(node.row + 1, node.col, (int)EDirect.SOUTH, primNodeList, primArray);
+            }
+            if(node.row - 1 >= 0)
+            {
+                NearNodeCheck(node.row - 1, node.col, (int)EDirect.NORTH, primNodeList, primArray);
+            }
+
+            primNodeList.RemoveAt(randomIndex);
+        }
+
+        Debug.Log("Prim End");
+        PrimDataSerialize(primArray);
+        
+    }
+
+    //인접한 노드들 체크
+    void NearNodeCheck(int row, int col, int parentDirect, List<PrimNode> primNodeList, PrimNode[,] primArray)
+    {
+        if (primArray[row, col].isCheck == false)
+        {
+            primArray[row, col].isCheck = true;
+            primArray[row, col].parentNodeDirect = parentDirect;
+            primNodeList.Add(primArray[row, col]);
+        }
+    }
+
+    void PrimDataSerialize(PrimNode[,] primArray)
+    {
+        for (int row = 0; row < line; row++)
+        {
+            for (int col = 0; col < column; col++)
+            {
+                tileArray[row, col].InitTile((int)EObjectType.WALL, (int)EWall.LINE, spriteManager.wallSpriteArray[(int)EWall.LINE]);
+            }
+        }
+
+        int primLine = (line / 2) - 1;
+        int primColumn = (column / 2) - 1;
+
+        for(int i=0; i<primLine; i++)
+        {
+            for(int j = 0; j< primColumn; j++)
+            {
+                tileArray[i * 2 + 2, j * 2 + 2].InitTile();
+                if(primArray[i, j].isUp)
+                {
+                    tileArray[i * 2 + 1, j * 2 + 2].InitTile();
+                }
+                if (primArray[i, j].isDown)
+                {
+                    tileArray[i * 2 + 3, j * 2 + 2].InitTile();
+                }
+                if (primArray[i, j].isLeft)
+                {
+                    tileArray[i * 2 + 2, j * 2 + 1].InitTile();
+                }
+                if (primArray[i, j].isRight)
+                {
+                    tileArray[i * 2 + 2, j * 2 + 3].InitTile();
+                }
+            }
+        }
+
+        StartCoroutine(cor());
+    }
+
+    IEnumerator cor()
+    {
+        for (int i = 0; i < line; i++)
+        {
+            for (int j = 0; j < column; j++)
+            {
+                yield return new WaitForSeconds(0.01f);
+                if(tileArray[i, j].objectType == (int)EObjectType.WALL && tileArray[i,j].objectNumber != (int)EWall.DEFAULT)
+                {
+                    TileAutoComplete(i, j, false);
+                }
+            }
+        }
     }
 
     // 배열 유효성 방어 코드
