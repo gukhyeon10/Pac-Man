@@ -452,117 +452,11 @@ public class MapToolManager : MonoBehaviour
         tileArray[row, col].AutoTile((int)EObjectType.WALL, (int)EWall.POP, spriteManager.wallSpriteArray[(int)EWall.POP], rot);
     }
 
-    // 랜덤 맵생성 BFS -> 맵이라 하기엔 매우 난해한 형태 
+
     public void RandomMap()
     {
-        int pivotRow = Random.Range(0, line);
-        int pivotCol = Random.Range(0, column);
-        bool[,] mapCheckArray = new bool[line, column];
-        Queue<int> bfsQueue = new Queue<int>();
-        bfsQueue.Enqueue(pivotRow);
-        bfsQueue.Enqueue(pivotCol);
-        mapCheckArray[pivotRow, pivotCol] = true;
-
+        //프림 알고리즘
         PrimAlgorithm();
-        /*
-        BfsMap(mapCheckArray, bfsQueue);
-
-        for(int row = 0; row < line; row++)
-        {
-            for(int col = 0; col < column; col++)
-            {
-                if(mapCheckArray[row, col])
-                {
-                    tileArray[row, col].InitTile();
-                }
-                else
-                {
-                    tileArray[row, col].InitTile((int)EObjectType.WALL, (int)EWall.LINE, spriteManager.wallSpriteArray[(int)EWall.LINE]);
-                }
-            }
-        }
-
-        for(int row = 0; row < line; row++)
-        {
-            for(int col = 0; col < column; col++)
-            {
-                if(!mapCheckArray[row,col])
-                {
-                    TileAutoComplete(row, col, false);
-                }
-            }
-        }
-        */
-        /*
-        for(int i = 0; i< line; i++)
-        {
-            string str = string.Empty;
-            for(int j= 0; j< column; j++)
-            {
-                if(mapCheckArray[i, j])
-                {
-                    str += " 0"; 
-                }
-                else
-                {
-                    str += " X";
-                }
-            }
-            Debug.Log(str);
-        }*/
-
-    }
-
-    public void BfsMap(bool[,] mapCheckArray, Queue<int> bfsQueue)
-    {
-        while(bfsQueue.Count / 2> 0)
-        {
-
-            int row = bfsQueue.Dequeue();
-            int col = bfsQueue.Dequeue();
-
-            if(Random.Range(0,10) > 1)
-            {
-                if (row - 2 >= 0 && mapCheckArray[row - 2, col] == false && col - 1 >= 0 && mapCheckArray[row - 1, col - 1] == false && col + 1 < column && mapCheckArray[row - 1, col + 1] == false && mapCheckArray[row - 1, col] == false)
-                {
-                    bfsQueue.Enqueue(row - 1);
-                    bfsQueue.Enqueue(col);
-                    mapCheckArray[row - 1, col] = true;
-                }
-
-            }
-            if(Random.Range(0, 10) > 1)
-            {
-                if (row + 2 < line && mapCheckArray[row + 2, col] == false && col - 1 >= 0 && mapCheckArray[row + 1, col - 1] == false && col + 1 < column && mapCheckArray[row + 1, col + 1] == false && mapCheckArray[row + 1, col] == false)
-                {
-                    bfsQueue.Enqueue(row + 1);
-                    bfsQueue.Enqueue(col);
-                    mapCheckArray[row + 1, col] = true;
-                }
-            }
-            
-            if(Random.Range(0, 10)> 1)
-            {
-                if (col - 2 >= 0 && mapCheckArray[row, col - 2] == false && row - 1 >= 0 && mapCheckArray[row - 1, col - 1] == false && row + 1 < line && mapCheckArray[row + 1, col - 1] == false && mapCheckArray[row, col - 1] == false)
-                {
-                    bfsQueue.Enqueue(row);
-                    bfsQueue.Enqueue(col - 1);
-                    mapCheckArray[row, col - 1] = true;
-                }
-            }
-            
-            if(Random.Range(0, 10) > 1)
-            {
-                if (col + 2 < column && mapCheckArray[row, col + 2] == false && row - 1 >= 0 && mapCheckArray[row - 1, col + 1] == false && row + 1 < line && mapCheckArray[row + 1, col + 1] == false && mapCheckArray[row, col + 1] == false)
-                {
-                    bfsQueue.Enqueue(row);
-                    bfsQueue.Enqueue(col + 1);
-                    mapCheckArray[row, col + 1] = true;
-                }
-            }
-
-        }
-        
     }
 
     // 프림 알고리즘으로 미로 데이터를 만든 뒤 맵에 적용
@@ -591,41 +485,15 @@ public class MapToolManager : MonoBehaviour
         primArray[pivotRow, pivotCol].isCheck = true;
         primArray[pivotRow, pivotCol].isCheck = true;
 
-        int row, col;
+        NearNodeCheck(pivotRow - 1, pivotCol, (int)EDirect.NORTH, primNodeList, primArray);
+        NearNodeCheck(pivotRow + 1, pivotCol, (int)EDirect.SOUTH, primNodeList, primArray);
+        NearNodeCheck(pivotRow, pivotCol - 1, (int)EDirect.WEST, primNodeList, primArray);
+        NearNodeCheck(pivotRow, pivotCol + 1, (int)EDirect.EAST, primNodeList, primArray);
 
-        row = pivotRow - 1;
-        col = pivotCol;
-        NearNodeCheck(row, col, (int)EDirect.NORTH, primNodeList, primArray);
-
-        row = pivotRow + 1;
-        col = pivotCol;
-        NearNodeCheck(row, col, (int)EDirect.SOUTH, primNodeList, primArray);
-
-        row = pivotRow;
-        col = pivotCol - 1;
-        NearNodeCheck(row, col, (int)EDirect.WEST, primNodeList, primArray);
-
-        row = pivotRow;
-        col = pivotCol + 1;
-        NearNodeCheck(row, col, (int)EDirect.EAST, primNodeList, primArray);
-
-
-
-        row = pivotRow - 1;
-        col = pivotCol + 1;
-        NearNodeCheck(row, col, (int)EDirect.NORTH, primNodeList, primArray);
-
-        row = pivotRow + 1;
-        col = pivotCol + 1;
-        NearNodeCheck(row, col, (int)EDirect.SOUTH, primNodeList, primArray);
-
-        row = pivotRow;
-        col = pivotCol;
-        NearNodeCheck(row, col, (int)EDirect.WEST, primNodeList, primArray);
-
-        row = pivotRow;
-        col = pivotCol + 2;
-        NearNodeCheck(row, col, (int)EDirect.EAST, primNodeList, primArray);
+        NearNodeCheck(pivotRow - 1, pivotCol + 1, (int)EDirect.NORTH, primNodeList, primArray);        
+        NearNodeCheck(pivotRow + 1, pivotCol + 1, (int)EDirect.SOUTH, primNodeList, primArray);
+        NearNodeCheck(pivotRow, pivotCol, (int)EDirect.WEST, primNodeList, primArray);
+        NearNodeCheck(pivotRow, pivotCol + 2, (int)EDirect.EAST, primNodeList, primArray);
 
         while(primNodeList.Count > 0)
         {
@@ -676,8 +544,8 @@ public class MapToolManager : MonoBehaviour
             primNodeList.RemoveAt(randomIndex);
         }
 
-        Debug.Log("Prim End");
-        PrimDataSerialize(primArray);
+        Debug.Log("Prim Algorithm End");
+        PrimDataCompatible(primArray, pivotRow, pivotCol);
         
     }
 
@@ -692,7 +560,8 @@ public class MapToolManager : MonoBehaviour
         }
     }
 
-    void PrimDataSerialize(PrimNode[,] primArray)
+    //프림 알고리즘 데이터 맵에 호환
+    void PrimDataCompatible(PrimNode[,] primArray, int pivotRow, int pivotCol)
     {
         for (int row = 0; row < line; row++)
         {
@@ -729,23 +598,49 @@ public class MapToolManager : MonoBehaviour
             }
         }
 
-        StartCoroutine(cor());
-    }
+        GhostRespawnArea(pivotRow * 2 + 1, pivotCol * 2 + 1);
 
-    IEnumerator cor()
-    {
+        // 타일 자동완성
         for (int i = 0; i < line; i++)
         {
             for (int j = 0; j < column; j++)
             {
-                yield return new WaitForSeconds(0.01f);
-                if(tileArray[i, j].objectType == (int)EObjectType.WALL && tileArray[i,j].objectNumber != (int)EWall.DEFAULT)
+                if (tileArray[i, j].objectType == (int)EObjectType.WALL && tileArray[i, j].objectNumber == (int)EWall.LINE)
                 {
                     TileAutoComplete(i, j, false);
                 }
             }
         }
     }
+
+    // 유령 리스폰 지역 만들기
+    void GhostRespawnArea(int pivotRow, int pivotCol)
+    {
+
+        for (int i = pivotRow - 2; i <= pivotRow + 3; i++)
+        {
+            for (int j = pivotCol - 2; j <= pivotCol + 4; j++)
+            {
+                tileArray[i, j].InitTile();
+            }
+        }
+
+        for (int j = pivotCol - 1; j <= pivotCol + 3; j++)
+        {
+            tileArray[pivotRow - 1, j].InitTile((int)EObjectType.WALL, (int)EWall.LINE, spriteManager.wallSpriteArray[(int)EWall.LINE]);
+            tileArray[pivotRow + 2, j].InitTile((int)EObjectType.WALL, (int)EWall.LINE, spriteManager.wallSpriteArray[(int)EWall.LINE]);
+        }
+        tileArray[pivotRow, pivotCol - 1].InitTile((int)EObjectType.WALL, (int)EWall.LINE, spriteManager.wallSpriteArray[(int)EWall.LINE]);
+        tileArray[pivotRow, pivotCol + 3].InitTile((int)EObjectType.WALL, (int)EWall.LINE, spriteManager.wallSpriteArray[(int)EWall.LINE]);
+        tileArray[pivotRow + 1, pivotCol - 1].InitTile((int)EObjectType.WALL, (int)EWall.LINE, spriteManager.wallSpriteArray[(int)EWall.LINE]);
+        tileArray[pivotRow + 1, pivotCol + 3].InitTile((int)EObjectType.WALL, (int)EWall.LINE, spriteManager.wallSpriteArray[(int)EWall.LINE]);
+
+        tileArray[pivotRow - 1, pivotCol].InitTile((int)EObjectType.WALL, (int)EWall.LEFTDOOR, spriteManager.wallSpriteArray[(int)EWall.LEFTDOOR]);
+        tileArray[pivotRow - 1, pivotCol + 1].InitTile((int)EObjectType.WALL, (int)EWall.CENTERDOOR, spriteManager.wallSpriteArray[(int)EWall.CENTERDOOR]);
+        tileArray[pivotRow - 1, pivotCol + 2].InitTile((int)EObjectType.WALL, (int)EWall.RIGHTDOOR, spriteManager.wallSpriteArray[(int)EWall.RIGHTDOOR]);
+
+    }
+
 
     // 배열 유효성 방어 코드
     bool SafeArray<T>(T[,] array, int row, int col)
