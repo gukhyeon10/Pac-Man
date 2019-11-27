@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.U2D;
 using UnityEditor;
 using System.Xml;
-using System;
 using UnityEngine.UI;
 
 public class MapToolManager : MonoBehaviour
@@ -453,6 +452,126 @@ public class MapToolManager : MonoBehaviour
         tileArray[row, col].AutoTile((int)EObjectType.WALL, (int)EWall.POP, spriteManager.wallSpriteArray[(int)EWall.POP], rot);
     }
 
+    public void RandomMap()
+    {
+        int pivotRow = Random.Range(0, line);
+        int pivotCol = Random.Range(0, column);
+        bool[,] mapCheckArray = new bool[line, column];
+        Queue<int> bfsQueue = new Queue<int>();
+        bfsQueue.Enqueue(pivotRow);
+        bfsQueue.Enqueue(pivotCol);
+        mapCheckArray[pivotRow, pivotCol] = true;
+
+        PrimAlgorithm();
+        
+        BfsMap(mapCheckArray, bfsQueue);
+
+        for(int row = 0; row < line; row++)
+        {
+            for(int col = 0; col < column; col++)
+            {
+                if(mapCheckArray[row, col])
+                {
+                    tileArray[row, col].InitTile();
+                }
+                else
+                {
+                    tileArray[row, col].InitTile((int)EObjectType.WALL, (int)EWall.LINE, spriteManager.wallSpriteArray[(int)EWall.LINE]);
+                }
+            }
+        }
+
+        for(int row = 0; row < line; row++)
+        {
+            for(int col = 0; col < column; col++)
+            {
+                if(!mapCheckArray[row,col])
+                {
+                    TileAutoComplete(row, col, false);
+                }
+            }
+        }
+        
+        /*
+        for(int i = 0; i< line; i++)
+        {
+            string str = string.Empty;
+            for(int j= 0; j< column; j++)
+            {
+                if(mapCheckArray[i, j])
+                {
+                    str += " 0"; 
+                }
+                else
+                {
+                    str += " X";
+                }
+            }
+            Debug.Log(str);
+        }*/
+
+    }
+
+    public void BfsMap(bool[,] mapCheckArray, Queue<int> bfsQueue)
+    {
+        while(bfsQueue.Count / 2> 0)
+        {
+
+            int row = bfsQueue.Dequeue();
+            int col = bfsQueue.Dequeue();
+
+            if(Random.Range(0,10) > 1)
+            {
+                if (row - 2 >= 0 && mapCheckArray[row - 2, col] == false && col - 1 >= 0 && mapCheckArray[row - 1, col - 1] == false && col + 1 < column && mapCheckArray[row - 1, col + 1] == false && mapCheckArray[row - 1, col] == false)
+                {
+                    bfsQueue.Enqueue(row - 1);
+                    bfsQueue.Enqueue(col);
+                    mapCheckArray[row - 1, col] = true;
+                }
+
+            }
+            if(Random.Range(0, 10) > 1)
+            {
+                if (row + 2 < line && mapCheckArray[row + 2, col] == false && col - 1 >= 0 && mapCheckArray[row + 1, col - 1] == false && col + 1 < column && mapCheckArray[row + 1, col + 1] == false && mapCheckArray[row + 1, col] == false)
+                {
+                    bfsQueue.Enqueue(row + 1);
+                    bfsQueue.Enqueue(col);
+                    mapCheckArray[row + 1, col] = true;
+                }
+            }
+            
+            if(Random.Range(0, 10)> 1)
+            {
+                if (col - 2 >= 0 && mapCheckArray[row, col - 2] == false && row - 1 >= 0 && mapCheckArray[row - 1, col - 1] == false && row + 1 < line && mapCheckArray[row + 1, col - 1] == false && mapCheckArray[row, col - 1] == false)
+                {
+                    bfsQueue.Enqueue(row);
+                    bfsQueue.Enqueue(col - 1);
+                    mapCheckArray[row, col - 1] = true;
+                }
+            }
+            
+            if(Random.Range(0, 10) > 1)
+            {
+                if (col + 2 < column && mapCheckArray[row, col + 2] == false && row - 1 >= 0 && mapCheckArray[row - 1, col + 1] == false && row + 1 < line && mapCheckArray[row + 1, col + 1] == false && mapCheckArray[row, col + 1] == false)
+                {
+                    bfsQueue.Enqueue(row);
+                    bfsQueue.Enqueue(col + 1);
+                    mapCheckArray[row, col + 1] = true;
+                }
+            }
+
+        }
+        
+    }
+
+    void PrimAlgorithm()
+    {
+        int primLine = (line / 2) - 1;
+        int primColumn = (column / 2) - 1;
+        Queue<PrimNode> primNodeQueue = new Queue<PrimNode>();
+        
+    }
+
     // 배열 유효성 방어 코드
     bool SafeArray<T>(T[,] array, int row, int col)
     {
@@ -462,7 +581,7 @@ public class MapToolManager : MonoBehaviour
         }
         else
         {
-            return false;
+            return false; 
         }
     }
 }

@@ -65,6 +65,12 @@ enum EResult
     GAME_CLEAR = 3,
 }
 
+public struct PrimNode
+{
+    public int row, col;
+    public bool isUp, isDown, isLeft, isRight;
+
+}
 
 public struct AStarNode
 {
