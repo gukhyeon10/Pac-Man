@@ -30,6 +30,11 @@
     <Row>7</Row>
     <Column>4</Column>
   </Item>
+  <Item>
+    <Number>0</Number>
+    <Row>7</Row>
+    <Column>7</Column>
+  </Item>
   <Wall>
     <Rot>1.001791E-05</Rot>
     <Number>4</Number>

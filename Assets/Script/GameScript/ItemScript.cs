@@ -31,7 +31,9 @@ public class ItemScript : MonoBehaviour
     //아이템 점수 및 효과
     void ItemBuff()
     {
-        if(isNormal)
+        UIManager.Instance.UpdateScore(itemScore);
+
+        if (isNormal)
         {
             StageManager.Instance.EatNormal();
         }
@@ -39,8 +41,6 @@ public class ItemScript : MonoBehaviour
         {
             CharacterBase.pac.SuperMode();
         }
-
-        UIManager.Instance.UpdateScore(itemScore);
 
     }
 }

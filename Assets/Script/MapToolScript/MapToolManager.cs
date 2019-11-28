@@ -49,8 +49,8 @@ public class MapToolManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        primLine = (line / 2) - 1;
-        primColumn = (column / 2) - 1;
+        primLine = (line / 2);
+        primColumn = (column / 2);
 
         tileArray = new TileEvent[line, column];
         for(int i=0; i<tileGrid.childCount; i++)
@@ -215,68 +215,73 @@ public class MapToolManager : MonoBehaviour
     }
 
     // 타일 자동 완성 함수
-    public void TileAutoComplete(int row, int col, bool isStandard) // isStandard -> 배치한 타일을 기준으로 인접한 타일들만 자동완성 하기위한 체크 변수
-    {
+    public void TileAutoComplete(int row, int col, bool isStandard, bool isDefault) // isStandard -> 배치한 타일을 기준으로 인접한 타일들만 자동완성 하기위한 체크 변수
+    {                                                                               // isDefault -> 배치한 타일이 빈칸일때 해당 타일은 자동완성할 필요없기에 체크
         int count = 0;
         bool isLeft = false, isRight = false, isUp = false, isDown = false;
-        if(SafeArray<TileEvent>(tileArray, row - 1, col) && tileArray[row - 1, col].objectType == (int)EObjectType.WALL && tileArray[row - 1,col].objectNumber != (int)EWall.DEFAULT)
+
+        if (SafeArray<TileEvent>(tileArray, row - 1, col) && tileArray[row - 1, col].objectType == (int)EObjectType.WALL && tileArray[row - 1, col].objectNumber != (int)EWall.DEFAULT)
         {
             count++;
             isUp = true;
         }
-        if(SafeArray<TileEvent>(tileArray, row + 1, col) && tileArray[row + 1, col].objectType == (int)EObjectType.WALL && tileArray[row + 1, col].objectNumber != (int)EWall.DEFAULT)
+        if (SafeArray<TileEvent>(tileArray, row + 1, col) && tileArray[row + 1, col].objectType == (int)EObjectType.WALL && tileArray[row + 1, col].objectNumber != (int)EWall.DEFAULT)
         {
             count++;
             isDown = true;
         }
-        if(SafeArray<TileEvent>(tileArray, row, col - 1) && tileArray[row, col - 1].objectType == (int)EObjectType.WALL && tileArray[row, col - 1].objectNumber != (int)EWall.DEFAULT)
+        if (SafeArray<TileEvent>(tileArray, row, col - 1) && tileArray[row, col - 1].objectType == (int)EObjectType.WALL && tileArray[row, col - 1].objectNumber != (int)EWall.DEFAULT)
         {
             count++;
             isLeft = true;
         }
-        if(SafeArray<TileEvent>(tileArray, row, col + 1) && tileArray[row, col + 1].objectType == (int)EObjectType.WALL && tileArray[row, col + 1].objectNumber != (int)EWall.DEFAULT)
+        if (SafeArray<TileEvent>(tileArray, row, col + 1) && tileArray[row, col + 1].objectType == (int)EObjectType.WALL && tileArray[row, col + 1].objectNumber != (int)EWall.DEFAULT)
         {
             count++;
             isRight = true;
         }
 
-        switch(count)
+        if (isDefault == false) // 빈칸이 아니라면 자동완성
         {
-            case 1:
-                {
-                    TileAutoCompleteOne(row, col);
-                    break;
-                }
-            case 2:
-                {
-                    TileAutoCompleteTwo(row, col);
-                    break;
-                }
-            case 3:
-                {
-                    TileAutoCompleteThree(row, col);
-                    break;
-                }
+            switch (count)
+            {
+                case 1:
+                    {
+                        TileAutoCompleteOne(row, col);
+                        break;
+                    }
+                case 2:
+                    {
+                        TileAutoCompleteTwo(row, col);
+                        break;
+                    }
+                case 3:
+                    {
+                        TileAutoCompleteThree(row, col);
+                        break;
+                    }
+            }
         }
+        
 
         //기준 타일에 인접한 타일들 자동완성
         if(isStandard)
         {
             if (isLeft)
             {
-                TileAutoComplete(row, col - 1, false);
+                TileAutoComplete(row, col - 1, false, false);
             }
             if(isRight)
             {
-                TileAutoComplete(row, col + 1, false);
+                TileAutoComplete(row, col + 1, false, false);
             }
             if(isUp)
             {
-                TileAutoComplete(row - 1, col, false);
+                TileAutoComplete(row - 1, col, false, false);
             }
             if(isDown)
             {
-                TileAutoComplete(row + 1, col, false);
+                TileAutoComplete(row + 1, col, false, false);
             }
         }
         
@@ -482,6 +487,7 @@ public class MapToolManager : MonoBehaviour
         int pivotRow = Random.Range(2, primLine-2);
         int pivotCol = Random.Range(2, primColumn-2);
         
+        // 노드 2개는 미리 칸을 뚫어놓는다. (유령 리스폰 지역)
         primArray[pivotRow, pivotCol].isCheck = true;
         primArray[pivotRow, pivotCol + 1].isCheck = true;
         primArray[pivotRow, pivotCol].isNear = true;
@@ -490,6 +496,7 @@ public class MapToolManager : MonoBehaviour
         IncreaseNode(pivotRow, pivotCol, primNodeList, primArray);
         IncreaseNode(pivotRow, pivotCol + 1, primNodeList, primArray);
 
+        // 프림 알고리즘을 통해 랜덤으로 미로를 생성
         while(primNodeList.Count > 0)
         {
             int randomIndex = Random.Range(0, primNodeList.Count);
@@ -510,6 +517,7 @@ public class MapToolManager : MonoBehaviour
     //인접한 노드들 체크
     void IncreaseNode(int row, int col, List<PrimNode> primNodeList, PrimNode[,] primArray)
     {
+        //근접한 노드 중 칸이 할당된 노드들의 방향 리스트
         List<int> nearNodeList = new List<int>();
 
         if(col + 1 < primColumn && primArray[row, col + 1].isCheck)
@@ -529,6 +537,7 @@ public class MapToolManager : MonoBehaviour
             nearNodeList.Add((int)EDirect.NORTH);
         }
 
+        //근접 노드 방향 중 랜덤하게 하나의 길목 뚫기
         if(nearNodeList.Count>0)
         {
             int random = Random.Range(0, nearNodeList.Count);
@@ -557,6 +566,7 @@ public class MapToolManager : MonoBehaviour
             }
         }
 
+        //뚫은 칸 기준으로 인접한 노드들 갱신
         if (col + 1 < primColumn && primArray[row, col + 1].isNear == false && primArray[row, col + 1].isCheck == false)
         {
             primArray[row, col + 1].isNear = true;
@@ -580,7 +590,7 @@ public class MapToolManager : MonoBehaviour
 
     }
 
-    //프림 알고리즘 데이터 맵에 호환
+    //프림 알고리즘 데이터 팩맨 맵에 호환
     void PrimDataCompatible(PrimNode[,] primArray, int pivotRow, int pivotCol)
     {
         for (int row = 0; row < line; row++)
@@ -591,34 +601,31 @@ public class MapToolManager : MonoBehaviour
             }
         }
 
-        int primLine = (line / 2) - 1;
-        int primColumn = (column / 2) - 1;
-
         for(int i=0; i<primLine; i++)
         {
             for(int j = 0; j< primColumn; j++)
             {
-                tileArray[i * 2 + 2, j * 2 + 2].InitTile();
+                tileArray[i * 2 + 1, j * 2 + 1].InitTile();
                 if(primArray[i, j].isUp)
                 {
-                    tileArray[i * 2 + 1, j * 2 + 2].InitTile();
+                    tileArray[i * 2, j * 2 + 1].InitTile();
                 }
                 if (primArray[i, j].isDown)
                 {
-                    tileArray[i * 2 + 3, j * 2 + 2].InitTile();
+                    tileArray[i * 2 + 2, j * 2 + 1].InitTile();
                 }
                 if (primArray[i, j].isLeft)
                 {
-                    tileArray[i * 2 + 2, j * 2 + 1].InitTile();
+                    tileArray[i * 2 + 1, j * 2].InitTile();
                 }
                 if (primArray[i, j].isRight)
                 {
-                    tileArray[i * 2 + 2, j * 2 + 3].InitTile();
+                    tileArray[i * 2 + 1, j * 2 + 2].InitTile();
                 }
             }
         }
 
-        GhostRespawnArea(pivotRow * 2 + 1, pivotCol * 2 + 1);
+        GhostRespawnArea(pivotRow * 2, pivotCol * 2);
 
         // 타일 자동완성
         for (int i = 0; i < line; i++)
@@ -627,7 +634,7 @@ public class MapToolManager : MonoBehaviour
             {
                 if (tileArray[i, j].objectType == (int)EObjectType.WALL && tileArray[i, j].objectNumber == (int)EWall.LINE)
                 {
-                    TileAutoComplete(i, j, false);
+                    TileAutoComplete(i, j, false, false);
                 }
             }
         }

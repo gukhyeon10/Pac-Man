@@ -164,6 +164,7 @@ public class UIManager : MonoBehaviour
                     panelArray[(int)EPanel.STAGE_CLEAR].SetActive(true);
                     stageClearText.text = "GAME CLEAR!";
                     gameScoreText.text = (basicScore + score).ToString();
+                    gameScoreText.text = "SCORE " + gameScoreText.text;
                     break;
                 }
         }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 //싱글톤
 public class MapToolCursor : MonoBehaviour
@@ -21,6 +22,10 @@ public class MapToolCursor : MonoBehaviour
     public int objectNumber = (int)EWall.DEFAULT;
     public float rot = 0;
 
+    public bool isAutoCompleteActive = true;
+
+    [SerializeField]
+    Text autoCheckText;
 
     void Awake()
     {
@@ -61,6 +66,13 @@ public class MapToolCursor : MonoBehaviour
             {
                 rot = 270f;
             }
+        }
+
+        // 자동완성 기능 On/Off
+        if(Input.GetKeyDown(KeyCode.A))
+        {
+            isAutoCompleteActive = !isAutoCompleteActive;
+            autoCheckText.gameObject.SetActive(isAutoCompleteActive);
         }
     }
     

@@ -82,9 +82,18 @@ public class TileEvent : MonoBehaviour
                 rot = 0f;
             }
 
-            if (cursor.cursorType == (int)EObjectType.WALL && objectNumber == (int)EWall.LINE)
+            //타일 자동완성 기능
+            if (cursor.isAutoCompleteActive && cursor.cursorType == (int)EObjectType.WALL)
             {
-                MapToolManager.Instance.TileAutoComplete(this.row, this.col, true);
+                if(objectNumber == (int)EWall.DEFAULT)
+                {
+                    MapToolManager.Instance.TileAutoComplete(this.row, this.col, true, true);
+                }
+                // 유령 리스폰 지역 입구를 뜻하는 3종류의 타일은 자동완성 기능 제외.  나머지 타일들은 자동완성 
+                else if(objectNumber != (int)EWall.CENTERDOOR && objectNumber != (int)EWall.RIGHTDOOR && objectNumber != (int)EWall.LEFTDOOR)
+                {
+                    MapToolManager.Instance.TileAutoComplete(this.row, this.col, true, false);
+                }
             }
         }
     }
@@ -95,26 +104,6 @@ public class TileEvent : MonoBehaviour
         spriteRenderer.sprite = currentTileSprite;
         this.transform.eulerAngles = new Vector3(0, 0, rot);
 
-    }
-
-    //클릭시 타일 정보 변환
-    public void OnMouseDown()
-    {/*
-        currentTileSprite = cursor.cursorSprite;
-        rot = cursor.rot;
-        objectType = cursor.cursorType;
-        objectNumber = cursor.objectNumber;
-
-        if (objectType != (int)EObjectType.WALL)
-        {
-            rot = 0f;
-        }
-        
-        if(objectType == (int)EObjectType.WALL && objectNumber == (int)EWall.LINE)
-        {
-            MapToolManager.Instance.TileAutoComplete(this.row, this.col);
-        }
-        */
     }
 
 }

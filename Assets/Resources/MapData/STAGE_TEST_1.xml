@@ -73,7 +73,7 @@
     <Column>12</Column>
   </Wall>
   <Wall>
-    <Rot>1.001791E-05</Rot>
+    <Rot>0</Rot>
     <Number>2</Number>
     <Row>1</Row>
     <Column>13</Column>
@@ -126,66 +126,6 @@
     <Row>2</Row>
     <Column>1</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>2</Row>
-    <Column>2</Column>
-  </Item>
-  <Item>
-    <Number>0</Number>
-    <Row>2</Row>
-    <Column>3</Column>
-  </Item>
-  <Item>
-    <Number>0</Number>
-    <Row>2</Row>
-    <Column>4</Column>
-  </Item>
-  <Item>
-    <Number>0</Number>
-    <Row>2</Row>
-    <Column>5</Column>
-  </Item>
-  <Item>
-    <Number>0</Number>
-    <Row>2</Row>
-    <Column>6</Column>
-  </Item>
-  <Item>
-    <Number>0</Number>
-    <Row>2</Row>
-    <Column>7</Column>
-  </Item>
-  <Item>
-    <Number>0</Number>
-    <Row>2</Row>
-    <Column>8</Column>
-  </Item>
-  <Item>
-    <Number>0</Number>
-    <Row>2</Row>
-    <Column>9</Column>
-  </Item>
-  <Item>
-    <Number>0</Number>
-    <Row>2</Row>
-    <Column>10</Column>
-  </Item>
-  <Item>
-    <Number>0</Number>
-    <Row>2</Row>
-    <Column>11</Column>
-  </Item>
-  <Item>
-    <Number>0</Number>
-    <Row>2</Row>
-    <Column>12</Column>
-  </Item>
-  <Item>
-    <Number>0</Number>
-    <Row>2</Row>
-    <Column>13</Column>
-  </Item>
   <Wall>
     <Rot>90</Rot>
     <Number>2</Number>
@@ -204,11 +144,6 @@
     <Row>3</Row>
     <Column>1</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>3</Row>
-    <Column>2</Column>
-  </Item>
   <Wall>
     <Rot>1.001791E-05</Rot>
     <Number>1</Number>
@@ -228,25 +163,25 @@
     <Column>5</Column>
   </Wall>
   <Wall>
-    <Rot>180</Rot>
+    <Rot>0</Rot>
     <Number>2</Number>
     <Row>3</Row>
     <Column>6</Column>
   </Wall>
   <Wall>
-    <Rot>180</Rot>
+    <Rot>0</Rot>
     <Number>2</Number>
     <Row>3</Row>
     <Column>7</Column>
   </Wall>
   <Wall>
-    <Rot>180</Rot>
+    <Rot>0</Rot>
     <Number>2</Number>
     <Row>3</Row>
     <Column>8</Column>
   </Wall>
   <Wall>
-    <Rot>1.001791E-05</Rot>
+    <Rot>0</Rot>
     <Number>2</Number>
     <Row>3</Row>
     <Column>9</Column>
@@ -269,11 +204,6 @@
     <Row>3</Row>
     <Column>12</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>3</Row>
-    <Column>13</Column>
-  </Item>
   <Wall>
     <Rot>90</Rot>
     <Number>2</Number>
@@ -298,48 +228,18 @@
     <Row>4</Row>
     <Column>1</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>4</Row>
-    <Column>2</Column>
-  </Item>
   <Wall>
     <Rot>90</Rot>
     <Number>2</Number>
     <Row>4</Row>
     <Column>3</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>4</Row>
-    <Column>6</Column>
-  </Item>
-  <Item>
-    <Number>0</Number>
-    <Row>4</Row>
-    <Column>7</Column>
-  </Item>
-  <Item>
-    <Number>0</Number>
-    <Row>4</Row>
-    <Column>8</Column>
-  </Item>
-  <Item>
-    <Number>0</Number>
-    <Row>4</Row>
-    <Column>9</Column>
-  </Item>
   <Wall>
     <Rot>90</Rot>
     <Number>2</Number>
     <Row>4</Row>
     <Column>12</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>4</Row>
-    <Column>13</Column>
-  </Item>
   <Wall>
     <Rot>90</Rot>
     <Number>2</Number>
@@ -369,11 +269,6 @@
     <Row>5</Row>
     <Column>1</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>5</Row>
-    <Column>2</Column>
-  </Item>
   <Wall>
     <Rot>90</Rot>
     <Number>2</Number>
@@ -381,16 +276,11 @@
     <Column>3</Column>
   </Wall>
   <Wall>
-    <Rot>1.001791E-05</Rot>
+    <Rot>0</Rot>
     <Number>4</Number>
     <Row>5</Row>
     <Column>5</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>5</Row>
-    <Column>6</Column>
-  </Item>
   <Wall>
     <Rot>1.001791E-05</Rot>
     <Number>1</Number>
@@ -403,28 +293,18 @@
     <Row>5</Row>
     <Column>8</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>5</Row>
-    <Column>9</Column>
-  </Item>
   <Wall>
-    <Rot>1.001791E-05</Rot>
+    <Rot>0</Rot>
     <Number>4</Number>
     <Row>5</Row>
     <Column>10</Column>
   </Wall>
   <Wall>
-    <Rot>270</Rot>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>5</Row>
     <Column>12</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>5</Row>
-    <Column>13</Column>
-  </Item>
   <Wall>
     <Rot>90</Rot>
     <Number>2</Number>
@@ -449,11 +329,6 @@
     <Row>6</Row>
     <Column>1</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>6</Row>
-    <Column>2</Column>
-  </Item>
   <Wall>
     <Rot>90</Rot>
     <Number>2</Number>
@@ -466,11 +341,6 @@
     <Row>6</Row>
     <Column>5</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>6</Row>
-    <Column>6</Column>
-  </Item>
   <Wall>
     <Rot>90</Rot>
     <Number>2</Number>
@@ -483,11 +353,6 @@
     <Row>6</Row>
     <Column>8</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>6</Row>
-    <Column>9</Column>
-  </Item>
   <Wall>
     <Rot>90</Rot>
     <Number>2</Number>
@@ -495,16 +360,11 @@
     <Column>10</Column>
   </Wall>
   <Wall>
-    <Rot>270</Rot>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>6</Row>
     <Column>12</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>6</Row>
-    <Column>13</Column>
-  </Item>
   <Wall>
     <Rot>90</Rot>
     <Number>2</Number>
@@ -529,11 +389,6 @@
     <Row>7</Row>
     <Column>1</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>7</Row>
-    <Column>2</Column>
-  </Item>
   <Wall>
     <Rot>90</Rot>
     <Number>2</Number>
@@ -546,11 +401,6 @@
     <Row>7</Row>
     <Column>5</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>7</Row>
-    <Column>6</Column>
-  </Item>
   <Wall>
     <Rot>90</Rot>
     <Number>2</Number>
@@ -563,11 +413,6 @@
     <Row>7</Row>
     <Column>8</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>7</Row>
-    <Column>9</Column>
-  </Item>
   <Wall>
     <Rot>90</Rot>
     <Number>2</Number>
@@ -575,16 +420,11 @@
     <Column>10</Column>
   </Wall>
   <Wall>
-    <Rot>270</Rot>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>7</Row>
     <Column>12</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>7</Row>
-    <Column>13</Column>
-  </Item>
   <Wall>
     <Rot>90</Rot>
     <Number>2</Number>
@@ -609,11 +449,6 @@
     <Row>8</Row>
     <Column>1</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>8</Row>
-    <Column>2</Column>
-  </Item>
   <Wall>
     <Rot>90</Rot>
     <Number>2</Number>
@@ -626,11 +461,6 @@
     <Row>8</Row>
     <Column>5</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>8</Row>
-    <Column>6</Column>
-  </Item>
   <Wall>
     <Rot>90</Rot>
     <Number>1</Number>
@@ -655,16 +485,11 @@
     <Column>10</Column>
   </Wall>
   <Wall>
-    <Rot>270</Rot>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>8</Row>
     <Column>12</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>8</Row>
-    <Column>13</Column>
-  </Item>
   <Wall>
     <Rot>90</Rot>
     <Number>2</Number>
@@ -689,11 +514,6 @@
     <Row>9</Row>
     <Column>1</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>9</Row>
-    <Column>2</Column>
-  </Item>
   <Wall>
     <Rot>90</Rot>
     <Number>2</Number>
@@ -707,7 +527,7 @@
     <Column>5</Column>
   </Wall>
   <Wall>
-    <Rot>180</Rot>
+    <Rot>0</Rot>
     <Number>2</Number>
     <Row>9</Row>
     <Column>6</Column>
@@ -737,16 +557,11 @@
     <Column>10</Column>
   </Wall>
   <Wall>
-    <Rot>270</Rot>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>9</Row>
     <Column>12</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>9</Row>
-    <Column>13</Column>
-  </Item>
   <Wall>
     <Rot>180</Rot>
     <Number>4</Number>
@@ -771,11 +586,6 @@
     <Row>10</Row>
     <Column>1</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>10</Row>
-    <Column>2</Column>
-  </Item>
   <Wall>
     <Rot>90</Rot>
     <Number>2</Number>
@@ -811,11 +621,6 @@
     <Row>11</Row>
     <Column>1</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>11</Row>
-    <Column>2</Column>
-  </Item>
   <Wall>
     <Rot>180</Rot>
     <Number>4</Number>
@@ -1273,21 +1078,6 @@
     <Column>1</Column>
   </Wall>
   <Item>
-    <Number>0</Number>
-    <Row>19</Row>
-    <Column>2</Column>
-  </Item>
-  <Item>
-    <Number>0</Number>
-    <Row>19</Row>
-    <Column>3</Column>
-  </Item>
-  <Item>
-    <Number>0</Number>
-    <Row>19</Row>
-    <Column>4</Column>
-  </Item>
-  <Item>
     <Number>5</Number>
     <Row>19</Row>
     <Column>5</Column>
@@ -1327,11 +1117,6 @@
     <Row>20</Row>
     <Column>1</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>20</Row>
-    <Column>2</Column>
-  </Item>
   <Wall>
     <Rot>1.001791E-05</Rot>
     <Number>1</Number>
@@ -1397,11 +1182,6 @@
     <Row>21</Row>
     <Column>1</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>21</Row>
-    <Column>2</Column>
-  </Item>
   <Wall>
     <Rot>90</Rot>
     <Number>2</Number>
@@ -1431,13 +1211,8 @@
     <Row>21</Row>
     <Column>13</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>21</Row>
-    <Column>20</Column>
-  </Item>
   <Wall>
-    <Rot>270</Rot>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>21</Row>
     <Column>21</Column>
@@ -1448,11 +1223,6 @@
     <Row>22</Row>
     <Column>1</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>22</Row>
-    <Column>2</Column>
-  </Item>
   <Wall>
     <Rot>90</Rot>
     <Number>2</Number>
@@ -1478,13 +1248,13 @@
     <Column>8</Column>
   </Wall>
   <Wall>
-    <Rot>180</Rot>
+    <Rot>0</Rot>
     <Number>2</Number>
     <Row>22</Row>
     <Column>9</Column>
   </Wall>
   <Wall>
-    <Rot>180</Rot>
+    <Rot>0</Rot>
     <Number>2</Number>
     <Row>22</Row>
     <Column>10</Column>
@@ -1506,28 +1276,18 @@
     <Row>22</Row>
     <Column>13</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>22</Row>
-    <Column>20</Column>
-  </Item>
   <Wall>
-    <Rot>270</Rot>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>22</Row>
     <Column>21</Column>
   </Wall>
   <Wall>
-    <Rot>270</Rot>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>23</Row>
     <Column>1</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>23</Row>
-    <Column>2</Column>
-  </Item>
   <Wall>
     <Rot>90</Rot>
     <Number>2</Number>
@@ -1544,21 +1304,6 @@
     <Number>1</Number>
     <Row>23</Row>
     <Column>8</Column>
-  </Item>
-  <Item>
-    <Number>0</Number>
-    <Row>23</Row>
-    <Column>9</Column>
-  </Item>
-  <Item>
-    <Number>0</Number>
-    <Row>23</Row>
-    <Column>10</Column>
-  </Item>
-  <Item>
-    <Number>0</Number>
-    <Row>23</Row>
-    <Column>11</Column>
   </Item>
   <Item>
     <Number>0</Number>
@@ -1571,28 +1316,18 @@
     <Row>23</Row>
     <Column>13</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>23</Row>
-    <Column>20</Column>
-  </Item>
   <Wall>
-    <Rot>270</Rot>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>23</Row>
     <Column>21</Column>
   </Wall>
   <Wall>
-    <Rot>270</Rot>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>24</Row>
     <Column>1</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>24</Row>
-    <Column>2</Column>
-  </Item>
   <Wall>
     <Rot>90</Rot>
     <Number>2</Number>
@@ -1600,16 +1335,11 @@
     <Column>3</Column>
   </Wall>
   <Wall>
-    <Rot>270</Rot>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>24</Row>
     <Column>7</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>24</Row>
-    <Column>8</Column>
-  </Item>
   <Wall>
     <Rot>1.001791E-05</Rot>
     <Number>1</Number>
@@ -1617,13 +1347,13 @@
     <Column>9</Column>
   </Wall>
   <Wall>
-    <Rot>1.001791E-05</Rot>
+    <Rot>0</Rot>
     <Number>2</Number>
     <Row>24</Row>
     <Column>10</Column>
   </Wall>
   <Wall>
-    <Rot>1.001791E-05</Rot>
+    <Rot>0</Rot>
     <Number>2</Number>
     <Row>24</Row>
     <Column>11</Column>
@@ -1640,28 +1370,18 @@
     <Row>24</Row>
     <Column>13</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>24</Row>
-    <Column>20</Column>
-  </Item>
   <Wall>
-    <Rot>270</Rot>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>24</Row>
     <Column>21</Column>
   </Wall>
   <Wall>
-    <Rot>270</Rot>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>25</Row>
     <Column>1</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>25</Row>
-    <Column>2</Column>
-  </Item>
   <Wall>
     <Rot>90</Rot>
     <Number>1</Number>
@@ -1669,19 +1389,19 @@
     <Column>3</Column>
   </Wall>
   <Wall>
-    <Rot>180</Rot>
+    <Rot>0</Rot>
     <Number>2</Number>
     <Row>25</Row>
     <Column>4</Column>
   </Wall>
   <Wall>
-    <Rot>180</Rot>
+    <Rot>0</Rot>
     <Number>2</Number>
     <Row>25</Row>
     <Column>5</Column>
   </Wall>
   <Wall>
-    <Rot>180</Rot>
+    <Rot>0</Rot>
     <Number>2</Number>
     <Row>25</Row>
     <Column>6</Column>
@@ -1692,102 +1412,32 @@
     <Row>25</Row>
     <Column>7</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>25</Row>
-    <Column>8</Column>
-  </Item>
   <Wall>
-    <Rot>270</Rot>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>25</Row>
     <Column>9</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>25</Row>
-    <Column>20</Column>
-  </Item>
   <Wall>
-    <Rot>270</Rot>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>25</Row>
     <Column>21</Column>
   </Wall>
   <Wall>
-    <Rot>270</Rot>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>26</Row>
     <Column>1</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>26</Row>
-    <Column>2</Column>
-  </Item>
-  <Item>
-    <Number>0</Number>
-    <Row>26</Row>
-    <Column>3</Column>
-  </Item>
-  <Item>
-    <Number>0</Number>
-    <Row>26</Row>
-    <Column>4</Column>
-  </Item>
-  <Item>
-    <Number>0</Number>
-    <Row>26</Row>
-    <Column>5</Column>
-  </Item>
-  <Item>
-    <Number>0</Number>
-    <Row>26</Row>
-    <Column>6</Column>
-  </Item>
-  <Item>
-    <Number>0</Number>
-    <Row>26</Row>
-    <Column>7</Column>
-  </Item>
-  <Item>
-    <Number>0</Number>
-    <Row>26</Row>
-    <Column>8</Column>
-  </Item>
   <Wall>
-    <Rot>270</Rot>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>26</Row>
     <Column>9</Column>
   </Wall>
-  <Item>
-    <Number>0</Number>
-    <Row>26</Row>
-    <Column>16</Column>
-  </Item>
-  <Item>
-    <Number>0</Number>
-    <Row>26</Row>
-    <Column>17</Column>
-  </Item>
-  <Item>
-    <Number>0</Number>
-    <Row>26</Row>
-    <Column>18</Column>
-  </Item>
-  <Item>
-    <Number>0</Number>
-    <Row>26</Row>
-    <Column>19</Column>
-  </Item>
-  <Item>
-    <Number>0</Number>
-    <Row>26</Row>
-    <Column>20</Column>
-  </Item>
   <Wall>
-    <Rot>270</Rot>
+    <Rot>90</Rot>
     <Number>2</Number>
     <Row>26</Row>
     <Column>21</Column>
@@ -1799,43 +1449,43 @@
     <Column>1</Column>
   </Wall>
   <Wall>
-    <Rot>180</Rot>
+    <Rot>0</Rot>
     <Number>2</Number>
     <Row>27</Row>
     <Column>2</Column>
   </Wall>
   <Wall>
-    <Rot>180</Rot>
+    <Rot>0</Rot>
     <Number>2</Number>
     <Row>27</Row>
     <Column>3</Column>
   </Wall>
   <Wall>
-    <Rot>180</Rot>
+    <Rot>0</Rot>
     <Number>2</Number>
     <Row>27</Row>
     <Column>4</Column>
   </Wall>
   <Wall>
-    <Rot>180</Rot>
+    <Rot>0</Rot>
     <Number>2</Number>
     <Row>27</Row>
     <Column>5</Column>
   </Wall>
   <Wall>
-    <Rot>180</Rot>
+    <Rot>0</Rot>
     <Number>2</Number>
     <Row>27</Row>
     <Column>6</Column>
   </Wall>
   <Wall>
-    <Rot>180</Rot>
+    <Rot>0</Rot>
     <Number>2</Number>
     <Row>27</Row>
     <Column>7</Column>
   </Wall>
   <Wall>
-    <Rot>180</Rot>
+    <Rot>0</Rot>
     <Number>2</Number>
     <Row>27</Row>
     <Column>8</Column>
@@ -1883,25 +1533,25 @@
     <Column>16</Column>
   </Wall>
   <Wall>
-    <Rot>180</Rot>
+    <Rot>0</Rot>
     <Number>2</Number>
     <Row>27</Row>
     <Column>17</Column>
   </Wall>
   <Wall>
-    <Rot>180</Rot>
+    <Rot>0</Rot>
     <Number>2</Number>
     <Row>27</Row>
     <Column>18</Column>
   </Wall>
   <Wall>
-    <Rot>180</Rot>
+    <Rot>0</Rot>
     <Number>2</Number>
     <Row>27</Row>
     <Column>19</Column>
   </Wall>
   <Wall>
-    <Rot>180</Rot>
+    <Rot>0</Rot>
     <Number>2</Number>
     <Row>27</Row>
     <Column>20</Column>

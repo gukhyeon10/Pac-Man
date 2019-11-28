@@ -48,6 +48,7 @@ public class StageManager : MonoBehaviour
     public int ghostRespawnRow = line/2, ghostRespawnCol = column/2;  //유령 디폴트 초기 위치
 
     int currentStage = 1;  // 현재 스테이지
+    int lastStage = 3; // 마지막 스테이지
     int normalCount;  // 노말 아이템 총 개수
 
     bool isFirstTry = true;  // 1스테이지 첫 시도인지
@@ -92,11 +93,9 @@ public class StageManager : MonoBehaviour
                 }
                 else
                 {
-
                     _UIManager.UIPanelActive();
                     gameCanvas.gameObject.SetActive(true);
                     InitStage();
-
                 }
 
                 LoadStage(currentStage);
@@ -306,15 +305,24 @@ public class StageManager : MonoBehaviour
     {
         //여기에 클리어 연출
         gameCanvas.gameObject.SetActive(false);
-        _UIManager.ResultPanelActive((int)EResult.STAGE_CLEAR);
 
-        if (currentStage < 3)
+        if (currentStage >= lastStage)
         {
-            yield return new WaitForSeconds(1f);
-            currentStage++;
-            CharacterBase.pac.InitPac();
-            StartCoroutine(TapWaitCorutine());
+            //마지막 스테이지
+            _UIManager.ResultPanelActive((int)EResult.GAME_CLEAR);
+            currentStage = 0;
         }
+        else
+        {
+            _UIManager.ResultPanelActive((int)EResult.STAGE_CLEAR);
+        }
+
+        //실수로 탭하여 바로 다음 스테이지 시작하지 않기 위해 잠깐의 텀
+        yield return new WaitForSeconds(0.5f);
+        currentStage++;
+        CharacterBase.pac.InitPac();
+        StartCoroutine(TapWaitCorutine());
+
     }
 
     //Stage Fail 연출
@@ -336,7 +344,8 @@ public class StageManager : MonoBehaviour
         gameCanvas.gameObject.SetActive(false);
         _UIManager.ResultPanelActive(result);
 
-        yield return new WaitForSeconds(1f);
+        //실수로 탭하여 바로 스테이지 시작하지 않기 위해 잠깐의 텀
+        yield return new WaitForSeconds(0.5f);
         StartCoroutine(TapWaitCorutine());
     }
 
