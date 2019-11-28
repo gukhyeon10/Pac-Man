@@ -70,6 +70,7 @@ public class CharacterBase : MonoBehaviour
 
         isRespawn = false;
         isReturn = false;
+        boxCollider.enabled = true;
     }
 
     void InitBfsCheckArray()
@@ -308,7 +309,6 @@ public class CharacterBase : MonoBehaviour
                 isReturn = false;
                 animator.SetBool("RETURN", false);
                 boxCollider.enabled = true;
-                
 
                 respawnCoolTime = 10f;
                 return;

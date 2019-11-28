@@ -36,7 +36,7 @@ public class StageManager : MonoBehaviour
     UIManager _UIManager;
 
     const string dataPath = "MapData/";
-    const string stageFileName = "STAGE_TEST_";
+    const string stageFileName = "STAGE_";
 
     // 타일 29행 23열 (30행 타일은 가리기 용도)
     const int column = 23;
