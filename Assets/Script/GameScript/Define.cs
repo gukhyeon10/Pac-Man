@@ -68,7 +68,7 @@ enum EResult
 public struct PrimNode
 {
     public int row, col;
-    public bool isCheck;
+    public bool isCheck, isNear;
     public bool isUp, isDown, isLeft, isRight;
     public int parentNodeDirect;
 }

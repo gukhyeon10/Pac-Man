@@ -30,7 +30,7 @@ public class MapToolManager : MonoBehaviour
    
     const int line = 27;
     const int column = 21;
-
+    int primLine, primColumn;
     void Awake()
     {
         //싱글톤 초기화
@@ -49,6 +49,9 @@ public class MapToolManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        primLine = (line / 2) - 1;
+        primColumn = (column / 2) - 1;
+
         tileArray = new TileEvent[line, column];
         for(int i=0; i<tileGrid.childCount; i++)
         {
@@ -462,8 +465,7 @@ public class MapToolManager : MonoBehaviour
     // 프림 알고리즘으로 미로 데이터를 만든 뒤 맵에 적용
     void PrimAlgorithm()
     {
-        int primLine = (line / 2) - 1;
-        int primColumn = (column / 2) - 1;
+        
         List<PrimNode> primNodeList = new List<PrimNode>();
         PrimNode[,] primArray = new PrimNode[primLine, primColumn]; 
         
@@ -479,67 +481,23 @@ public class MapToolManager : MonoBehaviour
         // 기준 위치(유령 초기 위치)
         int pivotRow = Random.Range(2, primLine-2);
         int pivotCol = Random.Range(2, primColumn-2);
-
-        primArray[pivotRow, pivotCol].isUp = true;
-        primArray[pivotRow, pivotCol + 1].isUp = true;
+        
         primArray[pivotRow, pivotCol].isCheck = true;
-        primArray[pivotRow, pivotCol].isCheck = true;
+        primArray[pivotRow, pivotCol + 1].isCheck = true;
+        primArray[pivotRow, pivotCol].isNear = true;
+        primArray[pivotRow, pivotCol + 1].isNear = true;
 
-        NearNodeCheck(pivotRow - 1, pivotCol, (int)EDirect.NORTH, primNodeList, primArray);
-        NearNodeCheck(pivotRow + 1, pivotCol, (int)EDirect.SOUTH, primNodeList, primArray);
-        NearNodeCheck(pivotRow, pivotCol - 1, (int)EDirect.WEST, primNodeList, primArray);
-        NearNodeCheck(pivotRow, pivotCol + 1, (int)EDirect.EAST, primNodeList, primArray);
-
-        NearNodeCheck(pivotRow - 1, pivotCol + 1, (int)EDirect.NORTH, primNodeList, primArray);        
-        NearNodeCheck(pivotRow + 1, pivotCol + 1, (int)EDirect.SOUTH, primNodeList, primArray);
-        NearNodeCheck(pivotRow, pivotCol, (int)EDirect.WEST, primNodeList, primArray);
-        NearNodeCheck(pivotRow, pivotCol + 2, (int)EDirect.EAST, primNodeList, primArray);
+        IncreaseNode(pivotRow, pivotCol, primNodeList, primArray);
+        IncreaseNode(pivotRow, pivotCol + 1, primNodeList, primArray);
 
         while(primNodeList.Count > 0)
         {
             int randomIndex = Random.Range(0, primNodeList.Count);
             PrimNode node = primNodeList[randomIndex];
 
-            switch(node.parentNodeDirect)
-            {
-                case (int)EDirect.EAST:
-                    {
-                        primArray[node.row, node.col].isRight = true;
-                        break;
-                    }
-                case (int)EDirect.WEST:
-                    {
-                        primArray[node.row, node.col].isLeft = true;
-                        break;
-                    }
-                case (int)EDirect.SOUTH:
-                    {
-                        primArray[node.row, node.col].isDown = true;
-                        break;
-                    }
-                case (int)EDirect.NORTH:
-                    {
-                        primArray[node.row, node.col].isUp = true;
-                        break;
-                    }
-            }
+            primArray[node.row, node.col].isCheck = true;
 
-            if(node.col + 1 < primColumn)
-            {
-                NearNodeCheck(node.row, node.col + 1, (int)EDirect.EAST, primNodeList, primArray);
-            }
-            if(node.col - 1 >= 0)
-            {
-                NearNodeCheck(node.row, node.col - 1, (int)EDirect.WEST, primNodeList, primArray);
-            }
-            if(node.row + 1 < primLine)
-            {
-                NearNodeCheck(node.row + 1, node.col, (int)EDirect.SOUTH, primNodeList, primArray);
-            }
-            if(node.row - 1 >= 0)
-            {
-                NearNodeCheck(node.row - 1, node.col, (int)EDirect.NORTH, primNodeList, primArray);
-            }
+            IncreaseNode(node.row, node.col, primNodeList, primArray);
 
             primNodeList.RemoveAt(randomIndex);
         }
@@ -550,14 +508,76 @@ public class MapToolManager : MonoBehaviour
     }
 
     //인접한 노드들 체크
-    void NearNodeCheck(int row, int col, int parentDirect, List<PrimNode> primNodeList, PrimNode[,] primArray)
+    void IncreaseNode(int row, int col, List<PrimNode> primNodeList, PrimNode[,] primArray)
     {
-        if (primArray[row, col].isCheck == false)
+        List<int> nearNodeList = new List<int>();
+
+        if(col + 1 < primColumn && primArray[row, col + 1].isCheck)
         {
-            primArray[row, col].isCheck = true;
-            primArray[row, col].parentNodeDirect = parentDirect;
-            primNodeList.Add(primArray[row, col]);
+            nearNodeList.Add((int)EDirect.EAST);
         }
+        if(col - 1 >= 0 && primArray[row, col - 1].isCheck)
+        {
+            nearNodeList.Add((int)EDirect.WEST);
+        }
+        if(row + 1 < primLine && primArray[row + 1, col].isCheck)
+        {
+            nearNodeList.Add((int)EDirect.SOUTH);
+        }
+        if(row - 1 >= 0 && primArray[row - 1, col].isCheck)
+        {
+            nearNodeList.Add((int)EDirect.NORTH);
+        }
+
+        if(nearNodeList.Count>0)
+        {
+            int random = Random.Range(0, nearNodeList.Count);
+            switch(nearNodeList[random])
+            {
+                case (int)EDirect.EAST:
+                    {
+                        primArray[row, col].isRight = true;
+                        break;
+                    }
+                case (int)EDirect.WEST:
+                    {
+                        primArray[row, col].isLeft = true;
+                        break;
+                    }
+                case (int)EDirect.NORTH:
+                    {
+                        primArray[row, col].isUp = true;
+                        break;
+                    }
+                case (int)EDirect.SOUTH:
+                    {
+                        primArray[row, col].isDown = true;
+                        break;
+                    }
+            }
+        }
+
+        if (col + 1 < primColumn && primArray[row, col + 1].isNear == false && primArray[row, col + 1].isCheck == false)
+        {
+            primArray[row, col + 1].isNear = true;
+            primNodeList.Add(primArray[row, col + 1]);
+        }
+        if (col - 1 >= 0 && primArray[row, col - 1].isCheck == false && primArray[row, col - 1].isNear == false)
+        {
+            primArray[row, col - 1].isNear = true;
+            primNodeList.Add(primArray[row, col - 1]);
+        }
+        if (row + 1 < primLine && primArray[row + 1, col].isCheck == false && primArray[row + 1, col].isNear == false)
+        {
+            primArray[row + 1, col].isNear = true;
+            primNodeList.Add(primArray[row + 1, col]);
+        }
+        if (row - 1 >= 0 && primArray[row - 1, col].isCheck == false && primArray[row - 1, col].isNear == false)
+        {
+            primArray[row - 1, col].isNear = true;
+            primNodeList.Add(primArray[row - 1, col]);
+        }
+
     }
 
     //프림 알고리즘 데이터 맵에 호환
@@ -630,6 +650,7 @@ public class MapToolManager : MonoBehaviour
             tileArray[pivotRow - 1, j].InitTile((int)EObjectType.WALL, (int)EWall.LINE, spriteManager.wallSpriteArray[(int)EWall.LINE]);
             tileArray[pivotRow + 2, j].InitTile((int)EObjectType.WALL, (int)EWall.LINE, spriteManager.wallSpriteArray[(int)EWall.LINE]);
         }
+
         tileArray[pivotRow, pivotCol - 1].InitTile((int)EObjectType.WALL, (int)EWall.LINE, spriteManager.wallSpriteArray[(int)EWall.LINE]);
         tileArray[pivotRow, pivotCol + 3].InitTile((int)EObjectType.WALL, (int)EWall.LINE, spriteManager.wallSpriteArray[(int)EWall.LINE]);
         tileArray[pivotRow + 1, pivotCol - 1].InitTile((int)EObjectType.WALL, (int)EWall.LINE, spriteManager.wallSpriteArray[(int)EWall.LINE]);
