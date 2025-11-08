@@ -40,6 +40,7 @@ SpriteAtlas:
       allowAlphaSplitting: 0
       enableRotation: 1
       enableTightPacking: 1
+    secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
     - {fileID: 2800000, guid: 8fcf0e0342808b6468175a86a9892ca0, type: 3}
@@ -116,6 +117,8 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 56b5774527cc9fc4998b059a8d191acc, type: 3}
     totalSpriteSurfaceArea: 75920
     bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: 840f7a506d89c92419bde8aeb4fa1ba5, type: 3}
@@ -263,5 +266,6 @@ SpriteAtlas:
   - Item_Apple
   - Clyde_UP_1
   - Inky_UP_1
+  m_RenderDataMap: {}
   m_Tag: GameAtlas
   m_IsVariant: 0

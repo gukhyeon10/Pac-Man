@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Xml;
 using System;
+using GUtility;
 using UnityEngine.UI;
 
 public class StageManager : MonoBehaviour
@@ -239,7 +240,6 @@ public class StageManager : MonoBehaviour
         nodeList = xmlDoc.SelectNodes("Map/Character");
         InitCharacter(nodeList);
         Debug.Log("Stage Load Success");
-
     }
 
     // 각 캐릭터 초기화
