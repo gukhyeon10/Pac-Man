@@ -1,6 +1,7 @@
 
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace GUtility
@@ -12,7 +13,7 @@ namespace GUtility
     {
         private static readonly Dictionary<string, string> stringCaching = new Dictionary<string, string>();
 
-        public static void Load(string filePath)
+        public static async Task Load(string filePath)
         {
             if (!File.Exists(filePath))
             {
@@ -23,13 +24,20 @@ namespace GUtility
 
             stringCaching.Clear();
             
-            var jsonContent = File.ReadAllText(filePath);
+            var jsonContent = await Task.Run(() => File.ReadAllText(filePath));
             
             var json = JsonConvert.DeserializeObject<Dictionary<string, string>>(jsonContent);
             
             foreach (var key in json.Keys)
             {
-                stringCaching[key] = json[key];
+                if (stringCaching.ContainsKey(key))
+                {
+                    DebugHelper.Log(DebugHelper.DEBUG.ALREADY_KEY);
+                }
+                else
+                {
+                    stringCaching[key] = json[key];   
+                }
             }
         }
 

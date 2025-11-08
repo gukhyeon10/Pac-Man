@@ -14,7 +14,7 @@ namespace GUtility
             NULL = 0,
             NOT_FOUND_FILE,
             NO_VALUE,
-            
+            ALREADY_KEY,
         }
         public static void Log(DEBUG logIndex)
         {
@@ -24,6 +24,7 @@ namespace GUtility
                 DEBUG.NULL => "NULL",
                 DEBUG.NOT_FOUND_FILE => "NOT FOUND_FILE",
                 DEBUG.NO_VALUE => "NO_VALUE",
+                DEBUG.ALREADY_KEY => "ALREADY_KEY",
                 _ => "Not Found Debug Message",
             };
             
