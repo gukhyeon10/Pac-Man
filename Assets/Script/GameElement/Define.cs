@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-
+﻿
 enum EObjectType
 {
     WALL = 0,
@@ -73,18 +71,18 @@ public struct PrimNode
     public int parentNodeDirect;
 }
 
-public struct AStarNode
+public struct BfsNode
 {
-    public int count;
+    public bool isVisited;
     public int preRow, preCol;
     public int row, col;
 
-    public AStarNode(int row, int col, int preRow, int preCol, int count)
+    public void Modify(int row, int col, int preRow, int preCol, bool isVisited)
     {
         this.row = row;
         this.col = col;
         this.preRow = preRow;
         this.preCol = preCol;
-        this.count = count;
+        this.isVisited = isVisited;
     }
 }

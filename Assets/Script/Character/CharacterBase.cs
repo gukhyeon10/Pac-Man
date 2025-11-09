@@ -1,15 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using GUtility;
 using UnityEngine;
 
 public class CharacterBase : MonoBehaviour
 {
-    
     protected GameTile[,] tileArray;
-    protected bool[,] movableCheckArray;
-    protected bool[,] ghostRespawnMovableCheckArray;
+    protected bool[,] movableCheckArray; // 캐릭터 이동 가능 좌표 플래그
+    protected bool[,] ghostRespawnMovableCheckArray; // 유령 리스폰 경로 이동 가능 좌표 플래그
     protected List<int> movableList = new List<int>();   // 갈 수 있는 방향 리스트
-
+    
     //이동 목표 Transform
     protected Transform target;
     protected Transform character;
@@ -20,13 +20,15 @@ public class CharacterBase : MonoBehaviour
     protected const int column = 23;
     protected const int line = 29;
 
-    protected AStarNode[,] AStarCheckArray = new AStarNode[line, column];
-    protected Queue<AStarNode> openQueue = new Queue<AStarNode>();
+    protected readonly BfsNode[,] bfsArray = new BfsNode[line, column]; // Bfs 탐색 array
+    protected readonly Queue<BfsNode> bfsQueue = new Queue<BfsNode>(); // Bfs 탐색 queue
 
     //목표 위치 좌표
     public int row;
     public int col;
-    protected bool isRespawn = false, isReturn = false;
+    protected bool isRespawn = false; 
+    
+    protected bool isReturn = false;
     protected float respawnCoolTime = 10f;
     
     protected int moveDirect = (int)EDirect.EAST;
@@ -38,7 +40,6 @@ public class CharacterBase : MonoBehaviour
 
     public void InitCharacter()
     {
-
         character = this.transform;
         tileArray = StageManager.Instance.tileArray;
         movableCheckArray = StageManager.Instance.movableCheckArray;
@@ -73,13 +74,15 @@ public class CharacterBase : MonoBehaviour
         boxCollider.enabled = true;
     }
 
-    void InitBfsCheckArray()
+    void InitBfsCheckArray(bool[,] movableCheckArray = null)
     {
-        for(int i=0; i<line; i++)
+        this.movableCheckArray = movableCheckArray ?? this.movableCheckArray;
+        
+        for (int i = 0; i < line; i++)
         {
             for(int j = 0; j< column; j++)
             {
-                AStarCheckArray[i, j] = new AStarNode(i, j, i, j, 99999);
+                bfsArray[i, j].Modify(i, j, i, j , false);
             }
         }
     }
@@ -284,15 +287,14 @@ public class CharacterBase : MonoBehaviour
     {
         if(character.position == target.position)
         {
-
             if (row == StageManager.Instance.ghostRespawnRow-1 && col == StageManager.Instance.ghostRespawnCol)
             { 
                 isRespawn = false;
                 return;
             }
 
-            InitBfsCheckArray();
-            PathFinding(this.row, this.col, StageManager.Instance.ghostRespawnRow - 1, StageManager.Instance.ghostRespawnCol, ghostRespawnMovableCheckArray);
+            InitBfsCheckArray(ghostRespawnMovableCheckArray);
+            PathFinding(this.row, this.col, StageManager.Instance.ghostRespawnRow - 1, StageManager.Instance.ghostRespawnCol);
             target = tileArray[row, col].transform;
         }
 
@@ -314,8 +316,8 @@ public class CharacterBase : MonoBehaviour
                 return;
             }
 
-            InitBfsCheckArray();
-            PathFinding(this.row, this.col, StageManager.Instance.ghostRespawnRow + 1, StageManager.Instance.ghostRespawnCol, ghostRespawnMovableCheckArray);
+            InitBfsCheckArray(ghostRespawnMovableCheckArray);
+            PathFinding(this.row, this.col, StageManager.Instance.ghostRespawnRow + 1, StageManager.Instance.ghostRespawnCol);
             target = tileArray[row, col].transform;
         }
         character.position = Vector3.MoveTowards(character.position, target.position, speed * Time.deltaTime * 1.5f);
@@ -378,80 +380,108 @@ public class CharacterBase : MonoBehaviour
             if (character.position == target.position)
             {
                 InitBfsCheckArray();
-                PathFinding(this.row, this.col, pac.row, pac.col, movableCheckArray);
+                PathFinding(this.row, this.col, pac.row, pac.col);
                 target = tileArray[row, col].transform;
             }
 
             character.position = Vector3.MoveTowards(character.position, target.position, speed * Time.deltaTime);
-            
         }
     }
     
 
-    // 최단 경로 찾기
-    void PathFinding(int row, int col, int targetRow, int targetCol, bool[,] movableCheckArray)
+    /// <summary>
+    /// 타겟 좌표 경로 탐색 시작
+    /// </summary>
+    private void PathFinding(int row, int col, int targetRow, int targetCol)
     {
-        AStarNode startNode = new AStarNode(row, col, row, col, 0);
-        openQueue.Clear();
-        openQueue.Enqueue(startNode);
+        bfsArray[row, col].Modify(row, col, row, col, true);
+        
+        bfsQueue.Clear();
+        bfsQueue.Enqueue(bfsArray[row, col]);
 
-        while(openQueue.Count>0)
+        while (bfsQueue.Count > 0)
         {
-            AStarNode node = openQueue.Dequeue();
-
-            if(node.row == targetRow && node.col == targetCol)
+            var node = bfsQueue.Dequeue();
+            if (node.row == targetRow && node.col == targetCol)
             {
-                int count = node.count;
-                AStarNode reverse = node;
-                for(int i=0; i< count; i++)
-                {
-                    int preRow = AStarCheckArray[reverse.row, reverse.col].preRow;
-                    int preCol = AStarCheckArray[reverse.row, reverse.col].preCol;
-
-                    if (preRow == this.row && preCol == this.col)
-                    {
-                        GhostTurnCheck(reverse.row, reverse.col, this.row, this.col);
-
-                        this.row = reverse.row;
-                        this.col = reverse.col;
-
-                        return;
-                    }
-                    else
-                    {
-                        reverse.row = preRow;
-                        reverse.col = preCol;
-                    }
-                    
-                }
+                BackTracking(node.row, node.col);
                 break;
             }
 
-            if(node.row -1 > 0 && movableCheckArray[node.row - 1, node.col] && AStarCheckArray[node.row - 1, node.col].count > node.count + 1)
-            {
-                AStarCheckArray[node.row - 1, node.col] = new AStarNode(node.row - 1, node.col, node.row, node.col, node.count + 1);
-                openQueue.Enqueue(AStarCheckArray[node.row - 1, node.col]);
-            }
+            PathFindingProcess(node.row - 1,  node.col, node.row, node.col);
+            
+            PathFindingProcess(node.row + 1,  node.col, node.row, node.col);
+            
+            PathFindingProcess(node.row,  node.col - 1, node.row, node.col);
+            
+            PathFindingProcess(node.row,  node.col + 1, node.row, node.col);
+        }
+    }
 
-            if (node.row + 1< line && movableCheckArray[node.row + 1, node.col] && AStarCheckArray[node.row + 1, node.col].count > node.count + 1)
-            {
-                AStarCheckArray[node.row + 1, node.col] = new AStarNode(node.row + 1, node.col, node.row, node.col, node.count + 1);
-                openQueue.Enqueue(AStarCheckArray[node.row + 1, node.col]);
-            }
+    /// <summary>
+    /// 경로 탐색 처리
+    /// </summary>
+    private void PathFindingProcess(int destRow, int destCol, int srcRow, int srcCol)
+    {
+        if (bfsArray[destRow, destCol].isVisited == false && IsMovable(destRow, destCol))
+        {
+            bfsArray[destRow, destCol].Modify(destRow, destCol, srcRow, srcCol, true);
+            
+            bfsQueue.Enqueue(bfsArray[destRow, destCol]);
+        }
+    }
 
-            if (node.col - 1 > 0 && movableCheckArray[node.row, node.col - 1] && AStarCheckArray[node.row, node.col - 1].count > node.count + 1)
+    /// <summary>
+    /// 이동 가능한 좌표인지 검사
+    /// </summary>
+    private bool IsMovable(int row, int col)
+    {
+        if (row > 0 && col > 0 && row < line && col < column)
+        {
+            if (movableCheckArray[row, col])
             {
-                AStarCheckArray[node.row, node.col - 1] = new AStarNode(node.row, node.col - 1, node.row, node.col, node.count + 1);
-                openQueue.Enqueue(AStarCheckArray[node.row, node.col-1]);
-            }
-
-            if (node.col + 1< column && movableCheckArray[node.row, node.col + 1] && AStarCheckArray[node.row, node.col + 1].count > node.count + 1)
-            {
-                AStarCheckArray[node.row, node.col + 1] = new AStarNode(node.row, node.col + 1, node.row, node.col, node.count + 1);
-                openQueue.Enqueue(AStarCheckArray[node.row, node.col + 1]);
+                return true;
             }
         }
 
+        return false;
+    }
+
+    /// <summary>
+    /// 타겟 좌표까지의 경로 중 첫번째 좌표를 역추적
+    /// </summary>
+    private void BackTracking(int reverseRow, int reverseCol)
+    {
+        var loopSafeCount = 0;
+        var maxSafeCount = column * line * 2;
+        
+        while(!(reverseRow == this.row && reverseCol == this.col))
+        {
+            int preRow = bfsArray[reverseRow, reverseCol].preRow;
+            int preCol = bfsArray[reverseRow, reverseCol].preCol;
+
+            if (preRow == this.row && preCol == this.col)
+            {
+                GhostTurnCheck(reverseRow, reverseCol, this.row, this.col);
+
+                this.row = reverseRow;
+                this.col = reverseCol;
+
+                return;
+            }
+            else
+            {
+                reverseRow = preRow;
+                reverseCol = preCol;
+            }
+            
+            if (++loopSafeCount > maxSafeCount)
+            {
+                DebugHelper.Log($"무한 루프 방지 {loopSafeCount}");
+                
+                break;
+            }
+        }
     }
     
 
@@ -465,7 +495,8 @@ public class CharacterBase : MonoBehaviour
         }
         else
         {
-            Debug.Log("Pac is null");
+            DebugHelper.Log(DebugHelper.DEBUG.NULL);
+            
             return false;
         }
     }
