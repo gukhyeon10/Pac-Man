@@ -4,71 +4,75 @@ using UnityEngine;
 using System;
 using System.Xml;
 
-public class ItemManager : MonoBehaviour
+namespace GGame
 {
-    public GameTile[,] tileArray;
-    public Transform[,] itemArray;
 
-    [SerializeField]
-    Transform itemPanel;
-
-    //아이템 생성할 프리팹
-    [SerializeField]
-    GameObject[] itemPrefabArray;
-
-    //인게임 아이템 POOL
-    List<GameObject> itemList = new List<GameObject>();
-
-    int line, column;
-
-    // Start is called before the first frame update
-    void Start()
+    public class ItemManager : MonoBehaviour
     {
-        line = StageManager.Instance.GetLine;
-        column = StageManager.Instance.GetColumn;
+        public GameTile[,] tileArray;
+        public Transform[,] itemArray;
 
-        itemArray = new Transform[line, column];
-    }
+        [SerializeField] Transform itemPanel;
 
-    //아이템 초기화
-    public void InitItem()
-    {
-        itemPanel.gameObject.SetActive(true);
+        //아이템 생성할 프리팹
+        [SerializeField] GameObject[] itemPrefabArray;
 
-        for (int i=0; i<itemList.Count; i++)
+        //인게임 아이템 POOL
+        List<GameObject> itemList = new List<GameObject>();
+
+        int line, column;
+
+        // Start is called before the first frame update
+        void Start()
         {
-            Destroy(itemList[i]);
+            line = StageManager.Instance.GetLine;
+            column = StageManager.Instance.GetColumn;
+
+            itemArray = new Transform[line, column];
         }
-        itemList.Clear();
-    }
 
-    //아이템 로드
-    public int LoadItem(XmlNodeList nodeList)
-    {
-        int normalCount=0;
-        int row, col, objectNumber;
-        foreach(XmlNode node in nodeList)
+        //아이템 초기화
+        public void InitItem()
         {
-            row = int.Parse(node.SelectSingleNode("Row").InnerText);
-            col = int.Parse(node.SelectSingleNode("Column").InnerText);
-            objectNumber = int.Parse(node.SelectSingleNode("Number").InnerText);
+            itemPanel.gameObject.SetActive(true);
 
-            //아이템 생성
-            GameObject item = Instantiate(itemPrefabArray[objectNumber], tileArray[row,col].transform.position, Quaternion.identity, itemPanel);
-            itemList.Add(item);
-
-            //노말 아이템 개수 누적
-            if(objectNumber == (int)EItem.NORMAL)
+            for (int i = 0; i < itemList.Count; i++)
             {
-                normalCount++;
+                Destroy(itemList[i]);
             }
+
+            itemList.Clear();
         }
 
-        return normalCount;
-    }
+        //아이템 로드
+        public int LoadItem(XmlNodeList nodeList)
+        {
+            int normalCount = 0;
+            int row, col, objectNumber;
+            foreach (XmlNode node in nodeList)
+            {
+                row = int.Parse(node.SelectSingleNode("Row").InnerText);
+                col = int.Parse(node.SelectSingleNode("Column").InnerText);
+                objectNumber = int.Parse(node.SelectSingleNode("Number").InnerText);
 
-    public void ItemPanelDisable()
-    {
-        itemPanel.gameObject.SetActive(false);
+                //아이템 생성
+                GameObject item = Instantiate(itemPrefabArray[objectNumber], tileArray[row, col].transform.position,
+                    Quaternion.identity, itemPanel);
+                itemList.Add(item);
+
+                //노말 아이템 개수 누적
+                if (objectNumber == (int)EItem.NORMAL)
+                {
+                    normalCount++;
+                }
+            }
+
+            return normalCount;
+        }
+
+        public void ItemPanelDisable()
+        {
+            itemPanel.gameObject.SetActive(false);
+        }
     }
 }

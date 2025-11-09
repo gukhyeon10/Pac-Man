@@ -6,7 +6,7 @@ enum EObjectType
     CHARACTER = 2,
 }
 
-enum EDirect
+public enum EDirect
 {
     EAST = 0,
     WEST = 1,
@@ -73,9 +73,15 @@ public struct PrimNode
 
 public struct BfsNode
 {
-    public bool isVisited;
-    public int preRow, preCol;
-    public int row, col;
+    private bool isVisited;
+    private int preRow, preCol;
+    private int row, col;
+    
+    public bool IsVisited => isVisited;
+    public int PreRow => preRow;
+    public int PreCol => preCol;
+    public int Row => row;
+    public int Col => col;
 
     public void Modify(int row, int col, int preRow, int preCol, bool isVisited)
     {
