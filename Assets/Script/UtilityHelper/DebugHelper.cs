@@ -31,5 +31,12 @@ namespace GUtility
             Debug.Log($"<DebugHelper> {message}");
 #endif
         }
+
+        public static void Log(string message)
+        {
+#if UNITY_EDITOR
+            Debug.Log($"<DebugHelper> {message}");
+#endif
+        }
     }   
 }
