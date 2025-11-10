@@ -7,7 +7,7 @@ namespace GGame
 {
     public class Ghost : CharacterBase
     {
-        private readonly BfsNode[,] bfsArray = new BfsNode[StageManager.line, StageManager.column]; // Bfs 탐색 array
+        private readonly BfsNode[][] bfsArray; // Bfs 탐색 array
         private readonly Queue<BfsNode> bfsQueue = new Queue<BfsNode>(); // Bfs 탐색 queue
         
         private bool isLookPac = false;
@@ -18,6 +18,20 @@ namespace GGame
         protected virtual float RespawnCoolTime => 3f;
         protected virtual float TrackingTime => 5f;
 
+        public Ghost()
+        {
+            int rows = StageManager.line;
+            int cols = StageManager.column;
+
+            bfsArray = new BfsNode[rows][];
+            for (int i = 0; i < rows; i++)
+            {
+                bfsArray[i] = new BfsNode[cols];
+                for (int j = 0; j < cols; j++)
+                    bfsArray[i][j] = new BfsNode();
+            }
+        }
+        
         public override void InitCharacter(int x, int y)
         {
             base.InitCharacter(x, y);
@@ -70,7 +84,7 @@ namespace GGame
 
                 if (isLookPac)
                 {
-                    PathTracking();
+                    PacTracking();
                 }
                 else
                 {
@@ -84,10 +98,10 @@ namespace GGame
         /// </summary>
         private void PathFinding((int row, int col) coord, (int row, int col) targetCoord, bool[,] movable)
         {
-            bfsArray[coord.row, coord.col].Modify(coord, coord, true);
+            bfsArray[coord.row][coord.col].Modify(coord, coord, true);
 
             bfsQueue.Clear();
-            bfsQueue.Enqueue(bfsArray[coord.row, coord.col]);
+            bfsQueue.Enqueue(bfsArray[coord.row][coord.col]);
 
             while (bfsQueue.Count > 0)
             {
@@ -115,13 +129,13 @@ namespace GGame
         {
             if (dest.row >= 0 && dest.col >= 0 && dest.row < StageManager.line && dest.col < StageManager.column)
             {
-                if (movable[coord.row, coord.col])
+                if (movable[dest.row, dest.col])
                 {
-                    if (bfsArray[dest.row, dest.col].IsVisited == false)
+                    if (bfsArray[dest.row][dest.col].IsVisited == false)
                     {
-                        bfsArray[dest.row, dest.col].Modify(dest, src, true);
+                        bfsArray[dest.row][dest.col].Modify(dest, src, true);
 
-                        bfsQueue.Enqueue(bfsArray[dest.row, dest.col]);
+                        bfsQueue.Enqueue(bfsArray[dest.row][dest.col]);
                     }   
                 }
             }
@@ -137,7 +151,7 @@ namespace GGame
 
             while (!coord.Equals(reverseCoord))
             {
-                var preCoord = bfsArray[reverseCoord.row, reverseCoord.col].PreCoord;
+                var preCoord = bfsArray[reverseCoord.row][reverseCoord.col].PreCoord;
 
                 if (preCoord.Equals(coord))
                 {
@@ -156,7 +170,7 @@ namespace GGame
 
                 if (++loopSafeCount > maxSafeCount)
                 {
-                    DebugHelper.Log($"무한 루프 방지 {loopSafeCount}");
+                    //DebugHelper.Log($"무한 루프 방지 {loopSafeCount}");
 
                     break;
                 }
@@ -172,7 +186,7 @@ namespace GGame
             {
                 for (int j = 0; j < StageManager.column; j++)
                 {
-                    bfsArray[i, j].Modify((i, j), (i, j), false);
+                    bfsArray[i][j].Modify((i, j), (i, j), false);
                 }
             }
         }
@@ -271,9 +285,9 @@ namespace GGame
         /// <summary>
         /// 팩맨 추적
         /// </summary>
-        private void PathTracking()
+        private void PacTracking()
         {
-            if (SafeTarget(pac.transform))
+            if (pac.transform != null)
             {
                 if (character.position == target.position)
                 {

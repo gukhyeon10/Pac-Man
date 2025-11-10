@@ -78,11 +78,8 @@ namespace GGame
         // 각 캐릭터 별 재정의 함수
         protected virtual void CharacterMove()
         {
-            // 기본 움직임 (랜덤 방향)
-            if (!SafeTarget(target)) // 타겟 null 처리
-            {
+            if(target == null)
                 return;
-            }
 
             if (Vector3.Distance(character.position, target.position) < 0.01f)
             {
@@ -146,21 +143,6 @@ namespace GGame
             }
             else
             {
-                return false;
-            }
-        }
-
-        // 타겟 방어 코드
-        protected bool SafeTarget<T>(T target)
-        {
-            if (target != null)
-            {
-                return true;
-            }
-            else
-            {
-                DebugHelper.Log(DebugHelper.DEBUG.NULL);
-
                 return false;
             }
         }
