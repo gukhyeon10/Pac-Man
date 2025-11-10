@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using GUtility;
 using UnityEngine;
 
@@ -6,11 +7,13 @@ namespace GGame
 {
     public class Ghost : CharacterBase
     {
+        private readonly BfsNode[,] bfsArray = new BfsNode[StageManager.line, StageManager.column]; // Bfs 탐색 array
+        private readonly Queue<BfsNode> bfsQueue = new Queue<BfsNode>(); // Bfs 탐색 queue
+        
         private bool isLookPac = false;
 
-        protected bool[,] ghostRespawnMovableCheckArray; // 유령 리스폰 경로 이동 가능 좌표 플래그
-        protected bool isRespawn = false;
-        protected bool isReturn = false;
+        private bool isRespawn = false;
+        private bool isReturn = false;
         
         protected virtual float RespawnCoolTime => 3f;
         protected virtual float TrackingTime => 5f;
@@ -18,8 +21,6 @@ namespace GGame
         public override void InitCharacter(int x, int y)
         {
             base.InitCharacter(x, y);
-            
-            ghostRespawnMovableCheckArray = StageManager.Instance.ghostRespawnMovableCheckArray;
             
             isRespawn = false;
             isReturn = false;
@@ -30,8 +31,11 @@ namespace GGame
             isLookPac = false;
             
             StopAllCoroutines();
-            
-            StartCoroutine(GhostRespawnCoolTime());
+
+            if (RespawnCoolTime > 0f)
+            {
+                StartCoroutine(GhostRespawnCoolTime());   
+            }
         }
 
         // Update is called once per frame
@@ -55,14 +59,7 @@ namespace GGame
             else
             {
                 //팩맨 슈퍼모드일 경우 유령 모습 변화
-                if (pac.GetIsSuperMode)
-                {
-                    animator.SetBool("SCARE", true);
-                }
-                else
-                {
-                    animator.SetBool("SCARE", false);
-                }
+                animator.SetBool("SCARE", pac.GetIsSuperMode);
 
                 if (isLookPac == false && GhostLookPac())
                 {
@@ -85,7 +82,7 @@ namespace GGame
         /// <summary>
         /// 타겟 좌표 경로 탐색 시작
         /// </summary>
-        private void PathFinding((int row, int col) coord, (int row, int col) targetCoord)
+        private void PathFinding((int row, int col) coord, (int row, int col) targetCoord, bool[,] movable)
         {
             bfsArray[coord.row, coord.col].Modify(coord, coord, true);
 
@@ -101,52 +98,42 @@ namespace GGame
                     break;
                 }
 
-                PathFindingProcess(node.Coord, node.Coord.Calculate(EDirect.EAST));
+                PathFindingProcess(node.Coord, node.Coord.Calculate(EDirect.EAST), movable);
 
-                PathFindingProcess(node.Coord, node.Coord.Calculate(EDirect.WEST));
+                PathFindingProcess(node.Coord, node.Coord.Calculate(EDirect.WEST), movable);
 
-                PathFindingProcess(node.Coord, node.Coord.Calculate(EDirect.SOUTH));
+                PathFindingProcess(node.Coord, node.Coord.Calculate(EDirect.SOUTH), movable);
 
-                PathFindingProcess(node.Coord, node.Coord.Calculate(EDirect.NORTH));
+                PathFindingProcess(node.Coord, node.Coord.Calculate(EDirect.NORTH), movable);
             }
         }
 
         /// <summary>
         /// 경로 탐색 처리
         /// </summary>
-        private void PathFindingProcess((int row, int col) src, (int row, int col) dest)
+        private void PathFindingProcess((int row, int col) src, (int row, int col) dest, bool[,] movable)
         {
-            if (IsMovable(dest) && bfsArray[dest.row, dest.col].IsVisited == false)
+            if (dest.row >= 0 && dest.col >= 0 && dest.row < StageManager.line && dest.col < StageManager.column)
             {
-                bfsArray[dest.row, dest.col].Modify(dest, src, true);
+                if (movable[coord.row, coord.col])
+                {
+                    if (bfsArray[dest.row, dest.col].IsVisited == false)
+                    {
+                        bfsArray[dest.row, dest.col].Modify(dest, src, true);
 
-                bfsQueue.Enqueue(bfsArray[dest.row, dest.col]);
+                        bfsQueue.Enqueue(bfsArray[dest.row, dest.col]);
+                    }   
+                }
             }
         }
         
-        /// <summary>
-        /// 이동 가능한 좌표인지 검사
-        /// </summary>
-        private bool IsMovable((int row, int col) coord)
-        {
-            if (coord.row >= 0 && coord.col >= 0 && coord.row < line && coord.col < column)
-            {
-                if (movableCheckArray[coord.row, coord.col])
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
         /// <summary>
         /// 타겟 좌표까지의 경로 중 첫번째 좌표를 역추적
         /// </summary>
         private void BackTracking((int row, int col) reverseCoord)
         {
             var loopSafeCount = 0;
-            var maxSafeCount = column * line * 2;
+            var maxSafeCount = StageManager.column * StageManager.line * 2;
 
             while (!coord.Equals(reverseCoord))
             {
@@ -179,14 +166,11 @@ namespace GGame
         /// <summary>
         /// bfs 탐색 시작 전 초기화
         /// </summary>
-        /// <param name="movableCheckArray"></param>
-        private void InitBfsArray(bool[,] movableCheckArray = null)
+        private void InitBfsArray()
         {
-            this.movableCheckArray = movableCheckArray ?? this.movableCheckArray;
-
-            for (int i = 0; i < line; i++)
+            for (int i = 0; i < StageManager.line; i++)
             {
-                for (int j = 0; j < column; j++)
+                for (int j = 0; j < StageManager.column; j++)
                 {
                     bfsArray[i, j].Modify((i, j), (i, j), false);
                 }
@@ -221,9 +205,12 @@ namespace GGame
                     return;
                 }
 
-                InitBfsArray(ghostRespawnMovableCheckArray);
-                PathFinding(coord, StageManager.Instance.ghostRespawnCoord.Calculate(EDirect.NORTH));
-                target = tileArray[coord.row, coord.col].transform;
+                InitBfsArray();
+
+                var movable = StageManager.Instance.ghostRespawnMovableCheckArray;
+                PathFinding(coord, StageManager.Instance.ghostRespawnCoord.Calculate(EDirect.NORTH), movable);
+                
+                target = StageManager.Instance.tileArray[coord.row, coord.col].transform;
             }
 
             character.position = Vector3.MoveTowards(character.position, target.position, speed * Time.deltaTime);
@@ -243,9 +230,12 @@ namespace GGame
                     return;
                 }
 
-                InitBfsArray(ghostRespawnMovableCheckArray);
-                PathFinding(coord, StageManager.Instance.ghostRespawnCoord.Calculate(EDirect.SOUTH));
-                target = tileArray[coord.row, coord.col].transform;
+                InitBfsArray();
+                
+                var movable = StageManager.Instance.ghostRespawnMovableCheckArray;
+                PathFinding(coord, StageManager.Instance.ghostRespawnCoord.Calculate(EDirect.SOUTH), movable);
+                
+                target = StageManager.Instance.tileArray[coord.row, coord.col].transform;
             }
 
             character.position = Vector3.MoveTowards(character.position, target.position, speed * Time.deltaTime * 1.5f);
@@ -262,7 +252,7 @@ namespace GGame
             {
                 tempCoord.Update(moveDirect);
                 
-                if (StageManager.SafeArray(movableCheckArray, tempCoord) && movableCheckArray[tempCoord.row, tempCoord.col])
+                if (StageManager.SafeArray(StageManager.Instance.movableCheckArray, tempCoord) && StageManager.Instance.movableCheckArray[tempCoord.row, tempCoord.col])
                 {
                     if(tempCoord.Equals(pac.Coord))
                     {
@@ -288,8 +278,11 @@ namespace GGame
                 if (character.position == target.position)
                 {
                     InitBfsArray();
-                    PathFinding(coord, pac.Coord);
-                    target = tileArray[coord.row, coord.col].transform;
+                    
+                    var movable = StageManager.Instance.movableCheckArray;
+                    PathFinding(coord, pac.Coord, movable);
+                    
+                    target = StageManager.Instance.tileArray[coord.row, coord.col].transform;
                 }
 
                 character.position = Vector3.MoveTowards(character.position, target.position, speed * Time.deltaTime);

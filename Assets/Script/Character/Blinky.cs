@@ -7,7 +7,7 @@ namespace GGame
 {
     public class Blinky : Ghost
     {
-        protected override float RespawnCoolTime => 1f;
+        protected override float RespawnCoolTime => 0f;
         protected override float TrackingTime => 8f;
     }
 }

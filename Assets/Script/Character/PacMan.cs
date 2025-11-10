@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using GUtility;
 using UnityEngine;
 
@@ -62,11 +61,13 @@ namespace GGame
         // 팩맨 이동 로직
         protected override void CharacterMove()
         {
-            character.position = Vector3.MoveTowards(character.position, tileArray[coord.row, coord.col].transform.position, speed * Time.deltaTime);
+            var targetPosition = StageManager.Instance.tileArray[coord.row, coord.col].transform.position;
             
-            if (Vector3.Distance(character.position, tileArray[coord.row, coord.col].transform.position) < 0.01f)
+            character.position = Vector3.MoveTowards(character.position, targetPosition, speed * Time.deltaTime);
+            
+            if (Vector3.Distance(character.position, targetPosition) < 0.01f)
             {
-                if (!WrapCoordinate()) // 반대편으로 전환하는게 아니라면
+                if (!WrapCoordinate())
                 {
                     animator.SetInteger("DIRECT", (int)moveDirect);
                     

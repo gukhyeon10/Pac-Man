@@ -31,16 +31,16 @@ namespace GGame
         private const string stageFileName = "STAGE_";
 
         // 타일 29행 23열 (30행 타일은 가리기 용도)
-        private const int column = 23;
-        private const int line = 29;
+        public const int column = 23;
+        public const int line = 29;
         
         public int GetLine => line;
         public int GetColumn => column;
         public int GetCurrentStage => currentStage;
 
-        public GameTile[,] tileArray = new GameTile[line, column];
-        public bool[,] movableCheckArray = new bool[line, column];
-        public bool[,] ghostRespawnMovableCheckArray = new bool[line, column];
+        public readonly GameTile[,] tileArray = new GameTile[line, column];
+        public readonly bool[,] movableCheckArray = new bool[line, column];
+        public readonly bool[,] ghostRespawnMovableCheckArray = new bool[line, column];
         public (int row, int col) ghostRespawnCoord = (line / 2, column / 2); //유령 디폴트 초기 위치
 
         private int currentStage = 1; // 현재 스테이지
