@@ -7,9 +7,7 @@ namespace GGame
 {
     public class PacMan : CharacterBase
     {
-        private int inputDirect = (int)EDirect.EAST;
         private bool isSuperMode = false;
-        private bool isInput = false;
         private Coroutine superModeCoroutine;
         
         public bool GetIsSuperMode => isSuperMode;
@@ -35,8 +33,6 @@ namespace GGame
                 
                 return;
             }
-
-            animator.SetInteger("DIRECT", moveDirect);
             
             KeyboardInput();
             
@@ -72,49 +68,12 @@ namespace GGame
             {
                 if (!WrapCoordinate()) // 반대편으로 전환하는게 아니라면
                 {
-                    if (IsKeepMove((EDirect)inputDirect))
-                    {
-                        moveDirect = inputDirect;
-                    }
+                    animator.SetInteger("DIRECT", (int)moveDirect);
                     
-                    if(IsKeepMove((EDirect)moveDirect))
+                    if(IsKeepMove(moveDirect))
                     {
-                        UpdateCoord();
+                        coord.Update(moveDirect);
                     }
-                }
-            }
-            else
-            {
-                ReverseMove(); // 타일에서 타일 넘어가는 중에 반대 방향으로 전환 가능
-            }
-
-            isInput = false;
-        }
-
-        // 역방향 이동
-        void ReverseMove()
-        {
-            if (isInput)
-            {
-                if (inputDirect == (int)EDirect.EAST && moveDirect == (int)EDirect.WEST)
-                {
-                    coord.col++;
-                    moveDirect = inputDirect;
-                }
-                else if (inputDirect == (int)EDirect.WEST && moveDirect == (int)EDirect.EAST)
-                {
-                    coord.col--;
-                    moveDirect = inputDirect;
-                }
-                else if (inputDirect == (int)EDirect.SOUTH && moveDirect == (int)EDirect.NORTH)
-                {
-                    coord.row++;
-                    moveDirect = inputDirect;
-                }
-                else if (inputDirect == (int)EDirect.NORTH && moveDirect == (int)EDirect.SOUTH)
-                {
-                    coord.row--;
-                    moveDirect = inputDirect;
                 }
             }
         }
@@ -146,7 +105,6 @@ namespace GGame
         {
             if (collision.tag.Equals("Ghost"))
             {
-
                 if (!isSuperMode)
                 {
                     StageManager.Instance.StageResult((int)EResult.GAME_OVER);
@@ -157,26 +115,22 @@ namespace GGame
         // 방향키 입력
         public void PacLeft()
         {
-            inputDirect = (int)EDirect.WEST;
-            isInput = true;
+            moveDirect = EDirect.WEST;
         }
 
         public void PacRight()
         {
-            inputDirect = (int)EDirect.EAST;
-            isInput = true;
+            moveDirect = EDirect.EAST;
         }
 
         public void PacUp()
         {
-            inputDirect = (int)EDirect.NORTH;
-            isInput = true;
+            moveDirect = EDirect.NORTH;
         }
 
         public void PacDown()
         {
-            inputDirect = (int)EDirect.SOUTH;
-            isInput = true;
+            moveDirect = EDirect.SOUTH;
         }
     }
 }

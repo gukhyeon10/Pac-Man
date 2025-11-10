@@ -9,7 +9,6 @@ namespace GGame
     {
         protected GameTile[,] tileArray;
         protected bool[,] movableCheckArray; // 캐릭터 이동 가능 좌표 플래그
-        protected bool[,] ghostRespawnMovableCheckArray; // 유령 리스폰 경로 이동 가능 좌표 플래그
 
         //이동 목표 Transform
         protected Transform target;
@@ -29,41 +28,20 @@ namespace GGame
         //목표 위치 좌표
         protected (int row, int col) coord;
         public (int row, int col) Coord => coord;
-        
-        protected bool isRespawn = false;
-        protected bool isReturn = false;
 
-        protected int moveDirect = (int)EDirect.EAST;
+        protected EDirect moveDirect = EDirect.EAST;
         protected float speed = 2f;
         public bool isContinue = true;
 
         public Animator animator;
         public BoxCollider2D boxCollider;
 
-        public void InitCharacter()
+        // 캐릭터 초기화
+        public virtual void InitCharacter(int x, int y)
         {
             character = this.transform;
             tileArray = StageManager.Instance.tileArray;
             movableCheckArray = StageManager.Instance.movableCheckArray;
-            ghostRespawnMovableCheckArray = StageManager.Instance.ghostRespawnMovableCheckArray;
-
-            coord.row = 2;
-            coord.col = 2;
-
-            target = tileArray[coord.row, coord.col].transform;
-            character.position = target.position;
-
-            isRespawn = false;
-            isReturn = false;
-        }
-
-        // 캐릭터 초기화 오버로딩
-        public void InitCharacter(int x, int y)
-        {
-            character = this.transform;
-            tileArray = StageManager.Instance.tileArray;
-            movableCheckArray = StageManager.Instance.movableCheckArray;
-            ghostRespawnMovableCheckArray = StageManager.Instance.ghostRespawnMovableCheckArray;
 
             coord.row = x;
             coord.col = y;
@@ -71,41 +49,17 @@ namespace GGame
             target = tileArray[coord.row, coord.col].transform;
             character.position = target.position;
 
-            isRespawn = false;
-            isReturn = false;
             boxCollider.enabled = true;
         }
-
+        
         /// <summary>
         /// 바라보는 방향으로 계속 가는지 검사
         /// </summary>
         protected bool IsKeepMove(EDirect direct)
         {
-            return direct switch
-            {
-                EDirect.EAST => movableCheckArray[coord.row, coord.col + 1],
-                EDirect.WEST => movableCheckArray[coord.row, coord.col - 1],
-                EDirect.SOUTH => movableCheckArray[coord.row + 1, coord.col],
-                EDirect.NORTH => movableCheckArray[coord.row - 1, coord.col],
-                
-                _ => true,
-            };
-        }
-        
-        /// <summary>
-        /// 이동 좌표 갱신 
-        /// </summary>
-        protected void UpdateCoord()
-        {
-            coord = moveDirect switch
-            {
-                (int)EDirect.EAST  => (coord.row, coord.col + 1),
-                (int)EDirect.WEST  => (coord.row, coord.col - 1),
-                (int)EDirect.SOUTH => (coord.row + 1, coord.col),
-                (int)EDirect.NORTH => (coord.row - 1, coord.col),
-                                
-                _ => (coord.row, coord.col)
-            };
+            var directCoord = coord.Calculate(direct);
+
+            return movableCheckArray[directCoord.row, directCoord.col];
         }
 
         /// <summary>
@@ -113,57 +67,22 @@ namespace GGame
         /// </summary>
         private void UpdateDirect()
         {
-            var movableList = new List<int>(4); // 갈 수 있는 방향 리스트
-            if (movableCheckArray[coord.row, coord.col + 1])
+            var movableList = new List<EDirect>(4); // 갈 수 있는 방향 리스트
+            for (int i = 0; i < movableList.Capacity; i++)
             {
-                movableList.Add((int)EDirect.EAST);
-            }
-
-            if (movableCheckArray[coord.row, coord.col - 1])
-            {
-                movableList.Add((int)EDirect.WEST);
-            }
-
-            if (movableCheckArray[coord.row + 1, coord.col])
-            {
-                movableList.Add((int)EDirect.SOUTH);
-            }
-
-            if (movableCheckArray[coord.row - 1, coord.col])
-            {
-                movableList.Add((int)EDirect.NORTH);
+                var directCoord = coord.Calculate((EDirect)i);
+                
+                if (movableCheckArray[directCoord.row, directCoord.col])
+                {
+                    movableList.Add((EDirect)i);
+                }
             }
 
             if (movableList.Count > 0)
             {
-                int index = Random.Range(0, movableList.Count);
-                switch (movableList[index])
-                {
-                    case (int)EDirect.WEST:
-                    {
-                        coord.col--;
-                        moveDirect = (int)EDirect.WEST;
-                        break;
-                    }
-                    case (int)EDirect.EAST:
-                    {
-                        coord.col++;
-                        moveDirect = (int)EDirect.EAST;
-                        break;
-                    }
-                    case (int)EDirect.NORTH:
-                    {
-                        coord.row--;
-                        moveDirect = (int)EDirect.NORTH;
-                        break;
-                    }
-                    case (int)EDirect.SOUTH:
-                    {
-                        coord.row++;
-                        moveDirect = (int)EDirect.SOUTH;
-                        break;
-                    }
-                }
+                var index = Random.Range(0, movableList.Count);
+
+                moveDirect = movableList[index];
             }
         }
 
@@ -180,16 +99,14 @@ namespace GGame
             {
                 if (!WrapCoordinate())
                 {
-                    if (IsKeepMove((EDirect)moveDirect))
-                    {
-                        UpdateCoord();
-                    }
-                    else
+                    if (!IsKeepMove(moveDirect))
                     {
                         UpdateDirect();
                     }
+                    
+                    coord.Update(moveDirect);
 
-                    target = StageManager.SafeArray(tileArray, coord.row, coord.col) ? tileArray[coord.row, coord.col].transform : null;
+                    target = StageManager.SafeArray(tileArray, coord) ? tileArray[coord.row, coord.col].transform : null;
                 }
             }
 

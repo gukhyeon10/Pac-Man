@@ -41,7 +41,7 @@ namespace GGame
         public GameTile[,] tileArray = new GameTile[line, column];
         public bool[,] movableCheckArray = new bool[line, column];
         public bool[,] ghostRespawnMovableCheckArray = new bool[line, column];
-        public int ghostRespawnRow = line / 2, ghostRespawnCol = column / 2; //유령 디폴트 초기 위치
+        public (int row, int col) ghostRespawnCoord = (line / 2, column / 2); //유령 디폴트 초기 위치
 
         private int currentStage = 1; // 현재 스테이지
         private int lastStage = 3; // 마지막 스테이지
@@ -110,7 +110,7 @@ namespace GGame
             {
                 for (int col = 0; col < column; col++)
                 {
-                    if (SafeArray(tileArray, row, col))
+                    if (SafeArray(tileArray, (row, col)))
                     {
                         tileArray[row, col].spriteRenderer.sprite = defaultSprite;
                     }
@@ -146,7 +146,7 @@ namespace GGame
                 if (i / column > 0 && i / column < line - 1 && i % column > 0 &&
                     i % column < column - 1) // 화면상 타일들은 이동가능이 디폴트
                 {
-                    if (SafeArray<bool>(movableCheckArray, i / column, i % column))
+                    if (SafeArray<bool>(movableCheckArray, (i / column, i % column)))
                     {
                         movableCheckArray[(i / column), (i % column)] = true;
                         ghostRespawnMovableCheckArray[(i / column), (i % column)] = true;
@@ -155,7 +155,7 @@ namespace GGame
                 }
                 else // 화면밖 테두리 타일들은 이동불가능이 디폴트
                 {
-                    if (SafeArray<bool>(movableCheckArray, i / column, i % column))
+                    if (SafeArray<bool>(movableCheckArray, (i / column, i % column)))
                     {
                         movableCheckArray[(i / column), (i % column)] = false;
                         ghostRespawnMovableCheckArray[(i / column), (i % column)] = true;
@@ -185,7 +185,7 @@ namespace GGame
                 col = int.Parse(node.SelectSingleNode("Column").InnerText);
                 objectNumber = int.Parse(node.SelectSingleNode("Number").InnerText);
 
-                if (SafeArray(tileArray, row, col))
+                if (SafeArray(tileArray, (row, col)))
                 {
                     tileArray[row, col].spriteRenderer.sprite = spriteManager.wallSpriteArray[objectNumber];
                     tileArray[row, col].transform.eulerAngles =
@@ -197,8 +197,7 @@ namespace GGame
                     if (objectNumber == (int)EWall.CENTERDOOR)
                     {
                         ghostRespawnMovableCheckArray[row, col] = true;
-                        ghostRespawnRow = row;
-                        ghostRespawnCol = col;
+                        ghostRespawnCoord = (row, col);
                     }
 
                 }
@@ -208,13 +207,13 @@ namespace GGame
             //화면상 테두리부분이 뚫려있다면 테두리 한칸 밖 타일 이동가능
             for (int x = 1; x < column - 1; x++)
             {
-                if (SafeArray<GameTile>(tileArray, 1, x) &&
+                if (SafeArray<GameTile>(tileArray, (1, x)) &&
                     tileArray[1, x].spriteRenderer.sprite.name.Equals("Default_Sprite"))
                 {
                     movableCheckArray[0, x] = true;
                 }
 
-                if (SafeArray<GameTile>(tileArray, line - 2, x) &&
+                if (SafeArray<GameTile>(tileArray, (line - 2, x)) &&
                     tileArray[line - 2, x].spriteRenderer.sprite.name.Equals("Default_Sprite"))
                 {
                     movableCheckArray[line - 1, x] = true;
@@ -223,13 +222,13 @@ namespace GGame
 
             for (int y = 1; y < line - 1; y++)
             {
-                if (SafeArray<GameTile>(tileArray, y, 1) &&
+                if (SafeArray<GameTile>(tileArray, (y, 1)) &&
                     tileArray[y, 1].spriteRenderer.sprite.name.Equals("Default_Sprite"))
                 {
                     movableCheckArray[y, 0] = true;
                 }
 
-                if (SafeArray<GameTile>(tileArray, y, column - 2) &&
+                if (SafeArray<GameTile>(tileArray, (y, column - 2)) &&
                     tileArray[y, column - 2].spriteRenderer.sprite.name.Equals("Default_Sprite"))
                 {
                     movableCheckArray[y, column - 1] = true;
@@ -372,15 +371,15 @@ namespace GGame
 
             itemManager.ItemPanelDisable();
             resultText.gameObject.SetActive(true);
-            resultText.transform.position = tileArray[ghostRespawnRow + 4, ghostRespawnCol].transform.position;
+            resultText.transform.position = tileArray[ghostRespawnCoord.row + 4, ghostRespawnCoord.col].transform.position;
 
         }
 
 
         // 2차원 배열 방어 코드
-        public static bool SafeArray<T>(T[,] array, int row, int col)
+        public static bool SafeArray<T>(T[,] array, (int row, int col) coord)
         {
-            if (array != null && row >= 0 && row < line && col >= 0 && col < column && array[row, col] != null)
+            if (array != null && coord.row >= 0 && coord.row < line && coord.col >= 0 && coord.col < column && array[coord.row, coord.col] != null)
             {
                 return true;
             }

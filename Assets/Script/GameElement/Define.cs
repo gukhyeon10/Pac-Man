@@ -74,21 +74,17 @@ public struct PrimNode
 public struct BfsNode
 {
     private bool isVisited;
-    private int preRow, preCol;
-    private int row, col;
+    private (int preRow, int preCol) preCoord;
+    private (int row, int col) coord;
     
     public bool IsVisited => isVisited;
-    public int PreRow => preRow;
-    public int PreCol => preCol;
-    public int Row => row;
-    public int Col => col;
+    public (int preRow, int preCol) PreCoord => preCoord;
+    public (int row, int col) Coord => coord;
 
-    public void Modify(int row, int col, int preRow, int preCol, bool isVisited)
+    public void Modify((int row, int col) coord, (int preRow, int preCol) preCoord, bool isVisited)
     {
-        this.row = row;
-        this.col = col;
-        this.preRow = preRow;
-        this.preCol = preCol;
+        this.coord = coord;
+        this.preCoord = preCoord;
         this.isVisited = isVisited;
     }
 }

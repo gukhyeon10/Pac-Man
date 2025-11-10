@@ -8,9 +8,23 @@ namespace GGame
     {
         private bool isLookPac = false;
 
+        protected bool[,] ghostRespawnMovableCheckArray; // 유령 리스폰 경로 이동 가능 좌표 플래그
+        protected bool isRespawn = false;
+        protected bool isReturn = false;
+        
         protected virtual float RespawnCoolTime => 3f;
         protected virtual float TrackingTime => 5f;
-        
+
+        public override void InitCharacter(int x, int y)
+        {
+            base.InitCharacter(x, y);
+            
+            ghostRespawnMovableCheckArray = StageManager.Instance.ghostRespawnMovableCheckArray;
+            
+            isRespawn = false;
+            isReturn = false;
+        }
+
         private void OnEnable()
         {
             isLookPac = false;
@@ -28,7 +42,7 @@ namespace GGame
                 return;
             }
 
-            animator.SetInteger("DIRECT", moveDirect);
+            animator.SetInteger("DIRECT", (int)moveDirect);
 
             if (isRespawn)
             {
@@ -73,7 +87,7 @@ namespace GGame
         /// </summary>
         private void PathFinding((int row, int col) coord, (int row, int col) targetCoord)
         {
-            bfsArray[coord.row, coord.col].Modify(coord.row, coord.col, coord.row, coord.col, true);
+            bfsArray[coord.row, coord.col].Modify(coord, coord, true);
 
             bfsQueue.Clear();
             bfsQueue.Enqueue(bfsArray[coord.row, coord.col]);
@@ -81,43 +95,43 @@ namespace GGame
             while (bfsQueue.Count > 0)
             {
                 var node = bfsQueue.Dequeue();
-                if (node.Row == targetCoord.row && node.Col == targetCoord.col)
+                if (node.Coord.Equals(targetCoord))
                 {
-                    BackTracking(node.Row, node.Col);
+                    BackTracking(node.Coord);
                     break;
                 }
 
-                PathFindingProcess(node.Row - 1, node.Col, node.Row, node.Col);
+                PathFindingProcess(node.Coord, node.Coord.Calculate(EDirect.EAST));
 
-                PathFindingProcess(node.Row + 1, node.Col, node.Row, node.Col);
+                PathFindingProcess(node.Coord, node.Coord.Calculate(EDirect.WEST));
 
-                PathFindingProcess(node.Row, node.Col - 1, node.Row, node.Col);
+                PathFindingProcess(node.Coord, node.Coord.Calculate(EDirect.SOUTH));
 
-                PathFindingProcess(node.Row, node.Col + 1, node.Row, node.Col);
+                PathFindingProcess(node.Coord, node.Coord.Calculate(EDirect.NORTH));
             }
         }
 
         /// <summary>
         /// 경로 탐색 처리
         /// </summary>
-        private void PathFindingProcess(int destRow, int destCol, int srcRow, int srcCol)
+        private void PathFindingProcess((int row, int col) src, (int row, int col) dest)
         {
-            if (IsMovable(destRow, destCol) && bfsArray[destRow, destCol].IsVisited == false)
+            if (IsMovable(dest) && bfsArray[dest.row, dest.col].IsVisited == false)
             {
-                bfsArray[destRow, destCol].Modify(destRow, destCol, srcRow, srcCol, true);
+                bfsArray[dest.row, dest.col].Modify(dest, src, true);
 
-                bfsQueue.Enqueue(bfsArray[destRow, destCol]);
+                bfsQueue.Enqueue(bfsArray[dest.row, dest.col]);
             }
         }
-
+        
         /// <summary>
         /// 이동 가능한 좌표인지 검사
         /// </summary>
-        private bool IsMovable(int row, int col)
+        private bool IsMovable((int row, int col) coord)
         {
-            if (row >= 0 && col >= 0 && row < line && col < column)
+            if (coord.row >= 0 && coord.col >= 0 && coord.row < line && coord.col < column)
             {
-                if (movableCheckArray[row, col])
+                if (movableCheckArray[coord.row, coord.col])
                 {
                     return true;
                 }
@@ -129,29 +143,28 @@ namespace GGame
         /// <summary>
         /// 타겟 좌표까지의 경로 중 첫번째 좌표를 역추적
         /// </summary>
-        private void BackTracking(int reverseRow, int reverseCol)
+        private void BackTracking((int row, int col) reverseCoord)
         {
             var loopSafeCount = 0;
             var maxSafeCount = column * line * 2;
 
-            while (!(reverseRow == coord.row && reverseCol == coord.col))
+            while (!coord.Equals(reverseCoord))
             {
-                int preRow = bfsArray[reverseRow, reverseCol].PreRow;
-                int preCol = bfsArray[reverseRow, reverseCol].PreCol;
+                var preCoord = bfsArray[reverseCoord.row, reverseCoord.col].PreCoord;
 
-                if (preRow == coord.row && preCol == coord.col)
+                if (preCoord.Equals(coord))
                 {
-                    GhostTurn(reverseRow, reverseCol, coord.row, coord.col);
+                    var direct = GetDirect(reverseCoord, coord);
 
-                    coord.row = reverseRow;
-                    coord.col = reverseCol;
-
+                    moveDirect = direct ?? moveDirect;
+                    
+                    coord = reverseCoord;
+                    
                     return;
                 }
                 else
                 {
-                    reverseRow = preRow;
-                    reverseCol = preCol;
+                    reverseCoord = preCoord;
                 }
 
                 if (++loopSafeCount > maxSafeCount)
@@ -175,7 +188,7 @@ namespace GGame
             {
                 for (int j = 0; j < column; j++)
                 {
-                    bfsArray[i, j].Modify(i, j, i, j, false);
+                    bfsArray[i, j].Modify((i, j), (i, j), false);
                 }
             }
         }
@@ -183,39 +196,33 @@ namespace GGame
         /// <summary>
         /// 방향 전환
         /// </summary>
-        private void GhostTurn(int targetRow, int targetCol, int pivotRow, int pivotCol)
+        private EDirect? GetDirect((int row, int col) targetCoord, (int row, int col) pivotCoord)
         {
-            if (targetRow == pivotRow - 1)
+            for (var direct = EDirect.EAST; direct <= EDirect.NORTH; direct++)
             {
-                moveDirect = (int)EDirect.NORTH;
+                if (targetCoord == pivotCoord.Calculate(direct))
+                {
+                    return direct;
+                }
             }
-            else if (targetRow == pivotRow + 1)
-            {
-                moveDirect = (int)EDirect.SOUTH;
-            }
-            else if (targetCol == pivotCol - 1)
-            {
-                moveDirect = (int)EDirect.WEST;
-            }
-            else if (targetCol == pivotCol + 1)
-            {
-                moveDirect = (int)EDirect.EAST;
-            }
+
+            return null;
         }
 
         // 유령 리스폰
         private void GhostRespawn()
         {
-            if (character.position == target.position)
+            if (Vector3.Distance(character.position, target.position) < 0.01f)
             {
-                if (coord.row == StageManager.Instance.ghostRespawnRow - 1 && coord.col == StageManager.Instance.ghostRespawnCol)
+                if (coord.Equals(StageManager.Instance.ghostRespawnCoord.Calculate(EDirect.NORTH)))
                 {
                     isRespawn = false;
+                    
                     return;
                 }
 
                 InitBfsArray(ghostRespawnMovableCheckArray);
-                PathFinding(coord, (StageManager.Instance.ghostRespawnRow - 1, StageManager.Instance.ghostRespawnCol));
+                PathFinding(coord, StageManager.Instance.ghostRespawnCoord.Calculate(EDirect.NORTH));
                 target = tileArray[coord.row, coord.col].transform;
             }
 
@@ -225,9 +232,9 @@ namespace GGame
         // 유령 리턴
         private void GhostReturn()
         {
-            if (character.position == target.position)
+            if (Vector3.Distance(character.position, target.position) < 0.01f)
             {
-                if (coord.row == StageManager.Instance.ghostRespawnRow + 1 && coord.col == StageManager.Instance.ghostRespawnCol)
+                if (coord.Equals(StageManager.Instance.ghostRespawnCoord.Calculate(EDirect.SOUTH)))
                 {
                     isReturn = false;
                     animator.SetBool("RETURN", false);
@@ -237,12 +244,11 @@ namespace GGame
                 }
 
                 InitBfsArray(ghostRespawnMovableCheckArray);
-                PathFinding(coord, (StageManager.Instance.ghostRespawnRow + 1, StageManager.Instance.ghostRespawnCol));
+                PathFinding(coord, StageManager.Instance.ghostRespawnCoord.Calculate(EDirect.SOUTH));
                 target = tileArray[coord.row, coord.col].transform;
             }
 
-            character.position =
-                Vector3.MoveTowards(character.position, target.position, speed * Time.deltaTime * 1.5f);
+            character.position = Vector3.MoveTowards(character.position, target.position, speed * Time.deltaTime * 1.5f);
         }
 
         /// <summary>
@@ -250,22 +256,15 @@ namespace GGame
         /// </summary>
         private bool GhostLookPac()
         {
-            var coord = Coord;
+            var tempCoord = Coord;
 
             for (int i = 0; i < 5; i++)
             {
-                coord = moveDirect switch
+                tempCoord.Update(moveDirect);
+                
+                if (StageManager.SafeArray(movableCheckArray, tempCoord) && movableCheckArray[tempCoord.row, tempCoord.col])
                 {
-                    (int)EDirect.EAST  => (coord.row, coord.col + 1),
-                    (int)EDirect.WEST  => (coord.row, coord.col - 1),
-                    (int)EDirect.SOUTH => (coord.row + 1, coord.col),
-                    (int)EDirect.NORTH => (coord.row - 1, coord.col),
-                    _ => (coord.row, coord.col)
-                };
-
-                if (StageManager.SafeArray(movableCheckArray, coord.row, coord.col) && movableCheckArray[coord.row, coord.col])
-                {
-                    if (coord.row == pac.Coord.row && coord.col == pac.Coord.col)
+                    if(tempCoord.Equals(pac.Coord))
                     {
                         return true;
                     }
@@ -274,7 +273,6 @@ namespace GGame
                 {
                     return false;
                 }
-
             }
 
             return false;
