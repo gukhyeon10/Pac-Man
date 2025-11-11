@@ -1,37 +1,29 @@
-﻿using System.Collections;
+﻿
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.U2D;
 using UnityEditor;
 using System.Xml;
 using UnityEngine.UI;
+using GGame;
+using GUtility;
 
 public class MapToolManager : MonoBehaviour
 {
     private static MapToolManager _instance = null;
+    public static MapToolManager Instance => _instance;
 
-    public static MapToolManager Instance
-    {
-        get
-        {
-            return _instance;
-        }
-    }
+    [SerializeField] private Text stageFileText;
+    [SerializeField] private Transform tileGrid;
 
-    [SerializeField]
-    Text stageFileText;
-    [SerializeField]
-    Transform tileGrid;
+    [SerializeField] private SpriteManager spriteManager;
 
-    [SerializeField]
-    SpriteManager spriteManager;
-
-    TileEvent[,] tileArray;
+    private TileEvent[,] tileArray;
    
-    const int line = 27;
-    const int column = 21;
-    int primLine, primColumn;
-    void Awake()
+    private const int line = 27;
+    private const int column = 21;
+    private int primLine, primColumn;
+    
+    private void Awake()
     {
         //싱글톤 초기화
         if (_instance == null)
@@ -41,19 +33,19 @@ public class MapToolManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
-            return;
         }
     }
 
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         primLine = (line / 2);
         primColumn = (column / 2);
 
         tileArray = new TileEvent[line, column];
-        for(int i=0; i<tileGrid.childCount; i++)
+        
+        for (int i = 0;  i < tileGrid.childCount; i++)
         {
             tileArray[i / column, i % column] = tileGrid.GetChild(i).GetComponent<TileEvent>();
             tileArray[i / column, i % column].row = i / column;
@@ -62,17 +54,16 @@ public class MapToolManager : MonoBehaviour
     }
 
     // 맵 초기화
-    void InitMap()
+    private void InitMap()
     {
-        for(int row =0; row< line; row++)
+        for(int row = 0; row < line; row++)
         {
-            for(int col = 0; col<column; col++)
+            for(int col = 0; col < column; col++)
             {
                 tileArray[row, col].InitTile();
             }
         }
     }
-
     
     // 맵 데이터 저장
     public void MapDataSave()
@@ -84,23 +75,23 @@ public class MapToolManager : MonoBehaviour
 
         if (filePath.Length > 0)
         {
-            XmlDocument xmlDoc = new XmlDocument();
+            var xmlDoc = new XmlDocument();
             xmlDoc.AppendChild(xmlDoc.CreateXmlDeclaration("1.0", "utf-8", "yes"));
 
-            XmlNode root = xmlDoc.CreateNode(XmlNodeType.Element, "Map", string.Empty);
+            var root = xmlDoc.CreateNode(XmlNodeType.Element, "Map", string.Empty);
             xmlDoc.AppendChild(root);
 
             for (int row = 0; row < line; row++)
             {
                 for (int col = 0; col < column; col++)
                 {
-                    TileEvent tileInfo = tileArray[row, col];
+                    var tileInfo = tileArray[row, col];
 
                     //오브젝트 종류 분기
-                    XmlNode node = xmlDoc.CreateNode(XmlNodeType.Element, "Default", string.Empty);
+                    var node = xmlDoc.CreateNode(XmlNodeType.Element, "Default", string.Empty);
                     switch (tileInfo.objectType)
                     {
-                        case (int)EObjectType.WALL:
+                        case EObjectType.WALL:
                             {
                                 if(tileInfo.objectNumber != (int)EWall.DEFAULT)
                                 {
@@ -108,20 +99,20 @@ public class MapToolManager : MonoBehaviour
                                     node = xmlDoc.CreateNode(XmlNodeType.Element, "Wall", string.Empty);
                                     root.AppendChild(node);
 
-                                    XmlElement rot = xmlDoc.CreateElement("Rot");
+                                    var rot = xmlDoc.CreateElement("Rot");
                                     rot.InnerText = tileArray[row, col].transform.eulerAngles.z.ToString();
                                     node.AppendChild(rot);   
                                 }
                                 break;
                             }
-                        case (int)EObjectType.ITEM:
+                        case EObjectType.ITEM:
                             {
                                 //아이템 정보
                                 node = xmlDoc.CreateNode(XmlNodeType.Element, "Item", string.Empty);
                                 root.AppendChild(node);
                                 break;
                             }
-                        case (int)EObjectType.CHARACTER:
+                        case EObjectType.CHARACTER:
                             {
                                 //캐릭터 스테이지 초기 위치 정보
                                 node = xmlDoc.CreateNode(XmlNodeType.Element, "Character", string.Empty);
@@ -131,22 +122,22 @@ public class MapToolManager : MonoBehaviour
                     }
 
                     //공통 데이터
-                    XmlElement objectNumber = xmlDoc.CreateElement("Number");
+                    var objectNumber = xmlDoc.CreateElement("Number");
                     objectNumber.InnerText = tileInfo.objectNumber.ToString();
                     node.AppendChild(objectNumber);
 
-                    XmlElement objectRow = xmlDoc.CreateElement("Row");
+                    var objectRow = xmlDoc.CreateElement("Row");
                     objectRow.InnerText = (row + 1).ToString();     //메인 게임에선 행과 열이 1,1에서 시작하기 때문에 1씩 더한다.
                     node.AppendChild(objectRow);
 
-                    XmlElement objectColumn = xmlDoc.CreateElement("Column");
+                    var objectColumn = xmlDoc.CreateElement("Column");
                     objectColumn.InnerText = (col + 1).ToString();
                     node.AppendChild(objectColumn);
                 }
             }
             // 저장
             xmlDoc.Save(filePath);
-            Debug.Log("Data Save Success!");
+            //Debug.Log("Data Save Success!");
         }
 
     }
@@ -162,55 +153,51 @@ public class MapToolManager : MonoBehaviour
         if (filePath.Length > 0)
         {
             //파일 이름 표시
-            string fileName = filePath.Substring(filePath.LastIndexOfAny("/".ToCharArray()) + 1);
+            var fileName = filePath.Substring(filePath.LastIndexOfAny("/".ToCharArray()) + 1);
             fileName = fileName.Substring(0, fileName.Length - 4);
             stageFileText.text = fileName;
 
-            XmlDocument xmlDoc = new XmlDocument();
+            var xmlDoc = new XmlDocument();
             xmlDoc.Load(filePath);
 
             InitMap();
 
-            int row, col, objectNumber;
-            float rot;
-
             //벽 오브젝트 로드
-            XmlNodeList nodeList = xmlDoc.SelectNodes("Map/Wall");
+            var nodeList = xmlDoc.SelectNodes("Map/Wall");
             foreach (XmlNode node in nodeList)
             {
-                objectNumber = int.Parse(node.SelectSingleNode("Number").InnerText);
-                row = int.Parse(node.SelectSingleNode("Row").InnerText);
-                col = int.Parse(node.SelectSingleNode("Column").InnerText);
-                rot = float.Parse(node.SelectSingleNode("Rot").InnerText);
+                var row = node?.GetNode("Row")?.GetInt() ?? 0;
+                var col = node?.GetNode("Column")?.GetInt() ?? 0;
+                var number = node?.GetNode("Number")?.GetInt() ?? 0;
+                var rot = node?.GetNode("Rot")?.GetFloat() ?? 0f;
                 
                 tileArray[row - 1, col - 1].transform.eulerAngles = new Vector3(0f, 0f, rot);
-                tileArray[row - 1, col - 1].InitTile((int)EObjectType.WALL, objectNumber, spriteManager.wallSpriteArray[objectNumber]);
-
+                tileArray[row - 1, col - 1].InitTile(EObjectType.WALL, (EWall)number, spriteManager.wallSpriteArray[number]);
             }
 
             // 아이템 오브젝트 로드
             nodeList = xmlDoc.SelectNodes("Map/Item");
             foreach(XmlNode node in nodeList)
             {
-                objectNumber = int.Parse(node.SelectSingleNode("Number").InnerText);
-                row = int.Parse(node.SelectSingleNode("Row").InnerText);
-                col = int.Parse(node.SelectSingleNode("Column").InnerText);
+                var row = node?.GetNode("Row")?.GetInt() ?? 0;
+                var col = node?.GetNode("Column")?.GetInt() ?? 0;
+                var number = node?.GetNode("Number")?.GetInt() ?? 0;
                 
-                tileArray[row - 1, col - 1].InitTile((int)EObjectType.ITEM, objectNumber, spriteManager.itemSpriteArray[objectNumber]);
+                tileArray[row - 1, col - 1].InitTile(EObjectType.ITEM, (EWall)number, spriteManager.itemSpriteArray[number]);
             }
 
             // 캐릭터 오브젝트 로드
             nodeList = xmlDoc.SelectNodes("Map/Character");
             foreach(XmlNode node in nodeList)
             {
-                objectNumber = int.Parse(node.SelectSingleNode("Number").InnerText);
-                row = int.Parse(node.SelectSingleNode("Row").InnerText);
-                col = int.Parse(node.SelectSingleNode("Column").InnerText);
+                var row = node?.GetNode("Row")?.GetInt() ?? 0;
+                var col = node?.GetNode("Column")?.GetInt() ?? 0;
+                var number = node?.GetNode("Number")?.GetInt() ?? 0;
                 
-                tileArray[row - 1, col - 1].InitTile((int)EObjectType.CHARACTER, objectNumber, spriteManager.characterSpriteArray[objectNumber]);
+                tileArray[row - 1, col - 1].InitTile(EObjectType.CHARACTER, (EWall)number, spriteManager.characterSpriteArray[number]);
             }
             
-            Debug.Log("Data Load Success!");
+            //Debug.Log("Data Load Success!");
         }
     }
 
@@ -220,22 +207,22 @@ public class MapToolManager : MonoBehaviour
         int count = 0;
         bool isLeft = false, isRight = false, isUp = false, isDown = false;
 
-        if (SafeArray<TileEvent>(tileArray, row - 1, col) && tileArray[row - 1, col].objectType == (int)EObjectType.WALL && tileArray[row - 1, col].objectNumber != (int)EWall.DEFAULT)
+        if (SafeArray(tileArray, row - 1, col) && tileArray[row - 1, col].objectType == (int)EObjectType.WALL && tileArray[row - 1, col].objectNumber != (int)EWall.DEFAULT)
         {
             count++;
             isUp = true;
         }
-        if (SafeArray<TileEvent>(tileArray, row + 1, col) && tileArray[row + 1, col].objectType == (int)EObjectType.WALL && tileArray[row + 1, col].objectNumber != (int)EWall.DEFAULT)
+        if (SafeArray(tileArray, row + 1, col) && tileArray[row + 1, col].objectType == (int)EObjectType.WALL && tileArray[row + 1, col].objectNumber != (int)EWall.DEFAULT)
         {
             count++;
             isDown = true;
         }
-        if (SafeArray<TileEvent>(tileArray, row, col - 1) && tileArray[row, col - 1].objectType == (int)EObjectType.WALL && tileArray[row, col - 1].objectNumber != (int)EWall.DEFAULT)
+        if (SafeArray(tileArray, row, col - 1) && tileArray[row, col - 1].objectType == (int)EObjectType.WALL && tileArray[row, col - 1].objectNumber != (int)EWall.DEFAULT)
         {
             count++;
             isLeft = true;
         }
-        if (SafeArray<TileEvent>(tileArray, row, col + 1) && tileArray[row, col + 1].objectType == (int)EObjectType.WALL && tileArray[row, col + 1].objectNumber != (int)EWall.DEFAULT)
+        if (SafeArray(tileArray, row, col + 1) && tileArray[row, col + 1].objectType == (int)EObjectType.WALL && tileArray[row, col + 1].objectNumber != (int)EWall.DEFAULT)
         {
             count++;
             isRight = true;
@@ -291,24 +278,24 @@ public class MapToolManager : MonoBehaviour
     void TileAutoCompleteOne(int row, int col)
     {
         float rot = 0f;
-        if (SafeArray<TileEvent>(tileArray, row - 1, col) && tileArray[row-1, col].objectType == (int)EObjectType.WALL && tileArray[row-1, col].objectNumber != (int)EWall.DEFAULT)
+        if (SafeArray(tileArray, row - 1, col) && tileArray[row-1, col].objectType == EObjectType.WALL && tileArray[row-1, col].objectNumber != (int)EWall.DEFAULT)
         {
             rot = 180f;
         }
-        if (SafeArray<TileEvent>(tileArray, row + 1, col) && tileArray[row + 1, col].objectType == (int)EObjectType.WALL && tileArray[row + 1, col].objectNumber != (int)EWall.DEFAULT)
+        if (SafeArray(tileArray, row + 1, col) && tileArray[row + 1, col].objectType == EObjectType.WALL && tileArray[row + 1, col].objectNumber != (int)EWall.DEFAULT)
         {
             rot = 0f;
         }
-        if (SafeArray<TileEvent>(tileArray, row, col - 1) && tileArray[row, col-1].objectType == (int)EObjectType.WALL && tileArray[row, col - 1].objectNumber != (int)EWall.DEFAULT)
+        if (SafeArray(tileArray, row, col - 1) && tileArray[row, col-1].objectType == EObjectType.WALL && tileArray[row, col - 1].objectNumber != (int)EWall.DEFAULT)
         {
             rot = 270;
         }
-        if (SafeArray<TileEvent>(tileArray, row, col + 1) && tileArray[row, col+1].objectType == (int)EObjectType.WALL && tileArray[row, col + 1].objectNumber != (int)EWall.DEFAULT)
+        if (SafeArray(tileArray, row, col + 1) && tileArray[row, col+1].objectType == EObjectType.WALL && tileArray[row, col + 1].objectNumber != (int)EWall.DEFAULT)
         {
             rot = 90f;
         }
 
-        tileArray[row, col].AutoTile((int)EObjectType.WALL, (int)EWall.EDGE, spriteManager.wallSpriteArray[(int)EWall.EDGE], rot);
+        tileArray[row, col].AutoTile(EObjectType.WALL, EWall.EDGE, spriteManager.wallSpriteArray[(int)EWall.EDGE], rot);
         
     }
 
@@ -317,22 +304,22 @@ public class MapToolManager : MonoBehaviour
     {
         float rot = 0f;
         bool isLine = false;
-        if (SafeArray<TileEvent>(tileArray, row - 1, col) && SafeArray<TileEvent>(tileArray, row + 1, col))
+        if (SafeArray(tileArray, row - 1, col) && SafeArray(tileArray, row + 1, col))
         {
-            if ( tileArray[row - 1, col].objectType == (int)EObjectType.WALL && tileArray[row + 1, col].objectType == (int)EObjectType.WALL)
+            if ( tileArray[row - 1, col].objectType == EObjectType.WALL && tileArray[row + 1, col].objectType == (int)EObjectType.WALL)
             {
-                if(tileArray[row - 1, col].objectNumber != (int)EWall.DEFAULT && tileArray[row + 1, col].objectNumber != (int)EWall.DEFAULT)
+                if(tileArray[row - 1, col].objectNumber != EWall.DEFAULT && tileArray[row + 1, col].objectNumber != (int)EWall.DEFAULT)
                 {
                     rot = 90f;
                     isLine = true;
                 }
             }
         }
-        if (SafeArray<TileEvent>(tileArray, row, col - 1) && SafeArray<TileEvent>(tileArray, row, col + 1))
+        if (SafeArray(tileArray, row, col - 1) && SafeArray(tileArray, row, col + 1))
         {
-            if( tileArray[row, col -1].objectType == (int)EObjectType.WALL && tileArray[row, col + 1].objectType == (int)EObjectType.WALL)
+            if( tileArray[row, col -1].objectType == EObjectType.WALL && tileArray[row, col + 1].objectType == (int)EObjectType.WALL)
             {
-                if (tileArray[row, col - 1].objectNumber != (int)EWall.DEFAULT && tileArray[row, col + 1].objectNumber != (int)EWall.DEFAULT)
+                if (tileArray[row, col - 1].objectNumber != EWall.DEFAULT && tileArray[row, col + 1].objectNumber != (int)EWall.DEFAULT)
                 {
                     rot = 0f;
                     isLine = true;
@@ -340,41 +327,41 @@ public class MapToolManager : MonoBehaviour
                 
             }
         }
-        if (SafeArray<TileEvent>(tileArray, row - 1, col) && SafeArray<TileEvent>(tileArray, row, col + 1))
+        if (SafeArray(tileArray, row - 1, col) && SafeArray(tileArray, row, col + 1))
         {
-            if(tileArray[row-1, col].objectType == (int)EObjectType.WALL && tileArray[row, col + 1].objectType == (int)EObjectType.WALL)
+            if(tileArray[row-1, col].objectType == EObjectType.WALL && tileArray[row, col + 1].objectType == (int)EObjectType.WALL)
             {
-                if(tileArray[row - 1, col].objectNumber != (int)EWall.DEFAULT && tileArray[row, col + 1].objectNumber != (int)EWall.DEFAULT)
+                if(tileArray[row - 1, col].objectNumber != EWall.DEFAULT && tileArray[row, col + 1].objectNumber != (int)EWall.DEFAULT)
                 {
                     rot = 90f;
                 }
             }
         }
-        if (SafeArray<TileEvent>(tileArray, row - 1, col) && SafeArray<TileEvent>(tileArray, row, col - 1))
+        if (SafeArray(tileArray, row - 1, col) && SafeArray(tileArray, row, col - 1))
         {
-            if(tileArray[row - 1, col].objectType == (int)EObjectType.WALL && tileArray[row, col - 1].objectType == (int)EObjectType.WALL)
+            if(tileArray[row - 1, col].objectType == EObjectType.WALL && tileArray[row, col - 1].objectType == (int)EObjectType.WALL)
             {
-                if(tileArray[row - 1, col].objectNumber != (int)EWall.DEFAULT && tileArray[row, col - 1].objectNumber != (int)EWall.DEFAULT)
+                if(tileArray[row - 1, col].objectNumber != EWall.DEFAULT && tileArray[row, col - 1].objectNumber != (int)EWall.DEFAULT)
                 {
                     rot = 180f;
                 }
             }
         }
-        if (SafeArray<TileEvent>(tileArray, row + 1, col) && SafeArray<TileEvent>(tileArray, row, col + 1))
+        if (SafeArray(tileArray, row + 1, col) && SafeArray(tileArray, row, col + 1))
         {
-            if(tileArray[row + 1, col].objectType == (int)EObjectType.WALL && tileArray[row, col + 1].objectType == (int)EObjectType.WALL)
+            if(tileArray[row + 1, col].objectType == EObjectType.WALL && tileArray[row, col + 1].objectType == (int)EObjectType.WALL)
             {
-                if(tileArray[row + 1, col].objectNumber != (int)EWall.DEFAULT && tileArray[row, col + 1].objectNumber != (int)EWall.DEFAULT)
+                if(tileArray[row + 1, col].objectNumber != EWall.DEFAULT && tileArray[row, col + 1].objectNumber != (int)EWall.DEFAULT)
                 {
                     rot = 360f;
                 }
             }
         }
-        if (SafeArray<TileEvent>(tileArray, row + 1, col) && SafeArray<TileEvent>(tileArray, row, col - 1))
+        if (SafeArray(tileArray, row + 1, col) && SafeArray(tileArray, row, col - 1))
         {
-            if(tileArray[row + 1, col].objectType == (int)EObjectType.WALL && tileArray[row, col - 1].objectType == (int)EObjectType.WALL)
+            if(tileArray[row + 1, col].objectType == EObjectType.WALL && tileArray[row, col - 1].objectType == (int)EObjectType.WALL)
             {
-                if(tileArray[row + 1, col].objectNumber != (int)EWall.DEFAULT && tileArray[row, col - 1].objectNumber != (int)EWall.DEFAULT)
+                if(tileArray[row + 1, col].objectNumber != EWall.DEFAULT && tileArray[row, col - 1].objectNumber != (int)EWall.DEFAULT)
                 {
                     rot = 270f;
                 }
@@ -383,11 +370,11 @@ public class MapToolManager : MonoBehaviour
 
         if(isLine)
         {
-            tileArray[row, col].AutoTile((int)EObjectType.WALL, (int)EWall.LINE, spriteManager.wallSpriteArray[(int)EWall.LINE], rot);
+            tileArray[row, col].AutoTile((int)EObjectType.WALL, EWall.LINE, spriteManager.wallSpriteArray[(int)EWall.LINE], rot);
         }
         else
         {
-            tileArray[row, col].AutoTile((int)EObjectType.WALL, (int)EWall.CURVE, spriteManager.wallSpriteArray[(int)EWall.CURVE], rot);
+            tileArray[row, col].AutoTile((int)EObjectType.WALL, EWall.CURVE, spriteManager.wallSpriteArray[(int)EWall.CURVE], rot);
         }
     }
 
@@ -395,46 +382,46 @@ public class MapToolManager : MonoBehaviour
     void TileAutoCompleteThree(int row, int col)
     {
         float rot = 0f;
-        if (SafeArray<TileEvent>(tileArray, row - 1, col))
+        if (SafeArray(tileArray, row - 1, col))
         {
-            if(tileArray[row - 1, col].objectType == (int)EObjectType.WALL && tileArray[row - 1, col].objectNumber == (int)EWall.DEFAULT)
+            if(tileArray[row - 1, col].objectType == EObjectType.WALL && tileArray[row - 1, col].objectNumber == EWall.DEFAULT)
             {
                 rot = 0f;
             }
-            else if(tileArray[row-1, col].objectType == (int)EObjectType.ITEM)
+            else if(tileArray[row-1, col].objectType == EObjectType.ITEM)
             {
                 rot = 0f;
             }
         }
-        if (SafeArray<TileEvent>(tileArray, row + 1, col))
+        if (SafeArray(tileArray, row + 1, col))
         {
-            if(tileArray[row + 1, col].objectType == (int)EObjectType.WALL && tileArray[row + 1, col].objectNumber == (int)EWall.DEFAULT)
+            if(tileArray[row + 1, col].objectType == EObjectType.WALL && tileArray[row + 1, col].objectNumber == EWall.DEFAULT)
             {
                 rot = 180f;
             }
-            else if(tileArray[row + 1, col].objectType == (int)EObjectType.ITEM)
+            else if(tileArray[row + 1, col].objectType == EObjectType.ITEM)
             {
                 rot = 180f;
             }
         }
-        if (SafeArray<TileEvent>(tileArray, row, col - 1))
+        if (SafeArray(tileArray, row, col - 1))
         {
-            if(tileArray[row, col - 1].objectType == (int)EObjectType.WALL && tileArray[row, col - 1].objectNumber == (int)EWall.DEFAULT)
+            if(tileArray[row, col - 1].objectType == EObjectType.WALL && tileArray[row, col - 1].objectNumber == EWall.DEFAULT)
             {
                 rot = 90f;
             }
-            else if(tileArray[row, col - 1].objectType == (int)EObjectType.ITEM)
+            else if(tileArray[row, col - 1].objectType == EObjectType.ITEM)
             {
                 rot = 90f;
             }
         }
-        if (SafeArray<TileEvent>(tileArray, row, col + 1))
+        if (SafeArray(tileArray, row, col + 1))
         {
-            if(tileArray[row, col + 1].objectType == (int)EObjectType.WALL && tileArray[row, col + 1].objectNumber == (int)EWall.DEFAULT)
+            if(tileArray[row, col + 1].objectType == EObjectType.WALL && tileArray[row, col + 1].objectNumber == EWall.DEFAULT)
             {
                 rot = 270f;
             }
-            else if(tileArray[row, col + 1].objectType == (int)EObjectType.ITEM)
+            else if(tileArray[row, col + 1].objectType == EObjectType.ITEM)
             {
                 rot = 270f;
             }
@@ -457,7 +444,7 @@ public class MapToolManager : MonoBehaviour
             rot = 0f;
         }
 
-        tileArray[row, col].AutoTile((int)EObjectType.WALL, (int)EWall.POP, spriteManager.wallSpriteArray[(int)EWall.POP], rot);
+        tileArray[row, col].AutoTile(EObjectType.WALL, EWall.POP, spriteManager.wallSpriteArray[(int)EWall.POP], rot);
     }
 
 
@@ -468,15 +455,14 @@ public class MapToolManager : MonoBehaviour
     }
 
     // 프림 알고리즘으로 미로 데이터를 만든 뒤 맵에 적용
-    void PrimAlgorithm()
+    private void PrimAlgorithm()
     {
+        var primNodeList = new List<PrimNode>();
+        var primArray = new PrimNode[primLine, primColumn]; 
         
-        List<PrimNode> primNodeList = new List<PrimNode>();
-        PrimNode[,] primArray = new PrimNode[primLine, primColumn]; 
-        
-        for(int i = 0; i<primLine; i++)
+        for(int i = 0; i < primLine; i++)
         {
-            for(int j = 0; j<primColumn; j++)
+            for(int j = 0; j < primColumn; j++)
             {
                 primArray[i, j].row = i;
                 primArray[i, j].col = j;
@@ -509,16 +495,15 @@ public class MapToolManager : MonoBehaviour
             primNodeList.RemoveAt(randomIndex);
         }
 
-        Debug.Log("Prim Algorithm End");
+        //Debug.Log("Prim Algorithm End");
         PrimDataCompatible(primArray, pivotRow, pivotCol);
-        
     }
 
     //인접한 노드들 체크
-    void IncreaseNode(int row, int col, List<PrimNode> primNodeList, PrimNode[,] primArray)
+    private void IncreaseNode(int row, int col, List<PrimNode> primNodeList, PrimNode[,] primArray)
     {
         //근접한 노드 중 칸이 할당된 노드들의 방향 리스트
-        List<int> nearNodeList = new List<int>();
+        var nearNodeList = new List<int>(4);
 
         if(col + 1 < primColumn && primArray[row, col + 1].isCheck)
         {
@@ -538,7 +523,7 @@ public class MapToolManager : MonoBehaviour
         }
 
         //근접 노드 방향 중 랜덤하게 하나의 길목 뚫기
-        if(nearNodeList.Count>0)
+        if(nearNodeList.Count > 0)
         {
             int random = Random.Range(0, nearNodeList.Count);
             switch(nearNodeList[random])
@@ -591,19 +576,19 @@ public class MapToolManager : MonoBehaviour
     }
 
     //프림 알고리즘 데이터 팩맨 맵에 호환
-    void PrimDataCompatible(PrimNode[,] primArray, int pivotRow, int pivotCol)
+    private void PrimDataCompatible(PrimNode[,] primArray, int pivotRow, int pivotCol)
     {
         for (int row = 0; row < line; row++)
         {
             for (int col = 0; col < column; col++)
             {
-                tileArray[row, col].InitTile((int)EObjectType.WALL, (int)EWall.LINE, spriteManager.wallSpriteArray[(int)EWall.LINE]);
+                tileArray[row, col].InitTile((int)EObjectType.WALL, EWall.LINE, spriteManager.wallSpriteArray[(int)EWall.LINE]);
             }
         }
 
-        for(int i=0; i<primLine; i++)
+        for(int i = 0; i < primLine; i++)
         {
-            for(int j = 0; j< primColumn; j++)
+            for(int j = 0; j < primColumn; j++)
             {
                 tileArray[i * 2 + 1, j * 2 + 1].InitTile();
                 if(primArray[i, j].isUp)
@@ -632,7 +617,7 @@ public class MapToolManager : MonoBehaviour
         {
             for (int j = 0; j < column; j++)
             {
-                if (tileArray[i, j].objectType == (int)EObjectType.WALL && tileArray[i, j].objectNumber == (int)EWall.LINE)
+                if (tileArray[i, j].objectType == (int)EObjectType.WALL && tileArray[i, j].objectNumber == EWall.LINE)
                 {
                     TileAutoComplete(i, j, false, false);
                 }
@@ -641,9 +626,8 @@ public class MapToolManager : MonoBehaviour
     }
 
     // 유령 리스폰 지역 만들기
-    void GhostRespawnArea(int pivotRow, int pivotCol)
+    private void GhostRespawnArea(int pivotRow, int pivotCol)
     {
-
         for (int i = pivotRow - 2; i <= pivotRow + 3; i++)
         {
             for (int j = pivotCol - 2; j <= pivotCol + 4; j++)
@@ -654,26 +638,26 @@ public class MapToolManager : MonoBehaviour
 
         for (int j = pivotCol - 1; j <= pivotCol + 3; j++)
         {
-            tileArray[pivotRow - 1, j].InitTile((int)EObjectType.WALL, (int)EWall.LINE, spriteManager.wallSpriteArray[(int)EWall.LINE]);
-            tileArray[pivotRow + 2, j].InitTile((int)EObjectType.WALL, (int)EWall.LINE, spriteManager.wallSpriteArray[(int)EWall.LINE]);
+            tileArray[pivotRow - 1, j].InitTile((int)EObjectType.WALL, EWall.LINE, spriteManager.wallSpriteArray[(int)EWall.LINE]);
+            tileArray[pivotRow + 2, j].InitTile((int)EObjectType.WALL, EWall.LINE, spriteManager.wallSpriteArray[(int)EWall.LINE]);
         }
 
-        tileArray[pivotRow, pivotCol - 1].InitTile((int)EObjectType.WALL, (int)EWall.LINE, spriteManager.wallSpriteArray[(int)EWall.LINE]);
-        tileArray[pivotRow, pivotCol + 3].InitTile((int)EObjectType.WALL, (int)EWall.LINE, spriteManager.wallSpriteArray[(int)EWall.LINE]);
-        tileArray[pivotRow + 1, pivotCol - 1].InitTile((int)EObjectType.WALL, (int)EWall.LINE, spriteManager.wallSpriteArray[(int)EWall.LINE]);
-        tileArray[pivotRow + 1, pivotCol + 3].InitTile((int)EObjectType.WALL, (int)EWall.LINE, spriteManager.wallSpriteArray[(int)EWall.LINE]);
+        tileArray[pivotRow, pivotCol - 1].InitTile((int)EObjectType.WALL, EWall.LINE, spriteManager.wallSpriteArray[(int)EWall.LINE]);
+        tileArray[pivotRow, pivotCol + 3].InitTile((int)EObjectType.WALL, EWall.LINE, spriteManager.wallSpriteArray[(int)EWall.LINE]);
+        tileArray[pivotRow + 1, pivotCol - 1].InitTile((int)EObjectType.WALL, EWall.LINE, spriteManager.wallSpriteArray[(int)EWall.LINE]);
+        tileArray[pivotRow + 1, pivotCol + 3].InitTile((int)EObjectType.WALL, EWall.LINE, spriteManager.wallSpriteArray[(int)EWall.LINE]);
 
-        tileArray[pivotRow - 1, pivotCol].InitTile((int)EObjectType.WALL, (int)EWall.LEFTDOOR, spriteManager.wallSpriteArray[(int)EWall.LEFTDOOR]);
-        tileArray[pivotRow - 1, pivotCol + 1].InitTile((int)EObjectType.WALL, (int)EWall.CENTERDOOR, spriteManager.wallSpriteArray[(int)EWall.CENTERDOOR]);
-        tileArray[pivotRow - 1, pivotCol + 2].InitTile((int)EObjectType.WALL, (int)EWall.RIGHTDOOR, spriteManager.wallSpriteArray[(int)EWall.RIGHTDOOR]);
+        tileArray[pivotRow - 1, pivotCol].InitTile((int)EObjectType.WALL, EWall.LEFTDOOR, spriteManager.wallSpriteArray[(int)EWall.LEFTDOOR]);
+        tileArray[pivotRow - 1, pivotCol + 1].InitTile((int)EObjectType.WALL, EWall.CENTERDOOR, spriteManager.wallSpriteArray[(int)EWall.CENTERDOOR]);
+        tileArray[pivotRow - 1, pivotCol + 2].InitTile((int)EObjectType.WALL, EWall.RIGHTDOOR, spriteManager.wallSpriteArray[(int)EWall.RIGHTDOOR]);
 
     }
 
 
     // 배열 유효성 방어 코드
-    bool SafeArray<T>(T[,] array, int row, int col)
+    private bool SafeArray<T>(T[,] array, int row, int col)
     {
-        if (array != null && row >= 0 && row < line && col >=0 && col < column)
+        if (array != null && row >= 0 && row < line && col >= 0 && col < column)
         {
             return true;
         }

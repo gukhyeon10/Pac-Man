@@ -98,7 +98,8 @@ namespace GGame
 
             if (target != null)
             {
-                character.position = Vector3.MoveTowards(character.position, target.position, speed * Time.deltaTime);   
+                var pos = Vector3.MoveTowards(character.position, target.position, speed * Time.deltaTime);
+                character.SafeSetPosition(pos);   
             }
         }
 
@@ -111,7 +112,7 @@ namespace GGame
             
             if (coord.row == 0)
             {
-                character.position = tileArray[StageManager.line - 1, coord.col].transform.position;
+                character.SafeSetPosition(tileArray[StageManager.line - 1, coord.col].transform.position);
                 coord.row = StageManager.line - 2;
                 target = tileArray[coord.row, coord.col].transform;
 
@@ -119,7 +120,7 @@ namespace GGame
             }
             else if (coord.row == StageManager.line - 1)
             {
-                character.position = tileArray[0, coord.col].transform.position;
+                character.SafeSetPosition(tileArray[0, coord.col].transform.position);
                 coord.row = 1;
                 target = tileArray[coord.row, coord.col].transform;
 
@@ -127,7 +128,7 @@ namespace GGame
             }
             else if (coord.col == 0)
             {
-                character.position = tileArray[coord.row, StageManager.column - 1].transform.position;
+                character.SafeSetPosition(tileArray[coord.row, StageManager.column - 1].transform.position);
                 coord.col = StageManager.column - 2;
                 target = tileArray[coord.row, coord.col].transform;
 
@@ -135,7 +136,7 @@ namespace GGame
             }
             else if (coord.col == StageManager.column - 1)
             {
-                character.position = tileArray[coord.row, 0].transform.position;
+                character.SafeSetPosition(tileArray[coord.row, 0].transform.position);
                 coord.col = 1;
                 target = tileArray[coord.row, coord.col].transform;
 

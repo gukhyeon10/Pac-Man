@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System.Xml;
 using System;
@@ -8,7 +7,6 @@ using UnityEngine.UI;
 
 namespace GGame
 {
-
     public class StageManager : MonoBehaviour
     {
         private static StageManager _instance = null;
@@ -23,12 +21,6 @@ namespace GGame
 
         // 각 캐릭터 (PAC = 0,  BLINKY = 1,  PINKY = 2,  INKY = 3,  CLYDE = 4,)
         [SerializeField] private CharacterBase[] CharacterArray = new CharacterBase[Enum.GetNames(typeof(ECharacter)).Length]; 
-
-        [SerializeField] private ItemManager itemManager;
-        private UIManager _UIManager;
-
-        private const string dataPath = "MapData/";
-        private const string stageFileName = "STAGE_";
 
         // 타일 29행 23열 (30행 타일은 가리기 용도)
         public const int column = 23;
@@ -63,12 +55,13 @@ namespace GGame
 
         private void Start()
         {
-            _UIManager = UIManager.Instance;
             //시작 화면
-            _UIManager.StartPanelSetActive(true);
+            UIManager.Instance.StartPanelSetActive(true);
 
             InitTileArray();
+            
             InitMovableArray();
+            
             StartCoroutine(TapWaitCorutine());
         }
 
@@ -83,19 +76,24 @@ namespace GGame
                 {
                     if (isFirstTry) // 최초 스테이지 시작시에만
                     {
-                        _UIManager.InitUI();
-                        _UIManager.StartPanelSetActive(false);
+                        UIManager.Instance.InitUI();
+                        
+                        UIManager.Instance.StartPanelSetActive(false);
+                        
                         isFirstTry = false;
                     }
                     else
                     {
-                        _UIManager.UIPanelActive();
-                        gameCanvas.gameObject.SetActive(true);
+                        UIManager.Instance.UIPanelActive();
+                        
+                        gameCanvas.SafeSetActive(true);
+                        
                         InitStage();
                     }
 
                     LoadStage(currentStage);
-                    _UIManager.StartTimer(40);
+                    
+                    UIManager.Instance.StartTimer(40);
 
                     break;
                 }
@@ -105,7 +103,8 @@ namespace GGame
         //스테이지 초기화
         private void InitStage()
         {
-            Sprite defaultSprite = tileArray[0, 0].spriteRenderer.sprite;
+            var defaultSprite = tileArray[0, 0].spriteRenderer.sprite;
+            
             for (int row = 0; row < line; row++)
             {
                 for (int col = 0; col < column; col++)
@@ -123,7 +122,8 @@ namespace GGame
             }
 
             InitMovableArray();
-            itemManager.InitItem();
+            
+            ItemManager.Instance.InitItem();
         }
 
 
@@ -135,7 +135,7 @@ namespace GGame
                 tileArray[(i / column), (i % column)] = tileGrid.GetChild(i).GetComponent<GameTile>();
             }
 
-            itemManager.tileArray = this.tileArray;
+            ItemManager.Instance.tileArray = this.tileArray;
         }
 
         // 이동가능 체크 초기화
@@ -146,7 +146,7 @@ namespace GGame
                 if (i / column > 0 && i / column < line - 1 && i % column > 0 &&
                     i % column < column - 1) // 화면상 타일들은 이동가능이 디폴트
                 {
-                    if (SafeArray<bool>(movableCheckArray, (i / column, i % column)))
+                    if (SafeArray(movableCheckArray, (i / column, i % column)))
                     {
                         movableCheckArray[(i / column), (i % column)] = true;
                         ghostRespawnMovableCheckArray[(i / column), (i % column)] = true;
@@ -155,7 +155,7 @@ namespace GGame
                 }
                 else // 화면밖 테두리 타일들은 이동불가능이 디폴트
                 {
-                    if (SafeArray<bool>(movableCheckArray, (i / column, i % column)))
+                    if (SafeArray(movableCheckArray, (i / column, i % column)))
                     {
                         movableCheckArray[(i / column), (i % column)] = false;
                         ghostRespawnMovableCheckArray[(i / column), (i % column)] = true;
@@ -168,53 +168,49 @@ namespace GGame
         // 스테이지 로드
         private void LoadStage(int stageNumber)
         {
-            string stage = stageFileName;
-            stage += stageNumber.ToString();
+            var textAsset = (TextAsset)Resources.Load($"MapData/STAGE_{stageNumber.ToString()}");
 
-            TextAsset textAsset = (TextAsset)Resources.Load(dataPath + stage);
-
-            XmlDocument xmlDoc = new XmlDocument();
+            var xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(textAsset.text);
 
-            int row, col, objectNumber;
-            XmlNodeList nodeList = xmlDoc.SelectNodes("Map/Wall");
-
-            foreach (XmlNode node in nodeList)
+            var nodeList = xmlDoc.SelectNodes("Map/Wall");
+            if (nodeList != null)
             {
-                row = int.Parse(node.SelectSingleNode("Row").InnerText);
-                col = int.Parse(node.SelectSingleNode("Column").InnerText);
-                objectNumber = int.Parse(node.SelectSingleNode("Number").InnerText);
-
-                if (SafeArray(tileArray, (row, col)))
+                foreach (XmlNode node in nodeList)
                 {
-                    tileArray[row, col].spriteRenderer.sprite = spriteManager.wallSpriteArray[objectNumber];
-                    tileArray[row, col].transform.eulerAngles =
-                        new Vector3(0f, 0f, float.Parse(node.SelectSingleNode("Rot").InnerText));
+                    var row = node?.GetNode("Row")?.GetInt() ?? 0;
+                    var col = node?.GetNode("Column")?.GetInt() ?? 0;
+                    var number = node?.GetNode("Number")?.GetInt() ?? 0;
 
-                    movableCheckArray[row, col] = false;
-                    ghostRespawnMovableCheckArray[row, col] = false;
-
-                    if (objectNumber == (int)EWall.CENTERDOOR)
+                    if (SafeArray(tileArray, (row, col)))
                     {
-                        ghostRespawnMovableCheckArray[row, col] = true;
-                        ghostRespawnCoord = (row, col);
-                    }
+                        var rotate = node?.GetNode("Rot")?.GetFloat() ?? 0;
+                        tileArray[row, col].spriteRenderer.sprite = spriteManager.wallSpriteArray[number];
+                        tileArray[row, col].transform.eulerAngles = new Vector3(0f, 0f, rotate);
 
-                }
+                        movableCheckArray[row, col] = false;
+                        ghostRespawnMovableCheckArray[row, col] = false;
+
+                        if (number == (int)EWall.CENTERDOOR)
+                        {
+                            ghostRespawnMovableCheckArray[row, col] = true;
+                            ghostRespawnCoord = (row, col);
+                        }
+
+                    }
+                }   
             }
 
 
             //화면상 테두리부분이 뚫려있다면 테두리 한칸 밖 타일 이동가능
             for (int x = 1; x < column - 1; x++)
             {
-                if (SafeArray<GameTile>(tileArray, (1, x)) &&
-                    tileArray[1, x].spriteRenderer.sprite.name.Equals("Default_Sprite"))
+                if (SafeArray(tileArray, (1, x)) && tileArray[1, x].spriteRenderer.sprite.name.Equals("Default_Sprite"))
                 {
                     movableCheckArray[0, x] = true;
                 }
 
-                if (SafeArray<GameTile>(tileArray, (line - 2, x)) &&
-                    tileArray[line - 2, x].spriteRenderer.sprite.name.Equals("Default_Sprite"))
+                if (SafeArray(tileArray, (line - 2, x)) && tileArray[line - 2, x].spriteRenderer.sprite.name.Equals("Default_Sprite"))
                 {
                     movableCheckArray[line - 1, x] = true;
                 }
@@ -222,14 +218,12 @@ namespace GGame
 
             for (int y = 1; y < line - 1; y++)
             {
-                if (SafeArray<GameTile>(tileArray, (y, 1)) &&
-                    tileArray[y, 1].spriteRenderer.sprite.name.Equals("Default_Sprite"))
+                if (SafeArray(tileArray, (y, 1)) && tileArray[y, 1].spriteRenderer.sprite.name.Equals("Default_Sprite"))
                 {
                     movableCheckArray[y, 0] = true;
                 }
 
-                if (SafeArray<GameTile>(tileArray, (y, column - 2)) &&
-                    tileArray[y, column - 2].spriteRenderer.sprite.name.Equals("Default_Sprite"))
+                if (SafeArray(tileArray, (y, column - 2)) && tileArray[y, column - 2].spriteRenderer.sprite.name.Equals("Default_Sprite"))
                 {
                     movableCheckArray[y, column - 1] = true;
                 }
@@ -237,28 +231,30 @@ namespace GGame
 
             //아이템 로드
             nodeList = xmlDoc.SelectNodes("Map/Item");
-            normalCount = itemManager.LoadItem(nodeList);
+            normalCount = ItemManager.Instance.LoadItem(nodeList);
 
             //캐릭터 위치 로드
             nodeList = xmlDoc.SelectNodes("Map/Character");
             InitCharacter(nodeList);
-            Debug.Log("Stage Load Success");
+            //DebugHelper.Log("Stage Load Success");
         }
 
         // 각 캐릭터 초기화
         private void InitCharacter(XmlNodeList nodeList)
         {
-            int row, col, characterNumber;
-            foreach (XmlNode node in nodeList)
+            if (nodeList != null)
             {
-                row = int.Parse(node.SelectSingleNode("Row").InnerText);
-                col = int.Parse(node.SelectSingleNode("Column").InnerText);
-                characterNumber = int.Parse(node.SelectSingleNode("Number").InnerText);
-
-                if (CharacterArray[characterNumber] != null)
+                foreach (XmlNode node in nodeList)
                 {
-                    CharacterArray[characterNumber].gameObject.SetActive(true);
-                    CharacterArray[characterNumber].InitCharacter(row, col);
+                    var row = node?.GetNode("Row")?.GetInt() ?? 0;
+                    var col = node?.GetNode("Column")?.GetInt() ?? 0;
+                    var number = node?.GetNode("Number")?.GetInt() ?? 0;
+
+                    if (CharacterArray[number] != null)
+                    {
+                        CharacterArray[number].SafeSetActive(true);
+                        CharacterArray[number].InitCharacter(row, col);
+                    }
                 }
             }
         }
@@ -267,35 +263,27 @@ namespace GGame
         public void EatNormal()
         {
             normalCount--;
+            
             if (normalCount <= 0)
             {
-                Debug.Log("Game Clear!");
-                StageResult((int)EResult.STAGE_CLEAR);
-
+                //DebugHelper.Log("Game Clear!");
+                StageResult(EResult.STAGE_CLEAR);
             }
         }
 
         //스테이지 초기화 및 비활성화 후 결과 화면 출력
-        public void StageResult(int result)
+        public void StageResult(EResult result)
         {
             switch (result)
             {
-                case (int)EResult.GAME_OVER:
+                case EResult.GAME_OVER:
+                case EResult.TIME_OVER:
                 {
                     StartCoroutine(StageFailEffect(result));
                     break;
                 }
-                case (int)EResult.TIME_OVER:
-                {
-                    StartCoroutine(StageFailEffect(result));
-                    break;
-                }
-                case (int)EResult.STAGE_CLEAR:
-                {
-                    StartCoroutine(StageClearEffect());
-                    break;
-                }
-                case (int)EResult.GAME_CLEAR:
+                case EResult.STAGE_CLEAR:
+                case EResult.GAME_CLEAR:
                 {
                     StartCoroutine(StageClearEffect());
                     break;
@@ -303,6 +291,7 @@ namespace GGame
             }
         }
 
+        private WaitForSeconds waitForHalfSeconds = new WaitForSeconds(0.5f);
         //Stage Clear 연출
         private IEnumerator StageClearEffect()
         {
@@ -312,24 +301,28 @@ namespace GGame
             if (currentStage >= lastStage)
             {
                 //마지막 스테이지
-                _UIManager.ResultPanelActive((int)EResult.GAME_CLEAR);
+                UIManager.Instance.ResultPanelActive(EResult.GAME_CLEAR);
+                
                 currentStage = 0;
             }
             else
             {
-                _UIManager.ResultPanelActive((int)EResult.STAGE_CLEAR);
+                UIManager.Instance.ResultPanelActive(EResult.STAGE_CLEAR);
             }
 
             //실수로 탭하여 바로 다음 스테이지 시작하지 않기 위해 잠깐의 텀
-            yield return new WaitForSeconds(0.5f);
+            yield return waitForHalfSeconds;
+            
             currentStage++;
+            
             CharacterBase.pac.InitPac();
+            
             StartCoroutine(TapWaitCorutine());
-
         }
 
+        private WaitForSeconds waitForTwoSeconds = new WaitForSeconds(2f);
         //Stage Fail 연출
-        private IEnumerator StageFailEffect(int result)
+        private IEnumerator StageFailEffect(EResult result)
         {
             for (int i = 0; i < CharacterArray.Length; i++)
             {
@@ -341,38 +334,41 @@ namespace GGame
             UIManager.Instance.isContinue = false;
 
             //여기에 게임오버 연출
-            yield return new WaitForSeconds(2f);
+            yield return waitForTwoSeconds;
+            
             StageFail(result);
-            yield return new WaitForSeconds(2f);
-            resultText.gameObject.SetActive(false);
-            gameCanvas.gameObject.SetActive(false);
-            _UIManager.ResultPanelActive(result);
+            
+            yield return waitForTwoSeconds;
+            
+            resultText.SafeSetActive(false);
+            gameCanvas.SafeSetActive(false);
+            
+            UIManager.Instance.ResultPanelActive(result);
 
             //실수로 탭하여 바로 스테이지 시작하지 않기 위해 잠깐의 텀
-            yield return new WaitForSeconds(0.5f);
+            yield return waitForHalfSeconds;
+            
             StartCoroutine(TapWaitCorutine());
         }
 
-        public void StageFail(int result)
+        public void StageFail(EResult result)
         {
-            for (int i = 0; i < CharacterArray.Length; i++)
+            CharacterArray.SafeSetActive(false);
+
+            if (result == EResult.GAME_OVER)
             {
-                CharacterArray[i].gameObject.SetActive(false);
+                resultText.SafeSetText("GAME OVER");
+            }
+            else if (result == EResult.TIME_OVER)
+            {
+                resultText.SafeSetText("TIME OVER");
             }
 
-            if (result == (int)EResult.GAME_OVER)
-            {
-                resultText.text = "GAME OVER";
-            }
-            else if (result == (int)EResult.TIME_OVER)
-            {
-                resultText.text = "TIME OVER";
-            }
-
-            itemManager.ItemPanelDisable();
-            resultText.gameObject.SetActive(true);
-            resultText.transform.position = tileArray[ghostRespawnCoord.row + 4, ghostRespawnCoord.col].transform.position;
-
+            ItemManager.Instance.ItemPanelDisable();
+            
+            resultText.SafeSetActive(true);
+            
+            resultText.transform.SafeSetPosition(tileArray[ghostRespawnCoord.row + 4, ghostRespawnCoord.col].transform.position);
         }
 
 

@@ -7,5 +7,4 @@ public class SpriteManager : MonoBehaviour
     public Sprite[] wallSpriteArray;
     public Sprite[] itemSpriteArray;
     public Sprite[] characterSpriteArray;
-
 }

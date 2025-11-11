@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using GGame;
 //싱글톤
 public class MapToolCursor : MonoBehaviour
 {
@@ -18,8 +18,8 @@ public class MapToolCursor : MonoBehaviour
 
     // 커서 활성화 타일 Sprite
     public Sprite cursorSprite;
-    public int cursorType = (int)EObjectType.WALL;
-    public int objectNumber = (int)EWall.DEFAULT;
+    public EObjectType cursorType = EObjectType.WALL;
+    public EWall objectNumber = EWall.DEFAULT;
     public float rot = 0;
 
     public bool isAutoCompleteActive = true;

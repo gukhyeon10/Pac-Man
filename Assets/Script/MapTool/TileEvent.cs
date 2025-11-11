@@ -1,18 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GGame;
 
 //맵툴 그리드내 타일 이벤트
 public class TileEvent : MonoBehaviour
 {
-    MapToolCursor cursor;   // 커서 인스턴스
+    private MapToolCursor cursor;
 
-    SpriteRenderer spriteRenderer; //SpriteRenderer 컴포넌트
-    public Sprite currentTileSprite;      //현재 타일 스프라이트
-    Sprite defaultSprite;          //디폴트 스프라이트
-
-    public int objectType = (int)EObjectType.WALL;
-    public int objectNumber = (int)EWall.DEFAULT;
+    private SpriteRenderer spriteRenderer;
+    private Sprite defaultSprite;
+    public Sprite currentTileSprite;
+    
+    public EObjectType objectType = EObjectType.WALL;
+    public EWall objectNumber = EWall.DEFAULT;
     public float rot;
 
     public int row, col;
@@ -35,7 +36,7 @@ public class TileEvent : MonoBehaviour
         InitTile((int)EObjectType.WALL, (int)EWall.DEFAULT, defaultSprite);
     }
 
-    public void InitTile(int objectType, int objectNumber, Sprite sprite)
+    public void InitTile(EObjectType objectType, EWall objectNumber, Sprite sprite)
     {
         // 특정타일로 초기화 
         spriteRenderer.sprite = sprite;
@@ -45,7 +46,7 @@ public class TileEvent : MonoBehaviour
         this.objectNumber = objectNumber;
     }
 
-    public void AutoTile(int objectType, int objectNumber, Sprite sprite, float rot)
+    public void AutoTile(EObjectType objectType, EWall objectNumber, Sprite sprite, float rot)
     {
         // 상황에 맞는 타일로 자동완성 
         spriteRenderer.sprite = sprite;
@@ -90,7 +91,7 @@ public class TileEvent : MonoBehaviour
                     MapToolManager.Instance.TileAutoComplete(this.row, this.col, true, true);
                 }
                 // 유령 리스폰 지역 입구를 뜻하는 3종류의 타일은 자동완성 기능 제외.  나머지 타일들은 자동완성 
-                else if(objectNumber != (int)EWall.CENTERDOOR && objectNumber != (int)EWall.RIGHTDOOR && objectNumber != (int)EWall.LEFTDOOR)
+                else if(objectNumber != EWall.CENTERDOOR && objectNumber != EWall.RIGHTDOOR && objectNumber != EWall.LEFTDOOR)
                 {
                     MapToolManager.Instance.TileAutoComplete(this.row, this.col, true, false);
                 }

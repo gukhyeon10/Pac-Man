@@ -32,6 +32,25 @@ namespace GUtility
                 component.gameObject.SetActive(isActive);
             }
         }
+        
+        public static void SafeSetActive<T>(this T[] components, bool isActive) where T : Component
+        {
+            if (components != null)
+            {
+                for (int i = 0; i < components.Length; i++)
+                {
+                    components[i].SafeSetActive(isActive);   
+                }
+            }
+        }
+
+        public static void SafeSetPosition(this Transform transform, Vector3 pos)
+        {
+            if (transform != null)
+            {
+                transform.position = pos;
+            }
+        }
 
         public static void SafeSetEnable<T>(this T behaviour, bool isEnabled) where T : Behaviour
         {

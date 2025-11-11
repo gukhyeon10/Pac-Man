@@ -1,26 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using GUtility;
 using UnityEngine;
 
 namespace GGame
 {
-
     public class ItemScript : MonoBehaviour
     {
-        [SerializeField] int itemScore;
-        [SerializeField] bool isNormal;
-        [SerializeField] bool isSuper;
+        [SerializeField] private int itemScore;
+        [SerializeField] private bool isNormal;
+        [SerializeField] private bool isSuper;
 
-        string pacTag;
+        private string pacTag;
 
-        void Start()
+        private void Start()
         {
             pacTag = CharacterBase.pac.tag;
         }
 
         //아이템 충돌 처리
-        void OnTriggerEnter2D(Collider2D collision)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.transform.tag.Equals(pacTag))
             {

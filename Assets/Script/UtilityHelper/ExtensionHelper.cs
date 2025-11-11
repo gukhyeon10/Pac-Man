@@ -1,3 +1,4 @@
+using GGame;
 
 namespace GUtility
 {

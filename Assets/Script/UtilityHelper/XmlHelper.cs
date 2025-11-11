@@ -20,11 +20,11 @@ namespace GUtility
                 }
             }
             
-            DebugHelper.Log(DebugHelper.DEBUG.NULL);
+            //DebugHelper.Log(DebugHelper.DEBUG.NULL);
             
             return null;
         }
-        public static int? GetInt(this XmlNode node, string name)
+        public static int? GetInt(this XmlNode node)
         {
             if (node != null)
             {
@@ -34,18 +34,18 @@ namespace GUtility
                 }
                 else
                 {
-                    DebugHelper.Log(DebugHelper.DEBUG.NO_VALUE);
+                    //DebugHelper.Log(DebugHelper.DEBUG.NO_VALUE);
                     
                     return 0;
                 }
             }
             
-            DebugHelper.Log(DebugHelper.DEBUG.NULL);
+            //DebugHelper.Log(DebugHelper.DEBUG.NULL);
 
             return null;
         }
 
-        public static float? GetFloat(this XmlNode node, string name)
+        public static float? GetFloat(this XmlNode node)
         {
             if (node != null)
             {
@@ -55,13 +55,13 @@ namespace GUtility
                 }
                 else
                 {
-                    DebugHelper.Log(DebugHelper.DEBUG.NO_VALUE);
+                    //DebugHelper.Log(DebugHelper.DEBUG.NO_VALUE);
                     
                     return 0f;
                 }
             }
             
-            DebugHelper.Log(DebugHelper.DEBUG.NULL);
+            //DebugHelper.Log(DebugHelper.DEBUG.NULL);
 
             return null;
         }
