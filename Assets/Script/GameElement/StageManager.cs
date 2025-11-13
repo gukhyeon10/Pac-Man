@@ -9,6 +9,10 @@ namespace GGame
 {
     public class StageManager : MonoBehaviour
     {
+        // 타일 29행 23열 (30행 타일은 가리기 용도)
+        public static int column = 23;
+        public static int line = 29;
+        
         private static StageManager _instance = null;
         public static StageManager Instance => _instance;
         
@@ -21,19 +25,14 @@ namespace GGame
 
         // 각 캐릭터 (PAC = 0,  BLINKY = 1,  PINKY = 2,  INKY = 3,  CLYDE = 4,)
         [SerializeField] private CharacterBase[] CharacterArray = new CharacterBase[Enum.GetNames(typeof(ECharacter)).Length]; 
-
-        // 타일 29행 23열 (30행 타일은 가리기 용도)
-        public const int column = 23;
-        public const int line = 29;
         
-        public int GetLine => line;
-        public int GetColumn => column;
         public int GetCurrentStage => currentStage;
 
         public readonly GameTile[,] tileArray = new GameTile[line, column];
-        public readonly bool[,] movableCheckArray = new bool[line, column];
-        public readonly bool[,] ghostRespawnMovableCheckArray = new bool[line, column];
-        public (int row, int col) ghostRespawnCoord = (line / 2, column / 2); //유령 디폴트 초기 위치
+        
+        public readonly MoveModel moveModel = new MoveModel();
+        
+        public readonly GhostRespawnModel ghostRespawnModel = new GhostRespawnModel();
 
         private int currentStage = 1; // 현재 스테이지
         private int lastStage = 3; // 마지막 스테이지
@@ -60,8 +59,6 @@ namespace GGame
 
             InitTileArray();
             
-            InitMovableArray();
-            
             StartCoroutine(TapWaitCorutine());
         }
 
@@ -87,9 +84,9 @@ namespace GGame
                         UIManager.Instance.UIPanelActive();
                         
                         gameCanvas.SafeSetActive(true);
-                        
-                        InitStage();
                     }
+                    
+                    InitStage();
 
                     LoadStage(currentStage);
                     
@@ -120,8 +117,10 @@ namespace GGame
             {
                 CharacterArray[i].isContinue = true;
             }
-
-            InitMovableArray();
+            
+            moveModel.Init(tileGrid.childCount - column);
+            
+            ghostRespawnModel.Init(tileGrid.childCount - column);
             
             ItemManager.Instance.InitItem();
         }
@@ -136,33 +135,6 @@ namespace GGame
             }
 
             ItemManager.Instance.tileArray = this.tileArray;
-        }
-
-        // 이동가능 체크 초기화
-        private void InitMovableArray()
-        {
-            for (int i = 0; i < tileGrid.childCount - column; i++) // 마지막 행 타일들은 유령을 가리기위한 타일이기에 게임에 영향X
-            {
-                if (i / column > 0 && i / column < line - 1 && i % column > 0 &&
-                    i % column < column - 1) // 화면상 타일들은 이동가능이 디폴트
-                {
-                    if (SafeArray(movableCheckArray, (i / column, i % column)))
-                    {
-                        movableCheckArray[(i / column), (i % column)] = true;
-                        ghostRespawnMovableCheckArray[(i / column), (i % column)] = true;
-                    }
-
-                }
-                else // 화면밖 테두리 타일들은 이동불가능이 디폴트
-                {
-                    if (SafeArray(movableCheckArray, (i / column, i % column)))
-                    {
-                        movableCheckArray[(i / column), (i % column)] = false;
-                        ghostRespawnMovableCheckArray[(i / column), (i % column)] = true;
-                    }
-
-                }
-            }
         }
 
         // 스테이지 로드
@@ -182,53 +154,19 @@ namespace GGame
                     var col = node?.GetNode("Column")?.GetInt() ?? 0;
                     var number = node?.GetNode("Number")?.GetInt() ?? 0;
 
+                    moveModel.SetUp(row, col, number);
+                        
+                    ghostRespawnModel.SetUp(row, col, number);
+                    
                     if (SafeArray(tileArray, (row, col)))
                     {
                         var rotate = node?.GetNode("Rot")?.GetFloat() ?? 0;
                         tileArray[row, col].spriteRenderer.sprite = spriteManager.wallSpriteArray[number];
                         tileArray[row, col].transform.eulerAngles = new Vector3(0f, 0f, rotate);
-
-                        movableCheckArray[row, col] = false;
-                        ghostRespawnMovableCheckArray[row, col] = false;
-
-                        if (number == (int)EWall.CENTERDOOR)
-                        {
-                            ghostRespawnMovableCheckArray[row, col] = true;
-                            ghostRespawnCoord = (row, col);
-                        }
-
                     }
                 }   
             }
-
-
-            //화면상 테두리부분이 뚫려있다면 테두리 한칸 밖 타일 이동가능
-            for (int x = 1; x < column - 1; x++)
-            {
-                if (SafeArray(tileArray, (1, x)) && tileArray[1, x].spriteRenderer.sprite.name.Equals("Default_Sprite"))
-                {
-                    movableCheckArray[0, x] = true;
-                }
-
-                if (SafeArray(tileArray, (line - 2, x)) && tileArray[line - 2, x].spriteRenderer.sprite.name.Equals("Default_Sprite"))
-                {
-                    movableCheckArray[line - 1, x] = true;
-                }
-            }
-
-            for (int y = 1; y < line - 1; y++)
-            {
-                if (SafeArray(tileArray, (y, 1)) && tileArray[y, 1].spriteRenderer.sprite.name.Equals("Default_Sprite"))
-                {
-                    movableCheckArray[y, 0] = true;
-                }
-
-                if (SafeArray(tileArray, (y, column - 2)) && tileArray[y, column - 2].spriteRenderer.sprite.name.Equals("Default_Sprite"))
-                {
-                    movableCheckArray[y, column - 1] = true;
-                }
-            }
-
+            
             //아이템 로드
             nodeList = xmlDoc.SelectNodes("Map/Item");
             normalCount = ItemManager.Instance.LoadItem(nodeList);
@@ -368,7 +306,7 @@ namespace GGame
             
             resultText.SafeSetActive(true);
             
-            resultText.transform.SafeSetPosition(tileArray[ghostRespawnCoord.row + 4, ghostRespawnCoord.col].transform.position);
+            resultText.transform.SafeSetPosition(tileArray[ghostRespawnModel.RespawnCoord.row + 4, ghostRespawnModel.RespawnCoord.col].transform.position);
         }
 
 

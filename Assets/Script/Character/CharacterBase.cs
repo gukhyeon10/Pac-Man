@@ -48,7 +48,7 @@ namespace GGame
         {
             var directCoord = coord.Calculate(direct);
 
-            return StageManager.Instance.movableCheckArray[directCoord.row, directCoord.col];
+            return StageManager.Instance.moveModel[directCoord.row, directCoord.col];
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace GGame
             {
                 var directCoord = coord.Calculate((EDirect)i);
                 
-                if (StageManager.Instance.movableCheckArray[directCoord.row, directCoord.col])
+                if (StageManager.Instance.moveModel[directCoord.row, directCoord.col])
                 {
                     movableList.Add((EDirect)i);
                 }

@@ -76,4 +76,14 @@ namespace GUtility
             }
         }
     }
+
+    public static class ArrayHelper
+    {
+        public static bool IsValidIndex<T>(this T[][] array, int row, int col)
+        {
+            return array != null && 
+                   row >= 0 && row < array.Length && array[row] != null && 
+                   col >= 0 && col < array[row].Length;
+        }
+    }
 }

@@ -33,7 +33,7 @@ namespace GGame
         // Start is called before the first frame update
         void Start()
         {
-            itemArray = new Transform[StageManager.Instance.GetLine, StageManager.Instance.GetColumn];
+            itemArray = new Transform[StageManager.line, StageManager.column];
         }
 
         //아이템 초기화

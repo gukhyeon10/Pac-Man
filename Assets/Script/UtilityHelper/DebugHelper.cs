@@ -15,6 +15,7 @@ namespace GUtility
             NOT_FOUND_FILE,
             NO_VALUE,
             ALREADY_KEY,
+            OUT_OF_RANGE,
         }
         public static void Log(DEBUG logIndex)
         {
@@ -25,6 +26,7 @@ namespace GUtility
                 DEBUG.NOT_FOUND_FILE => "NOT FOUND_FILE",
                 DEBUG.NO_VALUE => "NO_VALUE",
                 DEBUG.ALREADY_KEY => "ALREADY_KEY",
+                DEBUG.OUT_OF_RANGE => "OUT_OF_RANGE",
                 _ => "Not Found Debug Message",
             };
             

@@ -96,7 +96,7 @@ namespace GGame
         /// <summary>
         /// 타겟 좌표 경로 탐색 시작
         /// </summary>
-        private void PathFinding((int row, int col) coord, (int row, int col) targetCoord, bool[,] movable)
+        private void PathFinding((int row, int col) coord, (int row, int col) targetCoord, MoveModel model)
         {
             bfsArray[coord.row][coord.col].Modify(coord, coord, true);
 
@@ -112,32 +112,29 @@ namespace GGame
                     break;
                 }
 
-                PathFindingProcess(node.Coord, node.Coord.Calculate(EDirect.EAST), movable);
+                PathFindingProcess(node.Coord, node.Coord.Calculate(EDirect.EAST), model);
 
-                PathFindingProcess(node.Coord, node.Coord.Calculate(EDirect.WEST), movable);
+                PathFindingProcess(node.Coord, node.Coord.Calculate(EDirect.WEST), model);
 
-                PathFindingProcess(node.Coord, node.Coord.Calculate(EDirect.SOUTH), movable);
+                PathFindingProcess(node.Coord, node.Coord.Calculate(EDirect.SOUTH), model);
 
-                PathFindingProcess(node.Coord, node.Coord.Calculate(EDirect.NORTH), movable);
+                PathFindingProcess(node.Coord, node.Coord.Calculate(EDirect.NORTH), model);
             }
         }
 
         /// <summary>
         /// 경로 탐색 처리
         /// </summary>
-        private void PathFindingProcess((int row, int col) src, (int row, int col) dest, bool[,] movable)
+        private void PathFindingProcess((int row, int col) src, (int row, int col) dest, MoveModel model)
         {
-            if (dest.row >= 0 && dest.col >= 0 && dest.row < StageManager.line && dest.col < StageManager.column)
+            if (model[dest.row, dest.col])
             {
-                if (movable[dest.row, dest.col])
+                if (bfsArray[dest.row][dest.col].IsVisited == false)
                 {
-                    if (bfsArray[dest.row][dest.col].IsVisited == false)
-                    {
-                        bfsArray[dest.row][dest.col].Modify(dest, src, true);
+                    bfsArray[dest.row][dest.col].Modify(dest, src, true);
 
-                        bfsQueue.Enqueue(bfsArray[dest.row][dest.col]);
-                    }   
-                }
+                    bfsQueue.Enqueue(bfsArray[dest.row][dest.col]);
+                }   
             }
         }
         
@@ -212,7 +209,7 @@ namespace GGame
         {
             if (Vector3.Distance(character.position, target.position) < 0.01f)
             {
-                if (coord.Equals(StageManager.Instance.ghostRespawnCoord.Calculate(EDirect.NORTH)))
+                if (coord.Equals(StageManager.Instance.ghostRespawnModel.RespawnCoord.Calculate(EDirect.NORTH)))
                 {
                     isRespawn = false;
                     
@@ -221,8 +218,8 @@ namespace GGame
 
                 InitBfsArray();
 
-                var movable = StageManager.Instance.ghostRespawnMovableCheckArray;
-                PathFinding(coord, StageManager.Instance.ghostRespawnCoord.Calculate(EDirect.NORTH), movable);
+                var model = StageManager.Instance.ghostRespawnModel;
+                PathFinding(coord, model.RespawnCoord.Calculate(EDirect.NORTH), model);
                 
                 target = StageManager.Instance.tileArray[coord.row, coord.col].transform;
             }
@@ -235,7 +232,7 @@ namespace GGame
         {
             if (Vector3.Distance(character.position, target.position) < 0.01f)
             {
-                if (coord.Equals(StageManager.Instance.ghostRespawnCoord.Calculate(EDirect.SOUTH)))
+                if (coord.Equals(StageManager.Instance.ghostRespawnModel.RespawnCoord.Calculate(EDirect.SOUTH)))
                 {
                     isReturn = false;
                     animator.SetBool("RETURN", false);
@@ -246,8 +243,8 @@ namespace GGame
 
                 InitBfsArray();
                 
-                var movable = StageManager.Instance.ghostRespawnMovableCheckArray;
-                PathFinding(coord, StageManager.Instance.ghostRespawnCoord.Calculate(EDirect.SOUTH), movable);
+                var model = StageManager.Instance.ghostRespawnModel;
+                PathFinding(coord, model.RespawnCoord.Calculate(EDirect.SOUTH), model);
                 
                 target = StageManager.Instance.tileArray[coord.row, coord.col].transform;
             }
@@ -266,7 +263,7 @@ namespace GGame
             {
                 tempCoord.Update(moveDirect);
                 
-                if (StageManager.SafeArray(StageManager.Instance.movableCheckArray, tempCoord) && StageManager.Instance.movableCheckArray[tempCoord.row, tempCoord.col])
+                if (StageManager.Instance.moveModel[tempCoord.row, tempCoord.col])
                 {
                     if(tempCoord.Equals(pac.Coord))
                     {
@@ -293,8 +290,7 @@ namespace GGame
                 {
                     InitBfsArray();
                     
-                    var movable = StageManager.Instance.movableCheckArray;
-                    PathFinding(coord, pac.Coord, movable);
+                    PathFinding(coord, pac.Coord, StageManager.Instance.moveModel);
                     
                     target = StageManager.Instance.tileArray[coord.row, coord.col].transform;
                 }
