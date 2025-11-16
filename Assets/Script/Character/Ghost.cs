@@ -221,7 +221,7 @@ namespace GGame
                 var model = StageManager.Instance.ghostRespawnModel;
                 PathFinding(coord, model.RespawnCoord.Calculate(EDirect.NORTH), model);
                 
-                target = StageManager.Instance.tileArray[coord.row, coord.col].transform;
+                target = StageManager.Instance.tileModel[coord.row, coord.col].transform;
             }
 
             character.position = Vector3.MoveTowards(character.position, target.position, speed * Time.deltaTime);
@@ -246,7 +246,7 @@ namespace GGame
                 var model = StageManager.Instance.ghostRespawnModel;
                 PathFinding(coord, model.RespawnCoord.Calculate(EDirect.SOUTH), model);
                 
-                target = StageManager.Instance.tileArray[coord.row, coord.col].transform;
+                target = StageManager.Instance.tileModel[coord.row, coord.col].transform;
             }
 
             character.position = Vector3.MoveTowards(character.position, target.position, speed * Time.deltaTime * 1.5f);
@@ -292,7 +292,7 @@ namespace GGame
                     
                     PathFinding(coord, pac.Coord, StageManager.Instance.moveModel);
                     
-                    target = StageManager.Instance.tileArray[coord.row, coord.col].transform;
+                    target = StageManager.Instance.tileModel[coord.row, coord.col].transform;
                 }
 
                 character.position = Vector3.MoveTowards(character.position, target.position, speed * Time.deltaTime);

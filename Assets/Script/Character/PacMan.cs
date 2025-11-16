@@ -42,7 +42,7 @@ namespace GGame
         // 팩맨 이동 로직
         protected override void CharacterMove()
         {
-            var targetPosition = StageManager.Instance.tileArray[coord.row, coord.col].transform.position;
+            var targetPosition = StageManager.Instance.tileModel[coord.row, coord.col].transform.position;
 
             var pos = Vector3.MoveTowards(character.position, targetPosition, speed * Time.deltaTime);
             character.SafeSetPosition(pos);

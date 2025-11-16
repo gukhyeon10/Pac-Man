@@ -1,4 +1,5 @@
 
+using System.Xml;
 using GUtility;
 
 namespace GGame
@@ -28,7 +29,7 @@ namespace GGame
 
         public abstract void Init(int tileCount);
         
-        public abstract void SetUp(int row, int col, int tileNumber);
+        public abstract void SetUp(XmlNode node);
     }
 
     /// <summary>
@@ -45,6 +46,8 @@ namespace GGame
                 
                 array[row][col] = tileGrid.GetChild(i).GetComponent<GameTile>();
             }
+            
+            ItemManager.Instance.tileArray = array;
         }
         
         public override void Init(int tileCount)
@@ -63,9 +66,18 @@ namespace GGame
             }
         }
 
-        public override void SetUp(int row, int col, int tileNumber)
+        public override void SetUp(XmlNode node)
         {
-            throw new System.NotImplementedException();
+            var row = node?.GetNode("Row")?.GetInt() ?? 0;
+            var col = node?.GetNode("Column")?.GetInt() ?? 0;
+            var tileNumber = node?.GetNode("Number")?.GetInt() ?? 0;
+
+            if (array.IsValidIndex(row, col))
+            {
+                var rotate = node?.GetNode("Rot")?.GetFloat() ?? 0;
+                array[row][col].spriteRenderer.sprite = SpriteManager.Instance.wallSpriteArray[tileNumber];
+                array[row][col].transform.eulerAngles = new UnityEngine.Vector3(0f, 0f, rotate);   
+            }
         }
     }
     
@@ -91,8 +103,12 @@ namespace GGame
             }
         }
 
-        public override void SetUp(int row, int col, int tileNumber)
+        public override void SetUp(XmlNode node)
         {
+            var row = node?.GetNode("Row")?.GetInt() ?? 0;
+            var col = node?.GetNode("Column")?.GetInt() ?? 0;
+            var tileNumber = node?.GetNode("Number")?.GetInt() ?? 0;
+            
             if (array.IsValidIndex(row, col))
             {
                 array[row][col] = false;
@@ -155,8 +171,12 @@ namespace GGame
             respawnCoord = (line / 2, column / 2);
         }
 
-        public override void SetUp(int row, int col, int tileNumber)
+        public override void SetUp(XmlNode node)
         {
+            var row = node?.GetNode("Row")?.GetInt() ?? 0;
+            var col = node?.GetNode("Column")?.GetInt() ?? 0;
+            var tileNumber = node?.GetNode("Number")?.GetInt() ?? 0;
+            
             if (array.IsValidIndex(row, col))
             {
                 if (tileNumber == (int)EWall.CENTERDOOR)

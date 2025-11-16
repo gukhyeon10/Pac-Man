@@ -13,7 +13,7 @@ namespace GGame
         private static ItemManager _instance = null;
         public static ItemManager Instance => _instance;
         
-        public GameTile[,] tileArray;
+        public GameTile[][] tileArray;
         public Transform[,] itemArray;
 
         private List<GameObject> itemList = new List<GameObject>();
@@ -62,7 +62,7 @@ namespace GGame
                     var col = node?.GetNode("Column")?.GetInt() ?? 0;
                     var number = node?.GetNode("Number")?.GetInt() ?? 0;
                     //아이템 생성
-                    var item = Instantiate(itemPrefabArray[number], tileArray[row, col].transform.position, Quaternion.identity, itemPanel);
+                    var item = Instantiate(itemPrefabArray[number], tileArray[row][col].transform.position, Quaternion.identity, itemPanel);
                     itemList.Add(item);
 
                     //노말 아이템 개수 누적

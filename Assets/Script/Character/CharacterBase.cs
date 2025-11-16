@@ -33,7 +33,7 @@ namespace GGame
             coord.row = x;
             coord.col = y;
 
-            target = StageManager.Instance.tileArray[coord.row, coord.col].transform;
+            target = StageManager.Instance.tileModel[x, y].transform;
             
             character = this.transform;
             character.position = target.position;
@@ -92,7 +92,7 @@ namespace GGame
                     
                     coord.Update(moveDirect);
 
-                    target = StageManager.SafeArray(StageManager.Instance.tileArray, coord) ? StageManager.Instance.tileArray[coord.row, coord.col].transform : null;
+                    target = StageManager.Instance.tileModel[coord.row, coord.col].transform;
                 }
             }
 
@@ -108,7 +108,7 @@ namespace GGame
         /// </summary>
         protected bool WrapCoordinate()
         {
-            var tileArray = StageManager.Instance.tileArray;
+            var tileArray = StageManager.Instance.tileModel;
             
             if (coord.row == 0)
             {

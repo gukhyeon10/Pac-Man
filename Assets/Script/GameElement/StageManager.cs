@@ -21,14 +21,12 @@ namespace GGame
 
         [SerializeField] private Transform tileGrid;
 
-        [SerializeField] private SpriteManager spriteManager;
-
         // 각 캐릭터 (PAC = 0,  BLINKY = 1,  PINKY = 2,  INKY = 3,  CLYDE = 4,)
         [SerializeField] private CharacterBase[] CharacterArray = new CharacterBase[Enum.GetNames(typeof(ECharacter)).Length]; 
         
         public int GetCurrentStage => currentStage;
-
-        public readonly GameTile[,] tileArray = new GameTile[line, column];
+        
+        public readonly TileModel tileModel = new TileModel();
         
         public readonly MoveModel moveModel = new MoveModel();
         
@@ -56,8 +54,8 @@ namespace GGame
         {
             //시작 화면
             UIManager.Instance.StartPanelSetActive(true);
-
-            InitTileArray();
+            
+            tileModel.Start(tileGrid);
             
             StartCoroutine(TapWaitCorutine());
         }
@@ -100,41 +98,18 @@ namespace GGame
         //스테이지 초기화
         private void InitStage()
         {
-            var defaultSprite = tileArray[0, 0].spriteRenderer.sprite;
-            
-            for (int row = 0; row < line; row++)
-            {
-                for (int col = 0; col < column; col++)
-                {
-                    if (SafeArray(tileArray, (row, col)))
-                    {
-                        tileArray[row, col].spriteRenderer.sprite = defaultSprite;
-                    }
-                }
-            }
-
             for (int i = 0; i < CharacterArray.Length; i++)
             {
                 CharacterArray[i].isContinue = true;
             }
+            
+            tileModel.Init(tileGrid.childCount - column);
             
             moveModel.Init(tileGrid.childCount - column);
             
             ghostRespawnModel.Init(tileGrid.childCount - column);
             
             ItemManager.Instance.InitItem();
-        }
-
-
-        // 타일 리스트, 이동 가능 체크
-        private void InitTileArray()
-        {
-            for (int i = 0; i < tileGrid.childCount - column; i++) // 마지막 행 타일들은 유령을 가리기위한 타일이기에 게임에 영향X
-            {
-                tileArray[(i / column), (i % column)] = tileGrid.GetChild(i).GetComponent<GameTile>();
-            }
-
-            ItemManager.Instance.tileArray = this.tileArray;
         }
 
         // 스테이지 로드
@@ -150,20 +125,11 @@ namespace GGame
             {
                 foreach (XmlNode node in nodeList)
                 {
-                    var row = node?.GetNode("Row")?.GetInt() ?? 0;
-                    var col = node?.GetNode("Column")?.GetInt() ?? 0;
-                    var number = node?.GetNode("Number")?.GetInt() ?? 0;
-
-                    moveModel.SetUp(row, col, number);
-                        
-                    ghostRespawnModel.SetUp(row, col, number);
+                    tileModel.SetUp(node);
                     
-                    if (SafeArray(tileArray, (row, col)))
-                    {
-                        var rotate = node?.GetNode("Rot")?.GetFloat() ?? 0;
-                        tileArray[row, col].spriteRenderer.sprite = spriteManager.wallSpriteArray[number];
-                        tileArray[row, col].transform.eulerAngles = new Vector3(0f, 0f, rotate);
-                    }
+                    moveModel.SetUp(node);
+                        
+                    ghostRespawnModel.SetUp(node);
                 }   
             }
             
@@ -306,7 +272,7 @@ namespace GGame
             
             resultText.SafeSetActive(true);
             
-            resultText.transform.SafeSetPosition(tileArray[ghostRespawnModel.RespawnCoord.row + 4, ghostRespawnModel.RespawnCoord.col].transform.position);
+            resultText.transform.SafeSetPosition(tileModel[ghostRespawnModel.RespawnCoord.row + 4, ghostRespawnModel.RespawnCoord.col].transform.position);
         }
 
 

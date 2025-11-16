@@ -1,10 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
-public class SpriteManager : MonoBehaviour
+namespace GGame
 {
-    public Sprite[] wallSpriteArray;
-    public Sprite[] itemSpriteArray;
-    public Sprite[] characterSpriteArray;
+    public class SpriteManager : MonoBehaviour
+    {
+        public Sprite[] wallSpriteArray;
+        public Sprite[] itemSpriteArray;
+        public Sprite[] characterSpriteArray;
+    
+        private static SpriteManager _instance = null;
+        public static SpriteManager Instance => _instance;
+        
+        private void Awake()
+        {
+            if (_instance == null)
+            {
+                _instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
+    }   
 }
